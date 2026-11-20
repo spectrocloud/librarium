@@ -10,6 +10,168 @@ tags: ["troubleshooting", "self-hosted", "palette", "vertex"]
 
 Refer to the following sections to troubleshoot errors encountered when installing an Enterprise Cluster.
 
+## Scenario - Palette/VerteX Management Appliance Upgrade Stalls Because DRBD Connections Do Not Use TLS
+
+Palette Management Appliance version 4.9.51 and later, and VerteX Management Appliance version 4.10.11 and later,
+encrypt [Distributed Replicated Block Device (DRBD)](https://linbit.com/drbd-user-guide/drbd-guide-9_0-en/) replication
+traffic between appliance nodes with TLS. DRBD cannot switch an active connection to TLS, so volumes created on an
+earlier version keep their plain TCP connections after you upgrade. This issue affects three-node appliances only. On a
+single-node appliance, volumes have no replicas on other nodes, so there are no connections to switch.
+
+On a three-node appliance, the volume of the internal Zot registry has a replica on each node. Its plain TCP connections
+keep working until a node restarts, the LINSTOR satellite pods restart, or the Zot pod moves to another node, for
+example during a later upgrade. LINSTOR then fails to apply the TLS setting to the Zot volume, the volume cannot attach,
+and the Zot pod cannot start. Because the management cluster pulls its images from Zot, pods enter the
+`ImagePullBackOff` state, and the upgrade stalls.
+
+The following symptoms point to this issue:
+
+- The LINSTOR error reports contain `Failed to adjust DRBD resource`, `Failure: (162) Invalid configuration request`,
+  and `transport net_conf_change failed: -22`. To list the error reports, complete steps 1 - 4 of
+  [Debug Steps](#debug-steps-drbd-tls), and then issue the command
+  `kubectl exec --namespace piraeus-system deployment/linstor-controller -- linstor error-reports list`.
+
+- The Zot volume does not attach, and the LINSTOR CSI driver reports `could not determine device path`.
+
+To resolve this issue, switch the DRBD connections to TLS. The switch pauses I/O on every DRBD volume, including the
+MongoDB volumes, from step 8 until step 10 completes, so Palette or VerteX is unavailable during that time. If your
+appliance already runs Palette Management Appliance 4.9.51 or later, or VerteX Management Appliance 4.10.11 or later,
+use the same steps before you upgrade to check the Zot volume and switch its connections.
+
+:::danger
+
+Do not run `drbdadm invalidate` or any command with the `--discard-my-data` option, and do not delete the Zot
+PersistentVolumeClaim (PVC), PersistentVolume (PV), or VolumeAttachment. This issue is not a split-brain, and the data
+on all three replicas remains intact.
+
+:::
+
+### Debug Steps {#debug-steps-drbd-tls}
+
+1. Log in to the Local UI of the leader node of your management cluster. By default, Local UI is accessible at
+   `https://<node-ip>:5080`. Replace `<node-ip>` with the IP address of the leader node.
+
+2. From the left main menu, select **Cluster**.
+
+3. On the **Overview** tab, in the **Environment** section, select the **Admin Kubeconfig File** link to download the
+   kubeconfig file of the management cluster.
+
+4. Open a terminal session in an environment that has network access to the management cluster, and set the `KUBECONFIG`
+   environment variable to the path of the kubeconfig file that you downloaded in step 3.
+
+   ```shell
+   export KUBECONFIG=<path-to-kubeconfig-file>
+   ```
+
+   Replace `<path-to-kubeconfig-file>` with the path to the kubeconfig file.
+
+5. Issue the following command to find the name of the DRBD resource that backs the Zot volume. The resource has the
+   same name as the PV that is bound to the `zot-pvc` PVC. Use the same terminal session for the remaining steps,
+   because they use the `ZOT_RESOURCE` variable.
+
+   ```shell
+   ZOT_RESOURCE=$(kubectl get pvc zot-pvc --namespace zot-system --output jsonpath='{.spec.volumeName}')
+   echo $ZOT_RESOURCE
+   ```
+
+   ```shell hideClipboard title="Example output"
+   pvc-6d603d91-d5f6-459a-b600-0a699cbb4936
+   ```
+
+6. Issue the following command to check whether the connections of the Zot volume use TLS on each LINSTOR satellite pod.
+
+   ```shell
+   for SATELLITE in $(kubectl get pods --namespace piraeus-system --selector app.kubernetes.io/component=linstor-satellite --output name); do
+     echo "$SATELLITE: $(kubectl exec --namespace piraeus-system $SATELLITE --container linstor-satellite -- drbdsetup show $ZOT_RESOURCE | grep tls)"
+   done
+   ```
+
+   If the output shows `tls yes` for every satellite pod, the Zot volume already uses TLS, and you do not need to
+   continue. If any satellite pod does not show `tls yes`, continue to the next step.
+
+7. Scale down the Zot deployment so that the volume is no longer in use.
+
+   ```shell
+   kubectl scale deployment zot --namespace zot-system --replicas=0
+   ```
+
+   Wait until the Zot pod no longer appears in the output of the following command.
+
+   ```shell
+   kubectl get pods --namespace zot-system
+   ```
+
+8. Issue the following command to suspend I/O on all DRBD volumes on each satellite pod. I/O on every DRBD volume,
+   including the MongoDB volumes, stays paused until step 10 completes, so Palette or VerteX is unavailable during this
+   time.
+
+   ```shell
+   for SATELLITE in $(kubectl get pods --namespace piraeus-system --selector app.kubernetes.io/component=linstor-satellite --output name); do
+     kubectl exec --namespace piraeus-system $SATELLITE --container linstor-satellite -- drbdadm suspend-io all
+   done
+   ```
+
+9. Issue the following command to disconnect all DRBD connections on each satellite pod.
+
+   ```shell
+   for SATELLITE in $(kubectl get pods --namespace piraeus-system --selector app.kubernetes.io/component=linstor-satellite --output name); do
+     kubectl exec --namespace piraeus-system $SATELLITE --container linstor-satellite -- drbdadm disconnect --force all
+   done
+   ```
+
+10. Issue the following command to reconnect the DRBD connections with the TLS setting on each satellite pod.
+
+    ```shell
+    for SATELLITE in $(kubectl get pods --namespace piraeus-system --selector app.kubernetes.io/component=linstor-satellite --output name); do
+      kubectl exec --namespace piraeus-system $SATELLITE --container linstor-satellite -- drbdadm adjust all
+    done
+    ```
+
+11. Restart the LINSTOR satellite pods so that the connections come back with TLS.
+
+    ```shell
+    kubectl delete pods --namespace piraeus-system --selector app.kubernetes.io/component=linstor-satellite
+    ```
+
+    Wait until all the satellite pods are in the `Running` state.
+
+    ```shell
+    kubectl get pods --namespace piraeus-system --selector app.kubernetes.io/component=linstor-satellite
+    ```
+
+12. Issue the following command to check the state of the Zot volume.
+
+    ```shell
+    kubectl exec --namespace piraeus-system deployment/linstor-controller -- linstor resource list --resources $ZOT_RESOURCE
+    ```
+
+    In the output, check that all three nodes show `UpToDate` in the `State` column and `Ok` in the `Conns` column.
+    Then, repeat step 6 and check that every satellite pod shows `tls yes`.
+
+13. Scale the Zot deployment back up and wait for the rollout to complete.
+
+    ```shell
+    kubectl scale deployment zot --namespace zot-system --replicas=1
+    kubectl rollout status deployment zot --namespace zot-system
+    ```
+
+14. _(Stalled upgrades only)_ Issue the following command to list the pods that remain in the `ImagePullBackOff` state.
+
+    ```shell
+    kubectl get pods --all-namespaces | grep ImagePullBackOff
+    ```
+
+    Issue the following command for each pod in the output so that it pulls its images again.
+
+    ```shell
+    kubectl delete pod <pod-name> --namespace <namespace>
+    ```
+
+    Replace `<namespace>` and `<pod-name>` with the first and second columns of each line in the output. Then, retry the
+    upgrade. Refer to
+    [Upgrade Palette Management Appliance](../enterprise-version/upgrade/palette-management-appliance.md) or
+    [Upgrade VerteX Management Appliance](../vertex/upgrade/vertex-management-appliance.md) for guidance.
+
 ## Scenario - Errors in API Calls After Traefik Migration
 
 After the migration to [Traefik](https://traefik.io/traefik/) as the default ingress controller in Palette version
