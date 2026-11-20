@@ -1,0 +1,861 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: screenshot.docs.spec.ts >> Docs screenshots >> pathname /vm-management/vm-launchpad/getting-started-wiz/
+- Location: visuals/screenshot.docs.spec.ts:38:7
+
+# Error details
+
+```
+Error: expect(page).toHaveScreenshot(expected) failed
+
+  152 pixels (ratio 0.01 of all image pixels) are different.
+
+Call log:
+  - Expect "toHaveScreenshot" with timeout 10000ms
+    - verifying given screenshot expectation
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - 152 pixels (ratio 0.01 of all image pixels) are different.
+  - waiting 100ms before taking screenshot
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - captured a stable screenshot
+  - 152 pixels (ratio 0.01 of all image pixels) are different.
+
+```
+
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - button "Products" [ref=e11] [cursor=pointer]
+          - link "Tutorials" [ref=e12] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e13] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e14] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e16] [cursor=pointer]
+        - generic [ref=e17]:
+          - link "GitHub repository" [ref=e18] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Ask AI" [ref=e20] [cursor=pointer]
+          - button "Switch between dark and light mode (currently system mode)" [ref=e22] [cursor=pointer]:
+            - img [ref=e23]
+          - button "Search (Control+k)" [ref=e26] [cursor=pointer]:
+            - generic [ref=e27]:
+              - img [ref=e28]
+              - generic [ref=e31]: Search
+    - generic [ref=e35]:
+      - complementary [ref=e36]:
+        - generic [ref=e38]:
+          - link "Spectro cloud logo" [ref=e39] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e40]
+          - navigation "Docs sidebar" [ref=e41]:
+            - list [ref=e42]:
+              - listitem [ref=e43]:
+                - generic [ref=e44]:
+                  - link "Release Notes" [ref=e45] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e47]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e49] [cursor=pointer]
+              - listitem [ref=e50]:
+                - generic [ref=e51]:
+                  - link "Security Bulletins" [ref=e52] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e54]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e56] [cursor=pointer]
+              - listitem [ref=e57]:
+                - generic [ref=e58]:
+                  - link "What is Palette?" [ref=e59] [cursor=pointer]:
+                    - /url: /palette/
+                    - img [ref=e61]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e63] [cursor=pointer]
+              - listitem [ref=e64]:
+                - link "Getting Started" [ref=e65] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e67]
+                  - text: Getting Started
+              - listitem [ref=e69]:
+                - generic [ref=e70]:
+                  - link "Architecture" [ref=e71] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e73]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e75] [cursor=pointer]
+              - listitem [ref=e76]:
+                - generic [ref=e77]:
+                  - link "Profiles" [ref=e78] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e80]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e84] [cursor=pointer]
+              - listitem [ref=e85]:
+                - generic [ref=e86]:
+                  - link "Cluster Templates" [ref=e87] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e89]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e91] [cursor=pointer]
+              - listitem [ref=e92]:
+                - generic [ref=e93]:
+                  - link "Deployment Modes" [ref=e94] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e96]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e98] [cursor=pointer]
+              - listitem [ref=e99]:
+                - generic [ref=e100]:
+                  - link "Clusters" [ref=e101] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e103]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e109] [cursor=pointer]
+              - listitem [ref=e110]:
+                - generic [ref=e111]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e112] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e114]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e116] [cursor=pointer]
+              - listitem [ref=e117]:
+                - generic [ref=e118]:
+                  - link "Palette Dev Engine" [ref=e119] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e121]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e123] [cursor=pointer]
+              - listitem [ref=e124]:
+                - generic [ref=e125]:
+                  - link "AI Workloads" [ref=e126] [cursor=pointer]:
+                    - /url: /ai-workloads/
+                    - img [ref=e128]
+                    - text: AI Workloads
+                  - button "Toggle the collapsible sidebar category 'AI Workloads'" [ref=e130] [cursor=pointer]
+              - listitem [ref=e131]:
+                - generic [ref=e132]:
+                  - link "Virtual Machine Orchestrator" [expanded] [ref=e133] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e135]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e137] [cursor=pointer]
+                - list [ref=e138]:
+                  - listitem [ref=e139]:
+                    - link "Architecture" [ref=e140] [cursor=pointer]:
+                      - /url: /vm-management/architecture/
+                  - listitem [ref=e141]:
+                    - generic [ref=e142]:
+                      - link "VM Launchpad" [expanded] [ref=e143] [cursor=pointer]:
+                        - /url: /vm-management/vm-launchpad/
+                      - button "Toggle the collapsible sidebar category 'VM Launchpad'" [ref=e144] [cursor=pointer]
+                    - list [ref=e145]:
+                      - listitem [ref=e146]:
+                        - link "Install VM Launchpad" [ref=e147] [cursor=pointer]:
+                          - /url: /vm-management/vm-launchpad/install/
+                      - listitem [ref=e148]:
+                        - link "Initial Configuration of VM Launchpad" [ref=e149] [cursor=pointer]:
+                          - /url: /vm-management/vm-launchpad/getting-started-wiz/
+                      - listitem [ref=e150]:
+                        - link "Create Your First VM" [ref=e151] [cursor=pointer]:
+                          - /url: /vm-management/vm-launchpad/quick-start/
+                      - listitem [ref=e152]:
+                        - generic [ref=e153]:
+                          - link "Virtual Machine Management" [ref=e154] [cursor=pointer]:
+                            - /url: /vm-management/vm-launchpad/virtual-machines/
+                          - button "Toggle the collapsible sidebar category 'Virtual Machine Management'" [ref=e155] [cursor=pointer]
+                      - listitem [ref=e156]:
+                        - generic [ref=e157]:
+                          - link "Access Management" [ref=e158] [cursor=pointer]:
+                            - /url: /vm-management/vm-launchpad/access-management/
+                          - button "Toggle the collapsible sidebar category 'Access Management'" [ref=e159] [cursor=pointer]
+                      - listitem [ref=e160]:
+                        - generic [ref=e161]:
+                          - link "Infrastructure" [ref=e162] [cursor=pointer]:
+                            - /url: /vm-management/vm-launchpad/infrastructure/
+                          - button "Toggle the collapsible sidebar category 'Infrastructure'" [ref=e163] [cursor=pointer]
+                      - listitem [ref=e164]:
+                        - generic [ref=e165]:
+                          - link "System" [ref=e166] [cursor=pointer]:
+                            - /url: /vm-management/vm-launchpad/system/
+                          - button "Toggle the collapsible sidebar category 'System'" [ref=e167] [cursor=pointer]
+                      - listitem [ref=e168]:
+                        - link "Metrics and Logs" [ref=e169] [cursor=pointer]:
+                          - /url: /vm-management/vm-launchpad/metrics-and-logs/
+                      - listitem [ref=e170]:
+                        - link "KubeVirt Configuration" [ref=e171] [cursor=pointer]:
+                          - /url: /vm-management/vm-launchpad/kubevirt-configuration/
+                      - listitem [ref=e172]:
+                        - link "Network Configuration Considerations" [ref=e173] [cursor=pointer]:
+                          - /url: /vm-management/vm-launchpad/vmo-networking/
+                      - listitem [ref=e174]:
+                        - link "Overcommit and Memory Optimization" [ref=e175] [cursor=pointer]:
+                          - /url: /vm-management/vm-launchpad/vmo-overcommit-memory-optimization-appliance/
+                      - listitem [ref=e176]:
+                        - link "Troubleshooting" [ref=e177] [cursor=pointer]:
+                          - /url: /vm-management/vm-launchpad/troubleshooting/
+                  - listitem [ref=e178]:
+                    - generic [ref=e179]:
+                      - link "VMO Pack" [ref=e180] [cursor=pointer]:
+                        - /url: /vm-management/vmo-pack/
+                      - button "Toggle the collapsible sidebar category 'VMO Pack'" [ref=e181] [cursor=pointer]
+                  - listitem [ref=e182]:
+                    - generic [ref=e183]:
+                      - link "RBAC" [ref=e184] [cursor=pointer]:
+                        - /url: /vm-management/rbac/
+                      - button "Toggle the collapsible sidebar category 'RBAC'" [ref=e185] [cursor=pointer]
+                  - listitem [ref=e186]:
+                    - generic [ref=e187]:
+                      - link "VM Migration Assistant" [ref=e188] [cursor=pointer]:
+                        - /url: /vm-management/vm-migration-assistant/
+                      - button "Toggle the collapsible sidebar category 'VM Migration Assistant'" [ref=e189] [cursor=pointer]
+              - listitem [ref=e190]:
+                - generic [ref=e191]:
+                  - link "Workspaces" [ref=e192] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e194]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e196] [cursor=pointer]
+              - listitem [ref=e197]:
+                - generic [ref=e198]:
+                  - link "Packs List" [ref=e199] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e201]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e203] [cursor=pointer]
+              - listitem [ref=e204]:
+                - generic [ref=e205]:
+                  - link "User & Role Management" [ref=e206] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e208]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e210] [cursor=pointer]
+              - listitem [ref=e211]:
+                - generic [ref=e212]:
+                  - link "Registries and Packs" [ref=e213] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e215]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e217] [cursor=pointer]
+              - listitem [ref=e218]:
+                - generic [ref=e219]:
+                  - link "Security" [ref=e220] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e222]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e224] [cursor=pointer]
+              - listitem [ref=e225]:
+                - generic [ref=e226]:
+                  - link "Audit Logs" [ref=e227] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e229]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e231] [cursor=pointer]
+              - listitem [ref=e232]:
+                - generic [ref=e233]:
+                  - link "Self-Hosted Palette" [ref=e234] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e236]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e238] [cursor=pointer]
+              - listitem [ref=e239]:
+                - generic [ref=e240]:
+                  - link "Palette VerteX" [ref=e241] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e243]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e245] [cursor=pointer]
+              - listitem [ref=e246]:
+                - generic [ref=e247]:
+                  - link "Tenant Administration" [ref=e248] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e250]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e252] [cursor=pointer]
+              - listitem [ref=e253]:
+                - generic [ref=e254]:
+                  - link "Automation" [ref=e255] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e257]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e259] [cursor=pointer]
+              - listitem [ref=e260]:
+                - generic [ref=e261]:
+                  - link "Troubleshooting" [ref=e262] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e264]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e266] [cursor=pointer]
+              - listitem [ref=e267]:
+                - link "Glossary" [ref=e268] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e270]
+                  - text: Glossary
+              - listitem [ref=e272]:
+                - generic [ref=e273]:
+                  - link "Compliance & Legal" [ref=e274] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e276]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e278] [cursor=pointer]
+              - listitem [ref=e279]:
+                - button "Privacy Settings" [ref=e280] [cursor=pointer]:
+                  - img [ref=e281]
+                  - text: Privacy Settings
+      - main [ref=e283]:
+        - generic [ref=e285]:
+          - generic [ref=e287]:
+            - article [ref=e288]:
+              - navigation "Breadcrumbs" [ref=e289]:
+                - list [ref=e290]:
+                  - listitem [ref=e291]:
+                    - link "Home page" [ref=e292] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e293]
+                  - listitem [ref=e295]:
+                    - link "Virtual Machine Orchestrator" [ref=e296] [cursor=pointer]:
+                      - /url: /vm-management/
+                  - listitem [ref=e297]:
+                    - link "VM Launchpad" [ref=e298] [cursor=pointer]:
+                      - /url: /vm-management/vm-launchpad/
+                  - listitem [ref=e299]:
+                    - generic [ref=e300]: Initial Configuration of VM Launchpad
+              - generic [ref=e301]:
+                - heading "Initial Configuration of VM Launchpad" [level=1] [ref=e303]
+                - paragraph [ref=e304]:
+                  - text: This guide walks you through the
+                  - strong [ref=e305]: Getting Started
+                  - text: wizard.
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e306]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e307] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e308]:
+                  - listitem [ref=e309]:
+                    - paragraph [ref=e310]:
+                      - text: A cluster created using PaletteAI VM Launchpad. Refer to
+                      - link "Install VM Launchpad" [ref=e311] [cursor=pointer]:
+                        - /url: /vm-management/vm-launchpad/install/
+                      - text: for guidance.
+                  - listitem [ref=e312]:
+                    - paragraph [ref=e313]: Credentials to access the VMO Manager UI hosted on your cluster. You can use either Keycloak OIDC credentials or local admin credentials configured during cluster creation.
+                  - listitem [ref=e314]:
+                    - paragraph [ref=e315]: On the Portworx variant, a cluster with three control plane nodes, or one control plane node and three worker nodes.
+                - heading "Initial VM Launchpad ConfigurationDirect link to Initial VM Launchpad Configuration" [level=2] [ref=e316]:
+                  - text: Initial VM Launchpad Configuration
+                  - link "Direct link to Initial VM Launchpad Configuration" [ref=e317] [cursor=pointer]:
+                    - /url: "#initial-vm-launchpad-configuration"
+                    - text: "#"
+                - paragraph [ref=e318]:
+                  - text: Complete the following required configuration steps before you
+                  - link "create your first VM" [ref=e319] [cursor=pointer]:
+                    - /url: /vm-management/vm-launchpad/quick-start/
+                  - text: . The storage steps in the
+                  - strong [ref=e320]: Getting Started
+                  - text: wizard depend on the storage backend of your
+                  - link "appliance variant" [ref=e321] [cursor=pointer]:
+                    - /url: /vm-management/vm-launchpad/install/#install
+                  - text: .
+                - heading "Open the Getting Started WizardDirect link to Open the Getting Started Wizard" [level=3] [ref=e322]:
+                  - text: Open the Getting Started Wizard
+                  - link "Direct link to Open the Getting Started Wizard" [ref=e323] [cursor=pointer]:
+                    - /url: "#open-the-getting-started-wizard"
+                    - text: "#"
+                - list [ref=e324]:
+                  - listitem [ref=e325]:
+                    - paragraph [ref=e326]:
+                      - text: In your browser, go to
+                      - code [ref=e327]: https://<host-ip>:5080
+                      - text: . Replace
+                      - code [ref=e328]: <host-ip>
+                      - text: with the IP address of your VM Launchpad host. If you have access to the VM Launchpad host terminal, the Local UI address is displayed on the terminal screen. If you changed the default port, replace
+                      - code [ref=e329]: "5080"
+                      - text: with your configured Local UI port.
+                  - listitem [ref=e330]:
+                    - paragraph [ref=e331]: Log in with the username and password you created during installation.
+                  - listitem [ref=e332]:
+                    - paragraph [ref=e333]:
+                      - text: Navigate to the
+                      - strong [ref=e334]: Getting Started
+                      - text: pop-up on the right side. If you exited the wizard, select the
+                      - strong [ref=e335]: Getting Started Guide
+                      - text: icon in the upper-right corner to reopen it. If the wizard is minimized, it appears in the lower-right corner.
+                    - paragraph [ref=e336]:
+                      - img "Screenshot of the getting started icon" [ref=e337]
+                - heading "Configure StorageDirect link to Configure Storage" [level=3] [ref=e338]:
+                  - text: Configure Storage
+                  - link "Direct link to Configure Storage" [ref=e339] [cursor=pointer]:
+                    - /url: "#configure-storage"
+                    - text: "#"
+                - generic [ref=e340]:
+                  - tablist [ref=e341]:
+                    - tab "Piraeus/LINSTOR" [selected] [ref=e342] [cursor=pointer]
+                    - tab "Portworx" [ref=e343] [cursor=pointer]
+                  - tabpanel [ref=e345]:
+                    - list [ref=e346]:
+                      - listitem [ref=e347]:
+                        - paragraph [ref=e348]:
+                          - text: Select
+                          - strong [ref=e349]: Set Up a Storage Pool
+                          - text: . The appliance creates
+                          - strong [ref=e350]: Set Up a Storage Pool
+                          - text: during deployment, so the wizard marks it complete by default.
+                      - listitem [ref=e351]:
+                        - paragraph [ref=e352]:
+                          - text: To create more storage pools, select
+                          - strong [ref=e353]: Create Storage Pool
+                          - text: ", enter the following values, and select"
+                          - strong [ref=e354]: Create Storage Pool
+                          - text: .
+                        - table [ref=e355]:
+                          - rowgroup [ref=e356]:
+                            - row "Parameter Description" [ref=e357]:
+                              - columnheader "Parameter" [ref=e358]:
+                                - strong [ref=e359]: Parameter
+                              - columnheader "Description" [ref=e360]:
+                                - strong [ref=e361]: Description
+                          - rowgroup [ref=e362]:
+                            - row "Pool Name Name for the storage pool." [ref=e363]:
+                              - cell "Pool Name" [ref=e364]:
+                                - strong [ref=e365]: Pool Name
+                              - cell "Name for the storage pool." [ref=e366]
+                            - 'row "Pool Type Select the pool type option to use: LVM Thin, LVM, ZFS, ZFS Thin, File, or File Thin." [ref=e367]':
+                              - cell "Pool Type" [ref=e368]:
+                                - strong [ref=e369]: Pool Type
+                              - 'cell "Select the pool type option to use: LVM Thin, LVM, ZFS, ZFS Thin, File, or File Thin." [ref=e370]':
+                                - text: "Select the pool type option to use:"
+                                - code [ref=e371]: LVM Thin
+                                - text: ","
+                                - code [ref=e372]: LVM
+                                - text: ","
+                                - code [ref=e373]: ZFS
+                                - text: ","
+                                - code [ref=e374]: ZFS Thin
+                                - text: ","
+                                - code [ref=e375]: File
+                                - text: ", or"
+                                - code [ref=e376]: File Thin
+                                - text: .
+                            - row "Volume Group For LVM Thin or LVM, the Volume Group field defaults to drbd-vg." [ref=e377]:
+                              - cell "Volume Group" [ref=e378]:
+                                - strong [ref=e379]: Volume Group
+                              - cell "For LVM Thin or LVM, the Volume Group field defaults to drbd-vg." [ref=e380]:
+                                - text: For
+                                - code [ref=e381]: LVM Thin
+                                - text: or
+                                - code [ref=e382]: LVM
+                                - text: ", the Volume Group field defaults to"
+                                - code [ref=e383]: drbd-vg
+                                - text: .
+                            - row "ZFS Pool For ZFS or ZFS Thin, enter the ZFS pool name." [ref=e384]:
+                              - cell "ZFS Pool" [ref=e385]:
+                                - strong [ref=e386]: ZFS Pool
+                              - cell "For ZFS or ZFS Thin, enter the ZFS pool name." [ref=e387]:
+                                - text: For
+                                - code [ref=e388]: ZFS
+                                - text: or
+                                - code [ref=e389]: ZFS Thin
+                                - text: ", enter the ZFS pool name."
+                            - row "Directory For File or File Thin, enter the Directory path." [ref=e390]:
+                              - cell "Directory" [ref=e391]:
+                                - strong [ref=e392]: Directory
+                              - cell "For File or File Thin, enter the Directory path." [ref=e393]:
+                                - text: For
+                                - code [ref=e394]: File
+                                - text: or
+                                - code [ref=e395]: File Thin
+                                - text: ", enter the Directory path."
+                            - row "Thin Pool Only present for LVM Thin and defaults to thin pool." [ref=e396]:
+                              - cell "Thin Pool" [ref=e397]:
+                                - strong [ref=e398]: Thin Pool
+                              - cell "Only present for LVM Thin and defaults to thin pool." [ref=e399]:
+                                - text: Only present for
+                                - code [ref=e400]: LVM Thin
+                                - text: and defaults to
+                                - code [ref=e401]: thin pool
+                                - text: .
+                            - row "Host Devices To use host storage, select the appropriate host device." [ref=e402]:
+                              - cell "Host Devices" [ref=e403]:
+                                - strong [ref=e404]: Host Devices
+                              - cell "To use host storage, select the appropriate host device." [ref=e405]
+                        - paragraph [ref=e406]:
+                          - text: The following image shows the creation of an
+                          - code [ref=e407]: LVM Thin
+                          - text: storage pool that uses the local host storage
+                          - code [ref=e408]: /dev/sdb
+                          - text: .
+                        - paragraph [ref=e409]:
+                          - img "Screenshot of getting started storage pool creation" [ref=e410]
+                      - listitem [ref=e411]:
+                        - paragraph [ref=e412]:
+                          - text: Select
+                          - strong [ref=e413]: Review Storage Policy
+                          - text: to display the default
+                          - strong [ref=e414]: Piraeus DRBD Performance Tuning
+                          - text: storage policy. You can add more policies here.
+                      - listitem [ref=e415]:
+                        - paragraph [ref=e416]:
+                          - text: On the
+                          - strong [ref=e417]: Getting Started
+                          - text: wizard pop-up, select
+                          - strong [ref=e418]: Set Up a Storage Class
+                          - text: .
+                      - listitem [ref=e419]:
+                        - paragraph [ref=e420]:
+                          - text: Select
+                          - strong [ref=e421]: Create Storage Class
+                          - text: ", enter the following values, and select"
+                          - strong [ref=e422]: Create Storage Class
+                          - text: .
+                        - table [ref=e423]:
+                          - rowgroup [ref=e424]:
+                            - row "Parameter Description" [ref=e425]:
+                              - columnheader "Parameter" [ref=e426]:
+                                - strong [ref=e427]: Parameter
+                              - columnheader "Description" [ref=e428]:
+                                - strong [ref=e429]: Description
+                          - rowgroup [ref=e430]:
+                            - row "Class Name Name for the storage class." [ref=e431]:
+                              - cell "Class Name" [ref=e432]:
+                                - strong [ref=e433]: Class Name
+                              - cell "Name for the storage class." [ref=e434]
+                            - row "Storage Class Options The storage class enables Allow Expansion and Allow for VMs by default. Select Default Class to make this storage class the default." [ref=e435]:
+                              - cell "Storage Class Options" [ref=e436]:
+                                - strong [ref=e437]: Storage Class Options
+                              - cell "The storage class enables Allow Expansion and Allow for VMs by default. Select Default Class to make this storage class the default." [ref=e438]:
+                                - text: The storage class enables
+                                - strong [ref=e439]: Allow Expansion
+                                - text: and
+                                - strong [ref=e440]: Allow for VMs
+                                - text: by default. Select
+                                - strong [ref=e441]: Default Class
+                                - text: to make this storage class the default.
+                            - row "Reclaim Policy Select the behavior to reclaim storage. Defaults to Delete. You can also select Retain." [ref=e442]:
+                              - cell "Reclaim Policy" [ref=e443]:
+                                - strong [ref=e444]: Reclaim Policy
+                              - cell "Select the behavior to reclaim storage. Defaults to Delete. You can also select Retain." [ref=e445]:
+                                - text: Select the behavior to reclaim storage. Defaults to
+                                - code [ref=e446]: Delete
+                                - text: . You can also select
+                                - code [ref=e447]: Retain
+                                - text: .
+                            - row "Binding Mode Select WaitForFirstConsumer or Immediate." [ref=e448]:
+                              - cell "Binding Mode" [ref=e449]:
+                                - strong [ref=e450]: Binding Mode
+                              - cell "Select WaitForFirstConsumer or Immediate." [ref=e451]:
+                                - text: Select
+                                - code [ref=e452]: WaitForFirstConsumer
+                                - text: or
+                                - code [ref=e453]: Immediate
+                                - text: .
+                            - row "Select a Policy From the drop-down menu, select No Policy (manual parameters) or Piraeus DRBD Performance Tuning (11 parameters). Policies created in step 3 also appear here." [ref=e454]:
+                              - cell "Select a Policy" [ref=e455]:
+                                - strong [ref=e456]: Select a Policy
+                              - cell "From the drop-down menu, select No Policy (manual parameters) or Piraeus DRBD Performance Tuning (11 parameters). Policies created in step 3 also appear here." [ref=e457]:
+                                - text: From the drop-down menu, select
+                                - strong [ref=e458]: No Policy (manual parameters)
+                                - text: or
+                                - strong [ref=e459]: Piraeus DRBD Performance Tuning (11 parameters)
+                                - text: . Policies created in step 3 also appear here.
+                            - row "Storage Pool From the drop-down menu, select -Select a pool- or lvm-thin. Storage pools created earlier also appear here." [ref=e460]:
+                              - cell "Storage Pool" [ref=e461]:
+                                - strong [ref=e462]: Storage Pool
+                              - cell "From the drop-down menu, select -Select a pool- or lvm-thin. Storage pools created earlier also appear here." [ref=e463]:
+                                - text: From the drop-down menu, select
+                                - code [ref=e464]: "-Select a pool-"
+                                - text: or
+                                - code [ref=e465]: lvm-thin
+                                - text: . Storage pools created earlier also appear here.
+                - heading "Configure Networks and NamespacesDirect link to Configure Networks and Namespaces" [level=3] [ref=e466]:
+                  - text: Configure Networks and Namespaces
+                  - link "Direct link to Configure Networks and Namespaces" [ref=e467] [cursor=pointer]:
+                    - /url: "#configure-networks-and-namespaces"
+                    - text: "#"
+                - list [ref=e468]:
+                  - listitem [ref=e469]:
+                    - paragraph [ref=e470]:
+                      - text: Return to the
+                      - strong [ref=e471]: Getting Started
+                      - text: wizard, and select
+                      - strong [ref=e472]: Create Networks
+                      - text: .
+                  - listitem [ref=e473]:
+                    - paragraph [ref=e474]:
+                      - text: On the
+                      - strong [ref=e475]: Network Attachment Definitions
+                      - text: page, select
+                      - strong [ref=e476]: Create NAD
+                      - text: .
+                  - listitem [ref=e477]:
+                    - paragraph [ref=e478]:
+                      - text: On the
+                      - strong [ref=e479]: Create Network Attachment Definition
+                      - text: page, enter the following information, and select
+                      - strong [ref=e480]: Create
+                      - text: .
+                    - table [ref=e481]:
+                      - rowgroup [ref=e482]:
+                        - row "Parameter Description" [ref=e483]:
+                          - columnheader "Parameter" [ref=e484]:
+                            - strong [ref=e485]: Parameter
+                          - columnheader "Description" [ref=e486]:
+                            - strong [ref=e487]: Description
+                      - rowgroup [ref=e488]:
+                        - row "Name Name of the NAD." [ref=e489]:
+                          - cell "Name" [ref=e490]:
+                            - strong [ref=e491]: Name
+                          - cell "Name of the NAD." [ref=e492]
+                        - row "Namespace Namespace for the NAD. The appliance creates the default, virtual-machines, and vmo-golden-images namespaces. To add namespaces, select Create Namespace." [ref=e493]:
+                          - cell "Namespace" [ref=e494]:
+                            - strong [ref=e495]: Namespace
+                          - cell "Namespace for the NAD. The appliance creates the default, virtual-machines, and vmo-golden-images namespaces. To add namespaces, select Create Namespace." [ref=e496]:
+                            - text: Namespace for the NAD. The appliance creates the
+                            - code [ref=e497]: default
+                            - text: ","
+                            - code [ref=e498]: virtual-machines
+                            - text: ", and"
+                            - code [ref=e499]: vmo-golden-images
+                            - text: namespaces. To add namespaces, select
+                            - strong [ref=e500]: Create Namespace
+                            - text: .
+                        - row "Network Type Defaults to Linux Bridge. Other options include macvlan, ipvlan, SR-IOV, and Custom JSON." [ref=e501]:
+                          - cell "Network Type" [ref=e502]:
+                            - strong [ref=e503]: Network Type
+                          - cell "Defaults to Linux Bridge. Other options include macvlan, ipvlan, SR-IOV, and Custom JSON." [ref=e504]:
+                            - text: Defaults to
+                            - code [ref=e505]: Linux Bridge
+                            - text: . Other options include
+                            - code [ref=e506]: macvlan
+                            - text: ","
+                            - code [ref=e507]: ipvlan
+                            - text: ","
+                            - code [ref=e508]: SR-IOV
+                            - text: ", and"
+                            - code [ref=e509]: Custom JSON
+                            - text: .
+                        - row "Bridge Name Defaults to br0. The appliance creates virbr0. More bridges may exist on the VM Launchpad node." [ref=e510]:
+                          - cell "Bridge Name" [ref=e511]:
+                            - strong [ref=e512]: Bridge Name
+                          - cell "Defaults to br0. The appliance creates virbr0. More bridges may exist on the VM Launchpad node." [ref=e513]:
+                            - text: Defaults to
+                            - code [ref=e514]: br0
+                            - text: . The appliance creates
+                            - code [ref=e515]: virbr0
+                            - text: . More bridges may exist on the VM Launchpad node.
+                        - row "VLAN Mode Defaults to Access for untagged VLAN access. For tagged VLANs, the configuration creates one NAD for each VLAN. Select Trunk to support more than one VLAN for one NAD." [ref=e516]:
+                          - cell "VLAN Mode" [ref=e517]:
+                            - strong [ref=e518]: VLAN Mode
+                          - cell "Defaults to Access for untagged VLAN access. For tagged VLANs, the configuration creates one NAD for each VLAN. Select Trunk to support more than one VLAN for one NAD." [ref=e519]:
+                            - text: Defaults to
+                            - code [ref=e520]: Access
+                            - text: for untagged VLAN access. For tagged VLANs, the configuration creates one NAD for each VLAN. Select
+                            - code [ref=e521]: Trunk
+                            - text: to support more than one VLAN for one NAD.
+                        - row "Tagged VLANs Optional. Enter one or more comma-separated VLAN IDs." [ref=e522]:
+                          - cell "Tagged VLANs" [ref=e523]:
+                            - strong [ref=e524]: Tagged VLANs
+                          - cell "Optional. Enter one or more comma-separated VLAN IDs." [ref=e525]
+                        - row "IPAM Configuration Optional JSON." [ref=e526]:
+                          - cell "IPAM Configuration" [ref=e527]:
+                            - strong [ref=e528]: IPAM Configuration
+                          - cell "Optional JSON." [ref=e529]
+                        - row "Generated Config Displays a preview of the NAD JSON." [ref=e530]:
+                          - cell "Generated Config" [ref=e531]:
+                            - strong [ref=e532]: Generated Config
+                          - cell "Displays a preview of the NAD JSON." [ref=e533]
+                    - generic [ref=e534]:
+                      - generic [ref=e535]:
+                        - img [ref=e537]
+                        - text: info
+                      - paragraph [ref=e540]:
+                        - text: If your environment does not display the default namespaces, navigate to
+                        - strong [ref=e541]: Infrastructure
+                        - text: ">"
+                        - strong [ref=e542]: Namespaces
+                        - text: ", and select"
+                        - strong [ref=e543]: Add Existing
+                        - text: .
+                  - listitem [ref=e544]:
+                    - paragraph [ref=e545]:
+                      - text: Return to the
+                      - strong [ref=e546]: Getting Started
+                      - text: wizard, and select
+                      - strong [ref=e547]: Add Namespaces
+                      - text: .
+                  - listitem [ref=e548]:
+                    - paragraph [ref=e549]:
+                      - text: By default, the
+                      - strong [ref=e550]: Namespaces
+                      - text: "page displays three namespaces:"
+                      - code [ref=e551]: default
+                      - text: ","
+                      - code [ref=e552]: virtual-machines
+                      - text: ", and"
+                      - code [ref=e553]: vmo-golden-images
+                      - text: . To create another namespace, select
+                      - strong [ref=e554]: Create Namespace
+                      - text: .
+                - heading "VerifyDirect link to Verify" [level=2] [ref=e555]:
+                  - text: Verify
+                  - link "Direct link to Verify" [ref=e556] [cursor=pointer]:
+                    - /url: "#verify"
+                    - text: "#"
+                - list [ref=e557]:
+                  - listitem [ref=e558]:
+                    - paragraph [ref=e559]:
+                      - text: Navigate to the
+                      - strong [ref=e560]: Getting Started
+                      - text: pop-up.
+                  - listitem [ref=e561]:
+                    - paragraph [ref=e562]:
+                      - text: The
+                      - strong [ref=e563]: Storage, Networks, & Namespaces
+                      - text: section displays every step crossed out. The section has five steps on the Piraeus/LINSTOR variants and four steps on the Portworx variant.
+                - heading "Next StepsDirect link to Next Steps" [level=2] [ref=e564]:
+                  - text: Next Steps
+                  - link "Direct link to Next Steps" [ref=e565] [cursor=pointer]:
+                    - /url: "#next-steps"
+                    - text: "#"
+                - paragraph [ref=e566]:
+                  - text: After you configure VM Launchpad, use the
+                  - link "Create Your First VM" [ref=e567] [cursor=pointer]:
+                    - /url: /vm-management/vm-launchpad/quick-start/
+                  - text: guide to create your first VM.
+              - generic [ref=e568]:
+                - generic [ref=e570]:
+                  - text: "Tags:"
+                  - list [ref=e571]:
+                    - listitem [ref=e572]:
+                      - link "vmo" [ref=e573] [cursor=pointer]:
+                        - /url: /tags/vmo/
+                    - listitem [ref=e574]:
+                      - link "vm launchpad" [ref=e575] [cursor=pointer]:
+                        - /url: /tags/vm-launchpad/
+                - link "Edit this page" [ref=e578] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/vm-management/vm-launchpad/getting-started-wiz.md
+                  - img [ref=e579]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e583]:
+              - link "Previous « Install VM Launchpad" [ref=e584] [cursor=pointer]:
+                - /url: /vm-management/vm-launchpad/install/
+                - generic [ref=e585]: Previous
+                - generic [ref=e586]: « Install VM Launchpad
+              - link "Next Create Your First VM »" [ref=e587] [cursor=pointer]:
+                - /url: /vm-management/vm-launchpad/quick-start/
+                - generic [ref=e588]: Next
+                - generic [ref=e589]: Create Your First VM »
+          - list [ref=e592]:
+            - listitem [ref=e593]:
+              - link "Prerequisites" [ref=e594] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e595]:
+              - link "Initial VM Launchpad Configuration" [ref=e596] [cursor=pointer]:
+                - /url: "#initial-vm-launchpad-configuration"
+              - list [ref=e597]:
+                - listitem [ref=e598]:
+                  - link "Open the Getting Started Wizard" [ref=e599] [cursor=pointer]:
+                    - /url: "#open-the-getting-started-wizard"
+                - listitem [ref=e600]:
+                  - link "Configure Storage" [ref=e601] [cursor=pointer]:
+                    - /url: "#configure-storage"
+                - listitem [ref=e602]:
+                  - link "Configure Networks and Namespaces" [ref=e603] [cursor=pointer]:
+                    - /url: "#configure-networks-and-namespaces"
+            - listitem [ref=e604]:
+              - link "Verify" [ref=e605] [cursor=pointer]:
+                - /url: "#verify"
+            - listitem [ref=e606]:
+              - link "Next Steps" [ref=e607] [cursor=pointer]:
+                - /url: "#next-steps"
+  - button "Project Logo Ask AI" [ref=e608] [cursor=pointer]:
+    - generic [ref=e611]:
+      - img "Project Logo" [ref=e612]
+      - paragraph [ref=e613]: Ask AI
+```
+
+# Test source
+
+```ts
+  1  | import * as fs from "fs";
+  2  | import { test, expect } from "@playwright/test";
+  3  | import { extractSitemapPathnames, WaitForDocusaurusHydration } from "./utils";
+  4  | import excludeList from "./exclude.json";
+  5  | 
+  6  | const siteUrl = "http://localhost:3000";
+  7  | const sitemapPath = "build/sitemap.xml";
+  8  | const stylesheetPath = "visuals/screenshot.css";
+  9  | const stylesheet = fs.readFileSync(stylesheetPath).toString();
+  10 | 
+  11 | test.describe.configure({ mode: "parallel" });
+  12 | 
+  13 | function isVersionedDocsPathname(pathname: string, excludeList: string[]): boolean {
+  14 |   if (
+  15 |     excludeList.some((excludedPath) => {
+  16 |       if (excludedPath.endsWith("/*")) {
+  17 |         // Let's remove the trailing "/*" to match sub-paths
+  18 |         const basePath = excludedPath.slice(0, -2);
+  19 |         // Exclude sub-paths only, not the index page
+  20 |         return pathname.startsWith(basePath) && pathname !== `${basePath}/`;
+  21 |       }
+  22 |       // This is an exact match
+  23 |       return pathname === excludedPath;
+  24 |     })
+  25 |   ) {
+  26 |     return false;
+  27 |   }
+  28 | 
+  29 |   // Additional exclusion criteria
+  30 |   if (pathname.startsWith("/api/") || pathname.match(/\/\d+\.\d+\.x\//)) {
+  31 |     return false;
+  32 |   }
+  33 | 
+  34 |   return true;
+  35 | }
+  36 | 
+  37 | function screenshotPathname(pathname: string) {
+  38 |   test(`pathname ${pathname}`, async ({ page }) => {
+  39 |     console.log(`Taking screenshot of ${pathname}`);
+  40 |     const url = siteUrl + pathname;
+  41 |     await page.goto(url);
+  42 |     await page.waitForFunction(WaitForDocusaurusHydration);
+  43 |     await page.waitForLoadState("domcontentloaded");
+  44 |     await page.addStyleTag({ content: stylesheet });
+  45 |     await page.waitForTimeout(1000); // Waits for 1000 milliseconds
+> 46 |     await expect(page).toHaveScreenshot({ fullPage: true, timeout: 10000 });
+     |                        ^ Error: expect(page).toHaveScreenshot(expected) failed
+  47 |   });
+  48 | }
+  49 | 
+  50 | test.describe("Docs screenshots", () => {
+  51 |   const pathnames = extractSitemapPathnames(sitemapPath).filter((pathname) =>
+  52 |     isVersionedDocsPathname(pathname, excludeList)
+  53 |   );
+  54 | 
+  55 |   pathnames.forEach(screenshotPathname);
+  56 | });
+  57 | 
+```

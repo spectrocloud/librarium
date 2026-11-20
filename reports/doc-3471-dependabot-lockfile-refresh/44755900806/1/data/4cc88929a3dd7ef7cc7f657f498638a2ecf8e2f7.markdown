@@ -1,0 +1,872 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: screenshot.docs.spec.ts >> Docs screenshots >> pathname /vertex/upgrade/upgrade-vmware/airgap/
+- Location: visuals/screenshot.docs.spec.ts:38:7
+
+# Error details
+
+```
+Error: expect(page).toHaveScreenshot(expected) failed
+
+  171 pixels (ratio 0.01 of all image pixels) are different.
+
+Call log:
+  - Expect "toHaveScreenshot" with timeout 10000ms
+    - verifying given screenshot expectation
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - 171 pixels (ratio 0.01 of all image pixels) are different.
+  - waiting 100ms before taking screenshot
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - captured a stable screenshot
+  - 171 pixels (ratio 0.01 of all image pixels) are different.
+
+```
+
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - button "Products" [ref=e11] [cursor=pointer]
+          - link "Tutorials" [ref=e12] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e13] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e14] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e16] [cursor=pointer]
+        - generic [ref=e17]:
+          - link "GitHub repository" [ref=e18] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Ask AI" [ref=e20] [cursor=pointer]
+          - button "Switch between dark and light mode (currently system mode)" [ref=e22] [cursor=pointer]:
+            - img [ref=e23]
+          - button "Search (Control+k)" [ref=e26] [cursor=pointer]:
+            - generic [ref=e27]:
+              - img [ref=e28]
+              - generic [ref=e31]: Search
+    - generic [ref=e35]:
+      - complementary [ref=e36]:
+        - generic [ref=e38]:
+          - link "Spectro cloud logo" [ref=e39] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e40]
+          - navigation "Docs sidebar" [ref=e41]:
+            - list [ref=e42]:
+              - listitem [ref=e43]:
+                - generic [ref=e44]:
+                  - link "Release Notes" [ref=e45] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e47]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e49] [cursor=pointer]
+              - listitem [ref=e50]:
+                - generic [ref=e51]:
+                  - link "Security Bulletins" [ref=e52] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e54]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e56] [cursor=pointer]
+              - listitem [ref=e57]:
+                - generic [ref=e58]:
+                  - link "What is Palette?" [ref=e59] [cursor=pointer]:
+                    - /url: /palette/
+                    - img [ref=e61]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e63] [cursor=pointer]
+              - listitem [ref=e64]:
+                - link "Getting Started" [ref=e65] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e67]
+                  - text: Getting Started
+              - listitem [ref=e69]:
+                - generic [ref=e70]:
+                  - link "Architecture" [ref=e71] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e73]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e75] [cursor=pointer]
+              - listitem [ref=e76]:
+                - generic [ref=e77]:
+                  - link "Profiles" [ref=e78] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e80]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e84] [cursor=pointer]
+              - listitem [ref=e85]:
+                - generic [ref=e86]:
+                  - link "Cluster Templates" [ref=e87] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e89]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e91] [cursor=pointer]
+              - listitem [ref=e92]:
+                - generic [ref=e93]:
+                  - link "Deployment Modes" [ref=e94] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e96]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e98] [cursor=pointer]
+              - listitem [ref=e99]:
+                - generic [ref=e100]:
+                  - link "Clusters" [ref=e101] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e103]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e109] [cursor=pointer]
+              - listitem [ref=e110]:
+                - generic [ref=e111]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e112] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e114]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e116] [cursor=pointer]
+              - listitem [ref=e117]:
+                - generic [ref=e118]:
+                  - link "Palette Dev Engine" [ref=e119] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e121]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e123] [cursor=pointer]
+              - listitem [ref=e124]:
+                - generic [ref=e125]:
+                  - link "AI Workloads" [ref=e126] [cursor=pointer]:
+                    - /url: /ai-workloads/
+                    - img [ref=e128]
+                    - text: AI Workloads
+                  - button "Toggle the collapsible sidebar category 'AI Workloads'" [ref=e130] [cursor=pointer]
+              - listitem [ref=e131]:
+                - generic [ref=e132]:
+                  - link "Virtual Machine Orchestrator" [ref=e133] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e135]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e137] [cursor=pointer]
+              - listitem [ref=e138]:
+                - generic [ref=e139]:
+                  - link "Workspaces" [ref=e140] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e142]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e144] [cursor=pointer]
+              - listitem [ref=e145]:
+                - generic [ref=e146]:
+                  - link "Packs List" [ref=e147] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e149]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e151] [cursor=pointer]
+              - listitem [ref=e152]:
+                - generic [ref=e153]:
+                  - link "User & Role Management" [ref=e154] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e156]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e158] [cursor=pointer]
+              - listitem [ref=e159]:
+                - generic [ref=e160]:
+                  - link "Registries and Packs" [ref=e161] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e163]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e165] [cursor=pointer]
+              - listitem [ref=e166]:
+                - generic [ref=e167]:
+                  - link "Security" [ref=e168] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e170]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e172] [cursor=pointer]
+              - listitem [ref=e173]:
+                - generic [ref=e174]:
+                  - link "Audit Logs" [ref=e175] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e177]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e179] [cursor=pointer]
+              - listitem [ref=e180]:
+                - generic [ref=e181]:
+                  - link "Self-Hosted Palette" [ref=e182] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e184]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e186] [cursor=pointer]
+              - listitem [ref=e187]:
+                - generic [ref=e188]:
+                  - link "Palette VerteX" [expanded] [ref=e189] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e191]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e193] [cursor=pointer]
+                - list [ref=e194]:
+                  - listitem [ref=e195]:
+                    - generic [ref=e196]:
+                      - link "FIPS" [ref=e197] [cursor=pointer]:
+                        - /url: /vertex/fips/
+                      - button "Toggle the collapsible sidebar category 'FIPS'" [ref=e198] [cursor=pointer]
+                  - listitem [ref=e199]:
+                    - generic [ref=e200]:
+                      - link "Installation" [ref=e201] [cursor=pointer]:
+                        - /url: /vertex/install-palette-vertex/
+                      - button "Toggle the collapsible sidebar category 'Installation'" [ref=e202] [cursor=pointer]
+                  - listitem [ref=e203]:
+                    - link "Activate VerteX" [ref=e204] [cursor=pointer]:
+                      - /url: /vertex/activate-installation/
+                  - listitem [ref=e205]:
+                    - link "Supported Platforms" [ref=e206] [cursor=pointer]:
+                      - /url: /vertex/supported-platforms/
+                  - listitem [ref=e207]:
+                    - generic [ref=e208]:
+                      - link "System Management" [ref=e209] [cursor=pointer]:
+                        - /url: /vertex/system-management/
+                      - button "Toggle the collapsible sidebar category 'System Management'" [ref=e210] [cursor=pointer]
+                  - listitem [ref=e211]:
+                    - link "Security Defaults" [ref=e212] [cursor=pointer]:
+                      - /url: /vertex/security-defaults/
+                  - listitem [ref=e213]:
+                    - generic [ref=e214]:
+                      - link "Upgrade" [expanded] [ref=e215] [cursor=pointer]:
+                        - /url: /vertex/upgrade/
+                      - button "Toggle the collapsible sidebar category 'Upgrade'" [ref=e216] [cursor=pointer]
+                    - list [ref=e217]:
+                      - listitem [ref=e218]:
+                        - link "Upgrade Notes" [ref=e219] [cursor=pointer]:
+                          - /url: /vertex/upgrade/upgrade-notes/
+                      - listitem [ref=e220]:
+                        - link "VMware" [expanded] [ref=e222] [cursor=pointer]:
+                          - /url: "#"
+                        - list [ref=e223]:
+                          - listitem [ref=e224]:
+                            - link "Non-airgap" [ref=e225] [cursor=pointer]:
+                              - /url: /vertex/upgrade/upgrade-vmware/non-airgap/
+                          - listitem [ref=e226]:
+                            - link "Airgap" [ref=e227] [cursor=pointer]:
+                              - /url: /vertex/upgrade/upgrade-vmware/airgap/
+                      - listitem [ref=e228]:
+                        - link "VerteX Management Appliance" [ref=e229] [cursor=pointer]:
+                          - /url: /vertex/upgrade/vertex-management-appliance/
+                      - listitem [ref=e230]:
+                        - link "Kubernetes" [ref=e232] [cursor=pointer]:
+                          - /url: "#"
+              - listitem [ref=e233]:
+                - generic [ref=e234]:
+                  - link "Tenant Administration" [ref=e235] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e237]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e239] [cursor=pointer]
+              - listitem [ref=e240]:
+                - generic [ref=e241]:
+                  - link "Automation" [ref=e242] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e244]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e246] [cursor=pointer]
+              - listitem [ref=e247]:
+                - generic [ref=e248]:
+                  - link "Troubleshooting" [ref=e249] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e251]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e253] [cursor=pointer]
+              - listitem [ref=e254]:
+                - link "Glossary" [ref=e255] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e257]
+                  - text: Glossary
+              - listitem [ref=e259]:
+                - generic [ref=e260]:
+                  - link "Compliance & Legal" [ref=e261] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e263]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e265] [cursor=pointer]
+              - listitem [ref=e266]:
+                - button "Privacy Settings" [ref=e267] [cursor=pointer]:
+                  - img [ref=e268]
+                  - text: Privacy Settings
+      - main [ref=e270]:
+        - generic [ref=e272]:
+          - generic [ref=e274]:
+            - article [ref=e275]:
+              - navigation "Breadcrumbs" [ref=e276]:
+                - list [ref=e277]:
+                  - listitem [ref=e278]:
+                    - link "Home page" [ref=e279] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e280]
+                  - listitem [ref=e282]:
+                    - link "Palette VerteX" [ref=e283] [cursor=pointer]:
+                      - /url: /vertex/
+                  - listitem [ref=e284]:
+                    - link "Upgrade" [ref=e285] [cursor=pointer]:
+                      - /url: /vertex/upgrade/
+                  - listitem [ref=e286]:
+                    - generic [ref=e287]: VMware
+                  - listitem [ref=e288]:
+                    - generic [ref=e289]: Airgap
+              - generic [ref=e290]:
+                - heading "Upgrade Airgap Palette VerteX Installed on VMware vSphere" [level=1] [ref=e292]
+                - paragraph [ref=e293]: This guide takes you through the process of upgrading a self-hosted airgap Palette VerteX instance installed on VMware vSphere.
+                - heading "Upgrade NotesDirect link to Upgrade Notes" [level=2] [ref=e294]:
+                  - text: Upgrade Notes
+                  - link "Direct link to Upgrade Notes" [ref=e295] [cursor=pointer]:
+                    - /url: "#upgrade-notes"
+                    - text: "#"
+                - heading "All VersionsDirect link to All Versions" [level=3] [ref=e296]:
+                  - text: All Versions
+                  - link "Direct link to All Versions" [ref=e297] [cursor=pointer]:
+                    - /url: "#all-versions"
+                    - text: "#"
+                - list [ref=e298]:
+                  - listitem [ref=e299]:
+                    - paragraph [ref=e300]:
+                      - text: Before upgrading Palette VerteX to a new major version, you must first update it to the latest patch version of the latest minor version available. Refer to the
+                      - link "Supported Upgrade Paths" [ref=e301] [cursor=pointer]:
+                        - /url: /vertex/upgrade/#supported-upgrade-paths
+                      - text: section for details.
+                  - listitem [ref=e302]:
+                    - paragraph [ref=e303]:
+                      - text: If your setup includes a PCG, you must also
+                      - link "allow the PCG to upgrade automatically" [ref=e304] [cursor=pointer]:
+                        - /url: /clusters/pcg/manage-pcg/pcg-upgrade/
+                      - text: before each major or minor Palette VerteX upgrade.
+                - heading "Specific VersionsDirect link to Specific Versions" [level=3] [ref=e305]:
+                  - text: Specific Versions
+                  - link "Direct link to Specific Versions" [ref=e306] [cursor=pointer]:
+                    - /url: "#specific-versions"
+                    - text: "#"
+                - list [ref=e307]:
+                  - listitem [ref=e308]:
+                    - paragraph [ref=e309]:
+                      - strong [ref=e310]: (4.8.x to 4.9.23+)
+                      - text: Direct upgrades from any
+                      - code [ref=e311]: 4.8.x
+                      - text: release to
+                      - code [ref=e312]: 4.9.23
+                      - text: or later are not supported, because they skip a Kubernetes minor version. Upgrade to a
+                      - code [ref=e313]: 4.9.x
+                      - text: release on Kubernetes
+                      - code [ref=e314]: 1.33.10
+                      - text: first (we recommend
+                      - code [ref=e315]: 4.9.14
+                      - text: ), then upgrade to your target
+                      - code [ref=e316]: 4.9.23
+                      - text: or later release. Refer to the
+                      - link "Kubernetes Version Constraint" [ref=e317] [cursor=pointer]:
+                        - /url: /vertex/upgrade/#kubernetes-version-constraint
+                      - text: section for details.
+                  - listitem [ref=e318]:
+                    - paragraph [ref=e319]:
+                      - strong [ref=e320]: (pre-4.8.47 to 4.9.14+)
+                      - text: If you are upgrading from a version of Palette VerteX earlier than 4.8.47 to 4.9.14 or later, you must update your DNS records after upgrading. Beginning with version 4.8.47, Traefik replaced Ingress Nginx as the primary ingress controller. The upgrade creates a new service of type
+                      - code [ref=e321]: LoadBalancer
+                      - text: in the
+                      - code [ref=e322]: ingress-traefik
+                      - text: namespace with a new external IP address or hostname. If you do not update your DNS records, Palette VerteX will be unreachable at its custom domain.
+                    - paragraph [ref=e323]: Use the following command to retrieve the new Traefik load balancer address.
+                    - generic [ref=e325]:
+                      - code [ref=e327]:
+                        - generic [ref=e328]: kubectl get service traefik-ingress-controller --namespace ingress-traefik \
+                        - generic [ref=e329]: "--output jsonpath='{.status.loadBalancer.ingress[0].ip}{.status.loadBalancer.ingress[0].hostname}'"
+                      - generic [ref=e330]:
+                        - button "Toggle word wrap" [ref=e331] [cursor=pointer]:
+                          - img [ref=e332]
+                        - button "Copy code to clipboard" [ref=e334] [cursor=pointer]:
+                          - generic [ref=e335]:
+                            - img [ref=e336]
+                            - img [ref=e338]
+                    - paragraph [ref=e340]: Update your DNS records for your Palette VerteX domain to resolve to the address returned by the previous command. The specific steps to update DNS records depend on your DNS provider. After updating DNS, verify that your domain resolves to the new address.
+                    - generic [ref=e342]:
+                      - code [ref=e344]:
+                        - generic [ref=e345]: nslookup <your-palette-domain>
+                      - button "Copy code to clipboard" [ref=e347] [cursor=pointer]:
+                        - generic [ref=e348]:
+                          - img [ref=e349]
+                          - img [ref=e351]
+                  - listitem [ref=e353]:
+                    - paragraph [ref=e354]:
+                      - strong [ref=e355]: (4.7.x to 4.8.x)
+                      - text: If the MongoDB data for your clusters was first created on Palette VerteX 4.5.x through 4.6.9, the MongoDB Feature Compatibility Version (FCV) might be at 6.0, which causes the upgrade to fail. Your current Palette VerteX version does not indicate whether this applies to your cluster; you must check the FCV directly. You must raise the FCV to 7.0 before upgrading because Palette VerteX 4.8 uses MongoDB 8.0.
+                    - paragraph [ref=e356]:
+                      - text: To learn how to check the FCV version and upgrade to FCV 7.0 if necessary, refer to
+                      - link "Scenario - MongoDB Feature Compatibility Version Mismatch after Palette Upgrade" [ref=e357] [cursor=pointer]:
+                        - /url: /troubleshooting/enterprise-install/#scenario---mongodb-feature-compatibility-version-mismatch-after-palette-upgrade
+                      - text: .
+                  - listitem [ref=e358]:
+                    - paragraph [ref=e359]:
+                      - strong [ref=e360]: (pre-4.6.32 to 4.6.32)
+                      - text: When upgrading airgapped self-hosted Palette VerteX to version 4.6.32, the IPAM controller may report an
+                      - code [ref=e361]: Exhausted IP Pools
+                      - text: error despite having available IP addresses, preventing the cluster from upgrading. This is due to a race condition in CAPV version 1.12.0, which may lead to an orphaned IP claim. To resolve this, delete the orphaned IP claim and re-run the upgrade. Refer to
+                      - link "Scenario - IP Pool Exhausted During Airgapped Upgrade" [ref=e362] [cursor=pointer]:
+                        - /url: /troubleshooting/enterprise-install/#scenario---ip-pool-exhausted-during-airgapped-upgrade
+                      - text: for additional information.
+                  - listitem [ref=e363]:
+                    - paragraph [ref=e364]:
+                      - strong [ref=e365]: (pre-4.4.14 to 4.4.14+)
+                      - text: If you are upgrading from a Palette VerteX version that is older than 4.4.14, ensure that you have executed the utility script to make the CNS mapping unique for the associated PVC. For more information, refer to the
+                      - link "Troubleshooting guide" [ref=e366] [cursor=pointer]:
+                        - /url: /troubleshooting/enterprise-install/#scenario---non-unique-vsphere-cns-mapping
+                      - text: .
+                - heading "PrerequisitesDirect link to Prerequisites" [level=2] [ref=e367]:
+                  - text: Prerequisites
+                  - link "Direct link to Prerequisites" [ref=e368] [cursor=pointer]:
+                    - /url: "#prerequisites"
+                    - text: "#"
+                - list [ref=e369]:
+                  - listitem [ref=e370]:
+                    - paragraph [ref=e371]: Access to the Palette VerteX system console.
+                  - listitem [ref=e372]:
+                    - paragraph [ref=e373]: Access to the Palette VerteX airgap support Virtual Machine (VM) that you used for the initial Palette VerteX installation.
+                  - listitem [ref=e374]:
+                    - paragraph [ref=e375]:
+                      - text: Refer to
+                      - link "Access Palette VerteX" [ref=e376] [cursor=pointer]:
+                        - /url: /vertex/#access-palette-vertex
+                      - text: to download the new airgap Palette VerteX installation bin and, if necessary, receive a link to the new OS and Kubernetes OVA.
+                  - listitem [ref=e377]:
+                    - paragraph [ref=e378]:
+                      - text: Contact our Support Team at
+                      - link "support@spectrocloud.com" [ref=e379] [cursor=pointer]:
+                        - /url: mailto:support@spectrocloud.com
+                      - text: to learn if the new version of Palette VerteX requires a new OS and Kubernetes OVA. If necessary, they will provide you with a link to the OVA, which you will use to upgrade Palette.
+                  - listitem [ref=e380]:
+                    - paragraph [ref=e381]: A diff or text comparison tool of your choice.
+                - heading "UpgradeDirect link to Upgrade" [level=2] [ref=e382]:
+                  - text: Upgrade
+                  - link "Direct link to Upgrade" [ref=e383] [cursor=pointer]:
+                    - /url: "#upgrade"
+                    - text: "#"
+                - generic [ref=e384]:
+                  - generic [ref=e385]:
+                    - img [ref=e387]
+                    - text: info
+                  - paragraph [ref=e390]: If the new version of VerteX requires you to update the underlying OS or Kubernetes distribution, proceed with the steps one through four. Otherwise, start at step five.
+                - list [ref=e391]:
+                  - listitem [ref=e392]:
+                    - paragraph [ref=e393]: Log in to vCenter.
+                  - listitem [ref=e394]:
+                    - paragraph [ref=e395]:
+                      - text: Right-click the cluster or resource group that hosts your self-hosted VerteX instance and select
+                      - strong [ref=e396]: Deploy OVF Template
+                      - text: .
+                  - listitem [ref=e397]:
+                    - paragraph [ref=e398]:
+                      - text: In the
+                      - strong [ref=e399]: Deploy OVF Template
+                      - text: wizard, at the
+                      - strong [ref=e400]: Select an OVF template
+                      - text: step, enter the link to the new OS and Kubernetes OVA that you received from our support.
+                    - paragraph [ref=e401]: Consider the following example for reference.
+                    - generic [ref=e403]:
+                      - code [ref=e405]:
+                        - generic [ref=e406]: https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2204-0-k-12610-0.ova
+                      - generic [ref=e407]:
+                        - button "Toggle word wrap" [ref=e408] [cursor=pointer]:
+                          - img [ref=e409]
+                        - button "Copy code to clipboard" [ref=e411] [cursor=pointer]:
+                          - generic [ref=e412]:
+                            - img [ref=e413]
+                            - img [ref=e415]
+                  - listitem [ref=e417]:
+                    - paragraph [ref=e418]:
+                      - text: At the
+                      - strong [ref=e419]: Select a name and folder
+                      - text: "step:"
+                    - list [ref=e420]:
+                      - listitem [ref=e421]:
+                        - paragraph [ref=e422]:
+                          - text: In the
+                          - strong [ref=e423]: Virtual machine name
+                          - text: field, append the
+                          - code [ref=e424]: r_
+                          - text: prefix to the prepopulated OVA name and remove the
+                          - code [ref=e425]: .ova
+                          - text: extension.
+                        - paragraph [ref=e426]: Consider the following example for reference.
+                        - generic [ref=e428]:
+                          - code [ref=e430]:
+                            - generic [ref=e431]: u-2204-0-k-12610-0.ova >>> r_u-2204-0-k-12610-0
+                          - button "Copy code to clipboard" [ref=e433] [cursor=pointer]:
+                            - generic [ref=e434]:
+                              - img [ref=e435]
+                              - img [ref=e437]
+                        - generic [ref=e439]:
+                          - generic [ref=e440]:
+                            - img [ref=e442]
+                            - text: info
+                          - paragraph [ref=e445]: It is important that you follow this naming convention. Otherwise, VerteX will not be able to identify the OS and Kubernetes OVA and you will not be able to upgrade your VerteX instance.
+                      - listitem [ref=e446]:
+                        - paragraph [ref=e447]:
+                          - text: Under the
+                          - strong [ref=e448]: Select a location for the virtual machine
+                          - text: selector, choose the
+                          - strong [ref=e449]: spectro-templates
+                          - text: folder you created during installation.
+                    - paragraph [ref=e450]:
+                      - text: Once the OS and Kubernetes OVA is available in your
+                      - strong [ref=e451]: spectro-templates
+                      - text: directory, you can terminate its deployment. Refer to the
+                      - link "Deploy an OVF or OVA Template" [ref=e452] [cursor=pointer]:
+                        - /url: https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-virtual-machine-administration/deploying-ovf-templates.html
+                      - text: guide for more information on deploying OVAs in vCenter.
+                  - listitem [ref=e453]:
+                    - paragraph [ref=e454]:
+                      - text: In your terminal, use the following command template to SSH into the Palette VerteX airgap support VM. Enter the path to your private SSH key, your username, and the IP or domain of the airgap support VM. The default username is
+                      - code [ref=e455]: ubuntu
+                      - text: .
+                    - generic [ref=e457]:
+                      - code [ref=e459]:
+                        - generic [ref=e460]: ssh -i </path/to/private/key> ubuntu@<vm-ip-or-domain>
+                      - button "Copy code to clipboard" [ref=e462] [cursor=pointer]:
+                        - generic [ref=e463]:
+                          - img [ref=e464]
+                          - img [ref=e466]
+                    - paragraph [ref=e468]: Consider the following command example for reference.
+                    - generic [ref=e470]:
+                      - code [ref=e472]:
+                        - generic [ref=e473]: ssh -i /docs/ssh-private-key.pem ubuntu@palette.example.com
+                      - button "Copy code to clipboard" [ref=e475] [cursor=pointer]:
+                        - generic [ref=e476]:
+                          - img [ref=e477]
+                          - img [ref=e479]
+                  - listitem [ref=e481]:
+                    - paragraph [ref=e482]:
+                      - text: Use the following command to switch to the
+                      - code [ref=e483]: root
+                      - text: user account, which you need to proceed with the upgrade.
+                    - generic [ref=e485]:
+                      - code [ref=e487]:
+                        - generic [ref=e488]: sudo --login
+                      - button "Copy code to clipboard" [ref=e490] [cursor=pointer]:
+                        - generic [ref=e491]:
+                          - img [ref=e492]
+                          - img [ref=e494]
+                  - listitem [ref=e496]:
+                    - paragraph [ref=e497]:
+                      - text: Use the following command template to download the new Palette VerteX airgap installation bin. Enter the username, password, and the Palette VerteX airgap installation URL you received from our support team. In the output file name, replace
+                      - code [ref=e498]: <version>
+                      - text: with the Palette VerteX version you are downloading.
+                    - generic [ref=e500]:
+                      - code [ref=e502]:
+                        - generic [ref=e503]: curl --user <username>:<password> --output airgap-<version>.bin <url-to-airgap-installation-bin>
+                      - generic [ref=e504]:
+                        - button "Toggle word wrap" [ref=e505] [cursor=pointer]:
+                          - img [ref=e506]
+                        - button "Copy code to clipboard" [ref=e508] [cursor=pointer]:
+                          - generic [ref=e509]:
+                            - img [ref=e510]
+                            - img [ref=e512]
+                    - paragraph [ref=e514]: Consider the following command example for reference.
+                    - generic [ref=e516]:
+                      - code [ref=e518]:
+                        - generic [ref=e519]: curl --user <username>:<password> --output airgap-4.2.12.bin https://software.spectrocloud.com/airgap-v4.2.12.bin
+                      - generic [ref=e520]:
+                        - button "Toggle word wrap" [ref=e521] [cursor=pointer]:
+                          - img [ref=e522]
+                        - button "Copy code to clipboard" [ref=e524] [cursor=pointer]:
+                          - generic [ref=e525]:
+                            - img [ref=e526]
+                            - img [ref=e528]
+                  - listitem [ref=e530]:
+                    - paragraph [ref=e531]:
+                      - text: Refer to the
+                      - link "Additional Packs" [ref=e532] [cursor=pointer]:
+                        - /url: /downloads/palette-vertex/additional-packs/
+                      - text: page and update the packs you are currently using. You must update each pack separately.
+                  - listitem [ref=e533]:
+                    - paragraph [ref=e534]: Use the following command template to execute the new Palette VerteX airgap installation bin.
+                    - generic [ref=e536]:
+                      - code [ref=e538]:
+                        - generic [ref=e539]: chmod +x airgap-<version>.bin && ./airgap-<version>.bin
+                      - button "Copy code to clipboard" [ref=e541] [cursor=pointer]:
+                        - generic [ref=e542]:
+                          - img [ref=e543]
+                          - img [ref=e545]
+                    - paragraph [ref=e547]: Consider the following example for reference.
+                    - generic [ref=e549]:
+                      - code [ref=e551]:
+                        - generic [ref=e552]: chmod +x airgap-v4.2.13.bin && ./airgap-v4.2.13.bin
+                      - button "Copy code to clipboard" [ref=e554] [cursor=pointer]:
+                        - generic [ref=e555]:
+                          - img [ref=e556]
+                          - img [ref=e558]
+                  - listitem [ref=e560]:
+                    - paragraph [ref=e561]: After the Palette VerteX airgap binary is verified and uncompressed, it uploads the updates to your existing Palette VerteX instance. This step takes some time to complete.
+                    - generic [ref=e563]:
+                      - code [ref=e565]:
+                        - generic [ref=e566]: Verifying archive integrity... 100% MD5 checksums are OK. All good.
+                        - generic [ref=e567]: Uncompressing Airgap Setup - Version 4.2.13 100%
+                        - generic [ref=e568]: Setting up CLI
+                        - generic [ref=e569]: Setting up Manifests
+                        - generic [ref=e570]: Setting up Packs
+                        - generic [ref=e571]: ...
+                        - generic [ref=e572]: Setup Completed
+                      - generic [ref=e573]:
+                        - button "Toggle word wrap" [ref=e574] [cursor=pointer]:
+                          - img [ref=e575]
+                        - button "Copy code to clipboard" [ref=e577] [cursor=pointer]:
+                          - generic [ref=e578]:
+                            - img [ref=e579]
+                            - img [ref=e581]
+                    - paragraph [ref=e583]:
+                      - text: Once the airgap binary is executed, you will receive a
+                      - strong [ref=e584]: Setup Completed
+                      - text: success message.
+                  - listitem [ref=e585]:
+                    - paragraph [ref=e586]: Log in to the Palette VerteX system console.
+                  - listitem [ref=e587]:
+                    - paragraph [ref=e588]:
+                      - text: From the left
+                      - strong [ref=e589]: Main Menu
+                      - text: ", select"
+                      - strong [ref=e590]: Enterprise Cluster
+                      - text: and then select the
+                      - strong [ref=e591]: Profile
+                      - text: tab.
+                  - listitem [ref=e592]:
+                    - paragraph [ref=e593]: Copy the configurations for your CSI, CNI, and Kubernetes layers to an external location for backup.
+                    - generic [ref=e594]:
+                      - generic [ref=e595]:
+                        - img [ref=e597]
+                        - text: tip
+                      - paragraph [ref=e600]: If your Enterprise Cluster profile has configuration changes or additions, make sure to back up all the customized values to preserve them after the upgrade.
+                    - paragraph [ref=e601]:
+                      - img "Self-hosted Palette VerteX system console with the highlighted Enterprise Cluster profile configuration values." [ref=e602]
+                  - listitem [ref=e603]:
+                    - paragraph [ref=e604]:
+                      - text: From the left
+                      - strong [ref=e605]: Main Menu
+                      - text: ", select"
+                      - strong [ref=e606]: Administration
+                      - text: ">"
+                      - strong [ref=e607]: Pack Registries
+                      - text: . Then, next to your
+                      - strong [ref=e608]: spectro-packs
+                      - text: registry, select the
+                      - strong [ref=e609]: three-dot Menu
+                      - text: ">"
+                      - strong [ref=e610]: Sync
+                      - text: .
+                    - paragraph [ref=e611]: Palette VerteX initiates a registry sync, which can take up to 30 minutes to complete.
+                  - listitem [ref=e612]:
+                    - paragraph [ref=e613]:
+                      - text: From the left
+                      - strong [ref=e614]: Main Menu
+                      - text: ", select"
+                      - strong [ref=e615]: Update Management
+                      - text: . Once the registry sync is done, Palette VerteX will prompt you to update to the new version. Click
+                      - strong [ref=e616]: Update
+                      - text: .
+                    - paragraph [ref=e617]:
+                      - img "Self-hosted Palette VerteX system console with Update Management open and the Update button highlighted." [ref=e618]
+                  - listitem [ref=e619]:
+                    - paragraph [ref=e620]:
+                      - text: In the
+                      - strong [ref=e621]: Palette version update
+                      - text: preview modal, from the left
+                      - strong [ref=e622]: Main Menu
+                      - text: ", select the"
+                      - strong [ref=e623]: Kubernetes
+                      - text: layer. The
+                      - strong [ref=e624]: Incoming changes
+                      - text: pane displays the changes that the upgrade introduces. The
+                      - strong [ref=e625]: Current configuration
+                      - text: pane displays your current layer configuration.
+                    - generic [ref=e626]:
+                      - generic [ref=e627]:
+                        - img [ref=e629]
+                        - text: info
+                      - paragraph [ref=e632]: To complete the Palette VerteX upgrade, we recommend using an external diff or text comparison tool. Proceed with the following steps once you have the comparison tool available next to the Palette VerteX system console.
+                  - listitem [ref=e633]:
+                    - paragraph [ref=e634]:
+                      - text: Copy the configurations from both
+                      - strong [ref=e635]: Incoming changes
+                      - text: and
+                      - strong [ref=e636]: Current configuration
+                      - text: panes to your comparison tool.
+                  - listitem [ref=e637]:
+                    - paragraph [ref=e638]:
+                      - text: From your current configuration, transfer only those differences that are custom to your self-hosted Palette VerteX instance (for example, the
+                      - code [ref=e639]: podCIDR
+                      - text: and
+                      - code [ref=e640]: serviceClusterIpRange
+                      - text: values). Do not override any other changes or upgrades.
+                    - paragraph [ref=e641]:
+                      - img "Self-hosted Palette VerteX system console with the upgrade preview pane." [ref=e642]
+                  - listitem [ref=e643]:
+                    - paragraph [ref=e644]:
+                      - text: After you finish merging the configurations, copy the resulting configuration, and then paste it to the
+                      - strong [ref=e645]: Current configuration
+                      - text: pane in the Palette VerteX system console.
+                    - paragraph [ref=e646]:
+                      - img "Self-hosted Palette VerteX system console with the upgrade preview pane." [ref=e647]
+                  - listitem [ref=e648]:
+                    - paragraph [ref=e649]: Repeat steps six through eight for each Enterprise Cluster profile layer.
+                  - listitem [ref=e650]:
+                    - paragraph [ref=e651]:
+                      - text: In the bottom-right corner of the
+                      - strong [ref=e652]: Palette version update
+                      - text: preview modal, select
+                      - strong [ref=e653]: Confirm
+                      - text: .
+                    - paragraph [ref=e654]: The system console locks for a couple of minutes while the upgrade is applied.
+                - heading "ValidateDirect link to Validate" [level=2] [ref=e655]:
+                  - text: Validate
+                  - link "Direct link to Validate" [ref=e656] [cursor=pointer]:
+                    - /url: "#validate"
+                    - text: "#"
+                - list [ref=e657]:
+                  - listitem [ref=e658]:
+                    - paragraph [ref=e659]: Log in to the Palette VerteX system console.
+                  - listitem [ref=e660]:
+                    - paragraph [ref=e661]:
+                      - text: On the
+                      - strong [ref=e662]: Summary
+                      - text: page, Palette VerteX should display messages that state
+                      - strong [ref=e663]: You are using the latest version of Palette VerteX
+                      - text: and
+                      - strong [ref=e664]: On-prem system console is healthy
+                      - text: .
+              - generic [ref=e665]:
+                - generic [ref=e667]:
+                  - text: "Tags:"
+                  - list [ref=e668]:
+                    - listitem [ref=e669]:
+                      - link "vertex" [ref=e670] [cursor=pointer]:
+                        - /url: /tags/vertex/
+                    - listitem [ref=e671]:
+                      - link "self-hosted" [ref=e672] [cursor=pointer]:
+                        - /url: /tags/self-hosted/
+                    - listitem [ref=e673]:
+                      - link "vmware" [ref=e674] [cursor=pointer]:
+                        - /url: /tags/vmware/
+                    - listitem [ref=e675]:
+                      - link "airgap" [ref=e676] [cursor=pointer]:
+                        - /url: /tags/airgap/
+                    - listitem [ref=e677]:
+                      - link "upgrade" [ref=e678] [cursor=pointer]:
+                        - /url: /tags/upgrade/
+                - link "Edit this page" [ref=e681] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/vertex/upgrade/upgrade-vmware/airgap.md
+                  - img [ref=e682]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e686]:
+              - link "Previous « Non-airgap" [ref=e687] [cursor=pointer]:
+                - /url: /vertex/upgrade/upgrade-vmware/non-airgap/
+                - generic [ref=e688]: Previous
+                - generic [ref=e689]: « Non-airgap
+              - link "Next VerteX Management Appliance »" [ref=e690] [cursor=pointer]:
+                - /url: /vertex/upgrade/vertex-management-appliance/
+                - generic [ref=e691]: Next
+                - generic [ref=e692]: VerteX Management Appliance »
+          - list [ref=e695]:
+            - listitem [ref=e696]:
+              - link "Upgrade Notes" [ref=e697] [cursor=pointer]:
+                - /url: "#upgrade-notes"
+              - list [ref=e698]:
+                - listitem [ref=e699]:
+                  - link "All Versions" [ref=e700] [cursor=pointer]:
+                    - /url: "#all-versions"
+                - listitem [ref=e701]:
+                  - link "Specific Versions" [ref=e702] [cursor=pointer]:
+                    - /url: "#specific-versions"
+            - listitem [ref=e703]:
+              - link "Prerequisites" [ref=e704] [cursor=pointer]:
+                - /url: "#prerequisites"
+            - listitem [ref=e705]:
+              - link "Upgrade" [ref=e706] [cursor=pointer]:
+                - /url: "#upgrade"
+            - listitem [ref=e707]:
+              - link "Validate" [ref=e708] [cursor=pointer]:
+                - /url: "#validate"
+  - button "Project Logo Ask AI" [ref=e709] [cursor=pointer]:
+    - generic [ref=e712]:
+      - img "Project Logo" [ref=e713]
+      - paragraph [ref=e714]: Ask AI
+```
+
+# Test source
+
+```ts
+  1  | import * as fs from "fs";
+  2  | import { test, expect } from "@playwright/test";
+  3  | import { extractSitemapPathnames, WaitForDocusaurusHydration } from "./utils";
+  4  | import excludeList from "./exclude.json";
+  5  | 
+  6  | const siteUrl = "http://localhost:3000";
+  7  | const sitemapPath = "build/sitemap.xml";
+  8  | const stylesheetPath = "visuals/screenshot.css";
+  9  | const stylesheet = fs.readFileSync(stylesheetPath).toString();
+  10 | 
+  11 | test.describe.configure({ mode: "parallel" });
+  12 | 
+  13 | function isVersionedDocsPathname(pathname: string, excludeList: string[]): boolean {
+  14 |   if (
+  15 |     excludeList.some((excludedPath) => {
+  16 |       if (excludedPath.endsWith("/*")) {
+  17 |         // Let's remove the trailing "/*" to match sub-paths
+  18 |         const basePath = excludedPath.slice(0, -2);
+  19 |         // Exclude sub-paths only, not the index page
+  20 |         return pathname.startsWith(basePath) && pathname !== `${basePath}/`;
+  21 |       }
+  22 |       // This is an exact match
+  23 |       return pathname === excludedPath;
+  24 |     })
+  25 |   ) {
+  26 |     return false;
+  27 |   }
+  28 | 
+  29 |   // Additional exclusion criteria
+  30 |   if (pathname.startsWith("/api/") || pathname.match(/\/\d+\.\d+\.x\//)) {
+  31 |     return false;
+  32 |   }
+  33 | 
+  34 |   return true;
+  35 | }
+  36 | 
+  37 | function screenshotPathname(pathname: string) {
+  38 |   test(`pathname ${pathname}`, async ({ page }) => {
+  39 |     console.log(`Taking screenshot of ${pathname}`);
+  40 |     const url = siteUrl + pathname;
+  41 |     await page.goto(url);
+  42 |     await page.waitForFunction(WaitForDocusaurusHydration);
+  43 |     await page.waitForLoadState("domcontentloaded");
+  44 |     await page.addStyleTag({ content: stylesheet });
+  45 |     await page.waitForTimeout(1000); // Waits for 1000 milliseconds
+> 46 |     await expect(page).toHaveScreenshot({ fullPage: true, timeout: 10000 });
+     |                        ^ Error: expect(page).toHaveScreenshot(expected) failed
+  47 |   });
+  48 | }
+  49 | 
+  50 | test.describe("Docs screenshots", () => {
+  51 |   const pathnames = extractSitemapPathnames(sitemapPath).filter((pathname) =>
+  52 |     isVersionedDocsPathname(pathname, excludeList)
+  53 |   );
+  54 | 
+  55 |   pathnames.forEach(screenshotPathname);
+  56 | });
+  57 | 
+```

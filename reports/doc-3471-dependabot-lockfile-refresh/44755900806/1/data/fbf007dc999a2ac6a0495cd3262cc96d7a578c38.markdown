@@ -1,0 +1,913 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: screenshot.docs.spec.ts >> Docs screenshots >> pathname /vm-management/vmo-pack/deployment-modes/
+- Location: visuals/screenshot.docs.spec.ts:38:7
+
+# Error details
+
+```
+Error: expect(page).toHaveScreenshot(expected) failed
+
+  Expected an image 1280px by 6385px, received 1280px by 6216px. 534898 pixels (ratio 0.07 of all image pixels) are different.
+
+Call log:
+  - Expect "toHaveScreenshot" with timeout 10000ms
+    - verifying given screenshot expectation
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - Expected an image 1280px by 6385px, received 1280px by 6216px. 534898 pixels (ratio 0.07 of all image pixels) are different.
+  - waiting 100ms before taking screenshot
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - captured a stable screenshot
+  - Expected an image 1280px by 6385px, received 1280px by 6216px. 534898 pixels (ratio 0.07 of all image pixels) are different.
+
+```
+
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Skip to main content":
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#__docusaurus_skipToContent_fallback"
+    - navigation "Main" [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "Spectro cloud logo" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e9]
+          - button "Products" [ref=e11] [cursor=pointer]
+          - link "Tutorials" [ref=e12] [cursor=pointer]:
+            - /url: /tutorials/
+          - link "Downloads" [ref=e13] [cursor=pointer]:
+            - /url: /downloads/
+          - link "API" [ref=e14] [cursor=pointer]:
+            - /url: /api/introduction/
+          - button "latest" [ref=e16] [cursor=pointer]
+        - generic [ref=e17]:
+          - link "GitHub repository" [ref=e18] [cursor=pointer]:
+            - /url: https://github.com/spectrocloud/librarium
+          - button "Ask AI" [ref=e20] [cursor=pointer]
+          - button "Switch between dark and light mode (currently system mode)" [ref=e22] [cursor=pointer]:
+            - img [ref=e23]
+          - button "Search (Control+k)" [ref=e26] [cursor=pointer]:
+            - generic [ref=e27]:
+              - img [ref=e28]
+              - generic [ref=e31]: Search
+    - generic [ref=e35]:
+      - complementary [ref=e36]:
+        - generic [ref=e38]:
+          - link "Spectro cloud logo" [ref=e39] [cursor=pointer]:
+            - /url: /
+            - img "Spectro cloud logo" [ref=e40]
+          - navigation "Docs sidebar" [ref=e41]:
+            - list [ref=e42]:
+              - listitem [ref=e43]:
+                - generic [ref=e44]:
+                  - link "Release Notes" [ref=e45] [cursor=pointer]:
+                    - /url: /release-notes/
+                    - img [ref=e47]
+                    - text: Release Notes
+                  - button "Toggle the collapsible sidebar category 'Release Notes'" [ref=e49] [cursor=pointer]
+              - listitem [ref=e50]:
+                - generic [ref=e51]:
+                  - link "Security Bulletins" [ref=e52] [cursor=pointer]:
+                    - /url: /security-bulletins/
+                    - img [ref=e54]
+                    - text: Security Bulletins
+                  - button "Toggle the collapsible sidebar category 'Security Bulletins'" [ref=e56] [cursor=pointer]
+              - listitem [ref=e57]:
+                - generic [ref=e58]:
+                  - link "What is Palette?" [ref=e59] [cursor=pointer]:
+                    - /url: /palette/
+                    - img [ref=e61]
+                    - text: What is Palette?
+                  - button "Toggle the collapsible sidebar category 'What is Palette?'" [ref=e63] [cursor=pointer]
+              - listitem [ref=e64]:
+                - link "Getting Started" [ref=e65] [cursor=pointer]:
+                  - /url: /getting-started/
+                  - img [ref=e67]
+                  - text: Getting Started
+              - listitem [ref=e69]:
+                - generic [ref=e70]:
+                  - link "Architecture" [ref=e71] [cursor=pointer]:
+                    - /url: /architecture/
+                    - img [ref=e73]
+                    - text: Architecture
+                  - button "Toggle the collapsible sidebar category 'Architecture'" [ref=e75] [cursor=pointer]
+              - listitem [ref=e76]:
+                - generic [ref=e77]:
+                  - link "Profiles" [ref=e78] [cursor=pointer]:
+                    - /url: /profiles/
+                    - img [ref=e80]
+                    - text: Profiles
+                  - button "Toggle the collapsible sidebar category 'Profiles'" [ref=e84] [cursor=pointer]
+              - listitem [ref=e85]:
+                - generic [ref=e86]:
+                  - link "Cluster Templates" [ref=e87] [cursor=pointer]:
+                    - /url: /cluster-templates/
+                    - img [ref=e89]
+                    - text: Cluster Templates
+                  - button "Toggle the collapsible sidebar category 'Cluster Templates'" [ref=e91] [cursor=pointer]
+              - listitem [ref=e92]:
+                - generic [ref=e93]:
+                  - link "Deployment Modes" [ref=e94] [cursor=pointer]:
+                    - /url: /deployment-modes/
+                    - img [ref=e96]
+                    - text: Deployment Modes
+                  - button "Toggle the collapsible sidebar category 'Deployment Modes'" [ref=e98] [cursor=pointer]
+              - listitem [ref=e99]:
+                - generic [ref=e100]:
+                  - link "Clusters" [ref=e101] [cursor=pointer]:
+                    - /url: /clusters/
+                    - img [ref=e103]
+                    - text: Clusters
+                  - button "Toggle the collapsible sidebar category 'Clusters'" [ref=e109] [cursor=pointer]
+              - listitem [ref=e110]:
+                - generic [ref=e111]:
+                  - link "Bring Your Own OS (BYOOS)" [ref=e112] [cursor=pointer]:
+                    - /url: /byoos/
+                    - img [ref=e114]
+                    - text: Bring Your Own OS (BYOOS)
+                  - button "Toggle the collapsible sidebar category 'Bring Your Own OS (BYOOS)'" [ref=e116] [cursor=pointer]
+              - listitem [ref=e117]:
+                - generic [ref=e118]:
+                  - link "Palette Dev Engine" [ref=e119] [cursor=pointer]:
+                    - /url: /devx/
+                    - img [ref=e121]
+                    - text: Palette Dev Engine
+                  - button "Toggle the collapsible sidebar category 'Palette Dev Engine'" [ref=e123] [cursor=pointer]
+              - listitem [ref=e124]:
+                - generic [ref=e125]:
+                  - link "AI Workloads" [ref=e126] [cursor=pointer]:
+                    - /url: /ai-workloads/
+                    - img [ref=e128]
+                    - text: AI Workloads
+                  - button "Toggle the collapsible sidebar category 'AI Workloads'" [ref=e130] [cursor=pointer]
+              - listitem [ref=e131]:
+                - generic [ref=e132]:
+                  - link "Virtual Machine Orchestrator" [expanded] [ref=e133] [cursor=pointer]:
+                    - /url: /vm-management/
+                    - img [ref=e135]
+                    - text: Virtual Machine Orchestrator
+                  - button "Toggle the collapsible sidebar category 'Virtual Machine Orchestrator'" [ref=e137] [cursor=pointer]
+                - list [ref=e138]:
+                  - listitem [ref=e139]:
+                    - link "Architecture" [ref=e140] [cursor=pointer]:
+                      - /url: /vm-management/architecture/
+                  - listitem [ref=e141]:
+                    - generic [ref=e142]:
+                      - link "VM Launchpad" [ref=e143] [cursor=pointer]:
+                        - /url: /vm-management/vm-launchpad/
+                      - button "Toggle the collapsible sidebar category 'VM Launchpad'" [ref=e144] [cursor=pointer]
+                  - listitem [ref=e145]:
+                    - generic [ref=e146]:
+                      - link "VMO Pack" [expanded] [ref=e147] [cursor=pointer]:
+                        - /url: /vm-management/vmo-pack/
+                      - button "Toggle the collapsible sidebar category 'VMO Pack'" [ref=e148] [cursor=pointer]
+                    - list [ref=e149]:
+                      - listitem [ref=e150]:
+                        - link "Environment Setup" [ref=e151] [cursor=pointer]:
+                          - /url: /vm-management/vmo-pack/environment-setup/
+                      - listitem [ref=e152]:
+                        - link "Install VMO in Airgap Environments" [ref=e153] [cursor=pointer]:
+                          - /url: /vm-management/vmo-pack/install-vmo-in-airgap/
+                      - listitem [ref=e154]:
+                        - link "Create a VMO Profile" [ref=e155] [cursor=pointer]:
+                          - /url: /vm-management/vmo-pack/create-vmo-profile/
+                      - listitem [ref=e156]:
+                        - link "Deployment Modes" [ref=e157] [cursor=pointer]:
+                          - /url: /vm-management/vmo-pack/deployment-modes/
+                      - listitem [ref=e158]:
+                        - link "Authentication Options" [ref=e159] [cursor=pointer]:
+                          - /url: /vm-management/vmo-pack/authentication-options/
+                      - listitem [ref=e160]:
+                        - link "Configure External OIDC" [ref=e161] [cursor=pointer]:
+                          - /url: /vm-management/vmo-pack/configure-external-oidc/
+                      - listitem [ref=e162]:
+                        - link "VMO Pack Parameters" [ref=e163] [cursor=pointer]:
+                          - /url: /vm-management/vmo-pack/vmo-pack-parameters/
+                      - listitem [ref=e164]:
+                        - link "Image Upload and VM Export" [ref=e165] [cursor=pointer]:
+                          - /url: /vm-management/vmo-pack/configure-image-upload-and-vm-export/
+                      - listitem [ref=e166]:
+                        - link "Configure TLS and CA Certificates" [ref=e167] [cursor=pointer]:
+                          - /url: /vm-management/vmo-pack/configure-tls-ca-certificates/
+                      - listitem [ref=e168]:
+                        - link "Configure Private CA Certificate (4.9.x and Earlier)" [ref=e169] [cursor=pointer]:
+                          - /url: /vm-management/vmo-pack/configure-private-ca-certificate/
+                      - listitem [ref=e170]:
+                        - link "Configure Direct Access to VM Dashboard" [ref=e171] [cursor=pointer]:
+                          - /url: /vm-management/vmo-pack/configure-console-base-address/
+                      - listitem [ref=e172]:
+                        - link "Upgrade the VMO Pack" [ref=e173] [cursor=pointer]:
+                          - /url: /vm-management/vmo-pack/upgrade-vmo-pack/
+                      - listitem [ref=e174]:
+                        - generic [ref=e175]:
+                          - link "Create and Manage VMs" [ref=e176] [cursor=pointer]:
+                            - /url: /vm-management/vmo-pack/create-manage-vm/
+                          - button "Toggle the collapsible sidebar category 'Create and Manage VMs'" [ref=e177] [cursor=pointer]
+                      - listitem [ref=e178]:
+                        - link "Troubleshooting" [ref=e179] [cursor=pointer]:
+                          - /url: /vm-management/vmo-pack/troubleshooting/
+                  - listitem [ref=e180]:
+                    - generic [ref=e181]:
+                      - link "RBAC" [ref=e182] [cursor=pointer]:
+                        - /url: /vm-management/rbac/
+                      - button "Toggle the collapsible sidebar category 'RBAC'" [ref=e183] [cursor=pointer]
+                  - listitem [ref=e184]:
+                    - generic [ref=e185]:
+                      - link "VM Migration Assistant" [ref=e186] [cursor=pointer]:
+                        - /url: /vm-management/vm-migration-assistant/
+                      - button "Toggle the collapsible sidebar category 'VM Migration Assistant'" [ref=e187] [cursor=pointer]
+              - listitem [ref=e188]:
+                - generic [ref=e189]:
+                  - link "Workspaces" [ref=e190] [cursor=pointer]:
+                    - /url: /workspace/
+                    - img [ref=e192]
+                    - text: Workspaces
+                  - button "Toggle the collapsible sidebar category 'Workspaces'" [ref=e194] [cursor=pointer]
+              - listitem [ref=e195]:
+                - generic [ref=e196]:
+                  - link "Packs List" [ref=e197] [cursor=pointer]:
+                    - /url: /integrations/
+                    - img [ref=e199]
+                    - text: Packs List
+                  - button "Toggle the collapsible sidebar category 'Packs List'" [ref=e201] [cursor=pointer]
+              - listitem [ref=e202]:
+                - generic [ref=e203]:
+                  - link "User & Role Management" [ref=e204] [cursor=pointer]:
+                    - /url: /user-management/
+                    - img [ref=e206]
+                    - text: User & Role Management
+                  - button "Toggle the collapsible sidebar category 'User & Role Management'" [ref=e208] [cursor=pointer]
+              - listitem [ref=e209]:
+                - generic [ref=e210]:
+                  - link "Registries and Packs" [ref=e211] [cursor=pointer]:
+                    - /url: /registries-and-packs/
+                    - img [ref=e213]
+                    - text: Registries and Packs
+                  - button "Toggle the collapsible sidebar category 'Registries and Packs'" [ref=e215] [cursor=pointer]
+              - listitem [ref=e216]:
+                - generic [ref=e217]:
+                  - link "Security" [ref=e218] [cursor=pointer]:
+                    - /url: /security/
+                    - img [ref=e220]
+                    - text: Security
+                  - button "Toggle the collapsible sidebar category 'Security'" [ref=e222] [cursor=pointer]
+              - listitem [ref=e223]:
+                - generic [ref=e224]:
+                  - link "Audit Logs" [ref=e225] [cursor=pointer]:
+                    - /url: /audit-logs/
+                    - img [ref=e227]
+                    - text: Audit Logs
+                  - button "Toggle the collapsible sidebar category 'Audit Logs'" [ref=e229] [cursor=pointer]
+              - listitem [ref=e230]:
+                - generic [ref=e231]:
+                  - link "Self-Hosted Palette" [ref=e232] [cursor=pointer]:
+                    - /url: /enterprise-version/
+                    - img [ref=e234]
+                    - text: Self-Hosted Palette
+                  - button "Toggle the collapsible sidebar category 'Self-Hosted Palette'" [ref=e236] [cursor=pointer]
+              - listitem [ref=e237]:
+                - generic [ref=e238]:
+                  - link "Palette VerteX" [ref=e239] [cursor=pointer]:
+                    - /url: /vertex/
+                    - img [ref=e241]
+                    - text: Palette VerteX
+                  - button "Toggle the collapsible sidebar category 'Palette VerteX'" [ref=e243] [cursor=pointer]
+              - listitem [ref=e244]:
+                - generic [ref=e245]:
+                  - link "Tenant Administration" [ref=e246] [cursor=pointer]:
+                    - /url: /tenant-settings/
+                    - img [ref=e248]
+                    - text: Tenant Administration
+                  - button "Toggle the collapsible sidebar category 'Tenant Administration'" [ref=e250] [cursor=pointer]
+              - listitem [ref=e251]:
+                - generic [ref=e252]:
+                  - link "Automation" [ref=e253] [cursor=pointer]:
+                    - /url: /automation/
+                    - img [ref=e255]
+                    - text: Automation
+                  - button "Toggle the collapsible sidebar category 'Automation'" [ref=e257] [cursor=pointer]
+              - listitem [ref=e258]:
+                - generic [ref=e259]:
+                  - link "Troubleshooting" [ref=e260] [cursor=pointer]:
+                    - /url: /troubleshooting/
+                    - img [ref=e262]
+                    - text: Troubleshooting
+                  - button "Toggle the collapsible sidebar category 'Troubleshooting'" [ref=e264] [cursor=pointer]
+              - listitem [ref=e265]:
+                - link "Glossary" [ref=e266] [cursor=pointer]:
+                  - /url: /glossary-all/
+                  - img [ref=e268]
+                  - text: Glossary
+              - listitem [ref=e270]:
+                - generic [ref=e271]:
+                  - link "Compliance & Legal" [ref=e272] [cursor=pointer]:
+                    - /url: /legal-licenses/
+                    - img [ref=e274]
+                    - text: Compliance & Legal
+                  - button "Toggle the collapsible sidebar category 'Compliance & Legal'" [ref=e276] [cursor=pointer]
+              - listitem [ref=e277]:
+                - button "Privacy Settings" [ref=e278] [cursor=pointer]:
+                  - img [ref=e279]
+                  - text: Privacy Settings
+      - main [ref=e281]:
+        - generic [ref=e283]:
+          - generic [ref=e285]:
+            - article [ref=e286]:
+              - navigation "Breadcrumbs" [ref=e287]:
+                - list [ref=e288]:
+                  - listitem [ref=e289]:
+                    - link "Home page" [ref=e290] [cursor=pointer]:
+                      - /url: /
+                      - img [ref=e291]
+                  - listitem [ref=e293]:
+                    - link "Virtual Machine Orchestrator" [ref=e294] [cursor=pointer]:
+                      - /url: /vm-management/
+                  - listitem [ref=e295]:
+                    - link "VMO Pack" [ref=e296] [cursor=pointer]:
+                      - /url: /vm-management/vmo-pack/
+                  - listitem [ref=e297]:
+                    - generic [ref=e298]: Deployment Modes
+              - generic [ref=e299]:
+                - heading "Deployment Modes" [level=1] [ref=e301]
+                - paragraph [ref=e302]:
+                  - text: The Virtual Machine Orchestrator (VMO) pack is configured along two independent dimensions. Refer to the
+                  - link "Virtual Machine Orchestrator" [ref=e303] [cursor=pointer]:
+                    - /url: /integrations/packs/?pack=virtual-machine-orchestrator
+                  - text: pack documentation for the full list of parameters that the pack exposes.
+                - list [ref=e304]:
+                  - listitem [ref=e305]:
+                    - paragraph [ref=e306]:
+                      - strong [ref=e307]: Deployment Mode
+                      - text: controls the network and access topology. It determines how the VM management UI is reached, whether TLS is provisioned by the pack, and whether the Spectro Proxy pack is required. Deployment Mode is a pack parameter and appears as a radio button group at the top of the pack settings. This page describes each mode.
+                  - listitem [ref=e308]:
+                    - paragraph [ref=e309]:
+                      - strong [ref=e310]: Alternative Authentication
+                      - text: controls the identity provider (IdP) that users authenticate against. Alternative Authentication is a preset group and appears in the
+                      - strong [ref=e311]: Presets
+                      - text: panel of the pack editor. Refer to
+                      - link "Authentication Options" [ref=e312] [cursor=pointer]:
+                        - /url: /vm-management/vmo-pack/authentication-options/
+                      - text: for guidance.
+                - paragraph [ref=e313]: You can combine any Deployment Mode with any authentication option. No combination is blocked. Deployment Mode controls network topology only. It never changes authentication.
+                - paragraph [ref=e314]: Selections seed values. They do not lock them. Every value remains editable in the pack YAML after you make a selection.
+                - generic [ref=e315]:
+                  - generic [ref=e316]:
+                    - img [ref=e318]
+                    - text: warning
+                  - generic [ref=e320]:
+                    - paragraph [ref=e321]: We recommend using the pack defaults. Default settings provide best practices for your clusters. Changing the default settings can introduce misconfigurations. Carefully review the changes you make to a pack.
+                    - paragraph [ref=e322]:
+                      - text: The
+                      - code [ref=e323]: directAccess
+                      - text: Traefik route is deprecated, and
+                      - code [ref=e324]: charts.virtual-machine-orchestrator.directAccess.enabled
+                      - text: is
+                      - code [ref=e325]: "false"
+                      - text: by default in every Deployment Mode. In VMO pack version 4.10.7 and later, expose the Containerized Data Importer (CDI) upload proxy and KubeVirt export proxy through native Ingress or
+                      - code [ref=e326]: LoadBalancer
+                      - text: Services instead. Refer to
+                      - link "Configure Image Upload and VM Export" [ref=e327] [cursor=pointer]:
+                        - /url: /vm-management/vmo-pack/configure-image-upload-and-vm-export/
+                      - text: for guidance.
+                - heading "Values PathsDirect link to Values Paths" [level=2] [ref=e328]:
+                  - text: Values Paths
+                  - link "Direct link to Values Paths" [ref=e329] [cursor=pointer]:
+                    - /url: "#values-paths"
+                    - text: "#"
+                - paragraph [ref=e330]: Unless stated otherwise, the parameters on this page are relative to the following values root.
+                - generic [ref=e332]:
+                  - code [ref=e334]:
+                    - generic [ref=e335]: "charts:"
+                    - generic [ref=e336]: "virtual-machine-orchestrator:"
+                    - generic [ref=e337]: "vmo-manager:"
+                  - button "Copy code to clipboard" [ref=e339] [cursor=pointer]:
+                    - generic [ref=e340]:
+                      - img [ref=e341]
+                      - img [ref=e343]
+                - paragraph [ref=e345]:
+                  - text: For example,
+                  - code [ref=e346]: tls.enabled
+                  - text: refers to
+                  - code [ref=e347]: charts.virtual-machine-orchestrator.vmo-manager.tls.enabled
+                  - text: . Parameters that sit outside this root, such as
+                  - code [ref=e348]: charts.virtual-machine-orchestrator.appConfig.clusterInfo.consoleBaseAddress
+                  - text: ", are listed with their full path."
+                - paragraph [ref=e349]: Two notations appear in the parameter tables in this section of the documentation.
+                - list [ref=e350]:
+                  - listitem [ref=e351]:
+                    - paragraph [ref=e352]:
+                      - code [ref=e353]: <angle-brackets>
+                      - text: marks a placeholder. Replace it, and the brackets, with a value of your own.
+                  - listitem [ref=e354]:
+                    - paragraph [ref=e355]:
+                      - code [ref=e356]: "{{ .spectro.var.NAME }}"
+                      - text: is Palette cluster profile variable syntax. Enter it in the YAML exactly as shown and leave it in place. Palette substitutes the value of the profile variable when the cluster deploys. Refer to
+                      - link "Define Cluster Profile Variables" [ref=e357] [cursor=pointer]:
+                        - /url: /profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/
+                      - text: for guidance.
+                - heading "ProxiedDirect link to Proxied" [level=2] [ref=e358]:
+                  - text: Proxied
+                  - link "Direct link to Proxied" [ref=e359] [cursor=pointer]:
+                    - /url: "#proxied"
+                    - text: "#"
+                - paragraph [ref=e360]:
+                  - text: Use
+                  - strong [ref=e361]: Proxied
+                  - text: when the cluster is behind a firewall or NAT and Palette cannot reach it directly. The Spectro Proxy pack provides remote access to the UI. This is the default selection.
+                - table [ref=e362]:
+                  - rowgroup [ref=e363]:
+                    - row "Setting Value Applied" [ref=e364]:
+                      - columnheader "Setting" [ref=e365]:
+                        - strong [ref=e366]: Setting
+                      - columnheader "Value Applied" [ref=e367]:
+                        - strong [ref=e368]: Value Applied
+                  - rowgroup [ref=e369]:
+                    - row "Pack dependency Adds the spectro-proxy pack with manifests.spectro-proxy.vmDashboardIntegration.enabled set to true" [ref=e370]:
+                      - cell "Pack dependency" [ref=e371]
+                      - cell "Adds the spectro-proxy pack with manifests.spectro-proxy.vmDashboardIntegration.enabled set to true" [ref=e372]:
+                        - text: Adds the
+                        - code [ref=e373]: spectro-proxy
+                        - text: pack with
+                        - code [ref=e374]: manifests.spectro-proxy.vmDashboardIntegration.enabled
+                        - text: set to
+                        - code [ref=e375]: "true"
+                    - row "pack.spectrocloud.com/install-priority 90, so that VMO installs before the Spectro Proxy pack" [ref=e376]:
+                      - cell "pack.spectrocloud.com/install-priority" [ref=e377]:
+                        - code [ref=e378]: pack.spectrocloud.com/install-priority
+                      - cell "90, so that VMO installs before the Spectro Proxy pack" [ref=e379]:
+                        - code [ref=e380]: "90"
+                        - text: ", so that VMO installs before the Spectro Proxy pack"
+                    - row "palette.enabled true" [ref=e381]:
+                      - cell "palette.enabled" [ref=e382]:
+                        - code [ref=e383]: palette.enabled
+                      - cell "true" [ref=e384]:
+                        - code [ref=e385]: "true"
+                    - row "palette.managedIngress true" [ref=e386]:
+                      - cell "palette.managedIngress" [ref=e387]:
+                        - code [ref=e388]: palette.managedIngress
+                      - cell "true" [ref=e389]:
+                        - code [ref=e390]: "true"
+                    - row "palette.serviceName vm-dashboard, which Palette requires" [ref=e391]:
+                      - cell "palette.serviceName" [ref=e392]:
+                        - code [ref=e393]: palette.serviceName
+                      - cell "vm-dashboard, which Palette requires" [ref=e394]:
+                        - code [ref=e395]: vm-dashboard
+                        - text: ", which Palette requires"
+                    - row "service.type ClusterIP, because the Spectro Proxy pack tunnels to the service inside the cluster" [ref=e396]:
+                      - cell "service.type" [ref=e397]:
+                        - code [ref=e398]: service.type
+                      - cell "ClusterIP, because the Spectro Proxy pack tunnels to the service inside the cluster" [ref=e399]:
+                        - code [ref=e400]: ClusterIP
+                        - text: ", because the Spectro Proxy pack tunnels to the service inside the cluster"
+                    - row "tls.enabled true" [ref=e401]:
+                      - cell "tls.enabled" [ref=e402]:
+                        - code [ref=e403]: tls.enabled
+                      - cell "true" [ref=e404]:
+                        - code [ref=e405]: "true"
+                    - row "tls.certManager.enabled true" [ref=e406]:
+                      - cell "tls.certManager.enabled" [ref=e407]:
+                        - code [ref=e408]: tls.certManager.enabled
+                      - cell "true" [ref=e409]:
+                        - code [ref=e410]: "true"
+                    - row "tls.certManager.selfSigned true" [ref=e411]:
+                      - cell "tls.certManager.selfSigned" [ref=e412]:
+                        - code [ref=e413]: tls.certManager.selfSigned
+                      - cell "true" [ref=e414]:
+                        - code [ref=e415]: "true"
+                    - row "caCert.enabled true" [ref=e416]:
+                      - cell "caCert.enabled" [ref=e417]:
+                        - code [ref=e418]: caCert.enabled
+                      - cell "true" [ref=e419]:
+                        - code [ref=e420]: "true"
+                    - row "caCert.configMapName platform-ca-cert" [ref=e421]:
+                      - cell "caCert.configMapName" [ref=e422]:
+                        - code [ref=e423]: caCert.configMapName
+                      - cell "platform-ca-cert" [ref=e424]:
+                        - code [ref=e425]: platform-ca-cert
+                    - row "ingressRoute.enabled false, because users reach the UI through the Spectro Proxy pack rather than Traefik" [ref=e426]:
+                      - cell "ingressRoute.enabled" [ref=e427]:
+                        - code [ref=e428]: ingressRoute.enabled
+                      - cell "false, because users reach the UI through the Spectro Proxy pack rather than Traefik" [ref=e429]:
+                        - code [ref=e430]: "false"
+                        - text: ", because users reach the UI through the Spectro Proxy pack rather than Traefik"
+                - paragraph [ref=e431]:
+                  - text: The serving certificate in this mode is only consumed by the in-cluster proxy. The pack therefore uses a chart-managed self-signed
+                  - code [ref=e432]: ClusterIssuer
+                  - text: rather than depending on an external
+                  - code [ref=e433]: platform-ca-issuer
+                  - text: that might not exist on every cluster.
+                - heading "DirectDirect link to Direct" [level=2] [ref=e434]:
+                  - text: Direct
+                  - link "Direct link to Direct" [ref=e435] [cursor=pointer]:
+                    - /url: "#direct"
+                    - text: "#"
+                - paragraph [ref=e436]:
+                  - text: Use
+                  - strong [ref=e437]: Direct
+                  - text: when the cluster is directly reachable from Palette, with no firewall or NAT between Palette and the cluster network. No proxy is required.
+                - table [ref=e438]:
+                  - rowgroup [ref=e439]:
+                    - row "Setting Value Applied" [ref=e440]:
+                      - columnheader "Setting" [ref=e441]:
+                        - strong [ref=e442]: Setting
+                      - columnheader "Value Applied" [ref=e443]:
+                        - strong [ref=e444]: Value Applied
+                  - rowgroup [ref=e445]:
+                    - row "palette.enabled true" [ref=e446]:
+                      - cell "palette.enabled" [ref=e447]:
+                        - code [ref=e448]: palette.enabled
+                      - cell "true" [ref=e449]:
+                        - code [ref=e450]: "true"
+                    - row "palette.managedIngress false, which overrides the pack default of true" [ref=e451]:
+                      - cell "palette.managedIngress" [ref=e452]:
+                        - code [ref=e453]: palette.managedIngress
+                      - cell "false, which overrides the pack default of true" [ref=e454]:
+                        - code [ref=e455]: "false"
+                        - text: ", which overrides the pack default of"
+                        - code [ref=e456]: "true"
+                    - row "palette.serviceName vm-dashboard" [ref=e457]:
+                      - cell "palette.serviceName" [ref=e458]:
+                        - code [ref=e459]: palette.serviceName
+                      - cell "vm-dashboard" [ref=e460]:
+                        - code [ref=e461]: vm-dashboard
+                    - row "service.type LoadBalancer. Use NodePort instead on bare metal clusters without a load balancer." [ref=e462]:
+                      - cell "service.type" [ref=e463]:
+                        - code [ref=e464]: service.type
+                      - cell "LoadBalancer. Use NodePort instead on bare metal clusters without a load balancer." [ref=e465]:
+                        - code [ref=e466]: LoadBalancer
+                        - text: . Use
+                        - code [ref=e467]: NodePort
+                        - text: instead on bare metal clusters without a load balancer.
+                    - row "tls.enabled true" [ref=e468]:
+                      - cell "tls.enabled" [ref=e469]:
+                        - code [ref=e470]: tls.enabled
+                      - cell "true" [ref=e471]:
+                        - code [ref=e472]: "true"
+                    - row "tls.certManager.enabled true" [ref=e473]:
+                      - cell "tls.certManager.enabled" [ref=e474]:
+                        - code [ref=e475]: tls.certManager.enabled
+                      - cell "true" [ref=e476]:
+                        - code [ref=e477]: "true"
+                    - row "tls.certManager.selfSigned true" [ref=e478]:
+                      - cell "tls.certManager.selfSigned" [ref=e479]:
+                        - code [ref=e480]: tls.certManager.selfSigned
+                      - cell "true" [ref=e481]:
+                        - code [ref=e482]: "true"
+                    - row "caCert.enabled true" [ref=e483]:
+                      - cell "caCert.enabled" [ref=e484]:
+                        - code [ref=e485]: caCert.enabled
+                      - cell "true" [ref=e486]:
+                        - code [ref=e487]: "true"
+                    - row "caCert.configMapName platform-ca-cert" [ref=e488]:
+                      - cell "caCert.configMapName" [ref=e489]:
+                        - code [ref=e490]: caCert.configMapName
+                      - cell "platform-ca-cert" [ref=e491]:
+                        - code [ref=e492]: platform-ca-cert
+                    - row "ingressRoute.enabled false, because users reach the UI through the LoadBalancer or NodePort Service rather than Traefik" [ref=e493]:
+                      - cell "ingressRoute.enabled" [ref=e494]:
+                        - code [ref=e495]: ingressRoute.enabled
+                      - cell "false, because users reach the UI through the LoadBalancer or NodePort Service rather than Traefik" [ref=e496]:
+                        - code [ref=e497]: "false"
+                        - text: ", because users reach the UI through the"
+                        - code [ref=e498]: LoadBalancer
+                        - text: or
+                        - code [ref=e499]: NodePort
+                        - text: Service rather than Traefik
+                - paragraph [ref=e500]:
+                  - strong [ref=e501]: Direct
+                  - text: mode uses two address parameters, both set to the URL that users reach the VM dashboard at, such as the
+                  - code [ref=e502]: LoadBalancer
+                  - text: IP or a DNS name. Do not append
+                  - code [ref=e503]: /v1
+                  - text: ", which is not used in pack version 4.10.x and later."
+                - list [ref=e504]:
+                  - listitem [ref=e505]:
+                    - code [ref=e506]: charts.virtual-machine-orchestrator.appConfig.clusterInfo.consoleBaseAddress
+                    - text: surfaces the
+                    - strong [ref=e507]: Connect
+                    - text: button on the cluster
+                    - strong [ref=e508]: Overview
+                    - text: tab and becomes the address that the button opens.
+                  - listitem [ref=e509]:
+                    - code [ref=e510]: charts.virtual-machine-orchestrator.vmo-manager.platform.baseUrl
+                    - text: builds the OIDC redirect URI.
+                - generic [ref=e512]:
+                  - code [ref=e514]:
+                    - generic [ref=e515]: "charts:"
+                    - generic [ref=e516]: "virtual-machine-orchestrator:"
+                    - generic [ref=e517]: "vmo-manager:"
+                    - generic [ref=e518]: "platform:"
+                    - generic [ref=e519]: "baseUrl: \"https://<lb-ip-or-dns>\""
+                    - generic [ref=e520]: "appConfig:"
+                    - generic [ref=e521]: "clusterInfo:"
+                    - generic [ref=e522]: "consoleBaseAddress: \"https://<lb-ip-or-dns>\""
+                  - button "Copy code to clipboard" [ref=e524] [cursor=pointer]:
+                    - generic [ref=e525]:
+                      - img [ref=e526]
+                      - img [ref=e528]
+                - paragraph [ref=e530]:
+                  - text: Set both to the same value. The pack currently holds this address in two places. The
+                  - strong [ref=e531]: Connect
+                  - text: button also requires that VMO is deployed as its own add-on cluster profile. Refer to
+                  - link "Configure Direct Access to VM Dashboard" [ref=e532] [cursor=pointer]:
+                    - /url: /vm-management/vmo-pack/configure-console-base-address/
+                  - text: for the full procedure.
+                - heading "CustomDirect link to Custom" [level=2] [ref=e533]:
+                  - text: Custom
+                  - link "Direct link to Custom" [ref=e534] [cursor=pointer]:
+                    - /url: "#custom"
+                    - text: "#"
+                - paragraph [ref=e535]:
+                  - strong [ref=e536]: Custom
+                  - text: applies no Deployment Mode values. The pack base values are used as-is, and nothing is overwritten when you save the profile. Configure
+                  - code [ref=e537]: palette.*
+                  - text: ","
+                  - code [ref=e538]: service.*
+                  - text: ","
+                  - code [ref=e539]: tls.*
+                  - text: ","
+                  - code [ref=e540]: ingressRoute.*
+                  - text: ", and"
+                  - code [ref=e541]: caCert.*
+                  - text: directly in the YAML.
+                - paragraph [ref=e542]:
+                  - text: Use
+                  - strong [ref=e543]: Custom
+                  - text: for environments that Palette does not manage, or when you supply your own Traefik configuration. You can still select an authentication option from the
+                  - strong [ref=e544]: Presets
+                  - text: panel in this mode.
+                - heading "TroubleshootingDirect link to Troubleshooting" [level=2] [ref=e545]:
+                  - text: Troubleshooting
+                  - link "Direct link to Troubleshooting" [ref=e546] [cursor=pointer]:
+                    - /url: "#troubleshooting"
+                    - text: "#"
+                - heading "Scenario - Keys Move or Comments Disappear After a SaveDirect link to Scenario - Keys Move or Comments Disappear After a Save" [level=3] [ref=e547]:
+                  - text: Scenario - Keys Move or Comments Disappear After a Save
+                  - link "Direct link to Scenario - Keys Move or Comments Disappear After a Save" [ref=e548] [cursor=pointer]:
+                    - /url: "#scenario---keys-move-or-comments-disappear-after-a-save"
+                    - text: "#"
+                - paragraph [ref=e549]:
+                  - text: When you make a Deployment Mode or authentication selection, Palette merges the change into your values and rewrites the YAML. A key that the selection touches, such as
+                  - code [ref=e550]: oidc.enabled
+                  - text: or
+                  - code [ref=e551]: features.localAuth.enabled
+                  - text: ", can move within its map, and a comment next to it can be left behind."
+                - paragraph [ref=e552]: This behavior is cosmetic and applies to every pack that uses presets. The resulting values are correct.
+                - heading "Scenario - The Connect Button Does Not AppearDirect link to Scenario - The Connect Button Does Not Appear" [level=3] [ref=e553]:
+                  - text: Scenario - The Connect Button Does Not Appear
+                  - link "Direct link to Scenario - The Connect Button Does Not Appear" [ref=e554] [cursor=pointer]:
+                    - /url: "#scenario---the-connect-button-does-not-appear"
+                    - text: "#"
+                - paragraph [ref=e555]:
+                  - text: The
+                  - strong [ref=e556]: Connect
+                  - text: button appears only when VMO is deployed as its own add-on cluster profile and
+                  - code [ref=e557]: consoleBaseAddress
+                  - text: is set. In an add-on profile, setting
+                  - code [ref=e558]: consoleBaseAddress
+                  - text: replaces the
+                  - strong [ref=e559]: Virtual Machines
+                  - text: tab with the
+                  - strong [ref=e560]: Connect
+                  - text: button. If the VMO pack is a layer inside a full cluster profile, the
+                  - strong [ref=e561]: Connect
+                  - text: button never appears, no matter what values you set. Move the VMO pack into a dedicated add-on cluster profile and reapply it to the cluster. Refer to
+                  - link "Create a VMO Profile" [ref=e562] [cursor=pointer]:
+                    - /url: /vm-management/vmo-pack/create-vmo-profile/
+                  - text: for guidance. The VMO pack must also report a
+                  - strong [ref=e563]: Ready
+                  - text: status on the cluster before the
+                  - strong [ref=e564]: Connect
+                  - text: button appears.
+                - heading "Scenario - The Service Is Not Reachable in Direct ModeDirect link to Scenario - The Service Is Not Reachable in Direct Mode" [level=3] [ref=e565]:
+                  - text: Scenario - The Service Is Not Reachable in Direct Mode
+                  - link "Direct link to Scenario - The Service Is Not Reachable in Direct Mode" [ref=e566] [cursor=pointer]:
+                    - /url: "#scenario---the-service-is-not-reachable-in-direct-mode"
+                    - text: "#"
+                - paragraph [ref=e567]:
+                  - text: Ensure that
+                  - code [ref=e568]: service.type
+                  - text: is
+                  - code [ref=e569]: NodePort
+                  - text: or
+                  - code [ref=e570]: LoadBalancer
+                  - text: rather than
+                  - code [ref=e571]: ClusterIP
+                  - text: ", unless an ingress controller routes traffic to the service. Verify that the cluster network allows inbound connections from both Palette and end users."
+                - heading "Scenario - TLS Certificate ErrorsDirect link to Scenario - TLS Certificate Errors" [level=3] [ref=e572]:
+                  - text: Scenario - TLS Certificate Errors
+                  - link "Direct link to Scenario - TLS Certificate Errors" [ref=e573] [cursor=pointer]:
+                    - /url: "#scenario---tls-certificate-errors"
+                    - text: "#"
+                - paragraph [ref=e574]:
+                  - text: The
+                  - strong [ref=e575]: Proxied
+                  - text: and
+                  - strong [ref=e576]: Direct
+                  - text: modes set
+                  - code [ref=e577]: tls.certManager.selfSigned
+                  - text: to
+                  - code [ref=e578]: "true"
+                  - text: ", so the pack creates its own self-signed ClusterIssuer for the serving certificate. If you set"
+                  - code [ref=e579]: tls.certManager.selfSigned
+                  - text: to
+                  - code [ref=e580]: "false"
+                  - text: ", cert-manager requests the certificate from the ClusterIssuer in"
+                  - code [ref=e581]: tls.certManager.issuerName
+                  - text: ", which defaults to"
+                  - code [ref=e582]: platform-ca-issuer
+                  - text: . The pack does not create this ClusterIssuer, so ensure that it exists in the cluster.
+                - paragraph [ref=e583]:
+                  - text: If VMO Manager cannot connect to a service whose certificate a private CA signed, such as your OIDC identity provider, add that CA to the
+                  - code [ref=e584]: platform-ca-cert
+                  - text: ConfigMap. Refer to
+                  - link "Trust a Private Certificate Authority" [ref=e585] [cursor=pointer]:
+                    - /url: /vm-management/vmo-pack/configure-tls-ca-certificates/#trust-a-private-certificate-authority
+                  - text: .
+                - paragraph [ref=e586]:
+                  - text: In
+                  - strong [ref=e587]: Custom
+                  - text: mode, either configure your own issuer or set
+                  - code [ref=e588]: tls.existingSecret
+                  - text: to the name of a Secret that holds your certificate. Refer to
+                  - link "Configure TLS and CA Certificates" [ref=e589] [cursor=pointer]:
+                    - /url: /vm-management/vmo-pack/configure-tls-ca-certificates/#use-your-own-serving-certificate
+                  - text: for guidance.
+                - heading "Scenario - The Spectro Proxy Does Not ConnectDirect link to Scenario - The Spectro Proxy Does Not Connect" [level=3] [ref=e590]:
+                  - text: Scenario - The Spectro Proxy Does Not Connect
+                  - link "Direct link to Scenario - The Spectro Proxy Does Not Connect" [ref=e591] [cursor=pointer]:
+                    - /url: "#scenario---the-spectro-proxy-does-not-connect"
+                    - text: "#"
+                - paragraph [ref=e592]:
+                  - text: Confirm that the
+                  - code [ref=e593]: spectro-proxy
+                  - text: pack is present in the cluster profile and that
+                  - code [ref=e594]: vmDashboardIntegration.enabled
+                  - text: is
+                  - code [ref=e595]: "true"
+                  - text: in its configuration. The VMO Manager service must be named
+                  - code [ref=e596]: vm-dashboard
+                  - text: ", and its pods must carry the"
+                  - code [ref=e597]: "spectrocloud.com/connection: proxy"
+                  - text: label. Both are set automatically when
+                  - code [ref=e598]: palette.enabled
+                  - text: is
+                  - code [ref=e599]: "true"
+                  - text: .
+                - heading "Next StepsDirect link to Next Steps" [level=2] [ref=e600]:
+                  - text: Next Steps
+                  - link "Direct link to Next Steps" [ref=e601] [cursor=pointer]:
+                    - /url: "#next-steps"
+                    - text: "#"
+                - paragraph [ref=e602]:
+                  - text: Review
+                  - link "Authentication Options" [ref=e603] [cursor=pointer]:
+                    - /url: /vm-management/vmo-pack/authentication-options/
+                  - text: to decide which IdP users authenticate against, and which parameters each option applies.
+                - paragraph [ref=e604]:
+                  - text: Once you decide on a Deployment Mode and an authentication option, apply them when you build your add-on profile. Refer to
+                  - link "Create a VMO Profile" [ref=e605] [cursor=pointer]:
+                    - /url: /vm-management/vmo-pack/create-vmo-profile/
+                  - text: for the profile creation steps.
+              - generic [ref=e606]:
+                - generic [ref=e608]:
+                  - text: "Tags:"
+                  - list [ref=e609]:
+                    - listitem [ref=e610]:
+                      - link "vmo" [ref=e611] [cursor=pointer]:
+                        - /url: /tags/vmo/
+                    - listitem [ref=e612]:
+                      - link "vmo pack" [ref=e613] [cursor=pointer]:
+                        - /url: /tags/vmo-pack/
+                - link "Edit this page" [ref=e616] [cursor=pointer]:
+                  - /url: https://github.com/spectrocloud/librarium/blob/master/docs/docs-content/vm-management/vmo-pack/deployment-modes.md
+                  - img [ref=e617]
+                  - text: Edit this page
+            - navigation "Docs pages" [ref=e621]:
+              - link "Previous « Create a VMO Profile" [ref=e622] [cursor=pointer]:
+                - /url: /vm-management/vmo-pack/create-vmo-profile/
+                - generic [ref=e623]: Previous
+                - generic [ref=e624]: « Create a VMO Profile
+              - link "Next Authentication Options »" [ref=e625] [cursor=pointer]:
+                - /url: /vm-management/vmo-pack/authentication-options/
+                - generic [ref=e626]: Next
+                - generic [ref=e627]: Authentication Options »
+          - list [ref=e630]:
+            - listitem [ref=e631]:
+              - link "Values Paths" [ref=e632] [cursor=pointer]:
+                - /url: "#values-paths"
+            - listitem [ref=e633]:
+              - link "Proxied" [ref=e634] [cursor=pointer]:
+                - /url: "#proxied"
+            - listitem [ref=e635]:
+              - link "Direct" [ref=e636] [cursor=pointer]:
+                - /url: "#direct"
+            - listitem [ref=e637]:
+              - link "Custom" [ref=e638] [cursor=pointer]:
+                - /url: "#custom"
+            - listitem [ref=e639]:
+              - link "Troubleshooting" [ref=e640] [cursor=pointer]:
+                - /url: "#troubleshooting"
+              - list [ref=e641]:
+                - listitem [ref=e642]:
+                  - link "Scenario - Keys Move or Comments Disappear After a Save" [ref=e643] [cursor=pointer]:
+                    - /url: "#scenario---keys-move-or-comments-disappear-after-a-save"
+                - listitem [ref=e644]:
+                  - link "Scenario - The Connect Button Does Not Appear" [ref=e645] [cursor=pointer]:
+                    - /url: "#scenario---the-connect-button-does-not-appear"
+                - listitem [ref=e646]:
+                  - link "Scenario - The Service Is Not Reachable in Direct Mode" [ref=e647] [cursor=pointer]:
+                    - /url: "#scenario---the-service-is-not-reachable-in-direct-mode"
+                - listitem [ref=e648]:
+                  - link "Scenario - TLS Certificate Errors" [ref=e649] [cursor=pointer]:
+                    - /url: "#scenario---tls-certificate-errors"
+                - listitem [ref=e650]:
+                  - link "Scenario - The Spectro Proxy Does Not Connect" [ref=e651] [cursor=pointer]:
+                    - /url: "#scenario---the-spectro-proxy-does-not-connect"
+            - listitem [ref=e652]:
+              - link "Next Steps" [ref=e653] [cursor=pointer]:
+                - /url: "#next-steps"
+  - button "Project Logo Ask AI" [ref=e654] [cursor=pointer]:
+    - generic [ref=e657]:
+      - img "Project Logo" [ref=e658]
+      - paragraph [ref=e659]: Ask AI
+```
+
+# Test source
+
+```ts
+  1  | import * as fs from "fs";
+  2  | import { test, expect } from "@playwright/test";
+  3  | import { extractSitemapPathnames, WaitForDocusaurusHydration } from "./utils";
+  4  | import excludeList from "./exclude.json";
+  5  | 
+  6  | const siteUrl = "http://localhost:3000";
+  7  | const sitemapPath = "build/sitemap.xml";
+  8  | const stylesheetPath = "visuals/screenshot.css";
+  9  | const stylesheet = fs.readFileSync(stylesheetPath).toString();
+  10 | 
+  11 | test.describe.configure({ mode: "parallel" });
+  12 | 
+  13 | function isVersionedDocsPathname(pathname: string, excludeList: string[]): boolean {
+  14 |   if (
+  15 |     excludeList.some((excludedPath) => {
+  16 |       if (excludedPath.endsWith("/*")) {
+  17 |         // Let's remove the trailing "/*" to match sub-paths
+  18 |         const basePath = excludedPath.slice(0, -2);
+  19 |         // Exclude sub-paths only, not the index page
+  20 |         return pathname.startsWith(basePath) && pathname !== `${basePath}/`;
+  21 |       }
+  22 |       // This is an exact match
+  23 |       return pathname === excludedPath;
+  24 |     })
+  25 |   ) {
+  26 |     return false;
+  27 |   }
+  28 | 
+  29 |   // Additional exclusion criteria
+  30 |   if (pathname.startsWith("/api/") || pathname.match(/\/\d+\.\d+\.x\//)) {
+  31 |     return false;
+  32 |   }
+  33 | 
+  34 |   return true;
+  35 | }
+  36 | 
+  37 | function screenshotPathname(pathname: string) {
+  38 |   test(`pathname ${pathname}`, async ({ page }) => {
+  39 |     console.log(`Taking screenshot of ${pathname}`);
+  40 |     const url = siteUrl + pathname;
+  41 |     await page.goto(url);
+  42 |     await page.waitForFunction(WaitForDocusaurusHydration);
+  43 |     await page.waitForLoadState("domcontentloaded");
+  44 |     await page.addStyleTag({ content: stylesheet });
+  45 |     await page.waitForTimeout(1000); // Waits for 1000 milliseconds
+> 46 |     await expect(page).toHaveScreenshot({ fullPage: true, timeout: 10000 });
+     |                        ^ Error: expect(page).toHaveScreenshot(expected) failed
+  47 |   });
+  48 | }
+  49 | 
+  50 | test.describe("Docs screenshots", () => {
+  51 |   const pathnames = extractSitemapPathnames(sitemapPath).filter((pathname) =>
+  52 |     isVersionedDocsPathname(pathname, excludeList)
+  53 |   );
+  54 | 
+  55 |   pathnames.forEach(screenshotPathname);
+  56 | });
+  57 | 
+```
