@@ -28,6 +28,6 @@ Refer to the following resources to learn how to configure your Edge host using 
 
 - [Diagnostic Tools](./diagnostic-tools.md)
 
-- [Configure and Download Audit Logs](./audit-logs.md)
+- [Configure and Access Audit Logs](./audit-logs.md)
 
 - [Customize Local UI Theme](./theming.md)
