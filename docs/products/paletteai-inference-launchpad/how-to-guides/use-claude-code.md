@@ -46,6 +46,7 @@ the steps and generates an environment block for `bash`, `zsh`, or PowerShell. F
    export ANTHROPIC_DEFAULT_FABLE_MODEL=claude-fable-5
    export CLAUDE_CODE_EFFORT_LEVEL=auto
    export CLAUDE_CODE_MAX_OUTPUT_TOKENS=64000
+   export CLAUDE_CODE_AUTO_MODE_SERVER=0
    ```
 
    Include the `NODE_EXTRA_CA_CERTS` line only when the panel shows the **CA certificate** step. Claude Code runs on
@@ -61,7 +62,9 @@ the steps and generates an environment block for `bash`, `zsh`, or PowerShell. F
    ```
 
 3. _(Optional)_ To keep the endpoint and token across sessions, add them to the `~/.claude/settings.json` file instead
-   of exporting them each time. Persisting the token there writes the secret to disk.
+   of exporting them each time. Persisting the token there writes the secret to disk. To keep the connection in IDEs and
+   in apps that you open from the Dock, refer to
+   [Persist Claude Code Configuration](./persist-claude-code-configuration.md).
 
    ```json
    {
