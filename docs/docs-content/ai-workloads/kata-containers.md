@@ -18,10 +18,13 @@ run in Kata VMs.
 
 The pack installs [Kata Containers](https://katacontainers.io/) with the upstream
 [kata-deploy](https://kata-containers.github.io/kata-containers/installation/#install-on-kubernetes-with-helm-recommended)
-Helm chart. On each selected node, the installation copies the Kata runtime, hypervisors, and guest images to the node,
-updates the containerd configuration, and labels the node with `katacontainers.io/kata-runtime=true`. The pack also
-creates a Kubernetes [RuntimeClass](https://kubernetes.io/docs/concepts/containers/runtime-class/) named `kata-<shim>`
-for each hypervisor shim that it enables.
+Helm chart. On each selected node, the installation copies the Kata runtime, hypervisors, and guest images, updates the
+containerd configuration, and adds the `katacontainers.io/kata-runtime=true` label. The pack also creates a Kubernetes
+[RuntimeClass](https://kubernetes.io/docs/concepts/containers/runtime-class/) named `kata-<shim>` for each hypervisor
+shim that it enables.
+
+The **Kubernetes Distribution** preset determines where the installation finds the containerd configuration on each
+node.
 
 Pods keep using the default container runtime unless they set `runtimeClassName` to a Kata RuntimeClass. Kubernetes
 schedules those pods only on nodes that have the `katacontainers.io/kata-runtime=true` label.
@@ -40,13 +43,17 @@ cluster, use the `kubectl get runtimeclass` command.
 
 ## Considerations
 
-- Installing or updating the pack changes the containerd configuration on each selected node, and might restart
-  containerd on the node.
+- Installing or updating the pack changes the containerd configuration on each selected node and might restart
+  containerd.
 
 - By default, the pack uses the `job` deployment mode, which installs Kata only on the nodes that exist when you install
   or update the pack. Nodes that join the cluster later do not get Kata until you update the pack. To cover new nodes
-  automatically, set `charts.kata-deploy.job.reconcile.enabled` to `true`, which checks for new nodes every 15 minutes,
-  or set `charts.kata-deploy.deploymentMode` to `daemonset`, which keeps a privileged DaemonSet on every selected node.
+  automatically, change one of the following values:
+
+  - Set `charts.kata-deploy.job.reconcile.enabled` to `true`. The pack then checks for new nodes every 15 minutes.
+
+  - Set `charts.kata-deploy.deploymentMode` to `daemonset`. The pack then keeps a privileged DaemonSet on every selected
+    node.
 
 - The pack installs Kata on every node unless you set `charts.kata-deploy.nodeSelector` to limit it to matching nodes.
 
@@ -66,9 +73,9 @@ cluster, use the `kubectl get runtimeclass` command.
 
 <!-- prettier-ignore-end -->
 
-- A Palette-managed cluster that uses Kubernetes 1.29 or later and containerd 1.7 or later, with Palette eXtended
-  Kubernetes (PXK), RKE2, or K3s. For Edge clusters, use Palette eXtended Kubernetes Edge (PXK-E). If you do not have a
-  cluster yet, refer to [Clusters](/clusters/) for deployment guides.
+- A Palette-managed cluster that uses Palette eXtended Kubernetes (PXK), RKE2, or K3s, with Kubernetes 1.29 or later and
+  containerd 1.7 or later. For Edge clusters, use Palette eXtended Kubernetes Edge (PXK-E). If you do not have a cluster
+  yet, refer to [Clusters](/clusters/) for deployment guides.
 
 - Nodes that use the amd64 or arm64 architecture and support hardware virtualization through `/dev/kvm`. Use bare metal
   nodes, or VMs with nested virtualization enabled. The installation fails on a node that does not expose `/dev/kvm`.
@@ -86,10 +93,9 @@ cluster, use the `kubectl get runtimeclass` command.
    :::tip
 
    If you deployed your cluster with a
-   [full cluster profile](/profiles/cluster-profiles/create-cluster-profiles/create-full-profile/), you can add the Kata
-   Containers pack to that profile instead. We recommend
-   [creating a new cluster profile version](/profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile/)
-   before you make any changes.
+   [full cluster profile](/profiles/cluster-profiles/create-cluster-profiles/create-full-profile/), you can instead add
+   the Kata Containers pack to a
+   [new version](/profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile/) of that profile.
 
    :::
 
@@ -102,8 +108,7 @@ cluster, use the `kubectl get runtimeclass` command.
 7. Select a **Pack Version** of **4.4.0** or later.
 
 8. In the pack **Values**, expand **Presets**. Under **Kubernetes Distribution**, select the preset that matches your
-   cluster. The preset sets the Kubernetes distribution, which determines where the installation finds the containerd
-   configuration on each node.
+   cluster.
 
    | **Cluster Kubernetes Distribution** | **Preset**        |
    | ----------------------------------- | ----------------- |
@@ -134,7 +139,7 @@ Confirm that the nodes can run Kata and that a pod runs inside a Kata VM.
 
 3. Choose your cluster from the **Clusters** table.
 
-4. Download the kubeconfig file for your cluster and configure kubectl to use it. Refer to
+4. Download the kubeconfig file for your cluster and configure `kubectl` to use it. Refer to
    [Access Cluster with CLI](/clusters/cluster-management/kubeconfig/) for guidance.
 
    ```bash
@@ -172,8 +177,8 @@ Confirm that the nodes can run Kata and that a pod runs inside a Kata VM.
      restartPolicy: Never
      containers:
        - name: test
-         image: busybox
-         command: ["uname", "-r"]
+         image: "busybox:1.37"
+         command: ["uname", "--kernel-release"]
    EOF
    ```
 
@@ -183,15 +188,21 @@ Confirm that the nodes can run Kata and that a pod runs inside a Kata VM.
    kubectl wait --for=jsonpath='{.status.phase}'=Succeeded pod/kata-test --timeout=120s
    ```
 
-9. Compare the kernel version that the pod reports with the kernel version of the nodes.
+   ```text hideClipboard title="Example Output"
+   pod/kata-test condition met
+   ```
+
+   If the command times out, run `kubectl describe pod kata-test` and review the `Events` section of the output for the
+   cause.
+
+9. Compare the kernel version that the pod reports with the kernel versions of the nodes.
 
    ```bash
    kubectl logs kata-test
    kubectl get nodes --output custom-columns=NAME:.metadata.name,KERNEL:.status.nodeInfo.kernelVersion
    ```
 
-   The kernel version in the pod logs differs from the kernel version of the node, because the pod runs on the guest
-   kernel of its Kata VM.
+   The pod reports a different kernel version from the nodes because it runs on the guest kernel of its Kata VM.
 
 10. Clean up the test pod.
 
