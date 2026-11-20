@@ -8,6 +8,85 @@ tags: ["paletteai-inference-launchpad", "release-notes"]
 keywords: ["launchpad", "ai", "release notes", "changelog"]
 ---
 
+## Version 1.3.0 - November 22, 2026 {#version-1-3-0}
+
+PaletteAI Inference Launchpad 1.3.0 gives administrators more control over how the appliance answers requests and who
+can sign in. Clients in a workspace now share the prompt cache by default. The hard turns of a coding task can move from
+an efficient model to a capable model. A model on an external inference endpoint can read images for a text-only model.
+Administrators can set a system prompt for the models on the appliance. Users can sign in through the identity provider
+that their organization already uses.
+
+### New Features {#new-features-1-3-0}
+
+- Clients in the same workspace now share the prompt cache by default. A prompt that starts like another client's
+  earlier prompt gets a faster response. Sharing also opens a timing side channel between those clients. A policy set to
+  **Each client is isolated** keeps each client's cache separate. Refer to
+  [Prompt Cache Sharing](./explanation/prompt-cache-sharing.md) and
+  [Set Prompt Cache Sharing for a Policy](./how-to-guides/set-prompt-cache-sharing.md) for more information.
+
+- Mid-Task Model Switching moves the turns where a coding task struggles from an efficient model to a capable model. It
+  is off by default. A platform administrator turns it on under **Settings** > **Request handling** > **Mid-Task Model
+  Switching**. The administrator then picks the two models on a client's **Routing** tab. Refer to
+  [Mid-Task Model Switching](./explanation/mid-task-model-switching.md) for more information.
+
+- Users can now sign in through their organization's identity provider, such as Okta or Auth0. You add the provider in
+  the Keycloak instance that ships with the appliance. Each person joins the appliance groups whose names match the
+  groups that the provider sends. Local accounts keep working.
+
+  <!-- TODO(AIL-1249): after PR 12694 merges, restore "Refer to Add an External Identity Provider for more information." with a link to how-to-guides/add-an-external-identity-provider.md. -->
+
+- A model on an external inference endpoint can now read client images for a text-only model on the appliance. You no
+  longer need a vision model on the appliance. The images leave the appliance, so the console asks you to confirm this
+  choice. Each read counts as the client's external inferencing spend. Refer to
+  [Read Images with an External Model](./how-to-guides/read-images-with-an-external-model.md) for more information.
+
+- You can now set a system prompt for all models or for one model. The console calls it an instruction. By default, the
+  appliance adds the instruction only to a request that has no system prompt. With **Apply to every turn** on, the
+  appliance also adds it after a client's own system prompt. Refer to
+  [Set a System Prompt](./how-to-guides/set-a-system-prompt.md) for more information.
+
+- A platform administrator can now add up to 5,000 users at once with the bulk import API. Each row needs an email and a
+  temporary password. A row can also give the user's name, groups, and roles. Refer to
+  [Import Users in Bulk](./how-to-guides/import-users-in-bulk.md) for more information.
+
+### Improvements {#improvements-1-3-0}
+
+- The **Settings** page is now a menu of sections in three groups, **External access**, **Request handling**, and
+  **Model Management**. The menu replaces the **Configurations** and **Pricing** tabs and the **Integrations** page. For
+  example, you now register external inference endpoints under **Settings** > **External access** > **Ext. Inference
+  Endpoints**. You change model rates under **Settings** > **Model Management** > **Model Pricing**. Refer to
+  [Register an External Inference Endpoint](./how-to-guides/register-an-external-inference-endpoint.md) and
+  [Usage Pricing](./explanation/usage-pricing.md) for more information.
+
+- The **Access & Policy** page is now two pages on the left main menu, **Access Management** and **Users**. **Access
+  Management** holds the **Workspaces**, **Clients**, **Policies**, and **Roles** tabs. **Users** holds the **Users**
+  and **Groups** tabs. Refer to
+  [Access Management Reference](./reference/access-and-policy-reference.md#tab-bar-and-workspace-drop-down-menu) for
+  more information.
+
+### Bug Fixes {#bug-fixes-1-3-0}
+
+- Some requests meant for an external inference endpoint go to a text-only model on the appliance instead. The appliance
+  now reads the images in those requests first. Before this fix, the images reached the model unread. Refer to
+  [How an Image Request Is Handled](./explanation/vision-preprocessing.md#how-an-image-request-is-handled) for more
+  information.
+
+### Upgrade {#upgrade-1-3-0}
+
+To upgrade a running 1.2 appliance to 1.3.0, refer to [Upgrade the Platform](./how-to-guides/upgrade-the-platform.md).
+An upgrade from version 1.2 has the following effects.
+
+- In version 1.2, every client had its own prompt cache, and policies had no cache sharing field. After an upgrade to
+  version 1.3.0, every existing policy uses **Share within the workspace**, with no action from an administrator.
+  Clients in the same workspace start to share the prompt cache, and the
+  [timing side channel](./explanation/prompt-cache-sharing.md#the-timing-side-channel) opens between them. To keep the
+  version 1.2 behavior, set each policy to **Each client is isolated** right after the upgrade completes. Refer to
+  [Set Prompt Cache Sharing for a Policy](./how-to-guides/set-prompt-cache-sharing.md) for more information.
+
+- An upgraded appliance keeps its local reader for vision preprocessing. Client images leave the appliance only after a
+  platform administrator chooses an external reader and confirms the choice. Refer to
+  [Read Images with an External Model](./how-to-guides/read-images-with-an-external-model.md) for more information.
+
 ## Version 1.2.1 - October 30, 2026 {#version-1-2-1}
 
 PaletteAI Inference Launchpad 1.2.1 is a patch release that fixes a security issue.
