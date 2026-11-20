@@ -11,6 +11,162 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## November 20, 2026 - Component Updates {#component-updates-2026-47}
+
+<!-- COMPONENT UPDATES TICKET: DOC-3450 -->
+<!-- RELEASE DATE: November 20, 2026 -->
+<!-- RELEASE MANAGEMENT APPLIANCE:  -->
+<!-- RELEASE ARTIFACT STUDIO: 4.10.9 -->
+<!-- RELEASE TERRAFORM VERSION:  -->
+
+The following components have been updated for Palette version 4.10.13 - 4.10.44.
+
+| Component                                          | Version |
+| -------------------------------------------------- | ------- |
+| [Artifact Studio](../downloads/artifact-studio.md) | 4.10.9  |
+
+<!-- BEGIN COMPONENT UPDATES BODY: DOC-3450. DO NOT DELETE. -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-5247 -->
+
+- Updated Kubernetes packs for release week 2026-47, including edge-k3s versions 1.34.13, 1.35.10, 1.36.6, and 1.37.2
+  (non-FIPS), edge-k8s versions 1.36.6 and 1.37.2 (FIPS and non-FIPS), edge-rke2 versions 1.34.13, 1.35.10, 1.36.6, and
+  1.37.2 (FIPS and non-FIPS), and kubernetes versions 1.34.13 (FIPS), 1.36.6 (FIPS and non-FIPS), and 1.37.2 (FIPS and
+  non-FIPS).
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-5326 -->
+
+- Added the calico/third-party-cni-plugins image to the tigera-operator pack image list for Calico versions 3.33 and
+  later.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-1214 -->
+
+- Updated the member invite acceptance screen to display "Back to Artifact Studio" for clearer navigation and
+  streamlined the invite card copy.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-1304 -->
+
+- Enhanced compliance posture by adding actor role tracking to download events, making download event retention
+  configurable via environment variables, removing cleartext IP storage, and verifying hashing correlation safeguards.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-1364 -->
+
+- Removed the redundant version switcher from the top navigation bar in Artifact Studio v2, retaining the top banner
+  switcher as the single control for navigating between versions.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-1365 -->
+
+- Set Artifact Studio v2 as the default landing experience while preserving direct access to v1.
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2441 -->
+
+- Extended Terraform Provider pack management capabilities and resources to support comprehensive custom pack authoring
+  and registry workflows.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4831 -->
+
+- Fixed an issue in Headlamp 0.45.0 where service account token authentication failed when accessing the Headlamp UI in
+  Direct mode.
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-5331 -->
+
+- Fixed pack publishing naming for Portworx 3.7.0-rev1 to use the existing portworx-generic-addon pack name instead of
+  creating a separate pack identifier.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-1368 -->
+
+- Fixed an issue where pack version listings across Artifact Studio failed to distinguish between FIPS and non-FIPS
+  builds of the same pack version.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-1371 -->
+
+- Fixed an issue where PaletteAI profile bundle downloads were assigned a .tar.tar file extension instead of .tar.gz.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-1373 -->
+
+- Fixed an issue where the Helm Chart download row on the Palette Enterprise and VerteX installer cards displayed a .tgz
+  file format instead of .zip.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-1374 -->
+
+- Fixed a file extension mismatch on the Appliances Machine Owner Key download row where the UI advertised .mok instead
+  of the downloaded .der format.
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2206 -->
+
+- Fixed an issue where spectrocloud_cluster_config_template did not detect configuration drift when the variables block
+  inside a cluster profile was modified.
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2468 -->
+
+- Fixed an issue during terraform import of static EKS clusters where control-plane subnet mappings were omitted from
+  cloud_config.az_subnets.
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2495 -->
+
+- Fixed an issue where stalled API calls hung indefinitely in the Go SDK and Terraform provider by introducing default
+  request timeouts and response idle timeouts.
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2497 -->
+
+- Fixed an issue in the Terraform provider where OCI pack UID resolution was skipped for ECR registries due to querying
+  the basic registry sync endpoint.
+
+<!-- END COMPONENT UPDATES BODY: DOC-3450. DO NOT DELETE. -->
+
+### Packs
+
+<!-- BEGIN PACKS LIST BODY: DOC-3450. DO NOT DELETE. -->
+<!-- prettier-ignore-start -->
+
+| Pack Name | Layer | Non-FIPS | FIPS | New Version |
+| --------- | ----- | -------- | ---- | ----------- |
+| <VersionedLink text="aws-alb" url="/integrations/packs/?pack=aws-alb" /> | `addon` | :white_check_mark: | :x: | 3.6.3 |
+| <VersionedLink text="aws-efs" url="/integrations/packs/?pack=aws-efs" /> | `addon` | :white_check_mark: | :x: | 3.6.0 |
+| <VersionedLink text="calico-network-policy" url="/integrations/packs/?pack=calico-network-policy" /> | `addon` | :white_check_mark: | :x: | 3.33.1 |
+| <VersionedLink text="cni-calico" url="/integrations/packs/?pack=cni-calico" /> | `cni` | :white_check_mark: | :x: | 3.32.4 |
+| <VersionedLink text="cni-calico" url="/integrations/packs/?pack=cni-calico" /> | `cni` | :white_check_mark: | :white_check_mark: | 3.33.1 |
+| <VersionedLink text="cni-calico-azure" url="/integrations/packs/?pack=cni-calico-azure" /> | `cni` | :white_check_mark: | :x: | 3.32.4 |
+| <VersionedLink text="cni-calico-azure" url="/integrations/packs/?pack=cni-calico-azure" /> | `cni` | :white_check_mark: | :white_check_mark: | 3.33.1 |
+| <VersionedLink text="csi-aws-ebs" url="/integrations/packs/?pack=csi-aws-ebs" /> | `csi` | :white_check_mark: | :white_check_mark: | 1.68.0 |
+| <VersionedLink text="csi-aws-efs" url="/integrations/packs/?pack=csi-aws-efs" /> | `csi` | :white_check_mark: | :x: | 3.6.0 |
+| <VersionedLink text="csi-portworx-generic" url="/integrations/packs/?pack=csi-portworx-generic" /> | `csi` | :white_check_mark: | :x: | 3.7.0-rev1 |
+| <VersionedLink text="edge-k3s" url="/integrations/packs/?pack=edge-k3s" /> | `k8s` | :white_check_mark: | :x: | 1.34.13 |
+| <VersionedLink text="edge-k3s" url="/integrations/packs/?pack=edge-k3s" /> | `k8s` | :white_check_mark: | :x: | 1.35.10 |
+| <VersionedLink text="edge-k3s" url="/integrations/packs/?pack=edge-k3s" /> | `k8s` | :white_check_mark: | :x: | 1.36.6 |
+| <VersionedLink text="edge-k3s" url="/integrations/packs/?pack=edge-k3s" /> | `k8s` | :white_check_mark: | :x: | 1.37.2 |
+| <VersionedLink text="edge-k8s" url="/integrations/packs/?pack=edge-k8s" /> | `k8s` | :white_check_mark: | :white_check_mark: | 1.36.6 |
+| <VersionedLink text="edge-k8s" url="/integrations/packs/?pack=edge-k8s" /> | `k8s` | :white_check_mark: | :white_check_mark: | 1.37.2 |
+| <VersionedLink text="edge-rke2" url="/integrations/packs/?pack=edge-rke2" /> | `k8s` | :white_check_mark: | :white_check_mark: | 1.34.13 |
+| <VersionedLink text="edge-rke2" url="/integrations/packs/?pack=edge-rke2" /> | `k8s` | :white_check_mark: | :white_check_mark: | 1.35.10 |
+| <VersionedLink text="edge-rke2" url="/integrations/packs/?pack=edge-rke2" /> | `k8s` | :white_check_mark: | :white_check_mark: | 1.36.6 |
+| <VersionedLink text="edge-rke2" url="/integrations/packs/?pack=edge-rke2" /> | `k8s` | :white_check_mark: | :white_check_mark: | 1.37.2 |
+| <VersionedLink text="external-secrets-operator" url="/integrations/packs/?pack=external-secrets-operator" /> | `addon` | :white_check_mark: | :x: | 2.15.0 |
+| <VersionedLink text="headlamp" url="/integrations/packs/?pack=headlamp" /> | `addon` | :x: | :white_check_mark: | 0.45.0 |
+| <VersionedLink text="karpenter" url="/integrations/packs/?pack=karpenter" /> | `addon` | :white_check_mark: | :white_check_mark: | 1.15.2 |
+| <VersionedLink text="kgateway" url="/integrations/packs/?pack=kgateway" /> | `addon` | :white_check_mark: | :x: | 2.5.2 |
+| <VersionedLink text="kubernetes" url="/integrations/packs/?pack=kubernetes" /> | `k8s` | :x: | :white_check_mark: | 1.34.13 |
+| <VersionedLink text="kubernetes" url="/integrations/packs/?pack=kubernetes" /> | `k8s` | :white_check_mark: | :white_check_mark: | 1.36.6 |
+| <VersionedLink text="kubernetes" url="/integrations/packs/?pack=kubernetes" /> | `k8s` | :white_check_mark: | :white_check_mark: | 1.37.2 |
+| <VersionedLink text="kyverno" url="/integrations/packs/?pack=kyverno" /> | `addon` | :white_check_mark: | :x: | 1.20.0 |
+| <VersionedLink text="openobserve" url="/integrations/packs/?pack=openobserve" /> | `addon` | :white_check_mark: | :x: | 1.1.2 |
+| <VersionedLink text="portworx-add-on" url="/integrations/packs/?pack=portworx-add-on" /> | `addon` | :white_check_mark: | :x: | 3.7.0-rev1 |
+| <VersionedLink text="reloader" url="/integrations/packs/?pack=reloader" /> | `addon` | :white_check_mark: | :x: | 1.4.24 |
+| <VersionedLink text="tigera-operator" url="/integrations/packs/?pack=tigera-operator" /> | `cni` | :white_check_mark: | :x: | 3.33.1 |
+| <VersionedLink text="traefik" url="/integrations/packs/?pack=traefik" /> | `addon` | :white_check_mark: | :x: | 42.4.0 |
+
+<!-- prettier-ignore-end -->
+
+<!-- END PACKS LIST BODY: DOC-3450. DO NOT DELETE. -->
+
+#### Pack Notes
+
+#### Deprecations and Removals
+
 ## November 15, 2026 - Release 4.10.44 {#release-notes-4.10.b}
 
 ### Security Notices
