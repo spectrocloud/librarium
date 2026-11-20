@@ -11,9 +11,8 @@ tags: ["edge", "ipv6"]
 PE-10279. This page assumes that the engineering work for Edge IPv6 support (PEM-12742) ships before the page is
 published. Resolve each item, and then remove this comment.
 
-RELEASE DAY. Prerequisites has two 4.10.x placeholders that resolve to different numbers. Once the final tag exists,
-             replace the first with the 4.10 patch version of Palette, and the second with the Palette agent version
-             that ships with that patch.
+RELEASE DAY. Once the final tag exists, confirm that 4.10.46 is the 4.10 patch version of Palette that ships Edge IPv6
+             support, and replace 4.10.x in Prerequisites with the Palette agent version that ships with that patch.
 
 VERIFY 1. OVN-Kubernetes: add it to the supported CNIs once the Edge team finishes verifying it.
 VERIFY 2. Dual-stack CIDR order: the instruction to list first the range that matches the IP family of the VIP is
@@ -69,7 +68,7 @@ cluster.
 
 ## Prerequisites
 
-- Palette version 4.10.x or later, with Palette agent version 4.10.x or later on every Edge host.
+- Palette version 4.10.46 or later, with Palette agent version 4.10.x or later on every Edge host.
 
 <!-- prettier-ignore-start -->
 

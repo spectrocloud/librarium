@@ -83,16 +83,12 @@ cat <path/to/.docker/config.json> | base64 | tr --delete '\n'
 
 ### IP Family
 
-<!-- RELEASE DAY. Replace 4.10.x in this section with the 4.10 patch version that ships the global.ipFamily Helm values. -->
+<!-- RELEASE DAY. Confirm that 4.10.46 is the 4.10 patch version that ships the global.ipFamily Helm values. Update the version in this section if it changed. -->
 
 The `ipFamily` block configures IPv6 support. Use it when you install Palette on a Kubernetes cluster that uses IPv6 or
 dual-stack networking. Both parameters keep the IPv4-only behavior by default. This block is available in the Helm
-charts for Palette 4.10.x and later. Refer to [Install Palette on an IPv6 EKS Cluster](./install-ipv6-eks.md) for an
+charts for Palette 4.10.46 and later. Refer to [Install Palette on an IPv6 EKS Cluster](./install-ipv6-eks.md) for an
 example.
-
-:::preview
-
-:::
 
 | **Parameters**          | **Description**                                                                                                                                                                                                                                                                                                 | **Type** | **Default value** |
 | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------------- |
