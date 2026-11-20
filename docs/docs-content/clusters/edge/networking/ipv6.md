@@ -26,10 +26,6 @@ Palette Edge supports IPv6-only clusters and dual-stack clusters. In an IPv6-onl
 use IPv6 addresses. In a dual-stack cluster, they use both IPv4 and IPv6 addresses. In both cases, the cluster has a
 single Virtual IP (VIP) address.
 
-IPv6 is supported for centrally managed Edge clusters whose Edge hosts are deployed in
-[appliance mode](../../../deployment-modes/appliance-mode/appliance-mode.md). The cluster must use Palette eXtended
-Kubernetes Edge (PXK-E) as its Kubernetes layer and Cilium as its Container Network Interface (CNI).
-
 This guide explains how to configure a cluster profile for IPv6, check your Edge hosts, and create and validate the
 cluster.
 
@@ -41,9 +37,10 @@ cluster.
 - IPv6 is not supported for Edge hosts in [agent mode](../../../deployment-modes/agent-mode/agent-mode.md) or for
   airgapped Edge hosts.
 
-- IPv6 is supported with PXK-E only. Canonical Kubernetes, K3s, and RKE2 are not supported.
+- IPv6 is supported with Palette eXtended Kubernetes Edge (PXK-E) only. Canonical Kubernetes, K3s, and RKE2 are not
+  supported.
 
-- IPv6 is supported with the Cilium CNI only.
+- IPv6 is supported with the Cilium Container Network Interface (CNI) only.
 
 - All Edge hosts in a cluster must use the same IP address families. You cannot combine Edge hosts that use only IPv4
   addresses with Edge hosts that use IPv6 addresses in one cluster.
@@ -63,10 +60,6 @@ cluster.
 
 - IPv6 is not validated with [Trusted Boot](../trusted-boot/trusted-boot.md).
 
-- IPv6 forwarding must be enabled on every Edge host. Appliance mode enables IPv6 forwarding. A Security Technical
-  Implementation Guide (STIG) remediation can disable it. If you use a STIG-hardened image, enable IPv6 forwarding after
-  the remediation.
-
 ## Prerequisites
 
 - Palette version 4.10.46 or later. Every Edge host must use the Palette agent version that corresponds to Palette
@@ -85,11 +78,20 @@ cluster.
 
 <!-- prettier-ignore-end -->
 
-- Two or more Edge hosts that are deployed in appliance mode and registered with Palette. Refer to
+- Two or more Edge hosts that are deployed in
+  [appliance mode](../../../deployment-modes/appliance-mode/appliance-mode.md) and registered with Palette. Refer to
   [Register Edge Host](../site-deployment/site-installation/edge-host-registration.md) for guidance.
 
 - An IPv6 address on each Edge host that the host received through DHCP or SLAAC. For a dual-stack cluster, each Edge
   host also needs an IPv4 address.
+
+- IPv6 forwarding enabled on every Edge host. Appliance mode enables IPv6 forwarding. A Security Technical
+  Implementation Guide (STIG) remediation can disable it. If you use a STIG-hardened image, enable IPv6 forwarding after
+  the remediation.
+
+- If your Edge hosts connect through a proxy server, use bracketed IPv6 addresses in the proxy settings, for example,
+  `http://[fd00::1]:3128`, and add your IPv6 CIDR ranges to `stylus.site.network.noProxy`. Refer to
+  [Edge Installer Configuration Reference](../edge-configuration/installer-reference.md) for guidance.
 
 - One unused IP address in the network of your Edge hosts for the VIP of the cluster. An IPv6-only cluster requires an
   IPv6 address.
@@ -131,6 +133,9 @@ cluster.
 
    <TabItem label="Dual-Stack" value="dual-stack">
 
+   In each pair, list first the CIDR range that matches the IP family of the VIP. The following example is for an IPv4
+   VIP. For an IPv6 VIP, reverse the order of each pair.
+
    ```yaml
    cluster:
      config: |
@@ -142,7 +147,7 @@ cluster.
 
    Replace `<ipv4-pod-cidr>` and `<ipv6-pod-cidr>` with the CIDR ranges for pods, such as `10.244.0.0/16` and
    `fd00:10:244::/56`. Replace `<ipv4-service-cidr>` and `<ipv6-service-cidr>` with the CIDR ranges for services, such
-   as `10.96.0.0/16` and `fd00:10:96::/112`. In each pair, list first the range that matches the IP family of the VIP.
+   as `10.96.0.0/16` and `fd00:10:96::/112`.
 
    </TabItem>
 
@@ -161,7 +166,13 @@ cluster.
 7. Select the **Network** layer of the cluster profile, and confirm that it contains the Cilium pack. Keep the default
    values of the pack.
 
-8. _(Optional)_ If your cluster profile contains MetalLB, add an IPv6 address pool to the MetalLB pack values.
+<!-- prettier-ignore-start -->
+
+8. _(Optional)_ If your cluster profile contains the
+   <VersionedLink text="MetalLB" url="/integrations/packs/?pack=lb-metallb-helm" /> pack, add an IPv6 address pool to
+   the pack values.
+
+<!-- prettier-ignore-end -->
 
 9. Select **Save Changes**.
 
@@ -175,7 +186,7 @@ Complete the following steps on each Edge host that you plan to add to the clust
    IPv6 address from DHCP or SLAAC.
 
    ```shell
-   ip -6 addr show
+   ip -family inet6 address show
    ```
 
 3. Confirm that IPv6 forwarding is enabled. Both values must be `1`.
@@ -188,8 +199,6 @@ Complete the following steps on each Edge host that you plan to add to the clust
    net.ipv6.conf.all.forwarding = 1
    net.ipv6.conf.default.forwarding = 1
    ```
-
-Do not configure a static IPv6 address on the Edge hosts.
 
 ## Create the Cluster
 
@@ -218,40 +227,41 @@ export KUBECONFIG=<path-to-kubeconfig>
 
 Replace `<path-to-kubeconfig>` with the path to the kubeconfig file of the cluster.
 
-1. List the nodes. In an IPv6-only cluster, the `INTERNAL-IP` column displays an IPv6 address for each node.
+1. List the nodes. In an IPv6-only cluster, the `INTERNAL-IP` column displays an IPv6 address for each node. In a
+   dual-stack cluster, the column displays one address for each node.
 
    ```shell
    kubectl get nodes --output wide
    ```
 
-   In a dual-stack cluster, the `INTERNAL-IP` column displays one address for each node. Use the following command to
-   list all addresses of each node, and confirm that each node has an IPv4 address and an IPv6 address.
+2. _(Dual-stack clusters only)_ List all addresses of each node, and confirm that each node has an IPv4 address and an
+   IPv6 address.
 
    ```shell
    kubectl get nodes --output jsonpath='{range .items[*]}{.metadata.name}{"\t"}{.status.addresses[?(@.type=="InternalIP")].address}{"\n"}{end}'
    ```
 
-2. Review the `kubernetes` service. In an IPv6-only cluster, the `CLUSTER-IP` column displays an IPv6 address. In a
+3. Review the `kubernetes` service. In an IPv6-only cluster, the `CLUSTER-IP` column displays an IPv6 address. In a
    dual-stack cluster, the column displays an address from the first service CIDR range.
 
    ```shell
    kubectl get service kubernetes
    ```
 
-3. List the pods. In an IPv6-only cluster, the `IP` column displays IPv6 addresses. In a dual-stack cluster, the column
+4. List the pods. In an IPv6-only cluster, the `IP` column displays IPv6 addresses. In a dual-stack cluster, the column
    displays the address from the first pod CIDR range only.
 
    ```shell
    kubectl get pods --all-namespaces --output wide
    ```
 
-4. Confirm that the kube-vip pods and the Cilium pods are in the **Running** state.
+5. Confirm that the kube-vip pods and the Cilium pods are in the **Running** state.
 
    ```shell
    kubectl get pods --namespace kube-system
    ```
 
-5. Confirm that the Kubernetes API server answers on the VIP. The command returns `ok`.
+6. Confirm that the Kubernetes API server answers on the VIP. The command returns `ok`.
 
    ```shell
    curl --insecure "https://[<vip-address>]:6443/healthz"
@@ -260,7 +270,7 @@ Replace `<path-to-kubeconfig>` with the path to the kubeconfig file of the clust
    Replace `<vip-address>` with the VIP of the cluster. Keep the brackets around an IPv6 address, and remove them for an
    IPv4 address.
 
-6. Check the status of Cilium.
+7. Check the status of Cilium.
 
    ```shell
    cilium status
@@ -269,7 +279,4 @@ Replace `<path-to-kubeconfig>` with the path to the kubeconfig file of the clust
 ## Next Steps
 
 To expose cluster services of type `LoadBalancer` through kube-vip, refer to
-[Publish Cluster Services with Kube-vip](./kubevip.md). If your Edge hosts connect through a proxy server or use custom
-Network Time Protocol (NTP) servers, refer to
-[Edge Installer Configuration Reference](../edge-configuration/installer-reference.md). Use bracketed IPv6 addresses in
-proxy settings, for example `http://[fd00::1]:3128`, and add your IPv6 CIDR ranges to `stylus.site.network.noProxy`.
+[Publish Cluster Services with Kube-vip](./kubevip.md).
