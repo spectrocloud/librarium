@@ -25,6 +25,10 @@ requires.
 
 This guide uses an Amazon EKS cluster that has EKS Auto Mode enabled.
 
+:::preview
+
+:::
+
 ## Limitations
 
 - This guide covers non-airgap installations with Helm. It does not cover airgap installations or the

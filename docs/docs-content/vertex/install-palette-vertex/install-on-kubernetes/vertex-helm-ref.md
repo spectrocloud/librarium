@@ -91,6 +91,10 @@ IPv6 or dual-stack networking. Both parameters keep the IPv4-only behavior by de
 Helm charts for Palette VerteX 4.10.x and later. Refer to
 [Install Palette VerteX on an IPv6 EKS Cluster](./install-ipv6-eks.md) for an example.
 
+:::preview
+
+:::
+
 | **Parameters**          | **Description**                                                                                                                                                                                                                                                                                                        | **Type** | **Default value** |
 | ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------------- |
 | `enableIPv6`            | Specifies whether Palette VerteX services listen on IPv6 addresses in addition to IPv4 addresses. A value of `true` also adds the `::1` address and the `fd00::/8` range to the `NO_PROXY` list. Set to `true` when the cluster uses IPv6 or dual-stack networking. A cluster that uses IPv6 only requires this value. | Boolean  | `false`           |
