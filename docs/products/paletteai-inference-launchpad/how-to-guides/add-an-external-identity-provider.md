@@ -86,11 +86,13 @@ appliance. Then you give the provider's groups access to a workspace. For the co
 
    - For an OpenID Connect provider, enter the provider's discovery endpoint. If the provider has none, turn off **Use
      discovery endpoint**. Enter its authorization, token, user info, and JWKS URLs instead. Then enter the **Client
-     ID** and the **Client Secret** from the provider's application.
+     ID** and the **Client Secret** from the provider's application. For the field definitions, refer to
+     [OpenID Connect v1.0 identity providers](https://www.keycloak.org/docs/latest/server_admin/index.html#_identity_broker_oidc).
 
    - For a SAML 2.0 provider, set the **Service provider entity ID** to `https://<appliance-address>/iam/realms/ai`.
      Replace `<appliance-address>` with the address of your appliance. Turn off **Use entity descriptor**. Then enter
-     the provider's single sign-on service URL.
+     the provider's single sign-on service URL. For the field definitions, refer to
+     [SAML v2.0 Identity Providers](https://www.keycloak.org/docs/latest/server_admin/index.html#saml-v2-0-identity-providers).
 
 8. Copy the **Redirect URI** that Keycloak shows. At the provider, register it as the application's callback address.
 
