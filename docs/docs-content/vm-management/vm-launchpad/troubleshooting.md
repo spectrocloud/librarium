@@ -472,7 +472,7 @@ This override takes effect immediately, but it does not persist across reboots. 
 
 <!-- vale Vale.Terms = YES -->
 
-FIPS VM Launchpad appliances use Piraeus storage. On FIPS appliances, network disruptions can cause the DRBD replicas
+FIPS VM Launchpad appliances use Piraeus storage. On these appliances, network disruptions can cause the DRBD replicas
 that back the Keycloak PostgreSQL database to lose their connection. When this happens, the Keycloak login page stops
 responding. The VMO and Headlamp consoles authenticate through Keycloak, so they also become inaccessible. The Keycloak
 and PostgreSQL pods still report a `Ready` status.
@@ -483,8 +483,8 @@ the Keycloak database on node-local storage instead of DRBD replicas.
 
 Starting with version 4.10.TBD, FIPS appliances run the Keycloak database as the `keycloak-db` CloudNativePG cluster
 instead of the `postgres` StatefulSet. The volumes of the new database also use DRBD replicas, so the same problem can
-occur. The procedure is the same on every version, except for the volume claims that you check and the database pod that
-you query. Use the following steps to restore the connection manually.
+occur. The steps differ by version only in the volume claims that you repair and in the database pod and Secret that you
+use to verify the fix. Use the following steps to restore the connection manually.
 
 ### Prerequisites
 
@@ -497,7 +497,7 @@ you query. Use the following steps to restore the connection manually.
 
 ### Identify the LINSTOR Resource
 
-Find the PostgreSQL data PVC, resolve it to its LINSTOR resource, and confirm that at least one replica reports an
+Find each PostgreSQL data PVC, resolve it to its LINSTOR resource, and confirm that at least one replica reports an
 `UpToDate` state. If no replica is `UpToDate`, investigate replica health instead of changing the path.
 
 1. Set the namespace that hosts Keycloak.
@@ -512,20 +512,28 @@ Find the PostgreSQL data PVC, resolve it to its LINSTOR resource, and confirm th
    kubectl --namespace "$NS" get pvc
    ```
 
-   On FIPS appliances earlier than version 4.10.TBD, the list includes the `pgdata-postgres-0` claim. Starting with
-   version 4.10.TBD, the list includes one `keycloak-db-<n>` claim for each database instance, such as `keycloak-db-1`,
-   `keycloak-db-2`, and `keycloak-db-3`. On appliances upgraded from an earlier version, the list might also include the
-   `pgdata-postgres-0` claim of the previous database, which is no longer in use.
+   The claims in the list depend on the appliance version.
+
+   - On FIPS appliances earlier than version 4.10.TBD, the list includes the `pgdata-postgres-0` claim.
+
+   - Starting with version 4.10.TBD, the list includes one `keycloak-db-<n>` claim for each database instance, such as
+     `keycloak-db-1`, `keycloak-db-2`, and `keycloak-db-3`.
+
+   - On appliances upgraded to version 4.10.TBD or later, the list might also include the `pgdata-postgres-0` claim of
+     the previous database. The previous database is no longer in use, so skip this claim.
 
 3. Assign the PostgreSQL data PVC to a variable.
 
    ```bash
-   PVC=<data-pvc>
+   PVC="<data-pvc>"
    ```
 
-   Replace `<data-pvc>` with `pgdata-postgres-0` on FIPS appliances earlier than version 4.10.TBD. Starting with version
-   4.10.TBD, replace it with one of the `keycloak-db-<n>` claims. Repeat this step and the following steps, through step
-   1 of [Verify PostgreSQL](#verify-postgresql), for each `keycloak-db-<n>` claim.
+   Replace `<data-pvc>` with the data claim for your appliance version.
+
+   - On FIPS appliances earlier than version 4.10.TBD, use `pgdata-postgres-0`.
+
+   - Starting with version 4.10.TBD, use one of the `keycloak-db-<n>` claims. You repeat the procedure for each claim in
+     step 2 of [Verify PostgreSQL](#verify-postgresql).
 
 4. Resolve the claim to its persistent volume.
 
@@ -569,10 +577,10 @@ List every declared connection path and its interface, then inspect the interfac
    previous step.
 
    ```bash
-   PATH_NAME=<path-name>
-   DRBD_IF=<interface>
-   NODE_A=<source-node>
-   NODE_B=<target-node>
+   PATH_NAME="<path-name>"
+   DRBD_IF="<interface>"
+   NODE_A="<source-node>"
+   NODE_B="<target-node>"
    ```
 
 3. Inspect the interfaces on the source node.
@@ -618,17 +626,19 @@ check only confirms that the database accepts connections, so run an actual quer
      linstor resource-connection list "$RESOURCE"
    ```
 
-2. Set the database pod and credential values for your appliance version.
+2. _(Version 4.10.TBD and later only)_ Repeat steps 3 - 7 of
+   [Identify the LINSTOR Resource](#identify-the-linstor-resource), the steps in
+   [Inspect the DRBD Connection Paths](#inspect-the-drbd-connection-paths) and
+   [Restore the Connection Path](#restore-the-connection-path), and step 1 of this section for each remaining
+   `keycloak-db-<n>` claim.
 
-   On FIPS appliances earlier than version 4.10.TBD, the database runs in the `postgres-0` pod.
+3. Set the database pod and credential values for your appliance version.
 
-   ```bash
-   DB_POD=postgres-0
-   DB_SECRET=keycloak-db-credentials
-   DB_SECRET_KEY=POSTGRES_PASSWORD
-   ```
+   <Tabs groupId="fips-keycloak-db">
 
-   Starting with version 4.10.TBD, the database runs in the primary pod of the `keycloak-db` cluster.
+   <TabItem label="4.10.TBD and Later" value="cnpg">
+
+   The database runs in the primary pod of the `keycloak-db` cluster.
 
    ```bash
    DB_POD=$(kubectl --namespace "$NS" get cluster.postgresql.cnpg.io keycloak-db \
@@ -637,13 +647,31 @@ check only confirms that the database accepts connections, so run an actual quer
    DB_SECRET_KEY=password
    ```
 
-3. Confirm that the database pod is running.
+   </TabItem>
+
+   <TabItem label="Earlier than 4.10.TBD" value="statefulset">
+
+   The database runs in the `postgres-0` pod.
+
+   ```bash
+   DB_POD=postgres-0
+   DB_SECRET=keycloak-db-credentials
+   DB_SECRET_KEY=POSTGRES_PASSWORD
+   ```
+
+   </TabItem>
+
+   </Tabs>
+
+4. Confirm that the database pod is running.
 
    ```bash
    kubectl --namespace "$NS" get pod "$DB_POD"
    ```
 
-4. Retrieve the password and run the query. Piping the password into the pod over standard input keeps it out of your
+   The `STATUS` column shows `Running`. If the command returns an error, confirm that `DB_POD` is not empty.
+
+5. Retrieve the password and run the query. Piping the password into the pod over standard input keeps it out of your
    shell history and the command arguments.
 
    ```bash
