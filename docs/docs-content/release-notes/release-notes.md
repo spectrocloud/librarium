@@ -11,13 +11,17 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## November 20, 2026 - Release 4.10.x
+## November 20, 2026 - Release 4.10.45
 
 <!-- PATCH RELEASE TICKET: DOC-3466 -->
-<!-- PATCH RELEASE VERSION: 4.10.x -->
-<!-- PATCH RELEASE CANDIDATES: PEM-12730 PEM-12724 PCP-8019 PCP-7991 -->
+<!-- PATCH RELEASE VERSION: 4.10.45 -->
+<!-- PATCH RELEASE CANDIDATES: PEM-12761 PEM-12730 PEM-12724 PE-10197 PCP-8019 PCP-8007 PCP-7991 -->
 
 ### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12761 -->
+
+- Applied security fixes to improve the platform's security posture.
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12724 -->
 
@@ -40,6 +44,16 @@ tags: ["release-notes"]
   Kubernetes version after an upgrade from version 4.9. The `palette-controller-manager` logs showed the error
   `no matches for kind "VSphereMachineTemplateList" in version "infrastructure.cluster.x-k8s.io/v1beta2"`.
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-10197 -->
+<!-- https://spectrocloud.atlassian.net/browse/PCP-8007 -->
+
+- Fixed an issue that caused the Kubelet to fail to start on [Edge](../clusters/edge/edge.md) control plane nodes that
+  use <VersionedLink text="Palette eXtended Kubernetes - Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" /> after
+  a node ran for more than one year without a reboot or an upgrade. When the Kubelet restarted (for example, during a
+  [certificate renewal](../clusters/edge/cluster-management/certificate-renewal.md)), it failed with the error
+  `part of the existing bootstrap client certificate in /etc/kubernetes/kubelet.conf is expired`, and the node became
+  `NotReady`.
+
 <!-- https://spectrocloud.atlassian.net/browse/PCP-7991 -->
 
 - Fixed an issue that caused Palette to request a disk erase each time it released a machine back to MAAS, including
@@ -47,6 +61,14 @@ tags: ["release-notes"]
   default. To erase disks on release, set `eraseDisksOnRelease` in a cluster-level
   [Cluster API override](../architecture/override-capi-properties/maas-capi-override-reference.md#disk-erase-on-machine-release).
   MAAS still erases disks on release if your MAAS environment is configured to do so.
+
+### Edge
+
+:::info
+
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.10.45 Palette release is 4.10.15.
+
+:::
 
 ## November 15, 2026 - Release 4.10.44 {#release-notes-4.10.b}
 
