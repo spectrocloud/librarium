@@ -3,7 +3,7 @@ sidebar_label: "Access Management Reference"
 title: "PaletteAI Inference Launchpad Access Management Reference"
 description:
   "Reference for the tabs, roles, scopes, table columns, form fields, addresses, and messages on the Access Management
-  and Users pages of a PaletteAI Inference Launchpad appliance."
+  and Users pages and the Identity Providers section of a PaletteAI Inference Launchpad appliance."
 hide_table_of_contents: false
 sidebar_position: 4.9
 tags: ["paletteai-inference-launchpad", "reference", "access", "workspaces", "roles"]
@@ -11,9 +11,11 @@ keywords: ["launchpad", "ai", "access", "policy", "rbac", "workspace", "role", "
 ---
 
 This reference lists the tabs, roles, columns, fields, addresses, and messages on the **Access Management** and
-**Users** pages of the appliance console. It supports the [Create a Workspace](../how-to-guides/create-a-workspace.md),
+**Users** pages of the appliance console. It also covers the **Identity Providers** section of the **Settings** menu. It
+supports the [Create a Workspace](../how-to-guides/create-a-workspace.md),
 [Manage Workspace Members](../how-to-guides/manage-workspace-members.md),
-[Manage Users](../how-to-guides/manage-users.md), [Manage Groups](../how-to-guides/manage-groups.md), and
+[Manage Users](../how-to-guides/manage-users.md), [Manage Groups](../how-to-guides/manage-groups.md),
+[Add an External Identity Provider](../how-to-guides/add-an-external-identity-provider.md), and
 [Set Prompt Cache Sharing for a Policy](../how-to-guides/set-prompt-cache-sharing.md) how-tos. For how workspaces,
 members, and policies relate, refer to [Clients and Quotas](../explanation/clients-and-quotas.md#workspaces-and-access).
 
@@ -172,19 +174,22 @@ have one field. For what each option means, refer to [Prompt Cache Sharing](../e
 
 The **Users** tab is on the **Users** page.
 
-| **Column** | **Value**                             |
-| ---------- | ------------------------------------- |
-| **Email**  | The address the person signs in with. |
-| **Name**   | The person's first and last name.     |
-| **Groups** | The groups the person is in.          |
-| **State**  | **Active** or **Inactive**.           |
+| **Column**        | **Value**                                                                                              |
+| ----------------- | ------------------------------------------------------------------------------------------------------ |
+| **Email**         | The address the person signs in with.                                                                  |
+| **Name**          | The person's first and last name.                                                                      |
+| **Groups**        | The groups the person is in.                                                                           |
+| **State**         | **Active** or **Inactive**.                                                                            |
+| **Signs in with** | One label for each external identity provider that the person signed in through, or **Local account**. |
 
-| **Control**      | **Action**                                                                       |
-| ---------------- | -------------------------------------------------------------------------------- |
-| **Add User**     | Opens the **Add user** wizard.                                                   |
-| **Manage**       | Opens the **Manage user** drawer.                                                |
-| **Set password** | Opens the **Set a password for** dialog, titled with the person's email address. |
-| **Delete**       | Deletes the person.                                                              |
+| **Control**           | **Action**                                                                       |
+| --------------------- | -------------------------------------------------------------------------------- |
+| **Everyone**          | Lists every person.                                                              |
+| **Not signed in yet** | Lists the people who have access but have not signed in yet.                     |
+| **Add User**          | Opens the **Add user** wizard.                                                   |
+| **Manage**            | Opens the **Manage user** drawer.                                                |
+| **Set password**      | Opens the **Set a password for** dialog, titled with the person's email address. |
+| **Delete**            | Deletes the person.                                                              |
 
 ### Add User Wizard
 
@@ -215,6 +220,43 @@ The **Groups** tab is on the **Users** page.
 
 The appliance's own groups appear in no listing on the console. The console cannot rename them, give them a new
 description, or delete them.
+
+## Identity Providers
+
+The **Identity Providers** section is on the **Settings** menu, under **External access**. It lists the external
+identity providers that the appliance reads from Keycloak. The console does not create, change, or delete a provider.
+You add and change providers in Keycloak. For the steps, refer to
+[Add an External Identity Provider](../how-to-guides/add-an-external-identity-provider.md).
+
+| **Column**        | **Value**                                                                                              |
+| ----------------- | ------------------------------------------------------------------------------------------------------ |
+| **Provider**      | The provider's display name, which is also the label of its sign-in button.                            |
+| **Alias**         | The provider's alias in Keycloak.                                                                      |
+| **Protocol**      | **OIDC** or **SAML**.                                                                                  |
+| **Groups Mapper** | **Mapped** when a mapper on the provider writes the `idp_groups` attribute. Otherwise, **Not mapped**. |
+| **State**         | **Enabled** or **Disabled**.                                                                           |
+
+| **Control**       | **Action**                                                                           |
+| ----------------- | ------------------------------------------------------------------------------------ |
+| **Open Keycloak** | Opens the Keycloak sign-in page, then the administration console for the `ai` realm. |
+
+### Provider Sign-In
+
+- The sign-in page has an email and password form for local accounts. Under **Or sign in with**, it shows one button for
+  each provider, labeled with the provider's display name.
+
+- When a provider is unavailable, people can still sign in with a local account.
+
+- At each sign-in, the appliance puts the person in each group whose name exactly matches a group that the provider
+  sends. The appliance ignores a group that the provider sends if no group on the appliance has that name.
+
+- When the provider stops sending a group, the person leaves that group at the next sign-in.
+
+- After sign-in, the console opens in the workspace that the person's group is a member of.
+
+- For a person who signed in through a provider, the **Account** page shows `Signed in as <user>, through <provider>.`
+  In place of the password control, it shows `Your password is managed by <provider>.` In these messages, `<user>` is
+  the person's username, and `<provider>` is the provider's display name.
 
 ## Create Form Addresses
 
@@ -247,4 +289,5 @@ Create wizards use the **Previous**, **Next**, and **Save** buttons. Closing a w
 | **Roles**, empty                               | `Inference Launchpad has no role yet.`                                                                                         |
 | **Users**, empty                               | `Inference Launchpad knows nobody yet.`                                                                                        |
 | **Groups**, empty                              | `Inference Launchpad has no group yet.`                                                                                        |
+| Sign-in, no workspace access for the person    | `You do not have access yet. Ask your administrator to add you to a workspace.`                                                |
 | **Users** and **Groups**, no identity provider | `Inference Launchpad has no identity provider, so there is no directory to show.`                                              |
