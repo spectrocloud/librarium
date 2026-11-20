@@ -18,10 +18,6 @@ VERIFY 2. Dual-stack CIDR order: the instruction to list first the range that ma
           inferred from the PEM-12742 test notes. Confirm it.
 VERIFY 3. Hardened images: the PEM-12742 test notes say that the CIS hardening profile disables router advertisements,
           so SLAAC does not work under it. The Edge team is reviewing whether this belongs in the limitations.
-
-TEST RUN. Confirm the UI labels (the VIP field and the Enable overlay toggle are named as on the Enable Overlay Network
-          page), check whether the cluster wizard has a networking stack selector for Edge hosts that needs a step
-          here, and capture example output for the kubectl commands from a real cluster.
 -->
 
 Palette Edge supports IPv6-only clusters and dual-stack clusters. In an IPv6-only cluster, the nodes, pods, and services

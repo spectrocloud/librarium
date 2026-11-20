@@ -87,24 +87,52 @@ cat <path/to/.docker/config.json> | base64 | tr --delete '\n'
 <!-- RELEASE DAY. Replace 4.10.x in this section with the 4.10 patch version that ships the global.ipFamily Helm values. -->
 
 The `ipFamily` block configures IPv6 support. Use it when you install Palette VerteX on a Kubernetes cluster that uses
-IPv6 or dual-stack networking. This block is available in the Helm charts for Palette VerteX 4.10.x and later. Refer to
+IPv6 or dual-stack networking. Both parameters keep the IPv4-only behavior by default. This block is available in the
+Helm charts for Palette VerteX 4.10.x and later. Refer to
 [Install Palette VerteX on an IPv6 EKS Cluster](./install-ipv6-eks.md) for an example.
 
-| **Parameters**          | **Description**                                                                                                                                                                                                                                                                 | **Type** | **Default value** |
-| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------------- |
-| `enableIPv6`            | Specifies whether Palette VerteX services listen on IPv6 addresses in addition to IPv4 addresses. Set to `true` when the cluster uses IPv6 or dual-stack networking.                                                                                                            | Boolean  | `false`           |
-| `serviceIpFamilyPolicy` | The IP family policy of the ingress and gRPC load balancer services. Allowed values are `""`, `PreferDualStack`, and `RequireDualStack`. An empty value keeps the default policy of the cluster. `RequireDualStack` fails on a cluster that does not use dual-stack networking. | String   | `""`              |
+| **Parameters**          | **Description**                                                                                                                                                                                                                                                                                                        | **Type** | **Default value** |
+| ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------------- |
+| `enableIPv6`            | Specifies whether Palette VerteX services listen on IPv6 addresses in addition to IPv4 addresses. A value of `true` also adds the `::1` address and the `fd00::/8` range to the `NO_PROXY` list. Set to `true` when the cluster uses IPv6 or dual-stack networking. A cluster that uses IPv6 only requires this value. | Boolean  | `false`           |
+| `serviceIpFamilyPolicy` | The IP family policy (`spec.ipFamilyPolicy`) of the ingress and gRPC services. Allowed values are `""`, `PreferDualStack`, and `RequireDualStack`. The table after the example describes the effect of each value.                                                                                                     | String   | `""`              |
 
 ```yaml
 global:
   ipFamily:
     enableIPv6: true
-    serviceIpFamilyPolicy: ""
+    serviceIpFamilyPolicy: PreferDualStack
 ```
 
-On AWS, the load balancers accept IPv6 traffic only if you also add the
-`service.beta.kubernetes.io/aws-load-balancer-ip-address-type: dualstack` annotation to `ingress.ingress.annotations`
-and `grpc.annotations`.
+The effect of the `serviceIpFamilyPolicy` value depends on whether the cluster uses dual-stack or single-stack
+networking.
+
+| **Value**          | **Dual-stack cluster**                                                                                                         | **Single-stack cluster**                                          |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------- |
+| `""`               | The services receive one cluster IP address from the first service Classless Inter-Domain Routing (CIDR) range of the cluster. | The services receive one cluster IP address.                      |
+| `PreferDualStack`  | The services receive both an IPv4 and an IPv6 cluster IP address.                                                              | The services receive one cluster IP address, and no error occurs. |
+| `RequireDualStack` | The services receive both an IPv4 and an IPv6 cluster IP address.                                                              | The services cannot be created.                                   |
+
+You cannot use `serviceIpFamilyPolicy` to request services that use IPv6 only. With an empty value, the services use the
+first service CIDR range of the cluster, which is an IPv6 range on an Amazon EKS cluster that uses the IPv6 IP address
+family. Do not use `RequireDualStack` on an IPv6 EKS cluster, because its services use one IP family.
+
+The `serviceIpFamilyPolicy` parameter does not give the load balancers IPv6 addresses on its own. The load balancer
+controller of your cluster must also create dual-stack load balancers. On AWS, add the following annotation to the
+ingress service and, if `grpc.external` is `true`, to the gRPC service. For other providers, refer to the documentation
+of your load balancer controller.
+
+```yaml
+ingress:
+  ingress:
+    annotations:
+      service.beta.kubernetes.io/aws-load-balancer-ip-address-type: dualstack
+grpc:
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-ip-address-type: dualstack
+```
+
+If you map your domain to the IP addresses of a dual-stack load balancer, create `AAAA` DNS records in addition to the
+`A` records.
 
 ## MongoDB
 

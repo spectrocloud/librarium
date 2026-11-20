@@ -12,9 +12,6 @@ keywords: ["self-hosted", "enterprise"]
 <!--
 RELEASE DAY. Replace 4.10.x in Prerequisites with the 4.10 patch version that ships the global.ipFamily Helm values, once
 the final tag exists.
-
-TEST RUN. Validate these steps again with the released Helm charts on an EKS Auto Mode cluster, including the
-cert-manager step.
 -->
 
 You can install self-hosted Palette on an Amazon EKS cluster that uses the IPv6 IP address family. In an IPv6 EKS
@@ -175,15 +172,22 @@ You create the EKS cluster as part of this guide. Ensure that the cluster you cr
 
 ### IPv6 Settings
 
-10. In the `palette/values.yaml` file, set `global.ipFamily.enableIPv6` to `true` so that the Palette services listen on
-    IPv6 addresses. Add the following annotation to the ingress load balancer so that it accepts both IPv4 and IPv6
-    traffic. If you set `grpc.external` to `true`, add the same annotation to the gRPC load balancer. Save the file when
-    you are done.
+10. In the `palette/values.yaml` file, configure the following IPv6 settings. Save the file when you are done. For more
+    information about the `global.ipFamily` parameters, refer to the [IP Family](./palette-helm-ref.md#ip-family)
+    section of the Helm Chart Configuration Reference.
+
+    | **Parameter**                           | **Value**                                                                 | **Description**                                                                                                                                                                                                                                       |
+    | --------------------------------------- | ------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | `global.ipFamily.enableIPv6`            | `true`                                                                    | Palette services listen on IPv6 addresses.                                                                                                                                                                                                            |
+    | `global.ipFamily.serviceIpFamilyPolicy` | `""`                                                                      | Keep the default empty value. The services of an IPv6 EKS cluster use one IP family and receive IPv6 addresses without a policy. Do not use `RequireDualStack`, because it prevents the ingress and gRPC services from being created on this cluster. |
+    | `ingress.ingress.annotations`           | `service.beta.kubernetes.io/aws-load-balancer-ip-address-type: dualstack` | The ingress load balancer accepts both IPv4 and IPv6 traffic.                                                                                                                                                                                         |
+    | `grpc.annotations`                      | `service.beta.kubernetes.io/aws-load-balancer-ip-address-type: dualstack` | The gRPC load balancer accepts both IPv4 and IPv6 traffic. Add this annotation only if you set `grpc.external` to `true`.                                                                                                                             |
 
     ```yaml
     global:
       ipFamily:
         enableIPv6: true
+        serviceIpFamilyPolicy: ""
     grpc:
       annotations:
         service.beta.kubernetes.io/aws-load-balancer-ip-address-type: dualstack
