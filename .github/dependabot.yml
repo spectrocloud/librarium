@@ -8,6 +8,9 @@ updates:
     directory: "/"
     schedule:
       interval: "monthly"
+    # Only propose versions released at least 7 days ago. Dependabot also reads min-release-age from .npmrc.
+    cooldown:
+      default-days: 7
     open-pull-requests-limit: 10
     target-branch: "master"
     commit-message:
@@ -17,6 +20,9 @@ updates:
     directory: "/" # Root directory of the repository
     schedule:
       interval: "monthly"
+    # Only propose versions released at least 7 days ago.
+    cooldown:
+      default-days: 7
     open-pull-requests-limit: 10
     target-branch: "master"
     commit-message:
