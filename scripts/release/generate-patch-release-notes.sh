@@ -1202,6 +1202,20 @@ EOF
       exit 1
     fi
 
+    # Super stops waiting for a long answer after about 50 seconds and returns HTTP 202 with a
+    # thread ID, while it keeps preparing the answer. Collect the answer from that thread instead of
+    # asking again, which would start a new thread. On success the response file holds {"answer": "..."}.
+    if [[ "$HTTP_STATUS" == "202" ]]; then
+      SUPER_THREAD_ID=$(jq -r '.threadId // empty' < "$RESPONSE_FILE" 2>/dev/null || true)
+      SUPER_RETRY_AFTER=$(jq -r '.retryAfterSeconds // empty' < "$RESPONSE_FILE" 2>/dev/null || true)
+      if [[ -n "$SUPER_THREAD_ID" ]]; then
+        echo "ℹ️ Super is still preparing the answer (HTTP 202, thread $SUPER_THREAD_ID). Waiting for it..."
+        if wait_for_super_thread "$SUPER_THREAD_ID" "$SUPER_RETRY_AFTER" "$RESPONSE_FILE"; then
+          HTTP_STATUS="200"
+        fi
+      fi
+    fi
+
     if [[ "$HTTP_STATUS" == "200" ]]; then
       SUPER_BUG_FIXES_BODY=$(jq -r '.answer // empty' < "$RESPONSE_FILE" 2>/dev/null || true)
 
