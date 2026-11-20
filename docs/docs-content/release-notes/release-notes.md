@@ -11,10 +11,10 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## November 20, 2026 - Release 4.9.x
+## November 20, 2026 - Release 4.9.68
 
 <!-- PATCH RELEASE TICKET: DOC-3434 -->
-<!-- PATCH RELEASE VERSION: 4.9.x -->
+<!-- PATCH RELEASE VERSION: 4.9.68 -->
 <!-- PATCH RELEASE CANDIDATES: PEM-12541 PE-10137 PCP-8004 PCP-7964 -->
 
 ### Improvements
@@ -42,6 +42,23 @@ tags: ["release-notes"]
   [certificate renewal](../clusters/edge/cluster-management/certificate-renewal.md)), it failed with the error
   `part of the existing bootstrap client certificate in /etc/kubernetes/kubelet.conf is expired`, and the node became
   `NotReady`.
+
+### Edge
+
+:::info
+
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.9.68 Palette release is 4.9.45.
+
+:::
+
+### Automation
+
+:::info
+
+The [Palette CLI](../automation/palette-cli/palette-cli.md) version corresponding to the 4.9.68 Palette release is
+4.9.30. Refer to [CLI Tools](/downloads/cli-tools/) for the download URL and checksum.
+
+:::
 
 ## October 29, 2026 - Release 4.9.66
 
