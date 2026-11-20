@@ -1,10 +1,10 @@
 Installation task,Field,Required?,Value,Notes
 Configure Hosts,Network adapter,If changing adapter settings,,Host network interface to configure.
+Configure Hosts,VLAN ID,If using VLAN tagging,,"VLAN for the adapter's traffic, from 1 to 4094."
+Configure Hosts,Maximum Transmission Unit,If using a non-standard MTU,,"Largest packet size, in bytes, for the adapter."
 Configure Hosts,IP Address,If using a static IP,,Static IPv4 address for the host; also the Local UI address.
 Configure Hosts,Subnet Mask,If using a static IP,,Subnet mask for the host's static IP address.
 Configure Hosts,Default Gateway,If using a static IP,,"Router IP address, in the same subnet as the host."
-Configure Hosts,VLAN ID,If using VLAN tagging,,"VLAN for the adapter's traffic, from 1 to 4094."
-Configure Hosts,Maximum Transmission Unit,If using a non-standard MTU,,"Largest packet size, in bytes, for the adapter."
 Configure Hosts,Primary Nameserver,If configuring DNS,,IP address of the host's DNS server.
 Configure Hosts,Alternate Nameserver,Optional,,IP address of a second DNS server.
 Configure Hosts,Search,Optional,,"DNS search domains, comma-separated."
