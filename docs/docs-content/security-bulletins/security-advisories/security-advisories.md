@@ -133,14 +133,13 @@ The following table lists the patch status of Kubernetes versions and packs.
 Provider images and Edge installer ISOs that you build with one of the following CanvOS versions no longer trust the
 affected root certificates:
 
-- 4.10.11, 4.10.11-rev.1, or 4.10.15 or a later 4.10 version
+- 4.10.15 or a later 4.10 version
 - 4.9.44 or a later 4.9 version
 - 4.8.32 or a later 4.8 version
 
-CanvOS versions 4.10.12, 4.10.13, and 4.10.14 do not include this change. Appliance mode Edge hosts that use images
-built with a CanvOS version that does not include the change can use a workaround to remove the affected root
-certificates from the host trust store. The workaround applies to hosts that run Ubuntu, SUSE Linux Enterprise Micro,
-Red Hat Enterprise Linux, or Rocky Linux. Refer to
+Appliance mode Edge hosts that use images built with an earlier CanvOS version can use a workaround to remove the
+affected root certificates from the host trust store. The workaround applies to hosts that run Ubuntu, SUSE Linux
+Enterprise Micro, Red Hat Enterprise Linux, or Rocky Linux. Refer to
 [Troubleshooting - Edge](../../troubleshooting/edge/edge.md#scenario---appliance-mode-edge-hosts-trust-compromised-emudhra-certificate-authorities)
 for the steps.
 
