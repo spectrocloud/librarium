@@ -30,9 +30,9 @@ This guide uses an Amazon EKS cluster that has EKS Auto Mode enabled.
 - This guide covers non-airgap installations with Helm. It does not cover airgap installations or the
   [VerteX Management Appliance](../vertex-management-appliance.md).
 
-- Some of the registries that Palette VerteX downloads packs and images from are reachable over IPv4 only. The nodes of
-  the EKS cluster must have an IPv4 route to these registries, for example, through a Network Address Translation (NAT)
-  gateway. If the route is missing, pack registry synchronization fails.
+- Many services outside the cluster, such as some of the registries that Palette VerteX downloads packs and images from,
+  are reachable over IPv4 only. The nodes of the EKS cluster must have an IPv4 route to these services, for example,
+  through a Network Address Translation (NAT) gateway. If the route is missing, pack registry synchronization fails.
 
 - Amazon EKS does not allow you to change the IP address family of an existing cluster. You cannot convert an existing
   IPv4 installation to IPv6.
