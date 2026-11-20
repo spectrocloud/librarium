@@ -25,6 +25,7 @@ The following components have been updated for Palette version 4.10.13 - 4.10.44
 | ----------------------------------------------------------------------------------------------------------------- | ------- |
 | [Artifact Studio](../downloads/artifact-studio.md)                                                                | 4.10.9  |
 | [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.30.7  |
+| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.30.7  |
 
 <!-- BEGIN COMPONENT UPDATES BODY: DOC-3450. DO NOT DELETE. -->
 
