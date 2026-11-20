@@ -472,16 +472,19 @@ This override takes effect immediately, but it does not persist across reboots. 
 
 <!-- vale Vale.Terms = YES -->
 
-FIPS VM Launchpad appliances use Piraeus storage. On FIPS appliances earlier than version 4.10.TBD, network disruptions
-can cause the DRBD replicas that back the Keycloak PostgreSQL database to lose their connection. When this happens, the
-Keycloak login page stops responding. The VMO and Headlamp consoles authenticate through Keycloak, so they also become
-inaccessible. The Keycloak and PostgreSQL pods still report a `Ready` status.
+FIPS VM Launchpad appliances use Piraeus storage. On FIPS appliances, network disruptions can cause the DRBD replicas
+that back the Keycloak PostgreSQL database to lose their connection. When this happens, the Keycloak login page stops
+responding. The VMO and Headlamp consoles authenticate through Keycloak, so they also become inaccessible. The Keycloak
+and PostgreSQL pods still report a `Ready` status.
 
 This occurs because the DRBD resource path is missing or uses different network interfaces on its peer nodes, which
 suspends database I/O. Non-FIPS appliances, including the Non-FIPS Piraeus variant, are not affected, because they store
-the Keycloak database on node-local storage instead of DRBD replicas. Starting with version 4.10.TBD, FIPS appliances
-run the Keycloak database as a CloudNativePG cluster, and this procedure does not apply. On earlier FIPS appliances, use
-the following steps to restore the connection manually.
+the Keycloak database on node-local storage instead of DRBD replicas.
+
+Starting with version 4.10.TBD, FIPS appliances run the Keycloak database as the `keycloak-db` CloudNativePG cluster
+instead of the `postgres` StatefulSet. The volumes of the new database also use DRBD replicas, so the same problem can
+occur. The procedure is the same on every version, except for the volume claims that you check and the database pod that
+you query. Use the following steps to restore the connection manually.
 
 ### Prerequisites
 
@@ -503,17 +506,26 @@ Find the PostgreSQL data PVC, resolve it to its LINSTOR resource, and confirm th
    NS=keycloak
    ```
 
-2. List the persistent volume claims in the namespace, and confirm that the list includes the `pgdata-postgres-0` claim.
+2. List the persistent volume claims in the namespace.
 
    ```bash
    kubectl --namespace "$NS" get pvc
    ```
 
-3. Assign the PostgreSQL data PVC, `pgdata-postgres-0`, to a variable.
+   On FIPS appliances earlier than version 4.10.TBD, the list includes the `pgdata-postgres-0` claim. Starting with
+   version 4.10.TBD, the list includes one `keycloak-db-<n>` claim for each database instance, such as `keycloak-db-1`,
+   `keycloak-db-2`, and `keycloak-db-3`. On appliances upgraded from an earlier version, the list might also include the
+   `pgdata-postgres-0` claim of the previous database, which is no longer in use.
+
+3. Assign the PostgreSQL data PVC to a variable.
 
    ```bash
-   PVC=pgdata-postgres-0
+   PVC=<data-pvc>
    ```
+
+   Replace `<data-pvc>` with `pgdata-postgres-0` on FIPS appliances earlier than version 4.10.TBD. Starting with version
+   4.10.TBD, replace it with one of the `keycloak-db-<n>` claims. Repeat this step and the following steps, through step
+   1 of [Verify PostgreSQL](#verify-postgresql), for each `keycloak-db-<n>` claim.
 
 4. Resolve the claim to its persistent volume.
 
@@ -606,18 +618,29 @@ check only confirms that the database accepts connections, so run an actual quer
      linstor resource-connection list "$RESOURCE"
    ```
 
-2. List the pods in the namespace, and confirm that the list includes the `postgres-0` pod.
+2. Set the database pod and credential values for your appliance version.
 
-   ```bash
-   kubectl --namespace "$NS" get pods
-   ```
-
-3. Set the database pod and credential values.
+   On FIPS appliances earlier than version 4.10.TBD, the database runs in the `postgres-0` pod.
 
    ```bash
    DB_POD=postgres-0
    DB_SECRET=keycloak-db-credentials
    DB_SECRET_KEY=POSTGRES_PASSWORD
+   ```
+
+   Starting with version 4.10.TBD, the database runs in the primary pod of the `keycloak-db` cluster.
+
+   ```bash
+   DB_POD=$(kubectl --namespace "$NS" get cluster.postgresql.cnpg.io keycloak-db \
+     --output jsonpath='{.status.currentPrimary}')
+   DB_SECRET=keycloak-db-app
+   DB_SECRET_KEY=password
+   ```
+
+3. Confirm that the database pod is running.
+
+   ```bash
+   kubectl --namespace "$NS" get pod "$DB_POD"
    ```
 
 4. Retrieve the password and run the query. Piping the password into the pod over standard input keeps it out of your

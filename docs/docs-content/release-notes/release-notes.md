@@ -61,7 +61,10 @@ This release delivers version 4.10.TBD of the PaletteAI VM Launchpad appliance, 
 <!-- https://spectrocloud.atlassian.net/browse/PVM-1292 -->
 
 - FIPS PaletteAI VM Launchpad appliances now run the Keycloak database as a CloudNativePG cluster. The upgrade moves the
-  database automatically, with no extra steps.
+  database automatically, with no extra steps. The previous database stays on the appliance after the upgrade. Once you
+  confirm that you can log in to Keycloak, you can delete the `postgres` StatefulSet and Service, the
+  `pgdata-postgres-0` PersistentVolumeClaim (PVC), and the `keycloak-db-credentials` Secret from the `keycloak`
+  namespace. This cleanup is optional.
 
 ### Bug Fixes
 
