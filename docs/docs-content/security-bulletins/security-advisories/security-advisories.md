@@ -30,7 +30,7 @@ advisories are published.
 ## Security Advisory 024 - eMudhra Certificate Authority Compromise (TLS Trust Store Exposure)
 
 - **Release Date**: October 21, 2026
-- **Last Updated**: November 9, 2026
+- **Last Updated**: November 20, 2026
 - **Severity**: High
 - **CVSS Score**: 7.4 (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N)
 - **CVEs**: CVE-2026-111943
@@ -134,10 +134,16 @@ The following table lists the patch status of Kubernetes versions and packs.
 #### Edge Hosts
 
 Provider images and Edge installer ISOs that you build with one of the following CanvOS versions no longer trust the
-affected root certificates: 4.10.11 or later, 4.9.44 or a later 4.9 version, or 4.8.32 or a later 4.8 version. Appliance
-mode Edge hosts that use images built with an earlier CanvOS version can use a workaround to remove the affected root
-certificates from the host trust store. The workaround applies to hosts that run Ubuntu, SUSE Linux Enterprise Micro,
-Red Hat Enterprise Linux, or Rocky Linux. Refer to
+affected root certificates:
+
+- 4.10.15 or a later 4.10 version
+  - 4.10.11 and 4.10.11-rev.1 also include this change.
+- 4.9.44 or a later 4.9 version
+- 4.8.32 or a later 4.8 version
+
+Appliance mode Edge hosts that use images built with any other CanvOS version can use a workaround to remove the
+affected root certificates from the host trust store. The workaround applies to hosts that run Ubuntu, SUSE Linux
+Enterprise Micro, Red Hat Enterprise Linux, or Rocky Linux. Refer to
 [Troubleshooting - Edge](../../troubleshooting/edge/edge.md#scenario---appliance-mode-edge-hosts-trust-compromised-emudhra-certificate-authorities)
 for the steps.
 
