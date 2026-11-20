@@ -33,9 +33,9 @@ The following components have been updated for Palette version 4.10.13 - 4.10.44
 
 <!-- https://spectrocloud.atlassian.net/browse/PAC-5247 -->
 
-- Added K3s 1.34.13, 1.35.10, 1.36.6, and 1.37.2 to the non-FIPS variant of the `edge-k3s` pack for Edge clusters.
-- Added RKE2 1.34.13, 1.35.10, 1.36.6, and 1.37.2 to the FIPS and non-FIPS variants of the `edge-rke2` pack for Edge
-  clusters.
+- Added K3s 1.34.13 to the non-FIPS variant of the `edge-k3s` pack for Edge clusters.
+- Added RKE2 1.34.13, 1.35.10, 1.36.6, and 1.37.2 to the non-FIPS variant of the `edge-rke2` pack, and RKE2 1.36.6 to
+  its FIPS variant, for Edge clusters.
 - Added Kubernetes 1.36.6 and 1.37.2 to the FIPS and non-FIPS variants of the `edge-k8s` pack for Edge clusters.
 - Added Kubernetes 1.36.6 and 1.37.2 to the FIPS and non-FIPS variants of the `kubernetes` pack, and Kubernetes 1.34.13
   to its FIPS variant.
@@ -138,17 +138,13 @@ The following components have been updated for Palette version 4.10.13 - 4.10.44
 | <VersionedLink text="cni-calico-azure" url="/integrations/packs/?pack=cni-calico-azure" /> | `cni` | :white_check_mark: | :white_check_mark: | 3.33.1 |
 | <VersionedLink text="csi-aws-ebs" url="/integrations/packs/?pack=csi-aws-ebs" /> | `csi` | :white_check_mark: | :white_check_mark: | 1.68.0 |
 | <VersionedLink text="csi-aws-efs" url="/integrations/packs/?pack=csi-aws-efs" /> | `csi` | :white_check_mark: | :x: | 3.6.0 |
-| <VersionedLink text="csi-portworx-generic" url="/integrations/packs/?pack=csi-portworx-generic" /> | `csi` | :white_check_mark: | :x: | 3.7.0-rev1 |
 | <VersionedLink text="edge-k3s" url="/integrations/packs/?pack=edge-k3s" /> | `k8s` | :white_check_mark: | :x: | 1.34.13 |
-| <VersionedLink text="edge-k3s" url="/integrations/packs/?pack=edge-k3s" /> | `k8s` | :white_check_mark: | :x: | 1.35.10 |
-| <VersionedLink text="edge-k3s" url="/integrations/packs/?pack=edge-k3s" /> | `k8s` | :white_check_mark: | :x: | 1.36.6 |
-| <VersionedLink text="edge-k3s" url="/integrations/packs/?pack=edge-k3s" /> | `k8s` | :white_check_mark: | :x: | 1.37.2 |
 | <VersionedLink text="edge-k8s" url="/integrations/packs/?pack=edge-k8s" /> | `k8s` | :white_check_mark: | :white_check_mark: | 1.36.6 |
 | <VersionedLink text="edge-k8s" url="/integrations/packs/?pack=edge-k8s" /> | `k8s` | :white_check_mark: | :white_check_mark: | 1.37.2 |
-| <VersionedLink text="edge-rke2" url="/integrations/packs/?pack=edge-rke2" /> | `k8s` | :white_check_mark: | :white_check_mark: | 1.34.13 |
-| <VersionedLink text="edge-rke2" url="/integrations/packs/?pack=edge-rke2" /> | `k8s` | :white_check_mark: | :white_check_mark: | 1.35.10 |
+| <VersionedLink text="edge-rke2" url="/integrations/packs/?pack=edge-rke2" /> | `k8s` | :white_check_mark: | :x: | 1.34.13 |
+| <VersionedLink text="edge-rke2" url="/integrations/packs/?pack=edge-rke2" /> | `k8s` | :white_check_mark: | :x: | 1.35.10 |
 | <VersionedLink text="edge-rke2" url="/integrations/packs/?pack=edge-rke2" /> | `k8s` | :white_check_mark: | :white_check_mark: | 1.36.6 |
-| <VersionedLink text="edge-rke2" url="/integrations/packs/?pack=edge-rke2" /> | `k8s` | :white_check_mark: | :white_check_mark: | 1.37.2 |
+| <VersionedLink text="edge-rke2" url="/integrations/packs/?pack=edge-rke2" /> | `k8s` | :white_check_mark: | :x: | 1.37.2 |
 | <VersionedLink text="external-secrets-operator" url="/integrations/packs/?pack=external-secrets-operator" /> | `addon` | :white_check_mark: | :x: | 2.15.0 |
 | <VersionedLink text="headlamp" url="/integrations/packs/?pack=headlamp" /> | `addon` | :x: | :white_check_mark: | 0.45.0 |
 | <VersionedLink text="karpenter" url="/integrations/packs/?pack=karpenter" /> | `addon` | :white_check_mark: | :white_check_mark: | 1.15.2 |
@@ -158,7 +154,6 @@ The following components have been updated for Palette version 4.10.13 - 4.10.44
 | <VersionedLink text="kubernetes" url="/integrations/packs/?pack=kubernetes" /> | `k8s` | :white_check_mark: | :white_check_mark: | 1.37.2 |
 | <VersionedLink text="kyverno" url="/integrations/packs/?pack=kyverno" /> | `addon` | :white_check_mark: | :x: | 1.20.0 |
 | <VersionedLink text="openobserve" url="/integrations/packs/?pack=openobserve" /> | `addon` | :white_check_mark: | :x: | 1.1.2 |
-| <VersionedLink text="portworx-add-on" url="/integrations/packs/?pack=portworx-add-on" /> | `addon` | :white_check_mark: | :x: | 3.7.0-rev1 |
 | <VersionedLink text="reloader" url="/integrations/packs/?pack=reloader" /> | `addon` | :white_check_mark: | :x: | 1.4.24 |
 | <VersionedLink text="tigera-operator" url="/integrations/packs/?pack=tigera-operator" /> | `cni` | :white_check_mark: | :x: | 3.33.1 |
 | <VersionedLink text="traefik" url="/integrations/packs/?pack=traefik" /> | `addon` | :white_check_mark: | :x: | 42.4.0 |
