@@ -96,12 +96,18 @@ appliance. Then you give the provider's groups access to a workspace. For the co
 
 8. Copy the **Redirect URI** that Keycloak shows. At the provider, register it as the application's callback address.
 
+   ![The Keycloak Add OpenID Connect provider form, with the Redirect URI field at the top and the Alias field below it.](/assets/docs/images/add-an-external-identity-provider_keycloak-add-provider.webp)
+
 9. Select **Add**. The provider's settings page opens.
 
 10. In **Advanced settings**, turn on **Trust Email**. Leave **Sync mode** set to **Import**.
 
+    ![The Keycloak provider settings page, with the collapsed Advanced section and the Advanced settings section that holds the trust email switch.](/assets/docs/images/add-an-external-identity-provider_keycloak-advanced-settings.webp)
+
 11. _(OpenID Connect providers only)_ Open **Advanced**, and set **Scopes** to `openid email profile`. For Okta, set
     **Scopes** to `openid email profile groups`.
+
+    ![The expanded Advanced section in Keycloak, with the Scopes field filled in.](/assets/docs/images/add-an-external-identity-provider_keycloak-scopes.webp)
 
 12. Select **Save**.
 
@@ -122,6 +128,8 @@ appliance. Then you give the provider's groups access to a workspace. For the co
 
 5. Select **Save**. Keycloak confirms that the mapper was created.
 
+   ![The Keycloak Edit Identity Provider Mapper page after the save, with the mapper type set to Attribute Importer and the user attribute name filled in.](/assets/docs/images/add-an-external-identity-provider_keycloak-mapper.webp)
+
 ## Give the Provider's Groups Access
 
 1. In the console, add a group with the exact name that the provider sends, such as `platform-team`. For Auth0, use the
@@ -137,6 +145,8 @@ appliance. Then you give the provider's groups access to a workspace. For the co
 2. On the **Settings** menu, under **External access**, select **Identity Providers**.
 
 3. Confirm that the provider is in the list, that **Groups Mapper** is **Mapped**, and that **State** is **Enabled**.
+
+   ![The Identity Providers section of the console settings, with the Open Keycloak button and a list of providers.](/assets/docs/images/add-an-external-identity-provider_identity-providers.webp)
 
 4. Sign out of the console.
 
@@ -154,6 +164,8 @@ appliance. Then you give the provider's groups access to a workspace. For the co
 8. From the left main menu, select **Users**.
 
 9. On the **Users** tab, confirm that the **Signs in with** column names the provider for the person who signed in.
+
+   ![The Users tab of the console, with the Signs in with column for each person.](/assets/docs/images/add-an-external-identity-provider_users-signs-in.webp)
 
 ## Next Steps
 
