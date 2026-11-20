@@ -54,9 +54,10 @@ agent and Palette-created Kubernetes resources that will interfere with the inst
   in the AWS documentation for the complete list of AWS requirements and considerations.
 
 - An Identity and Access Management (IAM) policy that allows the Amazon VPC Container Network Interface (CNI) plugin to
-  assign IPv6 addresses. Attach the policy to the IAM role that the Amazon VPC CNI add-on uses. AWS does not provide a
-  managed policy for the IPv6 IP address family, so you must create the policy. This guide uses the policy name
-  `AmazonEKS_CNI_IPv6_Policy`. Refer to
+  assign IPv6 addresses. Attach the policy to the IAM role that the Amazon VPC CNI add-on uses. This is either a
+  dedicated role for the add-on or the node IAM role of the managed node group that you create after the installation.
+  AWS does not provide a managed policy for the IPv6 IP address family, so you must create the policy. This guide uses
+  the policy name `AmazonEKS_CNI_IPv6_Policy`. Refer to
   [Configure Amazon VPC CNI plugin to use IRSA](https://docs.aws.amazon.com/eks/latest/userguide/cni-iam-role.html) in
   the AWS documentation for the policy contents and the command to create it.
 
@@ -96,14 +97,14 @@ You create the EKS cluster as part of this guide. Ensure that the cluster you cr
 1. Create an Amazon EKS cluster with the following settings. Configure the remaining settings to match the
    [Kubernetes cluster prerequisites](#kubernetes-cluster) and your environment.
 
-   | **Setting**                   | **Value**                                                                                                                                                                       |
-   | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | **EKS Auto Mode**             | Enabled.                                                                                                                                                                        |
-   | **Kubernetes version**        | A version that your Palette version supports. The EKS console can preselect a newer version. Refer to [Kubernetes Requirements](../install-palette.md#kubernetes-requirements). |
-   | **VPC** and **Subnets**       | The VPC that has an IPv6 CIDR block, and its private subnets.                                                                                                                   |
-   | **Cluster IP address family** | **IPv6**.                                                                                                                                                                       |
-   | **Add-ons**                   | **Amazon EKS Pod Identity Agent**, **Amazon VPC CNI**, **CoreDNS**, and **kube-proxy**. Do not select **Metrics Server**, because Palette installs its own.                     |
-   | **Amazon VPC CNI** IAM role   | The IAM role that has the `AmazonEKS_CNI_IPv6_Policy` policy attached.                                                                                                          |
+   | **Setting**                   | **Value**                                                                                                                                                                                                                                                                    |
+   | ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **EKS Auto Mode**             | Enabled.                                                                                                                                                                                                                                                                     |
+   | **Kubernetes version**        | A version that your Palette version supports. The EKS console can preselect a newer version. Refer to [Kubernetes Requirements](../install-palette.md#kubernetes-requirements).                                                                                              |
+   | **VPC** and **Subnets**       | The VPC that has an IPv6 CIDR block, and its private subnets.                                                                                                                                                                                                                |
+   | **Cluster IP address family** | **IPv6**.                                                                                                                                                                                                                                                                    |
+   | **Add-ons**                   | **Amazon EKS Pod Identity Agent**, **Amazon VPC CNI**, **CoreDNS**, and **kube-proxy**. Do not select **Metrics Server**, because Palette installs its own.                                                                                                                  |
+   | **Amazon VPC CNI** IAM role   | The IAM role that has the `AmazonEKS_CNI_IPv6_Policy` policy attached. If you select **Inherit from node** instead, attach the policy to the node IAM role of the managed node group that you create in [Post-Installation Configuration](#post-installation-configuration). |
 
 2. Update your kubeconfig file so that you can access the cluster with `kubectl`.
 
@@ -232,14 +233,15 @@ You create the EKS cluster as part of this guide. Ensure that the cluster you cr
 19. Create a managed node group in the EKS cluster with the following settings. The `cluster-management-agent` pod of
     Palette cannot be scheduled on nodes that EKS Auto Mode manages.
 
-    | **Setting**       | **Value**                       |
-    | ----------------- | ------------------------------- |
-    | **AMI type**      | Amazon Linux 2023               |
-    | **Instance type** | `t3.medium`                     |
-    | **Desired size**  | `1`                             |
-    | **Minimum size**  | `1`                             |
-    | **Maximum size**  | `2`                             |
-    | **Subnets**       | The private subnets of the VPC. |
+    | **Setting**       | **Value**                                                                                                                                                                    |
+    | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Node IAM role** | A node IAM role for the node group. If the Amazon VPC CNI add-on inherits its permissions from the node, the role must have the `AmazonEKS_CNI_IPv6_Policy` policy attached. |
+    | **AMI type**      | Amazon Linux 2023                                                                                                                                                            |
+    | **Instance type** | `t3.medium`                                                                                                                                                                  |
+    | **Desired size**  | `1`                                                                                                                                                                          |
+    | **Minimum size**  | `1`                                                                                                                                                                          |
+    | **Maximum size**  | `2`                                                                                                                                                                          |
+    | **Subnets**       | The private subnets of the VPC.                                                                                                                                              |
 
     :::warning
 

@@ -14,6 +14,10 @@ Open the file `extras/cert-manager/values.yaml` using a text editor of your choi
     `imagePullSecret.create` to `true`. The chart creates the secret only when `imagePullSecret.create` is `true`. The
     image pull secret is not required if you plan to use mirror registries or image swap. </li>
 
+    Use the value that is labeled **Docker Configuration JSON (dockerconfigjson)** in the message from your customer
+    support representative. The message also contains a service account key for `docker login` commands. The service
+    account key does not work in the `imagePullSecret.dockerConfigJson` field.
+
     Alternately, if you plan to pull images from a private registry that requires authentication, use the base64-encoded
     contents of your `config.json` containing the registry credentials. Refer to
     <PaletteVertexUrlMapper
