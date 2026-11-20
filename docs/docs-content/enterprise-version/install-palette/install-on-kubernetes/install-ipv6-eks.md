@@ -28,9 +28,9 @@ This guide uses an Amazon EKS cluster that has EKS Auto Mode enabled.
 - This guide covers non-airgap installations with Helm. It does not cover airgap installations or the
   [Palette Management Appliance](../palette-management-appliance.md).
 
-- Some of the registries that Palette downloads packs and images from are reachable over IPv4 only. The nodes of the EKS
-  cluster must have an IPv4 route to these registries, for example, through a Network Address Translation (NAT) gateway.
-  If the route is missing, pack registry synchronization fails.
+- Many services outside the cluster, such as some of the registries that Palette downloads packs and images from, are
+  reachable over IPv4 only. The nodes of the EKS cluster must have an IPv4 route to these services, for example, through
+  a Network Address Translation (NAT) gateway. If the route is missing, pack registry synchronization fails.
 
 - Amazon EKS does not allow you to change the IP address family of an existing cluster. You cannot convert an existing
   IPv4 installation to IPv6.
@@ -54,9 +54,10 @@ agent and Palette-created Kubernetes resources that will interfere with the inst
   in the AWS documentation for the complete list of AWS requirements and considerations.
 
 - An Identity and Access Management (IAM) policy that allows the Amazon VPC Container Network Interface (CNI) plugin to
-  assign IPv6 addresses. Attach the policy to the IAM role that the Amazon VPC CNI add-on uses. AWS does not provide a
-  managed policy for the IPv6 IP address family, so you must create the policy. This guide uses the policy name
-  `AmazonEKS_CNI_IPv6_Policy`. Refer to
+  assign IPv6 addresses. Attach the policy to the IAM role that the Amazon VPC CNI add-on uses. This is either a
+  dedicated role for the add-on or the node IAM role of the managed node group that you create after the installation.
+  AWS does not provide a managed policy for the IPv6 IP address family, so you must create the policy. This guide uses
+  the policy name `AmazonEKS_CNI_IPv6_Policy`. Refer to
   [Configure Amazon VPC CNI plugin to use IRSA](https://docs.aws.amazon.com/eks/latest/userguide/cni-iam-role.html) in
   the AWS documentation for the policy contents and the command to create it.
 
@@ -96,14 +97,14 @@ You create the EKS cluster as part of this guide. Ensure that the cluster you cr
 1. Create an Amazon EKS cluster with the following settings. Configure the remaining settings to match the
    [Kubernetes cluster prerequisites](#kubernetes-cluster) and your environment.
 
-   | **Setting**                   | **Value**                                                                                                                                                   |
-   | ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | **EKS Auto Mode**             | Enabled.                                                                                                                                                    |
-   | **Kubernetes version**        | A version that your Palette version supports. Refer to [Kubernetes Requirements](../install-palette.md#kubernetes-requirements).                            |
-   | **VPC** and **Subnets**       | The VPC that has an IPv6 CIDR block, and its private subnets.                                                                                               |
-   | **Cluster IP address family** | **IPv6**.                                                                                                                                                   |
-   | **Add-ons**                   | **Amazon EKS Pod Identity Agent**, **Amazon VPC CNI**, **CoreDNS**, and **kube-proxy**. Do not select **Metrics Server**, because Palette installs its own. |
-   | **Amazon VPC CNI** IAM role   | The IAM role that has the `AmazonEKS_CNI_IPv6_Policy` policy attached.                                                                                      |
+   | **Setting**                   | **Value**                                                                                                                                                                                                                                                                    |
+   | ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **EKS Auto Mode**             | Enabled.                                                                                                                                                                                                                                                                     |
+   | **Kubernetes version**        | A version that your Palette version supports. The EKS console can preselect a newer version. Refer to [Kubernetes Requirements](../install-palette.md#kubernetes-requirements).                                                                                              |
+   | **VPC** and **Subnets**       | The VPC that has an IPv6 CIDR block, and its private subnets.                                                                                                                                                                                                                |
+   | **Cluster IP address family** | **IPv6**.                                                                                                                                                                                                                                                                    |
+   | **Add-ons**                   | **Amazon EKS Pod Identity Agent**, **Amazon VPC CNI**, **CoreDNS**, and **kube-proxy**. Do not select **Metrics Server**, because Palette installs its own.                                                                                                                  |
+   | **Amazon VPC CNI** IAM role   | The IAM role that has the `AmazonEKS_CNI_IPv6_Policy` policy attached. If you select **Inherit from node** instead, attach the policy to the node IAM role of the managed node group that you create in [Post-Installation Configuration](#post-installation-configuration). |
 
 2. Update your kubeconfig file so that you can access the cluster with `kubectl`.
 
@@ -232,14 +233,24 @@ You create the EKS cluster as part of this guide. Ensure that the cluster you cr
 19. Create a managed node group in the EKS cluster with the following settings. The `cluster-management-agent` pod of
     Palette cannot be scheduled on nodes that EKS Auto Mode manages.
 
-    | **Setting**       | **Value**                       |
-    | ----------------- | ------------------------------- |
-    | **AMI type**      | Amazon Linux 2023               |
-    | **Instance type** | `t3.medium`                     |
-    | **Desired size**  | `1`                             |
-    | **Minimum size**  | `1`                             |
-    | **Maximum size**  | `2`                             |
-    | **Subnets**       | The private subnets of the VPC. |
+    | **Setting**       | **Value**                                                                                                                                                                    |
+    | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Node IAM role** | A node IAM role for the node group. If the Amazon VPC CNI add-on inherits its permissions from the node, the role must have the `AmazonEKS_CNI_IPv6_Policy` policy attached. |
+    | **AMI type**      | Amazon Linux 2023                                                                                                                                                            |
+    | **Instance type** | `t3.medium`                                                                                                                                                                  |
+    | **Desired size**  | `1`                                                                                                                                                                          |
+    | **Minimum size**  | `1`                                                                                                                                                                          |
+    | **Maximum size**  | `2`                                                                                                                                                                          |
+    | **Subnets**       | The private subnets of the VPC.                                                                                                                                              |
+
+    :::warning
+
+    Create the managed node group only after the installation completes. If the node group exists during the
+    installation, pods that require persistent volumes, such as the MongoDB pods, can be scheduled on its node. Their
+    volumes are never provisioned, because the EBS storage driver of EKS Auto Mode runs only on the nodes that EKS Auto
+    Mode manages.
+
+    :::
 
 20. _(Optional)_ If you plan to deploy clusters with EKS Pod Identity, complete the steps in the
     [EKS Pod Identity](../../../clusters/public-cloud/aws/add-aws-accounts.md#eks-pod-identity) section of the Register
@@ -260,6 +271,18 @@ contains IPv6 addresses.
 
 ```shell
 kubectl get pods --all-namespaces --output wide
+```
+
+```shell hideClipboard title="Example Output"
+NAMESPACE         NAME                               READY   STATUS    RESTARTS   AGE     IP                         NODE
+cert-manager      cert-manager-7f6bd8d487-x8vtp      1/1     Running   0          104m    2001:db8:1:b702:f221::3    ip-192-0-2-10.ec2.internal
+cp-system         spectro-cp-ui-6d75b76877-5k2jd     1/1     Running   0          59m     2001:db8:1:b702:f221::14   ip-192-0-2-10.ec2.internal
+hubble-system     auth-6c85bbfdd-6b6q8               1/1     Running   0          29m     2001:db8:1:b703:797::2     i-0123456789abcdef1
+hubble-system     configserver-6c445ff6d7-7t5r7      1/1     Running   0          27m     2001:db8:1:b702:28d1::d    i-0123456789abcdef2
+hubble-system     mongo-0                            2/2     Running   0          28m     2001:db8:1:b703:797::b     i-0123456789abcdef1
+ingress-traefik   traefik-ingress-controller-82fj9   1/1     Running   0          30m     2001:db8:1:b702:28d1::     i-0123456789abcdef2
+ui-system         spectro-ui-7649f56cfd-gdb5s        1/1     Running   0          59m     2001:db8:1:b702:f221::17   ip-192-0-2-10.ec2.internal
+...
 ```
 
 ## Next Steps
