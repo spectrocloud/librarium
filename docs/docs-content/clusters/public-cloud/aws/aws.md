@@ -25,6 +25,8 @@ To learn more about Palette and AWS clusters, check out the following resources:
 
 - [Create and Manage AWS EKS Cluster](eks.md)
 
+- [Deploy an IPv6 EKS Cluster](deploy-ipv6-eks-cluster.md)
+
 - [Enable Secrets Encryption for EKS Cluster](enable-secrets-encryption-kms-key.md)
 
 - [Configure EKS Pod Identity for ECR Registries](./enable-pod-identity-ecr.md)

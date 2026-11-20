@@ -50,6 +50,13 @@ All services in the management plane are FIPS compiled with Go using
 [Spectro Cloud Cryptographic Module](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/5061)
 resource to learn about our NIST certificate.
 
+On the VerteX Management Appliance, the management plane pulls images from the Spectro Cloud FIPS image registry,
+`us-docker.pkg.dev/palette-images-fips`. In airgap environments, the appliance pulls images from the internal Zot
+registry instead.
+
+The appliance also includes Reloader, a FIPS-compliant add-on component for the Zot registry. Reloader is a Kubernetes
+controller that restarts workloads when their ConfigMaps or Secrets change.
+
 <br />
 
 ## FIPS-Compliant Kubernetes
