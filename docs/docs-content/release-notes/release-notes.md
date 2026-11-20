@@ -65,8 +65,9 @@ The following components have been updated for Palette version 4.10.13 - 4.10.44
 
 <!-- https://spectrocloud.atlassian.net/browse/PLT-2441 -->
 
-- Added the `spectrocloud_registry_pack` resource to the Spectro Cloud Terraform provider for managing pack registries.
-  It supports only pack registries that use basic authentication.
+- Added the `spectrocloud_registry_pack` resource to the Spectro Cloud Terraform provider. Use it to create, update,
+  delete, and import the pack registries listed under **Tenant Settings > Registries > Pack Registries**. It supports
+  only pack registries that use basic authentication.
 
 ### Bug Fixes
 
@@ -97,13 +98,14 @@ The following components have been updated for Palette version 4.10.13 - 4.10.44
 
 <!-- https://spectrocloud.atlassian.net/browse/PLT-2206 -->
 
-- Fixed an issue where `spectrocloud_cluster_config_template` did not detect configuration drift when the `variables`
-  block inside a cluster profile was modified.
+- Fixed an issue where changes to profile variable values in `spectrocloud_cluster_config_template` were accepted but
+  not saved. The new values now persist and show up as drift.
 
 <!-- https://spectrocloud.atlassian.net/browse/PLT-2468 -->
 
-- Fixed an issue during `terraform import` of static EKS clusters where control plane subnet mappings were omitted from
-  `cloud_config.az_subnets`.
+- Fixed an issue where `terraform import` of a static EKS cluster left `cloud_config.az_subnets` empty when the control
+  plane pool was not named `cp-pool`, as with clusters created in the Palette UI. Control plane subnets are now
+  imported, so correcting them no longer forces Terraform to replace the cluster.
 
 <!-- https://spectrocloud.atlassian.net/browse/PLT-2495 -->
 
@@ -111,12 +113,12 @@ The following components have been updated for Palette version 4.10.13 - 4.10.44
   timeout. Requests now time out after 300 seconds, and responses that stop sending data time out after 60 seconds. To
   change these limits, use the new `request_timeout` and `response_idle_timeout` provider settings or the
   `SPECTROCLOUD_REQUEST_TIMEOUT` and `SPECTROCLOUD_RESPONSE_IDLE_TIMEOUT` environment variables. A value of `-1` removes
-  the limit.
+  the limit. A stalled call now fails and is retried, except for write requests, which are not retried.
 
 <!-- https://spectrocloud.atlassian.net/browse/PLT-2497 -->
 
-- Fixed an issue where the Spectro Cloud Terraform provider could not resolve the UID of a pack from an Amazon ECR OCI
-  registry, because it checked only the basic registry sync endpoint.
+- Fixed an issue where `spectrocloud_cluster_profile` sent an empty pack UID for packs from ECR-type OCI registries,
+  including the Palette Registry. The Spectro Cloud Terraform provider now looks up the pack UID itself.
 
 <!-- END COMPONENT UPDATES BODY: DOC-3450. DO NOT DELETE. -->
 
