@@ -312,7 +312,7 @@ This guide takes you through the process of upgrading a self-hosted airgap Palet
     Release "cert-manager" has been upgraded. Happy Helming!
     NAME: cert-manager
     LAST DEPLOYED: Thu Feb 22 19:42:33 2024
-    NAMESPACE: default
+    NAMESPACE: cert-manager
     STATUS: deployed
     REVISION: 2
     TEST SUITE: None

@@ -6,6 +6,9 @@ on:
     - cron: "0 17 * * 2,5"
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   scan-clusters:
     name: cluster-scan
@@ -16,10 +19,10 @@ jobs:
         environment: [PROD, DEV, STAGE]
 
     steps:
-      - name: Checkout Palette Samples Repository
+      - name: Checkout Spectro Samples Repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with: 
-          repository: spectrocloud/palette-samples
+        with:
+          repository: spectrocloud/spectro-samples
 
       - name: Set Up Go
         uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7
@@ -70,7 +73,7 @@ jobs:
 
       - name: Send Slack Notification
         if: ${{ success() && env.CLUSTERS_FOUND == 'true' }}
-        uses: rtCamp/action-slack-notify@33ca3be66c6f378fe1610fd1d5258632dbed5e58 # v2.4.0
+        uses: rtCamp/action-slack-notify@06cc13f74fa8d4d2296c09455d91e9453e4025f4 # v2.4.1
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
           SLACK_COLOR: "good"
@@ -80,7 +83,7 @@ jobs:
 
       - name: Slack Notification on Failure
         if: ${{ failure() }}
-        uses: rtCamp/action-slack-notify@33ca3be66c6f378fe1610fd1d5258632dbed5e58 # v2.4.0
+        uses: rtCamp/action-slack-notify@06cc13f74fa8d4d2296c09455d91e9453e4025f4 # v2.4.1
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
           SLACK_COLOR: "danger"

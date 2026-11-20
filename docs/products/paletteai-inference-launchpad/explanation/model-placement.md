@@ -26,8 +26,8 @@ Choosing nodes tells the appliance exactly where a model may run. Pin a model wh
 - **Reserved capacity.** Keep a large model off nodes you want free for other work.
 - **Staged weights.** For a model whose weights live on disk, only nodes that already hold the weights can serve it.
 
-**Select all eligible** selects every node that can run the model at that moment. A node you add to the cluster later
-does not receive the model until you add it, as described in
+The appliance runs the model only on the nodes you choose. A node you add to the cluster later does not receive the
+model until you add it, as described in
 [Add a Model to More Nodes](../how-to-guides/deploy-a-model.md#add-a-model-to-more-nodes).
 
 ## How Placement Works
@@ -35,14 +35,13 @@ does not receive the model until you add it, as described in
 The appliance creates one inference engine per chosen node and exposes those engines through a single per-model
 endpoint. Clients keep calling the model by name. They do not choose a node.
 
-The deploy dialog lists every cluster node with its hardware, its free GPUs, and whether it can run the model you
-picked. Nothing is pre-selected. **Select all eligible** selects what is eligible at that moment. It does not follow
-nodes added later.
+The **Nodes** field on the deploy wizard's **Model and placement** step offers the cluster's nodes. For why a node
+cannot be chosen, refer to [Why a Node Cannot Be Chosen](#why-a-node-cannot-be-chosen). The field can open with nodes
+already selected.
 
-The same eligibility checks run again on the deploy preview. If a node degrades between selecting and confirming, the
-preview raises a **Node fit** warning; you can adjust the selection or proceed. If you proceed and the node still cannot
-run the model when the deploy runs, the appliance reports the outcome on the model's condition rather than placing the
-engine somewhere else. Nothing falls back to another node, and unreadable capacity counts as unusable rather than free.
+If a node cannot run the model when the deploy runs, the appliance reports the outcome on the model's condition rather
+than placing the engine somewhere else. Nothing falls back to another node, and unreadable capacity counts as unusable
+rather than free.
 
 You change where a model runs by adding or removing nodes, as described in
 [Deploy a Model](../how-to-guides/deploy-a-model.md).
@@ -62,20 +61,18 @@ Expanding the row lists only the nodes that belong to the model:
 
 ## Why a Node Cannot Be Chosen
 
-An ineligible node is not selectable and states why.
+An ineligible node is not selectable and states why. A node cannot run a model for one of the following reasons.
 
-| **What you see**                                                                         | **What it means**                                               |
-| ---------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
-| `2 free GPU(s), needs 4`                                                                 | Fewer free GPUs than the model requires.                        |
-| `has NVIDIA-L40S, model requires NVIDIA-RTX-PRO-6000-Blackwell-Server-Edition`           | The model is pinned to a GPU product this node lacks.           |
-| `cordoned — a new engine pod would never be scheduled here`                              | Nothing new will schedule here.                                 |
-| `NotReady`                                                                               | The node is not Ready.                                          |
-| `not in the cluster's node roster`                                                       | Not a node in this cluster.                                     |
-| `GPU capacity unknown on this node — cannot confirm it can run the model`                | GPU count unreadable. Treated as unusable, never as free.       |
-| `GPU product unknown on this node — cannot confirm it matches …`                         | GPU model unreadable, so a hardware match cannot be proven.     |
-| `the model's weights are not staged on this node`                                        | The model's weights are not on this node.                       |
-| `only the model's metadata is staged on this node, not its weights`                      | The upload is incomplete on this node.                          |
-| `local-weights state unreadable for this node — cannot confirm the model is staged here` | The appliance cannot confirm that the weights are on this node. |
+| **Reason**                      | **What it means**                                                                                                                                                    |
+| ------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Too few free GPUs               | All the node's GPUs are in use, or the node has fewer free GPUs than the GPU width. A model that shares a GPU can still use a node whose GPUs a sharing group holds. |
+| A different GPU product         | The model requires a GPU product that this node does not have.                                                                                                       |
+| Cordoned                        | No new engine can be scheduled on the node.                                                                                                                          |
+| Not ready                       | The node does not report that it is ready to run workloads.                                                                                                          |
+| Not in the cluster              | The node is not part of this cluster.                                                                                                                                |
+| Unknown GPU capacity or product | The appliance cannot confirm that the node can run the model. Unknown capacity counts as unusable, never as free.                                                    |
+| Weights not staged              | The model's weights are not on this node, or only its metadata is.                                                                                                   |
+| Unknown weights state           | The appliance cannot confirm that the weights are on this node.                                                                                                      |
 
 ## How Local Weights Affect the Choice
 
@@ -96,5 +93,5 @@ refer to [Upload a Model](../how-to-guides/upload-a-model.md).
 
 - [Deploy a Model](../how-to-guides/deploy-a-model.md) walks through choosing nodes, verifying placement, adding nodes,
   and removing a model from one node.
-- [Architecture Overview](./architecture.md) explains the deploy lifecycle after you confirm.
+- [Architecture Overview](./architecture.md) explains the deploy lifecycle.
 - [Certified Models by Hardware](../reference/certified-models-by-hardware.md) lists which models fit which GPUs.

@@ -2,16 +2,14 @@
 sidebar_label: "What is Palette?"
 title: "What is Palette?"
 description:
-  "Learn what Spectro Cloud's Palette platform is, and how it reduce the complexities your encounter today with
+  "Learn what Spectro Cloud's Palette platform is and how it reduces the complexities you encounter today with
   Kubernetes."
 icon: ""
 hide_table_of_contents: false
 sidebar_custom_props:
   icon: "palette"
-slug: /
+slug: /palette
 ---
-
-<AskAI />
 
 Palette is a complete and integrated platform that enables organizations to effectively manage the entire lifecycle of
 any combination of new or existing, simple or complex, small or large Kubernetes environments, whether in a data center

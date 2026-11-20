@@ -50,6 +50,8 @@ The reference GPU is the NVIDIA H100 80 GB. The appliance supports both NVIDIA a
 installs GPU drivers automatically. For the models certified on each GPU configuration, refer to
 [Certified Models by Hardware](./certified-models-by-hardware.md).
 
+The semantic router runs on the same GPUs as the main model and shares them.
+
 ### Required BIOS Settings
 
 On a server with GPUs, two BIOS settings must be enabled before you boot the slim ISO. They are required for every GPU

@@ -18,8 +18,8 @@
 // ADDING A PRODUCT
 // ----------------
 // Add an entry here, create the content directory, and add a sidebar file.
-// That covers the docs collection, the navbar tab, the version dropdown, and
-// the Palette navbar highlighting rule.
+// That covers the docs collection, the entry in the navbar's Products dropdown,
+// the version dropdown, and the Palette navbar highlighting rule.
 //
 // It does NOT cover these, which have folder paths written into them. They are
 // already wildcarded for `*_versioned_docs`, so a new product only needs the
@@ -29,10 +29,6 @@
 //   - scripts/find-unused-images.sh             (scans `docs`, so covered)
 //   - .prettierignore / .vale.ini               (wildcarded, so covered)
 //   - .vale.ini per-file rule exceptions        (only if the product needs any)
-//
-// KNOWN CEILING: the navbar is already crowded with one product. Before adding
-// a third, group product tabs under a single "Products" dropdown rather than
-// adding more top-level tabs.
 
 const fs = require("fs");
 const path = require("path");
@@ -43,7 +39,7 @@ const path = require("path");
  *                                  `docusaurus_tag` facet and in the
  *                                  `<id>_versioned_docs/` folder name, so pick
  *                                  something readable and stable.
- * @property {string} label         Navbar tab text.
+ * @property {string} label         Products dropdown entry text.
  * @property {string} routeBasePath URL prefix. Changing this breaks every URL.
  * @property {string} contentPath   Where the current (unfrozen) docs live.
  * @property {string} sidebarPath   Must be its own file -- see the comment in
@@ -172,22 +168,29 @@ function toDocsPlugin(product) {
 }
 
 /**
- * The navbar tab.
+ * The entry in the navbar's Products dropdown.
  *
  * `docsPluginId` is required: without it Docusaurus looks for the sidebar in
- * the `default` collection and throws at build time.
+ * the `default` collection and throws at build time. There is no `position`,
+ * because Docusaurus rejects one on a dropdown entry.
+ *
+ * There is no `activeBaseRegex` either. A `docSidebar` item highlights itself
+ * from the active doc's sidebar, so the regex would only make the mobile menu
+ * open the Products dropdown on this product's pages, which fills the short
+ * strip of section links at the bottom of the sidebar.
+ *
+ * There is no `to` for the same reason. `DocSidebarNavbarItem` replaces it with
+ * the sidebar's own link, so only the mobile dropdown reads it, and that opens
+ * the menu on the page the `to` points at.
  *
  * @param {ProductDocs} product
  */
-function toNavbarTab(product) {
+function toProductsDropdownItem(product) {
   return {
-    to: `/${product.routeBasePath}`,
     type: "docSidebar",
     docsPluginId: product.id,
     sidebarId: product.sidebarId,
     label: product.label,
-    position: "left",
-    activeBaseRegex: `^/${product.routeBasePath}(/.*)?$`,
   };
 }
 
@@ -209,13 +212,13 @@ function toVersionDropdown(product) {
 }
 
 const docsPlugins = PRODUCTS.map(toDocsPlugin);
-const navbarTabs = PRODUCTS.map(toNavbarTab);
+const productsDropdownItems = PRODUCTS.map(toProductsDropdownItem);
 const versionDropdowns = PRODUCTS.filter((p) => cutVersions(p.id).length > 0).map(toVersionDropdown);
 
 /**
- * Keeps the Docs / Tutorials / Downloads tabs from highlighting on routes that
- * belong to another collection. The `default` collection is mounted at "/", so
- * without this every product route also looks like a Docs route.
+ * Keeps the Tutorials / Downloads tabs from highlighting on routes that belong
+ * to another collection. The `default` collection is mounted at "/", so without
+ * this every product route also looks like a Palette route.
  */
 const paletteNavbarActiveBaseRegex = `^(?!/api/|${PRODUCTS.map((p) => `/${p.routeBasePath}/`).join("|")}).*$`;
 
@@ -223,7 +226,7 @@ module.exports = {
   PRODUCTS,
   cutVersions,
   docsPlugins,
-  navbarTabs,
+  productsDropdownItems,
   versionDropdowns,
   paletteNavbarActiveBaseRegex,
 };

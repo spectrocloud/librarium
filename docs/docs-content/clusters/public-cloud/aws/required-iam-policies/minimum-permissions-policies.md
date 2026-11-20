@@ -109,6 +109,10 @@ These permissions allow Palette to manage the creation and lifecycle of the Clou
 the required [Cluster API Provider AWS (CAPA)](https://github.com/kubernetes-sigs/cluster-api-provider-aws) roles
 automatically.
 
+Keep `iam:TagRole` and `iam:UntagRole` in this policy, even if a policy audit reports them as unused. AWS
+CloudFormation, not Palette, uses these actions to tag the IAM roles in the CloudFormation stack that Palette uses, and
+stack updates fail without them.
+
 <PartialsComponent category="permissions" name="aws-cloudformation-stack-permissions" />
 
 ### Option 2: Manual CloudFormation Stack Management

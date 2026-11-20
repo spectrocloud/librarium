@@ -11,6 +11,9 @@ This page lists breaking changes introduced in Palette and Palette VerteX versio
 guidance for upgrading dedicated SaaS or [self-hosted Palette](../enterprise-version/enterprise-version.md) and
 [Palette VerteX](../vertex/vertex.md) installations.
 
+PaletteAI VM Launchpad has its own release versions, so this page does not list its breaking changes. For those, refer
+to the PaletteAI VM Launchpad entries in the [Release Notes](./release-notes.md).
+
 :::warning
 
 Check the [Palette Upgrade](../enterprise-version/upgrade/upgrade.md) and [VerteX Upgrade](../vertex/upgrade/upgrade.md)

@@ -18,6 +18,10 @@ concurrency:
   group: image-${{ github.ref }}
   cancel-in-progress: true
 
+# Least-privilege GITHUB_TOKEN. Jobs that need more declare their own permissions.
+permissions:
+  contents: read
+
 jobs:
   run-ci:
     runs-on: ubuntu-latest
@@ -41,6 +45,9 @@ jobs:
       labels: docbot
     # Skip draft PRs here as well
     if: ${{ !github.event.pull_request.draft }}
+    permissions:
+      contents: write # The action commits compressed images with this token.
+      pull-requests: write # The action comments its results on the PR.
     steps:
       - name: Retrieve Credentials
         id: import-secrets
@@ -60,7 +67,7 @@ jobs:
 
       - name: Compress Images
         # Third-party action also pinned for the same reason
-        uses: calibreapp/image-actions@c3752f0cc46d3f73677f20c7bfe20ed4601ba2a3 # main
+        uses: calibreapp/image-actions@cfe6ba91a2f0e9046d44e2088d002378daeb4a9c # main
         with:
           # Pass token via step output (not env) to limit exposure
           # VS Code/YAML may warn here due to SHA pinning; input is valid

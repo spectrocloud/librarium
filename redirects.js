@@ -146,11 +146,11 @@ let redirects = [
   },
   {
     from: `/introduction/`,
-    to: `/`,
+    to: `/palette/`,
   },
   {
     from: `/introduction/what-is/`,
-    to: `/`,
+    to: `/palette/`,
   },
   {
     from: `/getting-started/free-cloud-credit/`,

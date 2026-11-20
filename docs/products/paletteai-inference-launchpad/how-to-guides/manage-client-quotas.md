@@ -34,8 +34,7 @@ To change the setting, use the following steps.
 
 1. From the left main menu, select **Access & Policy**.
 
-2. On the **Clients & API tokens** page, select **Quota Enforcement** in the page header. The **Quota enforcement**
-   dialog opens.
+2. On the **Clients** list, select **Quota Enforcement** in the page header. The **Quota enforcement** dialog opens.
 
 3. Select or clear the enforcement checkbox.
 
@@ -53,24 +52,26 @@ clearing a backlog, and turn it back on afterward.
 
 ## Set a Client Quota
 
-1. From the left main menu, select **Access & Policy**.
+1. In the workspace drop-down menu in the console header, select the workspace that holds the client.
 
-2. On the **Clients & API tokens** page, select the client to open its detail panel.
+2. From the left main menu, select **Access & Policy**. The **Clients** list opens.
 
-3. Select the **Quotas** section.
+3. Select the client to open its detail panel.
 
-4. Select **Add window limit**.
+4. Select the **Quotas** section.
 
-5. Choose the dimension to limit: **requests**, **tokens**, or **cost**.
+5. Select **Add window limit**.
 
-6. Choose the window the limit applies over: **hour** or **day**. Day limits reset at midnight UTC. Hour limits reset at
+6. Choose the dimension to limit: **requests**, **tokens**, or **cost**.
+
+7. Choose the window the limit applies over: **hour** or **day**. Day limits reset at midnight UTC. Hour limits reset at
    the top of each UTC hour.
 
-7. Enter the limit for that dimension and window.
+8. Enter the limit for that dimension and window.
 
-8. Repeat the previous steps for each limit you want. For example, add a tokens-per-day limit and a cost-per-day limit.
+9. Repeat the previous steps for each limit you want. For example, add a tokens-per-day limit and a cost-per-day limit.
 
-9. Save the client.
+10. Save the client.
 
 Each row limits one dimension over one window. A window with no row stays uncapped. All active limits apply together.
 When a window is full, new requests are blocked until it resets.
@@ -81,16 +82,18 @@ client.
 
 ## Edit or Remove a Quota
 
-1. From the left main menu, select **Access & Policy**.
+1. In the workspace drop-down menu in the console header, select the workspace that holds the client.
 
-2. On the **Clients & API tokens** page, select the client to open its detail panel.
+2. From the left main menu, select **Access & Policy**. The **Clients** list opens.
 
-3. Select the **Quotas** section.
+3. Select the client to open its detail panel.
 
-4. Change a limit, or remove a window-limit row. Use this path when you need to lower a ceiling. **Increase limit** on
+4. Select the **Quotas** section.
+
+5. Change a limit, or remove a window-limit row. Use this path when you need to lower a ceiling. **Increase limit** on
    the **Usage** page cannot lower a cap.
 
-5. Save the client.
+6. Save the client.
 
 ## Increase a Limit from Usage
 

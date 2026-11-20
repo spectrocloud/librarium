@@ -29,6 +29,7 @@ used to deploy your cluster.
   | AMD64             | Ubuntu                            | Palette eXtended Kubernetes - Edge (PXK-E) | Calico                            |
   | AMD64             | Ubuntu                            | K3s                                        | Flannel                           |
   | AMD64             | Rocky Linux 8.10 (Green Obsidian) | Palette eXtended Kubernetes - Edge (PXK-E) | Cilium                            |
+  | ARM64             | Ubuntu                            | K3s                                        | Flannel                           |
 
 - Clusters with Flannel CNI are not verified for local management mode deployments.
 
@@ -61,7 +62,7 @@ Take the following steps to install the Palette agent on an Edge host for the fi
 
   - [bash](https://www.gnu.org/software/bash/) - Must be configured as the default shell.
   - [jq](https://jqlang.github.io/jq/download/)
-  - [Zstandard](https://facebook.github.io/zstd/)
+  - [Zstandard](https://meta.github.io/zstd/)
   - [rsync](https://github.com/RsyncProject/rsync)
   - [systemd](https://systemd.io/)
   - [systemd-timesyncd](https://www.freedesktop.org/software/systemd/man/latest/systemd-timesyncd.service.html) -

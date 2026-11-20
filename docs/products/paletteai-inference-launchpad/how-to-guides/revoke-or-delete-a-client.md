@@ -25,11 +25,13 @@ clients and API tokens relate, refer to [Clients and Quotas](../explanation/clie
 The console shows each token's state, so you can find expired or revoked tokens. For how the appliance enforces token
 expiry and revocation, refer to [Client Lifecycle](../explanation/clients-and-quotas.md#client-lifecycle).
 
-1. From the left main menu, select **Access & Policy**.
+1. In the workspace drop-down menu in the console header, select the workspace that holds the client.
 
-2. On the **Clients & API tokens** page, select the client to open its detail panel.
+2. From the left main menu, select **Access & Policy**. The **Clients** list opens.
 
-3. Select the **API tokens** section. Each token shows a state of **active**, **expiring soon**, **expired**, or
+3. Select the client to open its detail panel.
+
+4. Select the **API tokens** section. Each token shows a state of **active**, **expiring soon**, **expired**, or
    **revoked**.
 
 The **Usage** page also shows a token's state in its per-token detail. For usage, refer to
@@ -39,13 +41,15 @@ The **Usage** page also shows a token's state in its per-token detail. For usage
 
 ## Revoke an API Token
 
-1. From the left main menu, select **Access & Policy**.
+1. In the workspace drop-down menu in the console header, select the workspace that holds the client.
 
-2. On the **Clients & API tokens** page, select the client to open its detail panel.
+2. From the left main menu, select **Access & Policy**. The **Clients** list opens.
 
-3. Select the **API tokens** section.
+3. Select the client to open its detail panel.
 
-4. Find the token, then select the **Revoke access** icon (a prohibit symbol) at the end of its row, and confirm in the
+4. Select the **API tokens** section.
+
+5. Find the token, then select the **Revoke access** icon (a prohibit symbol) at the end of its row, and confirm in the
    **Revoke token** dialog.
 
 Revoking a token is immediate and cannot be undone.
@@ -58,11 +62,13 @@ which revokes all its API tokens and cannot be undone. For what each action keep
 
 Both actions are in the **Overview** section of the client's detail panel, each behind a confirmation.
 
-1. From the left main menu, select **Access & Policy**.
+1. In the workspace drop-down menu in the console header, select the workspace that holds the client.
 
-2. On the **Clients & API tokens** page, select the client to open its detail panel.
+2. From the left main menu, select **Access & Policy**. The **Clients** list opens.
 
-3. Select the **Overview** section, then select **Suspend** or **Delete**, and then confirm.
+3. Select the client to open its detail panel.
+
+4. Select the **Overview** section, then select **Suspend** or **Delete**, and then confirm.
 
 To restore a suspended client, select **Resume** in the **Overview** section.
 

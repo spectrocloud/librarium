@@ -20,10 +20,13 @@ makes AI spend predictable, refer to [PaletteAI Inference Launchpad](/paletteai-
 
 ## Resources
 
+- [Edge AI on NVIDIA Jetson](./edge-ai/edge-ai.md) - Run local AI models at the edge on NVIDIA Jetson devices managed by
+  Palette in agent mode.
+
 <!-- prettier-ignore-start -->
 
 - [Enable AI Workloads with the NVIDIA GPU Operator Pack](./nvidia-gpu-operator.md) - Add the
-  <VersionedLink text="NVIDIA GPU Operator" url="integrations/packs/?pack=nvidia-gpu-operator-ai" /> pack to a Palette
+  <VersionedLink text="NVIDIA GPU Operator" url="/integrations/packs/?pack=nvidia-gpu-operator-ai" /> pack to a Palette
   cluster profile to provision GPU nodes for AI workloads.
 
 <!-- prettier-ignore-end -->

@@ -10,11 +10,62 @@ tags: ["paletteai-inference-launchpad", "architecture", "explanation"]
 keywords: ["launchpad", "ai", "architecture", "kubernetes", "kairos", "helm", "data flow", "data residency"]
 ---
 
+import ThemedImage from "@theme/ThemedImage";
+
 This page explains how PaletteAI Inference Launchpad works, how its components interact, and what key decisions shaped
 the design. Use this page to build an understanding of the architecture before you deploy or operate PaletteAI Inference
 Launchpad.
 
 ## Component Stack
+
+The following diagram shows the appliance as a stack of four layers, where each layer runs on the layer below it. The
+numbers follow a request from an AI application down to the GPU, and they match the list after the diagram.
+
+<p>
+  <ThemedImage
+    className="markdown-image"
+    alt="Layered diagram of the appliance. From the bottom up, the layers are the hardware, the Kairos operating system, Kubernetes, and the PaletteAI Inference Launchpad services. A request path runs down the middle from AI applications to the gateway, the vLLM engine, and the GPU, and an optional path leads to external inference endpoints. The list after the diagram describes each numbered component."
+    sources={{
+      light: "/assets/docs/images/architecture_inference-launchpad-overview.webp",
+      dark: "/assets/docs/images/architecture_inference-launchpad-overview-dark.webp",
+    }}
+  />
+</p>
+
+<!-- vale Vale.Terms = NO -->
+
+1. AI applications, such as [Claude Code](../how-to-guides/use-claude-code.md), [Codex](../how-to-guides/use-codex.md),
+   [Cursor](../how-to-guides/use-cursor.md), and [OpenCode](../how-to-guides/use-opencode.md), send their requests to
+   the gateway through the Platform IP. The gateway serves the OpenAI-compatible and Anthropic Messages APIs. It
+   authenticates each client, enforces the client's quotas, and routes each request to a model. Refer to
+   [Request Routing](#request-routing) and [Network Topology](#network-topology).
+
+2. The vLLM engine serves the model that the gateway chose. Refer to [Model Placement](./model-placement.md).
+
+3. Kubernetes runs the engine as a pod. The kubelet on the node starts the pod, with containerd as its runtime, and the
+   GPU Operator makes the GPUs available to it.
+
+4. The GPU drivers in the operating system let the engine use the GPUs.
+
+5. The model runs on the appliance's GPUs. For how to size the GPUs, refer to [Hardware Sizing](#hardware-sizing).
+
+<!-- vale Vale.Terms = YES -->
+
+When a platform administrator allows egress, the gateway can send a request to an external inference endpoint instead of
+a local model. Egress is off by default. An endpoint is either a built-in one for Anthropic, OpenAI, or Gemini, or an
+OpenAI-compatible host that a platform administrator registered. Refer to
+[External Inference Endpoints](#external-inference-endpoints) and
+[Data Residency and Isolation](#data-residency-and-isolation).
+
+Platform administrators open the console in a web browser to configure the appliance and observe how it is used. The
+control plane, which is separate from the Kubernetes control plane, keeps the appliance in line with the settings that
+platform administrators save for models, clients, and policies. Refer to
+[Model Provisioning Lifecycle](#model-provisioning-lifecycle).
+
+The lower layers hold the parts that every service relies on. In Kubernetes, the API server, backed by etcd, is the one
+place where the appliance's components coordinate. The operating system is Kairos, an immutable Linux distribution. In
+it, the Palette agent applies the appliance's cluster profile, and model weights live on the host filesystem, on local
+NVMe storage.
 
 The appliance serves each model through an inference engine, such as vLLM, running on its Kubernetes cluster. Each
 loaded model is exposed as an OpenAI-compatible endpoint, such as `/v1/chat/completions` and `/v1/models`. For the
@@ -69,19 +120,33 @@ then deploying the replacement. Removing the model from one node leaves it servi
 
 ## Request Routing
 
-The gateway routes each request to a model in two stages: the Tier map rewrites a client-supplied model name to a model
-the appliance serves, and any request the Tier map does not settle passes to the semantic router, which picks a model
-from a category and a complexity band. For the full picture of how the two controls combine and where each rule lives on
-the box and per client, refer to [Routing Behavior](./routing-behavior.md).
+<!-- vale Vale.Spelling = NO -->
+
+The gateway routes each request to a model in two stages. The Tier map rewrites a client-supplied model name to a model
+the appliance serves. Some requests that the Tier map does not settle then pass to the semantic router, which picks a
+model from a category and a complexity band. For how the two controls combine and where each rule lives, on a
+workspace's policy or on a client, refer to [Routing Behavior](./routing-behavior.md).
+
+<!-- vale Vale.Spelling = YES -->
+
+The semantic router runs on your GPUs and shares them with the main model. The appliance deploys it at installation,
+before any local model, so an appliance that answers only through frontier providers still routes semantically. When a
+deploy starts a new GPU sharing group, the semantic router moves into that group. For the GPU requirements, refer to
+[Suggested Hardware](../reference/hardware-requirements.md#gpu).
+
+Because the semantic router shares one set of GPUs, an appliance runs its models in one of two modes. Text mode runs a
+text model with the semantic router. Vision mode runs a text model with the semantic router and a vision model. The
+deploy picker offers only models of the appliance's current mode. For how a model's catalog entry decides its mode,
+refer to [One Mode per Appliance](./routing-behavior.md#one-mode-per-appliance).
 
 When you change the routing configuration the gateway follows, it rebuilds its router in place. The gateway does not
 restart, and it does not drain requests that are in progress. Requests that the gateway already routed continue on their
 assigned model, and the new configuration applies only to later requests.
 
 Before it routes a request, the gateway authenticates the calling client from its API token and enforces that client's
-quotas. When routing policy sends a request off the appliance, the gateway can reach a built-in frontier provider or a
-registered external inference endpoint. That traffic is metered as egress. For how clients, API tokens, and quotas work
-together, refer to [Clients and Quotas](./clients-and-quotas.md). To register a host, refer to
+quotas. When routing policy sends a request off the appliance, the gateway reaches an external inference endpoint. That
+traffic is metered as egress. For how clients, API tokens, and quotas work together, refer to
+[Clients and Quotas](./clients-and-quotas.md). To register a host, refer to
 [Register an External Inference Endpoint](../how-to-guides/register-an-external-inference-endpoint.md).
 
 When vision preprocessing is on, a request that includes images is rewritten before that routing step. A vision model
@@ -90,23 +155,32 @@ this step. For the request path and how to turn the feature on, refer to
 [Vision Preprocessing](./vision-preprocessing.md) and
 [Enable Vision Preprocessing](../how-to-guides/enable-vision-preprocessing.md).
 
-### The Default Model
+### The Box Default Model {#the-default-model}
 
-The default model is the model the appliance routes a request to when the request does not name a specific model. The
-appliance sets the default; there is no operator control to change which model is the default.
+The box default model answers a request when routing does not choose a model for it. The appliance chooses it
+automatically. There is no operator control to change it. For how the appliance chooses it, refer to
+[The Box Default Model](./routing-behavior.md#the-box-default-model).
 
 ### External Inference Endpoints {#external-inference-endpoints}
 
-An external inference endpoint is a box-wide OpenAI-compatible host that an operator registers so the gateway can route
-tier traffic to it as egress. Each endpoint carries a short **Endpoint id** that becomes the routing prefix. The id
-cannot be changed after registration, and it cannot collide with a built-in frontier provider (`anthropic`, `openai`,
-`gemini`); registration refuses a colliding id. The **Endpoint URL** can be an origin or an origin followed by a path
-prefix; the appliance appends the OpenAI-compatible request paths itself, so the URL does not include `/v1`.
+An external inference endpoint is a host outside the appliance that the gateway can route tier traffic to as egress.
+Three endpoints are built in, `anthropic`, `openai`, and `gemini`, and a platform administrator can register any
+OpenAI-compatible host as another one. A platform administrator sets up each endpoint once for the whole appliance under
+**Integrations**, and a built-in endpoint is not available until that happens.
 
-The credential for an endpoint is stored once for the appliance and is never held per client, which is why the client
-drawer shows `box-managed` in place of a per-client key for that row. The credential can be an API key, one or more
-custom headers, or both. The appliance sends any custom headers on both the model-catalog probe and every routed
-request.
+A policy or a client selects an endpoint that is already set up, and never defines one, so an endpoint that is not set
+up is not offered to a policy or a client.
+
+Each registered endpoint carries a short **Endpoint id**. The id names the endpoint wherever the console lists an
+external model, written as `<endpoint> / <model>`, such as `lan-ollama-endpoint / qwen2.5:0.5b`. The id cannot be
+changed after registration, and it cannot collide with a built-in endpoint; registration refuses a colliding id. The
+**Endpoint URL** can be an origin or an origin followed by a path prefix; the appliance appends the OpenAI-compatible
+request paths itself, so the URL does not include `/v1`.
+
+The credential for an endpoint is stored once on the endpoint, under **Integrations**, and every policy and client that
+lists the endpoint uses it. A policy or a client can override the key for itself alone by typing one in its **Key**
+field; the **Integrations** key does not change. The credential can be an API key, one or more custom headers, or both.
+The appliance sends any custom headers on both the model-catalog probe and every routed request.
 
 The appliance can additionally trust a self-signed or private-CA certificate presented by the endpoint on the outbound
 connection to it. That trust is scoped to the endpoint, and it does not change the certificate the appliance itself
@@ -151,19 +225,20 @@ That permission is [egress](../reference/glossary.md#egress), and it denies by d
 destination outside the appliance until an operator enables it. Refer to
 [Manage a Client's Model Access](../how-to-guides/manage-client-model-access.md).
 
-Once an operator enables egress, a client can reach two kinds of destination:
+Once an operator enables egress on a policy, or on a client that overrides its policy, a client can reach each
+[external inference endpoint](#external-inference-endpoints) that the policy or client lists. An endpoint is one of the
+following:
 
-- A built-in [frontier model](../reference/glossary.md#frontier-model), which is a model hosted by an external provider
-  rather than served from the appliance.
+- A built-in endpoint for Anthropic, OpenAI, or Gemini, which serves a
+  [frontier model](../reference/glossary.md#frontier-model) hosted by that vendor rather than served from the appliance.
 
-- A registered [external inference endpoint](#external-inference-endpoints), which is any OpenAI-compatible host an
-  operator has added to the appliance.
+- A registered endpoint, which is any OpenAI-compatible host a platform administrator has added under **Integrations**.
 
-Egress is not only a destination a client asks for. An operator can arm frontier-model bursting for a client, which
-sends a request that asked for local serving to an external provider once the client exhausts its local quota rather
-than refusing it. Naming a local model is therefore not on its own what keeps a prompt on the box. Bursting is still
-egress and runs through the same permission, so a client that cannot reach an external destination cannot burst to one
-either.
+Egress is not only a destination a client asks for. An operator can turn on bursting on a policy, or on a client that
+overrides its policy, which sends a request that asked for local serving to an external inference endpoint once the
+client exhausts its local quota rather than refusing it. Naming a local model is therefore not on its own what keeps a
+prompt on the appliance. Bursting is still egress and runs through the same permission, so a client that cannot reach an
+external destination cannot burst to one either.
 
 Sovereignty sits above the per-client controls as an appliance-wide switch that overrides every client's egress. While
 it is armed, no request leaves the box regardless of what any client is permitted to do, so an operator holds residency

@@ -21,6 +21,10 @@ of a Palette instance, as well as how to specify a Palette agent package in the 
 profile. This is useful for upgrading the Palette agent on a local Edge cluster and for launching new centrally managed
 clusters while using an older version of the Palette agent.
 
+In centrally managed clusters, the agent version that you specify in the OS pack applies only when Palette applies the
+cluster profile. To keep the agent on that version afterward, you must also
+[pause agent upgrades](../../cluster-management/platform-settings/pause-platform-upgrades.md).
+
 ## Prerequisites
 
 - An active Edge cluster.

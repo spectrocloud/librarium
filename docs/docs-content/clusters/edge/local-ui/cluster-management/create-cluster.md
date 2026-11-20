@@ -43,9 +43,6 @@ management.
 
 - Network access to the Edge device’s IP and port where Local UI is exposed. The default port is 5080.
 
-- The `stylus.enableMultiNode` parameter is set to `true` in your user data configuration. For more information, refer
-  to [Prepare User Data](../../edgeforge-workflow/prepare-user-data.md).
-
 - The `stylus.managementMode` parameter is set to `local` in your user data configuration for all your hosts.
 
 - Credentials to log into Local UI. Any OS user can be used to log in to Local UI.
@@ -130,14 +127,14 @@ management.
 
    Enter the values for the profile variables and click **Next**.
 
-7. In the **Cluster Config** step, enter a virtual IP address to be used by your cluster. Optionally, you can also
-   specify an NTP server and an SSH public key.
+7. In the **Cluster Config** step, enter a virtual IP address for your cluster. Optionally, you can also specify an NTP
+   server and an SSH public key.
 
-   | Parameter                   | Description                                                                              |
-   | --------------------------- | ---------------------------------------------------------------------------------------- |
-   | Virtual IP Address (VIP)    | Provide the virtual IP address to be used by the cluster.                                |
-   | Network Time Protocol (NTP) | Specify the IP address for any NTP servers the cluster can reference.                    |
-   | SSH Keys                    | Provide the public key of an SSH key pair that you will use to connect to the Edge host. |
+   | Parameter                   | Description                                                                             |
+   | --------------------------- | --------------------------------------------------------------------------------------- |
+   | Virtual IP Address (VIP)    | Provide the virtual IP address of the cluster as an IPv4 address, such as `192.0.2.10`. |
+   | Network Time Protocol (NTP) | Specify the IP address for any NTP servers the cluster can reference.                   |
+   | SSH Keys                    | Provide the public key of an SSH key pair that you use to connect to the Edge host.     |
 
    <PartialsComponent category="clusters-edge" name="ntp-warning-edge" />
 
