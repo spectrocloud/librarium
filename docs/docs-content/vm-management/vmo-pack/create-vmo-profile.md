@@ -98,21 +98,21 @@ for the fix on an existing class.
 
 6. Locate the **Virtual Machine Orchestrator** pack and add it to your profile.
 
-7. Review the **Access** configuration panel at right. The pack provides three access modes.
+7. Review the **Deployment Mode** options in the configuration panel. The pack provides three modes.
 
-   The `charts.virtual-machine-orchestrator.service.type` field configures how the Virtual Machine Orchestrator is
-   exposed and accessed.
+   The **Proxied** and **Direct** modes seed the access values, including
+   `charts.virtual-machine-orchestrator.vmo-manager.service.type`, but you can still edit every value in the pack YAML.
+   Refer to [Deployment Modes](./deployment-modes.md) for the values that each mode sets.
 
    - **Proxied** mode automatically adds the **Spectro Proxy** pack when you create the cluster, allowing access to the
      Spectro VM Dashboard from anywhere. Check out the
      <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> guide to learn more. This is
-     the default selection. This mode configures the `ClusterIP` service type, which cannot be overridden.
-   - **Direct** mode is intended for a private configuration where a proxy is not implemented or not desired. Ensure
-     that you configure the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> pack
-     separately in your cluster profile if you select this option. This mode configures the `LoadBalancer` service type,
-     which cannot be overridden.
-   - **Custom** mode allows you to provide your own access configuration. You can provide your own service type and
-     custom configuration according to your environment.
+     the default selection. This mode sets the service type to `ClusterIP`.
+   - **Direct** mode is for clusters that Palette can reach directly, with no firewall or Network Address Translation
+     (NAT) between Palette and the cluster network. This mode requires no proxy and sets the service type to
+     `LoadBalancer`.
+   - **Custom** mode applies no Deployment Mode values. You provide your own access configuration, including the service
+     type, according to your environment.
 
    :::warning
 
@@ -169,20 +169,21 @@ for the fix on an existing class.
 6.  Locate the **Virtual Machine Orchestrator** pack and add it to your profile.
 
 <!-- prettier-ignore -->
-7.  Review the **Access** configuration panel at right. The pack provides three access modes.
+7.  Review the **Deployment Mode** options in the configuration panel. The pack provides three modes.
 
-    The `charts.virtual-machine-orchestrator.service.type` field configures how the Virtual Machine Orchestrator is exposed and accessed.
+    The **Proxied** and **Direct** modes seed the access values, including
+    `charts.virtual-machine-orchestrator.vmo-manager.service.type`, but you can still edit every value in the pack YAML.
+    Refer to [Deployment Modes](./deployment-modes.md) for the values that each mode sets.
 
     - **Proxied** mode automatically adds the **Spectro Proxy** pack when you create the cluster, allowing access to the
       Spectro VM Dashboard from anywhere. Check out the
       <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> guide to learn more. This is
-      the default selection. This mode configures the `ClusterIP` service type, which cannot be overridden.
-    - **Direct** mode is intended for a private configuration where a proxy is not implemented or not desired. Ensure
-      that you configure the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> pack
-      separately in your cluster profile if you select this option. This mode configures the `LoadBalancer` service type,
-      which cannot be overridden.
-    - **Custom** mode allows you to provide your own access configuration. You can provide your own service type and
-      custom configuration according to your environment.
+      the default selection. This mode sets the service type to `ClusterIP`.
+    - **Direct** mode is for clusters that Palette can reach directly, with no firewall or Network Address Translation
+      (NAT) between Palette and the cluster network. This mode requires no proxy and sets the service type to
+      `LoadBalancer`.
+    - **Custom** mode applies no Deployment Mode values. You provide your own access configuration, including the
+      service type, according to your environment.
 
 8.  If you are using PKX-E, no change is required and you can skip this step.
 
@@ -293,21 +294,21 @@ for the fix on an existing class.
 
 6.  Locate the **Virtual Machine Orchestrator** pack and add it to your profile.
 
-7.  Review the **Access** configuration panel at right. The pack provides three access modes.
+7.  Review the **Deployment Mode** options in the configuration panel. The pack provides three modes.
 
-    The `charts.virtual-machine-orchestrator.service.type` field configures how the Virtual Machine Orchestrator is
-    exposed and accessed.
+    The **Proxied** and **Direct** modes seed the access values, including
+    `charts.virtual-machine-orchestrator.vmo-manager.service.type`, but you can still edit every value in the pack YAML.
+    Refer to [Deployment Modes](./deployment-modes.md) for the values that each mode sets.
 
     - **Proxied** mode automatically adds the **Spectro Proxy** pack when you create the cluster, allowing access to the
       Spectro VM Dashboard from anywhere. Check out the
       <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> guide to learn more. This is
-      the default selection. This mode configures the `ClusterIP` service type, which cannot be overridden.
-    - **Direct** mode is intended for a private configuration where a proxy is not implemented or not desired. Ensure
-      that you configure the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> pack
-      separately in your cluster profile if you select this option. This mode configures the `LoadBalancer` service
-      type, which cannot be overridden.
-    - **Custom** mode allows you to provide your own access configuration. You can provide your own service type and
-      custom configuration according to your environment.
+      the default selection. This mode sets the service type to `ClusterIP`.
+    - **Direct** mode is for clusters that Palette can reach directly, with no firewall or Network Address Translation
+      (NAT) between Palette and the cluster network. This mode requires no proxy and sets the service type to
+      `LoadBalancer`.
+    - **Custom** mode applies no Deployment Mode values. You provide your own access configuration, including the
+      service type, according to your environment.
 
     :::warning
 
