@@ -17,13 +17,14 @@ tags: ["release-notes"]
 <!-- RELEASE DATE: November 20, 2026 -->
 <!-- RELEASE MANAGEMENT APPLIANCE:  -->
 <!-- RELEASE ARTIFACT STUDIO: 4.10.9 -->
-<!-- RELEASE TERRAFORM VERSION:  -->
+<!-- RELEASE TERRAFORM VERSION: 0.30.7 -->
 
 The following components have been updated for Palette version 4.10.13 - 4.10.44.
 
-| Component                                          | Version |
-| -------------------------------------------------- | ------- |
-| [Artifact Studio](../downloads/artifact-studio.md) | 4.10.9  |
+| Component                                                                                                         | Version |
+| ----------------------------------------------------------------------------------------------------------------- | ------- |
+| [Artifact Studio](../downloads/artifact-studio.md)                                                                | 4.10.9  |
+| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.30.7  |
 
 <!-- BEGIN COMPONENT UPDATES BODY: DOC-3450. DO NOT DELETE. -->
 
@@ -63,8 +64,8 @@ The following components have been updated for Palette version 4.10.13 - 4.10.44
 
 <!-- https://spectrocloud.atlassian.net/browse/PLT-2441 -->
 
-- Expanded Terraform Provider pack management capabilities and resources to support comprehensive custom pack authoring
-  and registry workflows.
+- Added the `spectrocloud_registry_pack` resource to the Spectro Cloud Terraform provider for managing pack registries.
+  It supports only pack registries that use basic authentication.
 
 ### Bug Fixes
 
@@ -105,13 +106,16 @@ The following components have been updated for Palette version 4.10.13 - 4.10.44
 
 <!-- https://spectrocloud.atlassian.net/browse/PLT-2495 -->
 
-- Fixed an issue where stalled API calls hung indefinitely in the Go SDK and Terraform provider by introducing default
-  request timeouts and response idle timeouts.
+- Fixed an issue where a stalled API response kept the Spectro Cloud Terraform provider waiting until the resource
+  timeout. Requests now time out after 300 seconds, and responses that stop sending data time out after 60 seconds. To
+  change these limits, use the new `request_timeout` and `response_idle_timeout` provider settings or the
+  `SPECTROCLOUD_REQUEST_TIMEOUT` and `SPECTROCLOUD_RESPONSE_IDLE_TIMEOUT` environment variables. A value of `-1` removes
+  the limit.
 
 <!-- https://spectrocloud.atlassian.net/browse/PLT-2497 -->
 
-- Fixed an issue in the Terraform provider where OCI pack UID resolution was skipped for ECR registries due to querying
-  the basic registry sync endpoint.
+- Fixed an issue where the Spectro Cloud Terraform provider could not resolve the UID of a pack from an Amazon ECR OCI
+  registry, because it checked only the basic registry sync endpoint.
 
 <!-- END COMPONENT UPDATES BODY: DOC-3450. DO NOT DELETE. -->
 
