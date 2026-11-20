@@ -18,10 +18,10 @@ run in Kata VMs.
 
 The pack installs [Kata Containers](https://katacontainers.io/) with the upstream
 [kata-deploy](https://kata-containers.github.io/kata-containers/installation/#install-on-kubernetes-with-helm-recommended)
-Helm chart. On each selected node, the installation copies the Kata runtime, hypervisors, and guest images, updates the
-containerd configuration, and adds the `katacontainers.io/kata-runtime=true` label. The pack also creates a Kubernetes
-[RuntimeClass](https://kubernetes.io/docs/concepts/containers/runtime-class/) named `kata-<shim>` for each hypervisor
-shim that it enables.
+Helm chart. On each node that the pack targets, the installation copies the Kata runtime, hypervisors, and guest images,
+updates the containerd configuration, and adds the `katacontainers.io/kata-runtime=true` label. The pack also creates a
+Kubernetes [RuntimeClass](https://kubernetes.io/docs/concepts/containers/runtime-class/) named `kata-<shim>` for each
+hypervisor shim that it enables.
 
 The **Kubernetes Distribution** preset determines where the installation finds the containerd configuration on each
 node.
@@ -38,10 +38,11 @@ The shims available on a node depend on its architecture. The following table li
 | `kata-clh`, `kata-clh-runtime-rs` | Cloud Hypervisor with the Go runtime or the Rust runtime.  | amd64                 |
 | `kata-dragonball`                 | Dragonball, a hypervisor built into the Rust runtime.      | amd64                 |
 
-We recommend `kata-qemu-runtime-rs` unless you have a reason to choose another shim. To list every RuntimeClass on your
-cluster, use the `kubectl get runtimeclass` command.
+We recommend `kata-qemu-runtime-rs` unless you have a reason to choose another shim.
 
 ## Considerations
+
+- The pack installs Kata on every node unless you set `charts.kata-deploy.nodeSelector` to limit it to matching nodes.
 
 - Installing or updating the pack changes the containerd configuration on each selected node and might restart
   containerd.
@@ -54,8 +55,6 @@ cluster, use the `kubectl get runtimeclass` command.
 
   - Set `charts.kata-deploy.deploymentMode` to `daemonset`. The pack then keeps a privileged DaemonSet on every selected
     node.
-
-- The pack installs Kata on every node unless you set `charts.kata-deploy.nodeSelector` to limit it to matching nodes.
 
 - The pack creates the `kata-system` namespace with the `privileged` Pod Security level, because the installation writes
   to the host.
@@ -154,7 +153,8 @@ Confirm that the nodes can run Kata and that a pod runs inside a Kata VM.
    kubectl get nodes --selector katacontainers.io/kata-runtime=true
    ```
 
-   Each node where the installation succeeded appears in the output.
+   Each node where the installation succeeded appears in the output. If a node is missing, confirm that it exposes
+   `/dev/kvm`. If the node joined the cluster after you installed the pack, refer to [Considerations](#considerations).
 
 6. List the Kata RuntimeClasses.
 
