@@ -31,38 +31,39 @@ The following components have been updated for Palette version 4.10.13 - 4.10.44
 
 <!-- https://spectrocloud.atlassian.net/browse/PAC-5247 -->
 
-- Updated Kubernetes packs for release week 2026-47, including edge-k3s versions 1.34.13, 1.35.10, 1.36.6, and 1.37.2
-  (non-FIPS), edge-k8s versions 1.36.6 and 1.37.2 (FIPS and non-FIPS), edge-rke2 versions 1.34.13, 1.35.10, 1.36.6, and
-  1.37.2 (FIPS and non-FIPS), and kubernetes versions 1.34.13 (FIPS), 1.36.6 (FIPS and non-FIPS), and 1.37.2 (FIPS and
-  non-FIPS).
+- Added K3s 1.34.13, 1.35.10, 1.36.6, and 1.37.2 to the non-FIPS variant of the `edge-k3s` pack for Edge clusters.
+- Added RKE2 1.34.13, 1.35.10, 1.36.6, and 1.37.2 to the FIPS and non-FIPS variants of the `edge-rke2` pack for Edge
+  clusters.
+- Added Kubernetes 1.36.6 and 1.37.2 to the FIPS and non-FIPS variants of the `edge-k8s` pack for Edge clusters.
+- Added Kubernetes 1.36.6 and 1.37.2 to the FIPS and non-FIPS variants of the `kubernetes` pack, and Kubernetes 1.34.13
+  to its FIPS variant.
 
 <!-- https://spectrocloud.atlassian.net/browse/PAC-5326 -->
 
-- Added the calico/third-party-cni-plugins image to the tigera-operator pack image list for Calico versions 3.33 and
+- Added the `calico/third-party-cni-plugins` image to the image list of the `tigera-operator` pack for Calico 3.33 and
   later.
 
 <!-- https://spectrocloud.atlassian.net/browse/PCOM-1214 -->
 
-- Updated the member invite acceptance screen to display "Back to Artifact Studio" for clearer navigation and
-  streamlined the invite card copy.
+- Updated the Artifact Studio member invite acceptance screen to show **Back to Artifact Studio** and shortened the
+  invite card text.
 
 <!-- https://spectrocloud.atlassian.net/browse/PCOM-1304 -->
 
-- Enhanced compliance posture by adding actor role tracking to download events, making download event retention
-  configurable via environment variables, removing cleartext IP storage, and verifying hashing correlation safeguards.
+- Artifact Studio sign-in records now store only a hash of the IP address, never the IP address in plain text.
 
 <!-- https://spectrocloud.atlassian.net/browse/PCOM-1364 -->
 
-- Removed the redundant version switcher from the top navigation bar in Artifact Studio v2, retaining the top banner
-  switcher as the single control for navigating between versions.
+- Removed the duplicate version switcher from the Artifact Studio v2 top navigation bar. The switcher in the top banner
+  is now the only way to change versions.
 
 <!-- https://spectrocloud.atlassian.net/browse/PCOM-1365 -->
 
-- Set Artifact Studio v2 as the default landing experience while preserving direct access to v1.
+- Made Artifact Studio v2 the default version. Version 1 is still available.
 
 <!-- https://spectrocloud.atlassian.net/browse/PLT-2441 -->
 
-- Extended Terraform Provider pack management capabilities and resources to support comprehensive custom pack authoring
+- Expanded Terraform Provider pack management capabilities and resources to support comprehensive custom pack authoring
   and registry workflows.
 
 ### Bug Fixes
@@ -72,11 +73,6 @@ The following components have been updated for Palette version 4.10.13 - 4.10.44
 - Fixed an issue in Headlamp 0.45.0 where service account token authentication failed when accessing the Headlamp UI in
   Direct mode.
 
-<!-- https://spectrocloud.atlassian.net/browse/PAC-5331 -->
-
-- Fixed pack publishing naming for Portworx 3.7.0-rev1 to use the existing portworx-generic-addon pack name instead of
-  creating a separate pack identifier.
-
 <!-- https://spectrocloud.atlassian.net/browse/PCOM-1368 -->
 
 - Fixed an issue where pack version listings across Artifact Studio failed to distinguish between FIPS and non-FIPS
@@ -84,27 +80,28 @@ The following components have been updated for Palette version 4.10.13 - 4.10.44
 
 <!-- https://spectrocloud.atlassian.net/browse/PCOM-1371 -->
 
-- Fixed an issue where PaletteAI profile bundle downloads were assigned a .tar.tar file extension instead of .tar.gz.
+- Fixed an issue where PaletteAI profile bundle downloads from Artifact Studio had a `.tar.tar` file extension instead
+  of `.tar.gz`.
 
 <!-- https://spectrocloud.atlassian.net/browse/PCOM-1373 -->
 
-- Fixed an issue where the Helm Chart download row on the Palette Enterprise and VerteX installer cards displayed a .tgz
-  file format instead of .zip.
+- Fixed an issue where the **Helm Chart** row for Palette Enterprise and VerteX on the Artifact Studio **Appliances**
+  page listed a `.tgz` file, although the download is a `.zip` file.
 
 <!-- https://spectrocloud.atlassian.net/browse/PCOM-1374 -->
 
-- Fixed a file extension mismatch on the Appliances Machine Owner Key download row where the UI advertised .mok instead
-  of the downloaded .der format.
+- Fixed an issue where the **Machine Owner Key** row on the Artifact Studio **Appliances** page listed a `.mok` file,
+  although the download is `mok.der`.
 
 <!-- https://spectrocloud.atlassian.net/browse/PLT-2206 -->
 
-- Fixed an issue where spectrocloud_cluster_config_template did not detect configuration drift when the variables block
-  inside a cluster profile was modified.
+- Fixed an issue where `spectrocloud_cluster_config_template` did not detect configuration drift when the `variables`
+  block inside a cluster profile was modified.
 
 <!-- https://spectrocloud.atlassian.net/browse/PLT-2468 -->
 
-- Fixed an issue during terraform import of static EKS clusters where control-plane subnet mappings were omitted from
-  cloud_config.az_subnets.
+- Fixed an issue during `terraform import` of static EKS clusters where control plane subnet mappings were omitted from
+  `cloud_config.az_subnets`.
 
 <!-- https://spectrocloud.atlassian.net/browse/PLT-2495 -->
 
@@ -162,10 +159,6 @@ The following components have been updated for Palette version 4.10.13 - 4.10.44
 <!-- prettier-ignore-end -->
 
 <!-- END PACKS LIST BODY: DOC-3450. DO NOT DELETE. -->
-
-#### Pack Notes
-
-#### Deprecations and Removals
 
 ## November 15, 2026 - Release 4.10.44 {#release-notes-4.10.b}
 
