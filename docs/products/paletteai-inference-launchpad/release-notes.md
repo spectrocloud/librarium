@@ -18,26 +18,27 @@ that their organization already uses.
 
 ### New Features {#new-features-1-3-0}
 
-- Clients in the same workspace now share the prompt cache by default. A prompt that starts like another client's
-  earlier prompt gets a faster response. Sharing also opens a timing side channel between those clients. A policy set to
-  **Each client is isolated** keeps each client's cache separate. Refer to
+- Clients in the same workspace now share the prompt cache by default. A prompt that starts with the same text as
+  another client's earlier prompt gets the first part of its response sooner. Sharing also opens a timing side channel
+  between those clients. A policy set to **Each client is isolated** keeps each client's cache separate. Refer to
   [Prompt Cache Sharing](./explanation/prompt-cache-sharing.md) and
   [Set Prompt Cache Sharing for a Policy](./how-to-guides/set-prompt-cache-sharing.md) for more information.
 
 - Mid-Task Model Switching moves the turns where a coding task struggles from an efficient model to a capable model. It
   is off by default. A platform administrator turns it on under **Settings** > **Request handling** > **Mid-Task Model
   Switching**. The administrator then picks the two models on a client's **Routing** tab. Refer to
-  [Mid-Task Model Switching](./explanation/mid-task-model-switching.md) for more information.
+  [Mid-Task Model Switching](./explanation/mid-task-model-switching.md) and
+  [Set Up Mid-Task Model Switching](./how-to-guides/set-up-mid-task-model-switching.md) for more information.
 
-- Users can now sign in through their organization's identity provider, such as Okta or Auth0. You add the provider in
-  the Keycloak instance that ships with the appliance. Each person joins the appliance groups whose names match the
-  groups that the provider sends. Local accounts keep working.
+- Users can now sign in through their organization's identity provider, such as Okta or Auth0. A platform administrator
+  adds the provider in the Keycloak instance that ships with the appliance. Each person joins the appliance groups whose
+  names match the groups that the provider sends. Local accounts keep working.
 
   <!-- TODO(AIL-1249): after PR 12694 merges, restore "Refer to Add an External Identity Provider for more information." with a link to how-to-guides/add-an-external-identity-provider.md. -->
 
-- A model on an external inference endpoint can now read client images for a text-only model on the appliance. You no
-  longer need a vision model on the appliance. The images leave the appliance, so the console asks you to confirm this
-  choice. Each read counts as the client's external inferencing spend. Refer to
+- A model on an external inference endpoint can now read client images for a text-only model on the appliance. With an
+  external reader, you do not need a vision model on the appliance. The images leave the appliance, so the console asks
+  you to confirm this choice. Each read counts as the client's external inferencing spend. Refer to
   [Read Images with an External Model](./how-to-guides/read-images-with-an-external-model.md) for more information.
 
 - You can now set a system prompt for all models or for one model. The console calls it an instruction. By default, the
@@ -66,8 +67,8 @@ that their organization already uses.
 
 ### Bug Fixes {#bug-fixes-1-3-0}
 
-- Some requests meant for an external inference endpoint go to a text-only model on the appliance instead. The appliance
-  now reads the images in those requests first. Before this fix, the images reached the model unread. Refer to
+- When a request meant for an external inference endpoint goes to a text-only model on the appliance instead, the
+  appliance now reads the request's images first. Before this fix, the images reached the model unread. Refer to
   [How an Image Request Is Handled](./explanation/vision-preprocessing.md#how-an-image-request-is-handled) for more
   information.
 
