@@ -35,6 +35,12 @@ Selections seed values. They do not lock them. Every value remains editable in t
 We recommend using the pack defaults. Default settings provide best practices for your clusters. Changing the default
 settings can introduce misconfigurations. Carefully review the changes you make to a pack.
 
+The `directAccess` Traefik route is deprecated, and `charts.virtual-machine-orchestrator.directAccess.enabled` is
+`false` by default in every Deployment Mode. Do not use the route for Containerized Data Importer (CDI) upload or
+virtual machine export. Refer to
+[Configure Image Upload and VM Export](https://docs.spectrocloud.com/vm-management/vmo-pack/configure-image-upload-and-vm-export/)
+for the supported methods.
+
 :::
 
 ## Values Paths
@@ -48,7 +54,8 @@ charts:
 ```
 
 For example, `tls.enabled` refers to `charts.virtual-machine-orchestrator.vmo-manager.tls.enabled`. Parameters that sit
-outside this root, such as `charts.virtual-machine-orchestrator.directAccess.enabled`, are listed with their full path.
+outside this root, such as `charts.virtual-machine-orchestrator.appConfig.clusterInfo.consoleBaseAddress`, are listed
+with their full path.
 
 Two notations appear in the parameter tables in this section of the documentation.
 
@@ -64,21 +71,20 @@ Two notations appear in the parameter tables in this section of the documentatio
 Use **Proxied** when the cluster is behind a firewall or NAT and Palette cannot reach it directly. The Spectro Proxy
 pack provides remote access to the UI. This is the default selection.
 
-| **Setting**                                                | **Value Applied**                                                                                         |
-| ---------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
-| Pack dependency                                            | Adds the `spectro-proxy` pack with `manifests.spectro-proxy.vmDashboardIntegration.enabled` set to `true` |
-| `pack.spectrocloud.com/install-priority`                   | `90`, so that VMO installs before the Spectro Proxy pack                                                  |
-| `palette.enabled`                                          | `true`                                                                                                    |
-| `palette.managedIngress`                                   | `true`                                                                                                    |
-| `palette.serviceName`                                      | `vm-dashboard`, which Palette requires                                                                    |
-| `service.type`                                             | `ClusterIP`, because the Spectro Proxy pack tunnels to the service inside the cluster                     |
-| `tls.enabled`                                              | `true`                                                                                                    |
-| `tls.certManager.enabled`                                  | `true`                                                                                                    |
-| `tls.certManager.selfSigned`                               | `true`                                                                                                    |
-| `caCert.enabled`                                           | `true`                                                                                                    |
-| `caCert.configMapName`                                     | `platform-ca-cert`                                                                                        |
-| `ingressRoute.enabled`                                     | `false`, because the UI is reached through the Spectro Proxy pack rather than Traefik                     |
-| `charts.virtual-machine-orchestrator.directAccess.enabled` | `true`, which provides a Traefik route for CDI uploads and VM export                                      |
+| **Setting**                              | **Value Applied**                                                                                         |
+| ---------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| Pack dependency                          | Adds the `spectro-proxy` pack with `manifests.spectro-proxy.vmDashboardIntegration.enabled` set to `true` |
+| `pack.spectrocloud.com/install-priority` | `90`, so that VMO installs before the Spectro Proxy pack                                                  |
+| `palette.enabled`                        | `true`                                                                                                    |
+| `palette.managedIngress`                 | `true`                                                                                                    |
+| `palette.serviceName`                    | `vm-dashboard`, which Palette requires                                                                    |
+| `service.type`                           | `ClusterIP`, because the Spectro Proxy pack tunnels to the service inside the cluster                     |
+| `tls.enabled`                            | `true`                                                                                                    |
+| `tls.certManager.enabled`                | `true`                                                                                                    |
+| `tls.certManager.selfSigned`             | `true`                                                                                                    |
+| `caCert.enabled`                         | `true`                                                                                                    |
+| `caCert.configMapName`                   | `platform-ca-cert`                                                                                        |
+| `ingressRoute.enabled`                   | `false`, because users reach the UI through the Spectro Proxy pack rather than Traefik                    |
 
 The serving certificate in this mode is only consumed by the in-cluster proxy. The pack therefore uses a chart-managed
 self-signed `ClusterIssuer` rather than depending on an external `platform-ca-issuer` that might not exist on every
@@ -89,19 +95,18 @@ cluster.
 Use **Direct** when the cluster is directly reachable from Palette, with no firewall or NAT between Palette and the
 cluster network. No proxy is required.
 
-| **Setting**                                                | **Value Applied**                                                                      |
-| ---------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `palette.enabled`                                          | `true`                                                                                 |
-| `palette.managedIngress`                                   | `false`                                                                                |
-| `palette.serviceName`                                      | `vm-dashboard`                                                                         |
-| `service.type`                                             | `LoadBalancer`. Use `NodePort` instead on bare metal clusters without a load balancer. |
-| `tls.enabled`                                              | `true`                                                                                 |
-| `tls.certManager.enabled`                                  | `true`                                                                                 |
-| `tls.certManager.selfSigned`                               | `true`                                                                                 |
-| `caCert.enabled`                                           | `true`                                                                                 |
-| `caCert.configMapName`                                     | `platform-ca-cert`                                                                     |
-| `ingressRoute.enabled`                                     | `false`, because `directAccess` owns the route                                         |
-| `charts.virtual-machine-orchestrator.directAccess.enabled` | `true`                                                                                 |
+| **Setting**                  | **Value Applied**                                                                                        |
+| ---------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `palette.enabled`            | `true`                                                                                                   |
+| `palette.managedIngress`     | `false`, which overrides the pack default of `true`                                                      |
+| `palette.serviceName`        | `vm-dashboard`                                                                                           |
+| `service.type`               | `LoadBalancer`. Use `NodePort` instead on bare metal clusters without a load balancer.                   |
+| `tls.enabled`                | `true`                                                                                                   |
+| `tls.certManager.enabled`    | `true`                                                                                                   |
+| `tls.certManager.selfSigned` | `true`                                                                                                   |
+| `caCert.enabled`             | `true`                                                                                                   |
+| `caCert.configMapName`       | `platform-ca-cert`                                                                                       |
+| `ingressRoute.enabled`       | `false`, because users reach the UI through the `LoadBalancer` or `NodePort` Service rather than Traefik |
 
 If you combine **Direct** with the [External OIDC](./authentication-options.md#external-oidc) authentication option, you
 must also set `platform.baseUrl` to the URL that users reach the UI at, so that VMO can build the OIDC redirect URI.
@@ -114,9 +119,10 @@ charts:
         baseUrl: "https://<lb-ip-or-dns>"
 ```
 
-Palette-managed OIDC in **Direct** mode uses `appConfig.clusterInfo.consoleBaseAddress` automatically and requires no
-additional configuration. Refer to [Configure Direct Access to VM Dashboard](./configure-console-base-address.md) for
-guidance on setting that address.
+Palette-managed OIDC in **Direct** mode uses
+`charts.virtual-machine-orchestrator.appConfig.clusterInfo.consoleBaseAddress` automatically and requires no additional
+configuration. Refer to [Configure Direct Access to VM Dashboard](./configure-console-base-address.md) for guidance on
+setting that address.
 
 ## Custom
 
