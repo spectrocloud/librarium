@@ -32,9 +32,8 @@ that their organization already uses.
 
 - Users can now sign in through their organization's identity provider, such as Okta or Auth0. A platform administrator
   adds the provider in the Keycloak instance that ships with the appliance. Each person joins the appliance groups whose
-  names match the groups that the provider sends. Local accounts keep working.
-
-  <!-- TODO(AIL-1249): after PR 12694 merges, restore "Refer to Add an External Identity Provider for more information." with a link to how-to-guides/add-an-external-identity-provider.md. -->
+  names match the groups that the provider sends. Local accounts keep working. Refer to
+  [Add an External Identity Provider](./how-to-guides/add-an-external-identity-provider.md) for more information.
 
 - A model on an external inference endpoint can now read client images for a text-only model on the appliance. With an
   external reader, you do not need a vision model on the appliance. The images leave the appliance, so the console asks
