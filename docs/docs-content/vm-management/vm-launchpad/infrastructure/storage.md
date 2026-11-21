@@ -273,33 +273,56 @@ for instructions.
 9. Configure the remaining wizard sections from the left panel. The following table describes the most common fields.
    The **Summary** and **Validation** panels on the right update as you go.
 
-   | **Section**         | **What you configure**                                                                                                                                                                                                                                                                                                                                                                                                                               |
-   | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | **General**         | **Secrets Provider**: `k8s` stores Portworx credentials as Kubernetes secrets.<br />**Custom Image Registry**: a registry prefix prepended to every Portworx image, required for airgapped clusters and left empty on connected clusters to pull from `docker.io`.<br />**Image**: the Portworx image.                                                                                                                                               |
-   | **Storage**         | _(Local disks only)_ The node-local block **Devices** Portworx claims, the **System Metadata Device**, and optional **Journal Device**, **KVDB Device**, and **Cache Devices**. Select **Force Use Disks** to reuse disks that already carry data, or **Use All** to claim every available disk. Use the block-device picker's [disk partitioning workflow](#partition-a-disk-for-storage) to carve dedicated KVDB, journal, or metadata partitions. |
-   | **Nodes**           | _(Local disks only)_ Per-node storage overrides for heterogeneous hardware.                                                                                                                                                                                                                                                                                                                                                                          |
-   | **Cloud Storage**   | _(Pure FlashArray only)_ The size in GiB of each **Device Specs** pool, the **Kvdb Device Spec** and **System Metadata Device Spec** sizes, the optional **Journal Device Spec** and **Capacity Specs**, and the cloud drive **Provider** (`pure`).                                                                                                                                                                                                  |
-   | **Pure Platform**   | _(Pure FlashArray only)_ Optional **Fusion** and **Integration Operator** settings.                                                                                                                                                                                                                                                                                                                                                                  |
-   | **Kvdb**            | The Portworx key-value store. Keep **Internal** selected for an internal KVDB, or clear it and provide **Endpoints** and an **Auth Secret** for an external KVDB. Select **Enable TLS** to secure KVDB traffic.                                                                                                                                                                                                                                      |
-   | **Csi**             | Enable the Portworx CSI driver and choose an internal or external CSI deployment.                                                                                                                                                                                                                                                                                                                                                                    |
-   | **Network**         | The **Data Interface** Portworx uses for storage traffic and the **Mgmt Interface** it uses for management traffic.                                                                                                                                                                                                                                                                                                                                  |
-   | **Volumes**         | Default settings applied to new Portworx volumes.                                                                                                                                                                                                                                                                                                                                                                                                    |
-   | **Autopilot**       | Enable Portworx Autopilot to automatically expand capacity as pools fill.                                                                                                                                                                                                                                                                                                                                                                            |
-   | **Delete Strategy** | How Portworx cleans up when you delete the cluster: `Uninstall`, `UninstallAndWipe`, or `UninstallAndDelete`. Select **Ignore Volumes** to leave provisioned volumes in place.                                                                                                                                                                                                                                                                       |
-   | **Env**             | Environment variables that the storage cluster passes to Portworx, such as `PURE_FLASHARRAY_SAN_TYPE`.                                                                                                                                                                                                                                                                                                                                               |
+   | **Section**         | **What you configure**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+   | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **General**         | **Secrets Provider**: `k8s` stores Portworx credentials as Kubernetes secrets.<br />**Custom Image Registry**: leave this field empty in both connected and airgapped environments. The appliance serves every Portworx image from its built-in registry. Any value in this field stops Portworx from pulling its images, and the storage cluster does not start. The field's help text says that airgapped clusters require a value, but that does not apply to VM Launchpad appliances.<br />**Image**: the Portworx image. |
+   | **Storage**         | _(Local disks only)_ The node-local block **Devices** Portworx claims, the **System Metadata Device**, and optional **Journal Device**, **KVDB Device**, and **Cache Devices**. Select **Force Use Disks** to reuse disks that already carry data, or **Use All** to claim every available disk. Use the block-device picker's [disk partitioning workflow](#partition-a-disk-for-storage) to carve dedicated KVDB, journal, or metadata partitions.                                                                          |
+   | **Nodes**           | _(Local disks only)_ Per-node storage overrides for heterogeneous hardware.                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+   | **Cloud Storage**   | _(Pure FlashArray only)_ The size in GiB of each **Device Specs** pool, the **Kvdb Device Spec** and **System Metadata Device Spec** sizes, the optional **Journal Device Spec** and **Capacity Specs**, and the cloud drive **Provider** (`pure`).                                                                                                                                                                                                                                                                           |
+   | **Pure Platform**   | _(Pure FlashArray only)_ Optional **Fusion** and **Integration Operator** settings.                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+   | **Kvdb**            | The Portworx key-value store. Keep **Internal** selected for an internal KVDB, or clear it and provide **Endpoints** and an **Auth Secret** for an external KVDB. Select **Enable TLS** to secure KVDB traffic.                                                                                                                                                                                                                                                                                                               |
+   | **Csi**             | Enable the Portworx CSI driver and choose an internal or external CSI deployment.                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+   | **Network**         | The **Data Interface** Portworx uses for storage traffic and the **Mgmt Interface** it uses for management traffic.                                                                                                                                                                                                                                                                                                                                                                                                           |
+   | **Volumes**         | Default settings applied to new Portworx volumes.                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+   | **Autopilot**       | Enable Portworx Autopilot to automatically expand capacity as pools fill.                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+   | **Delete Strategy** | How Portworx cleans up when you delete the cluster: `Uninstall`, `UninstallAndWipe`, or `UninstallAndDelete`. Select **Ignore Volumes** to leave provisioned volumes in place.                                                                                                                                                                                                                                                                                                                                                |
+   | **Env**             | Environment variables that the storage cluster passes to Portworx, such as `PURE_FLASHARRAY_SAN_TYPE`.                                                                                                                                                                                                                                                                                                                                                                                                                        |
 
    If you use a V1 Storage Cluster, you do not need to create a separate metadata device. Portworx uses one unmounted
    partition or a raw unmounted disk that you provide.
 
-10. (Optional) Select **Advanced** to edit the `StorageCluster` as raw YAML instead of using the form.
+10. _(Local disks only)_ On VM Launchpad appliances, we recommend that you select **Advanced** and set the
+    `spec.storage` section of the `StorageCluster` YAML to the following values. If the section already lists `devices`,
+    remove them, because Portworx
+    [ignores `useAll` when `devices` is set](https://docs.portworx.com/portworx-enterprise/reference/crd/storage-cluster).
 
-11. Review the **Summary** and confirm that **Validation** reports no issues, and then select **Save** in the
+    ```yaml
+    spec:
+      storage:
+        useAll: true
+        systemMetadataDevice: /dev/disk/by-partlabel/csi-metadata-partition
+    ```
+
+    With `useAll: true`, Portworx claims every available disk on each node that has no partitions or file system, which
+    leaves out the operating system disk. For the system metadata, the appliance installer creates a partition labeled
+    `csi-metadata-partition` on the operating system disk of every node. Because the label is the same on every node,
+    the `/dev/disk/by-partlabel/csi-metadata-partition` path points to that partition on each node.
+
+    Avoid the block-device picker for these values, because it lists disks only by kernel device name, such as
+    `/dev/nvme0n1`. Device names can differ between nodes and change between reboots, so the same name can point to a
+    data disk on one node and the operating system disk on another. To use specific disks instead of `useAll: true`,
+    list their stable `/dev/disk/by-id/` or `/dev/disk/by-partlabel/` paths under `spec.storage.devices`.
+
+11. _(Optional)_ Select **Advanced** to edit other `StorageCluster` settings as raw YAML instead of using the form.
+
+12. Review the **Summary** and confirm that **Validation** reports no issues, and then select **Save** in the
     upper-right corner.
 
 :::warning
 
-Portworx claims and formats the disks and devices you select in the **Storage** section. Confirm that each disk carries
-nothing you need before you save the cluster.
+Portworx claims and formats the disks and devices that you select in the **Storage** section or set in `spec.storage`,
+including every disk that `useAll: true` claims. Confirm that each disk carries nothing you need before you save the
+cluster.
 
 :::
 
@@ -381,9 +404,11 @@ partitioned from is filled with the new partition path right away.
 
 :::warning
 
-VMO never partitions or wipes the disk that hosts the operating system. The safety guard detects only active mounts,
-holders, and in-use state. It does not detect inactive members, such as an unmounted LVM physical volume or a
-non-assembled software RAID member. Before you partition or wipe a disk, confirm it carries nothing you need.
+The partition tool never partitions or wipes the disk that hosts the operating system. On the Portworx variant, the
+appliance installer already creates a `csi-metadata-partition` on that disk for the Portworx system metadata. The
+partition tool's safety guard detects only active mounts, holders, and in-use state. It does not detect inactive
+members, such as an unmounted LVM physical volume or a non-assembled software RAID member. Before you partition or wipe
+a disk, confirm it carries nothing you need.
 
 :::
 
