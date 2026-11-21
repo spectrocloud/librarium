@@ -113,7 +113,7 @@
     "prettier": "3.5.3",
     "semantic-release": "^25.0.8",
     "ts-jest": "^29.4.15",
-    "typescript": "^5.7.2",
+    "typescript": "^7.0.2",
     "typescript-plugin-css-modules": "^5.2.0",
     "webpconvert": "^3.0.1",
     "xml2js": "^0.6.2"
