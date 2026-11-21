@@ -266,9 +266,11 @@ Before you service an LXD host, for example to apply firmware updates, replace h
 the host under maintenance so that Palette stops placing new LXD VMs on it. An LXD host is a host cluster node that runs
 the control plane LXD VMs of your workload clusters.
 
-You control host maintenance with MAAS tags that you apply to the LXD host machine in MAAS, not to a cluster or node
-pool in Palette. Palette-managed LXD hosts follow the `lxd-host-<name>` naming convention in MAAS, which helps you
-identify the correct machine. For more information about MAAS tags, refer to the
+You control host maintenance with MAAS tags that you apply to the bare-metal machine of the LXD host in MAAS, not to a
+cluster or node pool in Palette. When Palette registers a machine as an LXD host, it creates a MAAS VM host named
+`lxd-host-<machine-name>` that points to the machine. For example, the VM host for the machine `bm-01` is named
+`lxd-host-bm-01`. Apply the maintenance tags to the machine, not to the VM host or to the control plane LXD VMs, which
+MAAS lists as separate machines. For more information about MAAS tags, refer to the
 [MAAS tags](https://canonical.com/maas/docs/about-machine-groups#p-22953-tags) documentation.
 
 ### Prerequisites {#prerequisites-host-maintenance}
@@ -283,11 +285,11 @@ identify the correct machine. For more information about MAAS tags, refer to the
 
 The following tags control the maintenance state of an LXD host.
 
-| **Tag**                          | **Purpose**                                                                                       | **When to Apply**                                                                                         |
-| -------------------------------- | ------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
-| `maas-lxd-host-noschedule`       | Cordons the host so that Palette does not place new LXD VMs on it.                                | Apply when you want to stop Palette from placing new control plane LXD VMs on the host.                   |
-| `maas-lxd-host-maintenance`      | Marks the host for draining so that Palette evacuates its control plane LXD VMs.                  | Apply together with the other two tags when you want to move existing control plane LXD VMs off the host. |
-| `maas-lxd-hcp-op-<operation-id>` | Identifies a single maintenance operation, where `<operation-id>` is a unique value that you set. | Apply together with the other two tags to start a full maintenance operation.                             |
+| **Tag**                          | **Purpose**                                                                                       | **When to Apply**                                                                                                 |
+| -------------------------------- | ------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| `maas-lxd-host-noschedule`       | Cordons the host so that Palette does not place new LXD VMs on it.                                | Apply when you want to stop Palette from placing new control plane LXD VMs on the host.                           |
+| `maas-lxd-host-maintenance`      | Marks the host for draining so that Palette evacuates its control plane LXD VMs.                  | Apply together with the other two tags when you want Palette to evacuate the control plane LXD VMs from the host. |
+| `maas-lxd-hcp-op-<operation-id>` | Identifies a single maintenance operation, where `<operation-id>` is a unique value that you set. | Apply together with the other two tags to start a full maintenance operation.                                     |
 
 A host that carries either the `maas-lxd-host-noschedule` tag or the `maas-lxd-host-maintenance` tag receives no new LXD
 VMs. The control plane LXD VMs that already run on the host keep running until you start a
@@ -296,7 +298,13 @@ VMs. The control plane LXD VMs that already run on the host keep running until y
 Palette matches the tag names literally, so enter them exactly as shown. A typo prevents the host from entering
 maintenance.
 
-<!-- TODO(DOC-3339): SME question 3 - Palette (HMC) applies and clears these same three tags itself when it replaces a host in the host cluster. Should this section warn admins not to add or remove the tags on a host that Palette is replacing? -->
+:::warning
+
+Palette applies the same three tags to a host when it replaces a node in the host cluster, and removes them when the
+evacuation finishes. Do not add or remove the `maas-lxd-host-noschedule`, `maas-lxd-host-maintenance`, or
+`maas-lxd-hcp-op-<operation-id>` tags on a host while Palette replaces it.
+
+:::
 
 ### Cordon a Host
 
@@ -338,21 +346,23 @@ keep running. We recommend that you cordon a host as the first step before you s
 
    Replace `<maas-host>` with the IP address or hostname of your MAAS server and `<api-key>` with your MAAS API key.
 
-2. (Optional) If the `maas-lxd-host-noschedule` tag does not exist in MAAS, create it.
+2. (Optional) If the `maas-lxd-host-noschedule` tag does not exist in MAAS, create it. If the tag already exists, the
+   command fails with the error `Tag with this Name already exists.`, and you can continue to the next step.
 
    ```bash
    maas admin tags create name=maas-lxd-host-noschedule comment="Block new LXD VM placement"
    ```
 
-3. List the LXD hosts and their system IDs. Note the system ID of the host that you want to cordon.
+3. List the LXD VM hosts and the system IDs of their machines. Note the system ID of the machine of the host that you
+   want to cordon.
 
    ```bash
-   maas admin machines read | jq --raw-output '.[] | select(.hostname | startswith("lxd-host-")) | "\(.hostname) \(.system_id)"'
+   maas admin vm-hosts read | jq --raw-output '.[] | select(.name | startswith("lxd-host-")) | "\(.name) \(.host.system_id)"'
    ```
 
    ```text hideClipboard title="Example Output"
-   lxd-host-a1b2c 4y3h7n
-   lxd-host-d4e5f 8k2p6q
+   lxd-host-bm-01 4y3h7n
+   lxd-host-bm-02 8k2p6q
    ```
 
 4. Apply the tag to the host.
@@ -386,20 +396,22 @@ To resume scheduling on the host, refer to [Lift Host Maintenance](#lift-host-ma
 
 ### Place a Host under Full Maintenance
 
-Full maintenance cordons the host _and_ evacuates the control plane LXD VMs that already run on it. Palette moves each
-control plane VM to another eligible host so that you can safely take the host offline.
-
-<!-- TODO(DOC-3339): SME question 1 - the code replaces each control plane VM (VEC deletes it and KCP creates a new one on another host; single-node control planes get a maxSurge=1 template swap), one at a time after the control plane is stable. Change "moves" to "replaces" only after the PR author agrees. -->
+Full maintenance cordons the host _and_ evacuates the control plane LXD VMs that already run on it. Palette replaces
+each control plane LXD VM on the host with a new VM on another eligible host, one VM at a time, after the control plane
+of the workload cluster is stable. When the evacuation finishes, you can safely take the host offline.
 
 :::warning
 
-Before you start a full maintenance operation, ensure that the affected host and workload clusters are configured for
-high availability, with at least three nodes per cluster spread across different availability zones. Evacuating control
-plane LXD VMs from a cluster that is not highly available can disrupt the control plane.
+Before you start a full maintenance operation, review the following conditions. Otherwise, Palette might not be able to
+evacuate the host.
+
+- Palette places each replacement VM only on a host in the same availability zone as the original VM, and that host must
+  have spare capacity. Palette does not use spare capacity in other availability zones.
+
+- Palette cannot evacuate the control plane of a workload cluster that has two control plane nodes. Palette can evacuate
+  a single-node control plane, but we recommend three control plane nodes spread across different availability zones.
 
 :::
-
-<!-- TODO(DOC-3339): SME question 2 - is three nodes across zones a requirement or a recommendation, and for the host cluster, the workload clusters, or both? Single-node control planes get a maxSurge=1 swap in the code. -->
 
 To start a full maintenance operation, apply all three [host maintenance tags](#host-maintenance-tags) to the host. If
 you already [cordoned the host](#cordon-a-host), it carries the `maas-lxd-host-noschedule` tag, so apply only the other
@@ -498,28 +510,38 @@ Run the following commands in the same terminal session, because later steps use
 
 #### Validate {#validate-full-maintenance}
 
-After you apply the tags, Palette begins to evacuate the control plane LXD VMs from the host. Use the following steps to
-confirm that the evacuation is complete before you take the host offline.
+After you apply the tags, Palette begins to evacuate the control plane LXD VMs from the host. When the control plane of
+a workload cluster is stable on a replacement VM, Palette applies the `maas-lxd-ready-op-<operation-id>` tag to that VM.
+The evacuation is complete when each replacement VM carries this tag and no control plane LXD VMs remain on the host.
+Use the following steps to confirm that the evacuation is complete before you take the host offline.
 
-<!-- TODO(DOC-3339): SME question 4 - when a replacement VM's control plane is stable, VEC tags the VM maas-lxd-ready-op-<operation-id>. If the SMEs agree, add a MAAS step that checks for that tag. -->
+1. Use the MAAS CLI to list the replacement VMs that carry the ready tag for this maintenance operation.
 
-1. Log in to [Palette](https://console.spectrocloud.com).
+   ```bash
+   maas admin tag machines maas-lxd-ready-op-<operation-id> | jq --raw-output '.[].hostname'
+   ```
 
-2. Ensure you are in the correct project scope.
+   Replace `<operation-id>` with the operation ID of the maintenance operation. The output lists the hostname of each
+   replacement VM that Palette created during the operation.
 
-3. From the left main menu, select **Clusters**.
+2. Log in to [Palette](https://console.spectrocloud.com).
 
-4. Select a workload cluster that has a control plane LXD VM on the host.
+3. Ensure you are in the correct project scope.
 
-5. Select the **Nodes** tab. Ensure that no control plane node runs on the host under maintenance and that the cluster
+4. From the left main menu, select **Clusters**.
+
+5. Select a workload cluster that had a control plane LXD VM on the host.
+
+6. Select the **Nodes** tab. Ensure that no control plane node runs on the host under maintenance and that the cluster
    has a **Health** status of **Healthy**.
 
-6. Repeat steps 4 - 5 for each affected workload cluster.
+7. Repeat steps 5 - 6 for each affected workload cluster.
 
 ### Lift Host Maintenance
 
 When you finish servicing the host, remove the maintenance tags to return the host to the pool of eligible hosts.
-Palette resumes placing new LXD VMs on the host after you remove the tags.
+Palette resumes placing new LXD VMs on the host after you remove the tags. The replacement VMs that Palette created
+during a full maintenance operation stay on their new hosts. Palette does not move them back to the original host.
 
 <Tabs groupId="maas-interface">
 
