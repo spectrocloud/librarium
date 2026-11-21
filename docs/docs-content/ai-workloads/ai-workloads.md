@@ -29,6 +29,10 @@ makes AI spend predictable, refer to [PaletteAI Inference Launchpad](/paletteai-
   <VersionedLink text="NVIDIA GPU Operator" url="/integrations/packs/?pack=nvidia-gpu-operator-ai" /> pack to a Palette
   cluster profile to provision GPU nodes for AI workloads.
 
+- [Isolate Workloads with the Kata Containers Pack](./kata-containers.md) - Add the
+  <VersionedLink text="Kata Containers" url="/integrations/packs/?pack=kata-containers-ai" /> pack to a Palette cluster
+  profile to run pods in lightweight VMs that have their own kernel.
+
 <!-- prettier-ignore-end -->
 
 - [PaletteAI](https://docs.palette-ai.com/) - Provision and manage GPU-optimized infrastructure and clusters, allowing
