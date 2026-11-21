@@ -8,7 +8,7 @@ const { setTimeout } = require("timers/promises");
 const BASE_URL = require("../static/scripts/constants.js").BASE_URL;
 const fetch = require("node-fetch");
 const excludeList = require("../static/packs-data/exclude_packs.json");
-const { existsSync, promises, open, mkdirSync, writeFile, close, createWriteStream } = require("node:fs");
+const { existsSync, promises, open, mkdirSync, writeFile, close, createWriteStream, copyFileSync } = require("node:fs");
 import logger from "@docusaurus/logger";
 
 const filterLimit = 100; //Limit for fetching the packs from the Palette API
@@ -17,6 +17,9 @@ const logoDirname = "static/img/packs/";
 // Where the last production build published each pack logo. Used when every registry download fails.
 const publishedLogoBaseUrl = "https://docs.spectrocloud.com/img/packs/";
 const fallbackLogoExtensions = ["png", "svg", "jpeg"];
+// Known-good logos committed to the repo, for packs whose logo is missing from both the registry and the
+// published site. The site does not serve this folder.
+const committedLogoDirname = "plugins/packs-logo-fallback/";
 const packs_filename = "api_pack_response.json";
 const repos_filename = "api_repositories_response.json";
 const options = {
@@ -373,7 +376,8 @@ async function write(res, packName, logoUrlMap) {
 
 // The pack registry can refuse logo downloads, for example when it requires authentication to read
 // blobs. Rather than ship the pack without a logo, reuse a logo from an earlier build in this
-// workspace, or download the copy that the last production build published on docs.spectrocloud.com.
+// workspace, download the copy that the last production build published on docs.spectrocloud.com,
+// or copy a known-good logo committed to the repo, in that order.
 async function useFallbackLogo(packName, logoUrlMap) {
   for (const extension of fallbackLogoExtensions) {
     const fileName = `${packName}.${extension}`;
@@ -394,6 +398,16 @@ async function useFallbackLogo(packName, logoUrlMap) {
       }
     } catch (e) {
       // Try the next extension.
+    }
+  }
+
+  for (const extension of fallbackLogoExtensions) {
+    const fileName = `${packName}.${extension}`;
+    const committedFile = path.resolve(committedLogoDirname, fileName);
+    if (existsSync(committedFile)) {
+      copyFileSync(committedFile, path.resolve(logoDirname, fileName));
+      logoUrlMap[packName] = fileName;
+      return `the committed logo ${committedLogoDirname}${fileName}`;
     }
   }
 
