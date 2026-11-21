@@ -326,11 +326,16 @@ keep running. We recommend that you cordon a host as the first step before you s
 
 5. In the **Tags** section, select **Edit**.
 
-6. Enter `maas-lxd-host-noschedule` in the **Tags** field. If the tag does not exist, select the option to create it.
+6. In the **Search existing or add new tags** field, enter `maas-lxd-host-noschedule`.
 
-   <!-- TODO(DOC-3339): confirm the exact MAAS UI labels for the Tags field, the create-tag option, and Save. -->
+   - If the tag exists in MAAS, select it from the list.
 
-7. Select **Save** to apply the tag to the host.
+   - If the tag does not exist, select **Create tag "maas-lxd-host-noschedule"**. In the **Create tag** form, select
+     **Create and add to tag changes**.
+
+   The tag appears under **To be added**.
+
+7. Select **Save tag changes** to apply the tag to the host.
 
 8. Verify that the **Tags** section lists `maas-lxd-host-noschedule`.
 
@@ -435,7 +440,9 @@ two tags.
 
 6. In the **Tags** section, select **Edit**.
 
-7. Enter the following tags in the **Tags** field. If a tag does not exist, select the option to create it.
+7. In the **Search existing or add new tags** field, add each of the following tags. Select a tag that exists in MAAS
+   from the list. For a tag that does not exist, select its **Create tag** option, and then select **Create and add to
+   tag changes** in the **Create tag** form.
 
    - `maas-lxd-host-maintenance`
 
@@ -443,9 +450,9 @@ two tags.
 
    - `maas-lxd-host-noschedule`, if the host is not cordoned
 
-   Replace `<operation-id>` with the operation ID from step 1.
+   Replace `<operation-id>` with the operation ID from step 1. The tags appear under **To be added**.
 
-8. Select **Save** to apply the tags to the host.
+8. Select **Save tag changes** to apply the tags to the host.
 
 </TabItem>
 
@@ -562,10 +569,11 @@ during a full maintenance operation stay on their new hosts. Palette does not mo
 
 5. In the **Tags** section, select **Edit**.
 
-6. Remove the `maas-lxd-host-noschedule`, `maas-lxd-host-maintenance`, and `maas-lxd-hcp-op-<operation-id>` tags from
-   the **Tags** field. A cordoned host carries only the `maas-lxd-host-noschedule` tag.
+6. Under **Currently assigned**, select **Remove** next to each of the `maas-lxd-host-noschedule`,
+   `maas-lxd-host-maintenance`, and `maas-lxd-hcp-op-<operation-id>` tags. A cordoned host carries only the
+   `maas-lxd-host-noschedule` tag. The tags move to **To be removed**.
 
-7. Select **Save**.
+7. Select **Save tag changes**.
 
 </TabItem>
 
