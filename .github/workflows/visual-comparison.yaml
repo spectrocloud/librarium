@@ -378,17 +378,26 @@ jobs:
 
   head_ref_check:
     name: Confirm Head Branch Still Exists
+    needs: [merge-reports]
     runs-on: ubuntu-latest
     timeout-minutes: 2
     # DOC-3108 Option B — a `labeled` event on a closed PR whose branch has already
-    # been deleted still fires this workflow. If the publish step below runs after that,
-    # it writes `reports/<sanitised-head-ref>` under a name that `clean-up-report.yaml`
-    # can never prune (the delete event has already happened), and posts a live report
-    # URL comment on the closed PR that stays reachable for the report's retention
-    # period. Query the remote for the branch here and gate `publish_report` on the
-    # result so the orphan is never created in the first place. The scheduled sweep in
-    # `reconcile-orphan-reports.yaml` still covers pre-DOC-3108 orphans and the narrow
-    # window where the branch disappears between this check and the push.
+    # been deleted still fires this workflow, and a PR can merge (deleting its branch)
+    # while a run is still building and taking screenshots. If the publish step below
+    # runs after that, it writes `reports/<sanitised-head-ref>` under a name that
+    # `clean-up-report.yaml` can never prune (the delete event has already happened),
+    # and posts a live report URL comment on the closed PR that stays reachable for the
+    # report's retention period. Query the remote for the branch here and gate
+    # `publish_report` on the result so the orphan is never created in the first place.
+    #
+    # `needs: [merge-reports]` is load-bearing. Without it, this job runs at workflow
+    # start, about 45 minutes before the publish, and a PR merged in between still
+    # publishes an orphan (observed 2026-11-20 with #12699). With it, the probe runs
+    # immediately before `publish_report`, so the window shrinks to the minute or so
+    # between this probe and `publish_report`'s push. `publish_report` already needs
+    # `merge-reports`, so this does not change whether a report publishes. The
+    # scheduled sweep in `reconcile-orphan-reports.yaml` covers what remains:
+    # pre-DOC-3108 orphans and the window between this check and the push.
     permissions:
       contents: read
     outputs:
