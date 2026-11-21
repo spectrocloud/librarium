@@ -270,7 +270,8 @@ You control host maintenance with MAAS tags that you apply to the bare-metal mac
 cluster or node pool in Palette. When Palette registers a machine as an LXD host, it creates a MAAS VM host named
 `lxd-host-<machine-name>` that points to the machine. For example, the VM host for the machine `bm-01` is named
 `lxd-host-bm-01`. Apply the maintenance tags to the machine, not to the VM host or to the control plane LXD VMs, which
-MAAS lists as separate machines. For more information about MAAS tags, refer to the
+MAAS lists as separate machines. The MAAS UI lists VM hosts on the **LXD** page, and their tags have no effect on host
+maintenance. For more information about MAAS tags, refer to the
 [MAAS tags](https://canonical.com/maas/docs/about-machine-groups#p-22953-tags) documentation.
 
 ### Prerequisites {#prerequisites-host-maintenance}
@@ -524,18 +525,22 @@ Use the following steps to confirm that the evacuation is complete before you ta
    Replace `<operation-id>` with the operation ID of the maintenance operation. The output lists the hostname of each
    replacement VM that Palette created during the operation.
 
-2. Log in to [Palette](https://console.spectrocloud.com).
+2. In the MAAS UI, select **LXD** from the left main menu, and select the VM host of the machine under maintenance,
+   `lxd-host-<machine-name>`. On the **Virtual machines** tab, verify that **VMs on this host** lists no control plane
+   LXD VMs.
 
-3. Ensure you are in the correct project scope.
+3. Log in to [Palette](https://console.spectrocloud.com).
 
-4. From the left main menu, select **Clusters**.
+4. Ensure you are in the correct project scope.
 
-5. Select a workload cluster that had a control plane LXD VM on the host.
+5. From the left main menu, select **Clusters**.
 
-6. Select the **Nodes** tab. Ensure that no control plane node runs on the host under maintenance and that the cluster
+6. Select a workload cluster that had a control plane LXD VM on the host.
+
+7. Select the **Nodes** tab. Ensure that no control plane node runs on the host under maintenance and that the cluster
    has a **Health** status of **Healthy**.
 
-7. Repeat steps 5 - 6 for each affected workload cluster.
+8. Repeat steps 6 - 7 for each affected workload cluster.
 
 ### Lift Host Maintenance
 
