@@ -2,11 +2,12 @@
 #
 # This is the belt to the publish-time guard's suspenders. `visual-comparison.yaml`
 # skips its publish step when `github.head_ref` no longer exists on origin (Option B
-# in DOC-3108), which closes the common cause: a `labeled` event on a closed PR whose
-# branch was already deleted, or a `pull_request` retrigger in the same window. This
-# scheduled workflow catches anything the guard misses — pre-DOC-3108 orphans and the
-# narrow window where the branch disappears between the guard's `ls-remote` and the
-# push — and keeps the tip of gh-pages within one day of the live branch list.
+# in DOC-3108), which closes the common causes: a PR that merges while its run is in
+# flight, and a `labeled` event or `pull_request` retrigger on a closed PR whose branch
+# was already deleted. This scheduled workflow catches anything the guard misses —
+# pre-DOC-3108 orphans and the narrow window where the branch disappears between the
+# guard's `ls-remote` and the push — and keeps the tip of gh-pages within one day of the
+# live branch list.
 #
 # Sanitisation matches `clean-up-report.yaml` and the `Sanitize branch name for path`
 # step in `visual-comparison.yaml`: the on-disk directory name is the branch name with
@@ -25,13 +26,15 @@
 # they are more than 50% of reports/*, unless `workflow_dispatch` was invoked with
 # `force: true`.
 #
-# The 3-orphan floor on the 50% rule exists because the publish side prunes old runs
-# and the delete-event cleanup removes closed branches, so reports/ often holds only one
-# or two directories. Without the floor, a single genuine orphan is 1 of 1 (100%) and
-# fails the run (2026-11-21, after the #12699 race). The trade-off: if the mapping
-# drifts while reports/ holds at most two directories, the sweep deletes them. They are
-# throwaway reports that regenerate on the next run, and the guard still trips once
-# three or more drifted directories accumulate.
+# The 3-orphan floor on the 50% rule exists because reports/ holds one directory per
+# branch that has published a report and still exists. Only PRs with the `visual-tests`
+# label publish, and the delete-event cleanup removes a branch's directory when the
+# branch is deleted, so reports/ often holds only one or two directories. Without the
+# floor, a single genuine orphan is 1 of 1 (100%) and fails the run (2026-11-21, after
+# the #12699 race). The trade-off: if the mapping drifts, every live report looks like
+# an orphan, and each nightly run silently deletes them while there are at most two. A
+# deleted report comes back only when its PR's visual tests run again, and the guard
+# trips only if three or more drifted directories exist at sweep time.
 #
 # This does not reclaim repository size. The multi-GB gh-pages footprint lives in branch
 # history, not at the tip; deleting orphans at the tip does not shrink it. That is the

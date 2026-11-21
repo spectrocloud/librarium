@@ -393,11 +393,11 @@ jobs:
     # `needs: [merge-reports]` is load-bearing. Without it, this job runs at workflow
     # start, about 45 minutes before the publish, and a PR merged in between still
     # publishes an orphan (observed 2026-11-20 with #12699). With it, the probe runs
-    # immediately before `publish_report`, so the window shrinks to that job's few
-    # minutes. `publish_report` already needs `merge-reports`, so this does not change
-    # when a report publishes. The scheduled sweep in `reconcile-orphan-reports.yaml`
-    # covers what remains: pre-DOC-3108 orphans and the window between this check and
-    # the push.
+    # immediately before `publish_report`, so the window shrinks to the minute or so
+    # between this probe and `publish_report`'s push. `publish_report` already needs
+    # `merge-reports`, so this does not change whether a report publishes. The
+    # scheduled sweep in `reconcile-orphan-reports.yaml` covers what remains:
+    # pre-DOC-3108 orphans and the window between this check and the push.
     permissions:
       contents: read
     outputs:
