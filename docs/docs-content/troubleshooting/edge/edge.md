@@ -10,6 +10,59 @@ tags: ["edge", "troubleshooting"]
 
 The following are common scenarios that you may encounter when using Edge.
 
+## Scenario - Edge Clusters Lose Pod Networking after Calico Pack Upgrade
+
+After you upgrade the <VersionedLink text="Calico" url="/integrations/packs/?pack=cni-calico" /> pack from version 3.31
+or 3.32 to 3.33.0 through a cluster profile update, Edge clusters, including clusters in appliance mode, lose pod
+networking. Edge clusters that you deploy directly with Calico 3.33.0 and clusters that are not Edge clusters are not
+affected.
+
+Calico 3.33.0 moved its CNI installer into a new image and no longer sets an explicit installer command. When you
+upgrade an Edge cluster, the upgrade keeps the command from the previous Calico version, and that command does not exist
+in the new image. The `calico-node` pod stays in the `Init:RunContainerError` or `Init:CrashLoopBackOff` state, and its
+`install-cni` init container reports the following error.
+
+```shell
+exec: "/opt/cni/bin/install": stat /opt/cni/bin/install: no such file or directory
+```
+
+The node is marked network-unavailable, so new or rescheduled pods, including `calico-kube-controllers` and your
+application workloads, remain in the `Pending` state. Pods that are already running continue to run until they are
+recreated. Palette might still show the Calico pack as installed. Rolling the cluster profile back to Calico 3.31 or
+3.32 does not recover the cluster.
+
+### Debug Steps {#debug-steps-calico-pod-networking}
+
+1. [Connect to your cluster](../../clusters/cluster-management/palette-webctl.md) via `kubectl`.
+
+2. Check whether a `calico-node` pod is in the `Init:RunContainerError` or `Init:CrashLoopBackOff` state.
+
+   ```bash
+   kubectl get pods --namespace kube-system
+   ```
+
+3. Remove the leftover `command` field from the `install-cni` init container of the `calico-node` DaemonSet. The `test`
+   operation makes the patch fail safely if `initContainers[2]` is not `install-cni`.
+
+   ```bash
+   kubectl --namespace kube-system patch daemonset calico-node --type=json --patch='[{"op":"test","path":"/spec/template/spec/initContainers/2/name","value":"install-cni"},{"op":"remove","path":"/spec/template/spec/initContainers/2/command"}]'
+   ```
+
+4. If the patch fails because `initContainers[2]` is not `install-cni`, list the init containers of the DaemonSet.
+
+   ```bash
+   kubectl --namespace kube-system get daemonset calico-node --output jsonpath='{range .spec.template.spec.initContainers[*]}{.name}{"\n"}{end}'
+   ```
+
+   Issue the command from step 3 again, and use the index of `install-cni` in place of `2` in both paths.
+
+5. Calico rolls out, and the pending pods are scheduled within about a minute. Palette does not add the `command` field
+   back when it reconciles the cluster. Verify that the pods that were in the `Pending` state are scheduled.
+
+   ```bash
+   kubectl get pods --all-namespaces
+   ```
+
 ## Scenario - Palette Agent Restarts Repeatedly after Registration on Trusted Boot Edge Hosts
 
 Edge hosts that use [Trusted Boot](../../clusters/edge/trusted-boot/trusted-boot.md) can lose their connection to
