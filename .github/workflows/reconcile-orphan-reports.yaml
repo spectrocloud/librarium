@@ -21,8 +21,17 @@
 # mapping — reports-by-PR-number, lowercasing, another character strip — every
 # reports/* directory becomes an orphan by this workflow's definition. The proportional
 # guard below turns that failure mode from a silent mass delete into a red run: abort
-# when more than 10 directories or more than 50% of reports/* would be removed, unless
-# `workflow_dispatch` was invoked with `force: true`.
+# when more than 10 directories would be removed, or when 3 or more would be removed and
+# they are more than 50% of reports/*, unless `workflow_dispatch` was invoked with
+# `force: true`.
+#
+# The 3-orphan floor on the 50% rule exists because the publish side prunes old runs
+# and the delete-event cleanup removes closed branches, so reports/ often holds only one
+# or two directories. Without the floor, a single genuine orphan is 1 of 1 (100%) and
+# fails the run (2026-11-21, after the #12699 race). The trade-off: if the mapping
+# drifts while reports/ holds at most two directories, the sweep deletes them. They are
+# throwaway reports that regenerate on the next run, and the guard still trips once
+# three or more drifted directories accumulate.
 #
 # This does not reclaim repository size. The multi-GB gh-pages footprint lives in branch
 # history, not at the tip; deleting orphans at the tip does not shrink it. That is the
@@ -36,7 +45,7 @@ on:
   workflow_dispatch:
     inputs:
       force:
-        description: "Bypass the proportional guard even if >10 orphans or >50% of reports/* would be removed. Use only after confirming that the publish-side sanitisation mapping has not drifted."
+        description: "Bypass the proportional guard even if >10 orphans, or 3+ orphans that are >50% of reports/*, would be removed. Use only after confirming that the publish-side sanitisation mapping has not drifted."
         required: false
         type: boolean
         default: false
@@ -101,6 +110,7 @@ jobs:
         env:
           FORCE_INPUT: ${{ inputs.force || 'false' }}
           MAX_ABSOLUTE_DELETIONS: '10'
+          MIN_ORPHANS_FOR_PROPORTIONAL_GUARD: '3'
         run: |
           set -euo pipefail
 
@@ -133,7 +143,10 @@ jobs:
               exit 1
             fi
             # > 50% of reports/*: equivalent to orphan_count * 2 > reports_count.
-            if [ "$reports_count" -gt 0 ] \
+            # Applies only from MIN_ORPHANS_FOR_PROPORTIONAL_GUARD orphans up; see the
+            # header comment for why one or two orphans always proceed.
+            if [ "$orphan_count" -ge "$MIN_ORPHANS_FOR_PROPORTIONAL_GUARD" ] \
+              && [ "$reports_count" -gt 0 ] \
               && [ "$((orphan_count * 2))" -gt "$reports_count" ]; then
               echo "::error::Refusing to delete ${orphan_count} of ${reports_count} directories (> 50% of reports/*). This likely means the sanitisation mapping on the publish side has drifted from this workflow. Investigate before rerunning; use workflow_dispatch with 'force: true' only after confirming the sweep is intentional."
               exit 1
