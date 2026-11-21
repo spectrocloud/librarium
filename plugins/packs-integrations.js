@@ -14,6 +14,9 @@ import logger from "@docusaurus/logger";
 const filterLimit = 100; //Limit for fetching the packs from the Palette API
 const dirname = ".docusaurus/packs-integrations/";
 const logoDirname = "static/img/packs/";
+// Where the last production build published each pack logo. Used when every registry download fails.
+const publishedLogoBaseUrl = "https://docs.spectrocloud.com/img/packs/";
+const fallbackLogoExtensions = ["png", "svg", "jpeg"];
 const packs_filename = "api_pack_response.json";
 const repos_filename = "api_repositories_response.json";
 const options = {
@@ -368,9 +371,39 @@ async function write(res, packName, logoUrlMap) {
   });
 }
 
+// The pack registry can refuse logo downloads, for example when it requires authentication to read
+// blobs. Rather than ship the pack without a logo, reuse a logo from an earlier build in this
+// workspace, or download the copy that the last production build published on docs.spectrocloud.com.
+async function useFallbackLogo(packName, logoUrlMap) {
+  for (const extension of fallbackLogoExtensions) {
+    const fileName = `${packName}.${extension}`;
+    if (existsSync(path.resolve(logoDirname, fileName))) {
+      logoUrlMap[packName] = fileName;
+      return `the existing local file ${logoDirname}${fileName}`;
+    }
+  }
+
+  for (const extension of fallbackLogoExtensions) {
+    const url = `${publishedLogoBaseUrl}${packName}.${extension}`;
+    try {
+      const res = await fetch(url);
+      const type = res.headers.get("Content-Type") || "";
+      if (res.ok && type.startsWith("image/")) {
+        await write(res, packName, logoUrlMap);
+        return `the published logo ${url}`;
+      }
+    } catch (e) {
+      // Try the next extension.
+    }
+  }
+
+  return null;
+}
+
 async function getLogoUrl(packsAllData, logoUrlMap) {
   for (let j = 0; j < packsAllData.length; j++) {
     const { registries, name: packName } = packsAllData[j].spec;
+    let lastError = null;
 
     for (let i = 0; i < registries.length; i++) {
       const registry = registries[i];
@@ -399,8 +432,18 @@ async function getLogoUrl(packsAllData, logoUrlMap) {
             await setTimeout(1000);
           }
         } catch (e) {
-          logger.error(e);
+          lastError = e;
         }
+      }
+    }
+
+    if (!Object.prototype.hasOwnProperty.call(logoUrlMap, packName) && lastError) {
+      const fallbackSource = await useFallbackLogo(packName, logoUrlMap);
+      if (fallbackSource) {
+        logger.warn(`${lastError.message || lastError}. Used ${fallbackSource} instead.`);
+      } else {
+        logger.error(lastError);
+        logger.error(`No fallback logo found for ${packName}, so the pack has no logo in this build.`);
       }
     }
   }
