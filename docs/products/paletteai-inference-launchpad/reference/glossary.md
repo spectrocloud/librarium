@@ -73,6 +73,12 @@ Refer to [The Box Default Model](../explanation/routing-behavior.md#the-box-defa
 
 ## C
 
+### Cache Sharing
+
+The policy setting that decides which [clients](#client) share a [prompt cache](#prompt-cache). By default, the clients
+in one [workspace](#workspace) share it. A policy can give each client its own cache instead. Refer to
+[Prompt Cache Sharing](../explanation/prompt-cache-sharing.md).
+
 ### Category
 
 The prompt type that the [semantic router](#semantic-routing) assigns to a routed request. Each category has a
@@ -199,12 +205,13 @@ model is exposed as an [OpenAI-compatible endpoint](#openai-compatible-api) at p
 ### External Inference Endpoint
 
 An [egress](#egress) target outside the appliance, which a platform administrator sets up once for the whole appliance
-under **Integrations**. Three endpoints are built in, for Anthropic, OpenAI, and Gemini, and are not available until
-they are set up. Any other OpenAI-compatible host can be registered as an endpoint, such as a hosted router, a partner
-API, a second appliance, or an in-house inference server. A [policy](#policy) or a [client](#client) selects an endpoint
-that is already set up and never defines one. Its models appear in the routing picker as `<endpoint> / <model>`, and
-traffic to it is metered as egress. The host can authenticate the appliance with a key, custom headers, or both, and can
-present a self-signed or private-CA certificate the appliance trusts individually. Refer to
+under **Settings** > **External access** > **Ext. Inference Endpoints**. Three endpoints are built in, for Anthropic,
+OpenAI, and Gemini, and are not available until they are set up. Any other OpenAI-compatible host can be registered as
+an endpoint, such as a hosted router, a partner API, a second appliance, or an in-house inference server. A
+[policy](#policy) or a [client](#client) selects an endpoint that is already set up and never defines one. Its models
+appear in the routing picker as `<endpoint> / <model>`, and traffic to it is metered as egress. The host can
+authenticate the appliance with a key, custom headers, or both, and can present a self-signed or private-CA certificate
+the appliance trusts individually. Refer to
 [Register an External Inference Endpoint](../how-to-guides/register-an-external-inference-endpoint.md).
 
 <!-- vale Vale.Terms = NO -->
@@ -215,9 +222,17 @@ present a self-signed or private-CA certificate the appliance trusts individuall
 
 The console's name for sending a request to a model outside the appliance through an
 [external inference endpoint](#external-inference-endpoint). A policy, or a client that overrides its policy, turns it
-on with **Enable external inferencing** and lists the endpoints it can use. Each listed endpoint uses the key stored
-under **Integrations**, unless the policy or client overrides that key for itself alone. Refer to
+on with **Enable external inferencing** and lists the endpoints it can use. Each listed endpoint uses the key stored on
+the endpoint, unless the policy or client overrides that key for itself alone. Refer to
 [External Inferencing](../explanation/frontier-providers.md).
+
+### External Vision Reader
+
+A model on an [external inference endpoint](#external-inference-endpoint) that reads the images in a request for
+[vision preprocessing](#vision-preprocessing). A text-only [model](#model) on the appliance then answers. In the
+console, the external vision reader is the **External model** choice under **Reader**. Client images leave the
+appliance. Refer to [An External Reader](../explanation/vision-preprocessing.md#an-external-reader) and
+[Read Images with an External Model](../how-to-guides/read-images-with-an-external-model.md).
 
 ## F
 
@@ -279,9 +294,9 @@ workspace [member](#member) creates a grant. The console shows members, not gran
 The two checks the [semantic router](#semantic-routing) runs on each routed request when it picks the request's
 [category](#category). Both of its checks are on by default. It refuses a prompt attack with HTTP `403` on every route,
 and it refuses a request that carries personal data with HTTP `403` only when that request would leave the appliance.
-Each check has its own toggle on the **Semantic router** card under **Settings** > **Configurations**. The toggles are
-**Refuse jailbreak attempts** and **Scan prompts for personal data before they leave the box**. Refer to
-[Semantic Router Guard](../explanation/semantic-router-guard.md).
+Each check has its own toggle on the **Semantic router** card. The card is on **Settings** > **Request handling** >
+**Semantic Router**. The toggles are **Refuse jailbreak attempts** and **Scan prompts for personal data before they
+leave the box**. Refer to [Semantic Router Guard](../explanation/semantic-router-guard.md).
 
 ## H
 
@@ -406,6 +421,15 @@ installation completes. Refer to [Manage Cluster Infrastructure](../how-to-guide
 A person or a group holding one [role](#role) in one [workspace](#workspace). A member's role is **Workspace
 administrator** or **Operator**. Refer to [Manage Workspace Members](../how-to-guides/manage-workspace-members.md).
 
+### Mid-Task Model Switching
+
+The feature that moves the hard turns of a [coding assistant's](#coding-assistant) task from an efficient model to a
+capable model. The tool results of the task decide which turns move. A platform administrator turns it on under
+**Settings** > **Request handling** > **Mid-Task Model Switching**. A [client](#client) uses it for each
+[alias](#model-alias) that its [Tier map](#tier-map) sets to **Use Mid-Task Model Switching for routing**. Refer to
+[Mid-Task Model Switching](../explanation/mid-task-model-switching.md) and
+[Set Up Mid-Task Model Switching](../how-to-guides/set-up-mid-task-model-switching.md).
+
 ### Model
 
 In the PaletteAI Inference Launchpad context, a large language model that the appliance serves. Each served model is
@@ -452,8 +476,8 @@ with quotas through the [appliance console](#appliance-console); ModelGroupQuota
 
 ### Multimodal Preprocessing
 
-The console name for [vision preprocessing](#vision-preprocessing). The **Multimodal preprocessing** card lives on
-**Settings** > **Configurations**. Refer to
+The console name for [vision preprocessing](#vision-preprocessing). The **Multimodal preprocessing** card is on the
+**Multimodal Preprocessing** page. The page is under **Model Management** on the **Settings** menu. Refer to
 [Enable Vision Preprocessing](../how-to-guides/enable-vision-preprocessing.md).
 
 ## N
@@ -490,7 +514,7 @@ tools can point at the appliance by changing only the base URL and the API token
 The person who administers the appliance, also referred to as a platform operator or administrator. Operators deploy
 models, create clients, issue tokens, and set quotas through the [appliance console](#appliance-console). The console
 also ships a [role](#role) named **Operator**, which is a separate concept. The **Operator** role reaches only the
-person's own clients. Refer to [Access and Policy Reference](./access-and-policy-reference.md#roles).
+person's own clients. Refer to [Access Management Reference](./access-and-policy-reference.md#roles).
 
 ### OTP
 
@@ -529,15 +553,23 @@ write bandwidth.
 ### Policy
 
 The set of limits and settings that a [workspace](#workspace) follows, covering what its [clients](#client) can spend,
-what they can reach, and how their requests are routed. A workspace follows one policy, so every client in that
-workspace inherits it. A client runs under its policy's [Tier map](#tier-map) and [semantic routing](#semantic-routing)
-rules unless the client sets rules of its own. Refer to
+what they can reach, how their requests are routed, and whether they share a [prompt cache](#prompt-cache). A workspace
+follows one policy, so every client in that workspace inherits it. A client runs under its policy's
+[Tier map](#tier-map) and [semantic routing](#semantic-routing) rules unless the client sets rules of its own. Refer to
 [Clients and Quotas](../explanation/clients-and-quotas.md#workspaces-and-access) and
 [Routing Behavior](../explanation/routing-behavior.md#where-routing-rules-live).
 
 ### Prompt
 
 The input text sent to a model to elicit a response. A prompt consumes input [tokens](#token-and-tokenization).
+
+### Prompt Cache
+
+The work that an [inference engine](#inference-engine) saves from earlier [prompts](#prompt). A later prompt with the
+same opening reuses this work and does not read that text again. It is also called the prefix cache, and it is part of
+the [KV cache](#kv-cache). The [policy](#policy) that a workspace follows decides which clients share it. Refer to
+[Prompt Cache Sharing](../explanation/prompt-cache-sharing.md) and
+[Usage Pricing](../explanation/usage-pricing.md#three-levels-of-caching).
 
 ## Q
 
@@ -576,7 +608,7 @@ does this is called a reasoning model, and the depth of that effort can sometime
 
 A named set of permissions that ships with the appliance. A role names no workspaces of its own. It applies in the
 workspaces where a [member](#member) holds it. Refer to
-[Access and Policy Reference](./access-and-policy-reference.md#roles).
+[Access Management Reference](./access-and-policy-reference.md#roles).
 
 ## S
 
@@ -616,6 +648,16 @@ can serve requests.
 The Security Technical Implementation Guides published by the U.S. Defense Information Systems Agency (DISA), which
 prescribe hardened configurations for information systems. STIG compliance is required for certain U.S. Department of
 Defense deployments.
+
+### System Prompt
+
+The text that a [model](#model) receives ahead of the [prompt](#prompt), as a system message, to set how it answers. A
+[client](#client) can send its own system prompt with a request. A platform administrator can also set an instruction.
+The appliance adds it to a request that carries no system prompt. With **Apply to every turn** on, the appliance also
+adds the instruction after a client's own system prompt. The appliance never adds the instruction on the Responses API.
+The added instruction is the model's own instruction. If the model has none, the appliance adds the default instruction.
+Refer to [System Prompts](../explanation/architecture.md#system-prompts) and
+[Set a System Prompt](../how-to-guides/set-a-system-prompt.md).
 
 ## T
 
@@ -665,13 +707,16 @@ drive or USB stick. Virtual media is the fallback for booting the [slim ISO](#sl
 
 ### Vision Model
 
-A smaller model deployed next to a text-only [model](#model) for the sole purpose of converting images to text. It is
-not a general-purpose chat model. Refer to [Vision Preprocessing](../explanation/vision-preprocessing.md).
+A model on the appliance that can read images. For [vision preprocessing](#vision-preprocessing), a vision model
+converts images to text for a text-only [model](#model). It is either the local reader or the local fallback model for
+an [external vision reader](#external-vision-reader). It is not a general-purpose chat model. Refer to
+[Vision Preprocessing](../explanation/vision-preprocessing.md).
 
 ### Vision Preprocessing
 
 The appliance path that converts images in a request to text before a text-only [model](#model) sees the request. A
-[vision model](#vision-model) produces the extracts; the text model then answers as usual. Clients keep calling the text
+model called the reader does the conversion. The reader is a [vision model](#vision-model) on the appliance or an
+[external vision reader](#external-vision-reader). The text model then answers as usual. Clients keep calling the text
 model. Refer to [Vision Preprocessing](../explanation/vision-preprocessing.md) and
 [Enable Vision Preprocessing](../how-to-guides/enable-vision-preprocessing.md).
 
