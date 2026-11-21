@@ -30,8 +30,9 @@ Open the file `extras/cert-manager/values.yaml` using a text editor of your choi
       amceResolverImage: "harbor.docs.spectro.dev/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-acmesolver:v1.19.3-spectro-4.8.b"
     ```
 
-<li> If the registry you are pulling images from requires authentication, use the base64-encoded
-    contents of your `config.json` containing the registry credentials. Refer to
+<li> If the registry you are pulling images from requires authentication, set `imagePullSecret.create` to `true`, and
+    set `imagePullSecret.dockerConfigJson` to the base64-encoded contents of your `config.json` containing the registry
+    credentials. The chart creates the secret only when `imagePullSecret.create` is `true`. Refer to
     <PaletteVertexUrlMapper
         edition={props.edition}
         text="Helm Configuration Reference"
@@ -39,11 +40,11 @@ Open the file `extras/cert-manager/values.yaml` using a text editor of your choi
         vertexPath="/install-palette-vertex/install-on-kubernetes/vertex-helm-ref/"
     /> for more information. </li>
 
-    ```yaml title="Example configuration" hideClipboard {5}
+    ```yaml title="Example configuration" hideClipboard {4-5}
     imagePullSecret:
       # When true, render Secret spectro-image-pull-secret in the cert-manager namespace.
       # Pods automatically reference that pull secret when create is true or the secret already exists.
-      create: false
+      create: true
       dockerConfigJson: "abcdEFGhiJKlmnOPQrSTUVwX..." # Used when create is true: base64-encoded dockerconfigjson
     ```
 
@@ -61,7 +62,7 @@ Open the file `extras/cert-manager/values.yaml` using a text editor of your choi
     Release "cert-manager" does not exist. Installing it now.
     NAME: cert-manager
     LAST DEPLOYED: Wed Jun 17 12:54:27 2026
-    NAMESPACE: default
+    NAMESPACE: cert-manager
     STATUS: deployed
     REVISION: 1
     TEST SUITE: None
