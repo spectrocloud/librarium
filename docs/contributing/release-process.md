@@ -331,6 +331,12 @@ instead. The owner of the key stored in the `SUPER_API_TOKEN` repository secret 
 workflow again. A `generate-patch-release-notes` run that resolves no candidate issues never calls Super, so it skips
 the check.
 
+Super answers a long question asynchronously. When an answer takes longer than about 50 seconds, Super returns HTTP 202
+with a thread ID and keeps preparing the answer. Both targets then wait for that thread, checking it at the interval
+that Super suggests (usually 15 seconds), and use the answer once it is ready, instead of asking the question again.
+They wait for up to 15 minutes, which you can change with the `SUPER_THREAD_TIMEOUT_SECONDS` environment variable, and
+ask again only if the thread fails or the wait runs out.
+
 #### Release Notes
 
 | **Environment Variable**      | **Description**                                       | **Example Value**  |
