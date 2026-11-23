@@ -10,6 +10,143 @@ tags: ["edge", "troubleshooting"]
 
 The following are common scenarios that you may encounter when using Edge.
 
+## Scenario - Edge Clusters Lose Pod Networking after Calico Pack Upgrade
+
+After you upgrade the <VersionedLink text="Calico" url="/integrations/packs/?pack=cni-calico" /> pack from version 3.31
+or 3.32 to 3.33.0 through a cluster profile update, Edge clusters, including clusters in appliance mode, lose pod
+networking. Edge clusters that you deploy directly with Calico 3.33.0 and clusters that are not Edge clusters are not
+affected.
+
+Calico 3.33.0 moved its CNI installer into a new image and no longer sets an explicit installer command. When you
+upgrade an Edge cluster, the upgrade keeps the command from the previous Calico version, and that command does not exist
+in the new image. The `calico-node` pod stays in the `Init:RunContainerError` or `Init:CrashLoopBackOff` state, and its
+`install-cni` init container reports the following error.
+
+```shell
+exec: "/opt/cni/bin/install": stat /opt/cni/bin/install: no such file or directory
+```
+
+The node is marked network-unavailable, so new or rescheduled pods, including `calico-kube-controllers` and your
+application workloads, remain in the `Pending` state. Pods that are already running continue to run until they are
+recreated. Palette might still show the Calico pack as installed. Rolling the cluster profile back to Calico 3.31 or
+3.32 does not recover the cluster.
+
+### Debug Steps {#debug-steps-calico-pod-networking}
+
+1. [Connect to your cluster](../../clusters/cluster-management/palette-webctl.md) via `kubectl`.
+
+2. Check whether a `calico-node` pod is in the `Init:RunContainerError` or `Init:CrashLoopBackOff` state.
+
+   ```bash
+   kubectl get pods --namespace kube-system
+   ```
+
+3. Remove the leftover `command` field from the `install-cni` init container of the `calico-node` DaemonSet. The `test`
+   operation makes the patch fail safely if `initContainers[2]` is not `install-cni`.
+
+   ```bash
+   kubectl --namespace kube-system patch daemonset calico-node --type=json --patch='[{"op":"test","path":"/spec/template/spec/initContainers/2/name","value":"install-cni"},{"op":"remove","path":"/spec/template/spec/initContainers/2/command"}]'
+   ```
+
+4. If the patch fails because `initContainers[2]` is not `install-cni`, list the init containers of the DaemonSet.
+
+   ```bash
+   kubectl --namespace kube-system get daemonset calico-node --output jsonpath='{range .spec.template.spec.initContainers[*]}{.name}{"\n"}{end}'
+   ```
+
+   Issue the command from step 3 again, and use the index of `install-cni` in place of `2` in both paths.
+
+5. Calico rolls out, and the pending pods are scheduled within about a minute. Palette does not add the `command` field
+   back when it reconciles the cluster. Verify that the pods that were in the `Pending` state are scheduled.
+
+   ```bash
+   kubectl get pods --all-namespaces
+   ```
+
+## Scenario - Palette Agent Restarts Repeatedly after Registration on Trusted Boot Edge Hosts
+
+Edge hosts that use [Trusted Boot](../../clusters/edge/trusted-boot/trusted-boot.md) can lose their connection to
+Palette when they register. This affects Edge hosts that you installed from an Edge Installer ISO with a Palette agent
+version earlier than 4.10.0. During registration, Palette upgrades the Palette agent on the Edge host to the version
+that matches your Palette instance. Palette agent versions 4.10.0 and later, but earlier than 4.10.14 (except version
+4.10.11-rev.1), cannot detect that these Edge hosts are in registration mode. The upgraded agent starts in cluster mode,
+cannot find the cluster configuration that the Edge host receives only after registration, and restarts every few
+seconds.
+
+In Palette, the Edge host stops sending heartbeats, its health status changes to **Unhealthy**, and it still shows the
+earlier Palette agent version. On the **Events** tab of the Edge host, the last event is
+`starting stylus agent after upgrade`.
+
+Starting with Palette agent version 4.10.14, the Palette agent detects registration mode on these Edge hosts. Palette
+versions 4.10.44 and later upgrade Edge hosts to Palette agent version 4.10.14 or later during registration. Upgrading
+Palette does not recover an Edge host that is already affected, because its Palette agent cannot connect to Palette.
+
+### Debug Steps {#debug-steps-trusted-boot-registration}
+
+1. Access the affected Edge host through its console or an SSH connection.
+
+2. Check the Palette agent log for the registration mode and the configuration error.
+
+   ```bash
+   sudo grep --extended-regexp 'registration mode|80_stylus.yaml' /var/log/stylus-agent.log | tail --lines 2
+   ```
+
+   The issue affects the Edge host if the output shows `registration mode: false`, followed by an error that the
+   `/oem/80_stylus.yaml` file does not exist.
+
+   ```bash hideClipboard title="Example Output"
+   time="2026-11-12T14:25:07Z" level=info  msg="registration mode: false" version=v4.10.11
+   time="2026-11-12T14:25:07Z" level=fatal msg="could not read cloud configuration from run: open /oem/80_stylus.yaml: no such file or directory" version=v4.10.11
+   ```
+
+3. Confirm that the Edge host boots from a Unified Kernel Image (UKI) and does not have a registration state directory.
+
+   ```bash
+   grep --only-matching rd.immucore.uki /proc/cmdline
+   ls /opt/spectrocloud/state/
+   ```
+
+   The issue affects the Edge host if the first command returns `rd.immucore.uki` and the second command reports that
+   the directory does not exist.
+
+   ```bash hideClipboard title="Example Output"
+   rd.immucore.uki
+   ls: cannot access '/opt/spectrocloud/state/': No such file or directory
+   ```
+
+4. Create the registration state file, and then reboot the Edge host.
+
+   ```bash
+   sudo mkdir --parents /opt/spectrocloud/state
+   sudo touch /opt/spectrocloud/state/registration
+   sudo reboot
+   ```
+
+5. After the Edge host restarts, verify that the Palette agent starts in registration mode.
+
+   ```bash
+   sudo grep --extended-regexp 'registration mode|Registration completed' /var/log/stylus-agent.log | tail --lines 2
+   ```
+
+   The output shows `registration mode: true` and `Registration completed`. If the output does not show
+   `Registration completed` yet, wait, and then run the command again.
+
+   ```bash hideClipboard title="Example Output"
+   time="2026-11-12T14:31:42Z" level=info  msg="registration mode: true" version=v4.10.11
+   time="2026-11-12T14:32:10Z" level=info  msg="Registration completed" version=v4.10.11
+   ```
+
+   In Palette, the health status of the Edge host changes to **Healthy**.
+
+6. _(Self-hosted Palette and Palette VerteX only)_ To prevent the issue, take one of the following actions before you
+   register Edge hosts that you installed from an ISO with a Palette agent version earlier than 4.10.0.
+
+   - Upgrade Palette or Palette VerteX to version 4.10.44 or later.
+
+   - Pause agent upgrades for Edge hosts that are not part of a cluster in their project or tenant. Resume agent
+     upgrades after you upgrade Palette or Palette VerteX to version 4.10.44 or later. Refer to
+     [Agent Upgrades for PCG and Edge Hosts](../../clusters/cluster-management/platform-settings/pause-platform-upgrades.md#agent-upgrades-for-pcg-and-edge-hosts).
+
 ## Scenario - Edge Hosts Ignore NTP Servers Configured in a Cloud-Init Stage
 
 Edge hosts might ignore the Network Time Protocol (NTP) servers that you configure in a `systemd-timesyncd` drop-in

@@ -24,6 +24,9 @@ Confirm each prerequisite before starting:
   installation. The upgrade wizard requires you to re-enter this password.
 - A newer [content bundle](../reference/glossary.md#content-bundle) from Artifact Studio that matches the appliance's
   GPU vendor, NVIDIA or AMD.
+- _(Upgrade from version 1.2 only)_ A decision on prompt cache sharing for each existing policy. For the choices and the
+  risk that sharing brings, refer to
+  [Prompt Cache Sharing](../explanation/prompt-cache-sharing.md#who-shares-the-prompt-cache).
 
 ## Upgrade the Platform
 
@@ -61,6 +64,10 @@ Confirm each prerequisite before starting:
 
 10. Wait for the appliance cluster to return to the **Running** state. From the left main menu, select **Cluster** to
     watch progress. The appliance may reboot during the upgrade, which briefly makes Local UI unreachable.
+
+11. _(Upgrade from version 1.2 only)_ For each policy whose clients must keep their own prompt cache, set **Prompt cache
+    sharing** to **Each client is isolated**. For the steps, refer to
+    [Set Prompt Cache Sharing for a Policy](./set-prompt-cache-sharing.md).
 
 ## Validate
 
