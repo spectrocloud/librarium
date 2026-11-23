@@ -147,9 +147,10 @@ jobs:
           deadline=$(( $(date +%s) + PICKUP_TIMEOUT_MINUTES * 60 ))
           last_status=""
           while :; do
-            # Prints the job's status and runner name. A queued job has no runner yet.
+            # Prints the job's status and runner name. A queued job has no runner yet. On an HTTP error, gh prints the
+            # error body to stdout and exits 1, so keep the output only when gh succeeds.
             state=$(gh api "repos/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}/jobs" \
-              --jq '.jobs[] | select(.name == env.SELF_HOSTED_JOB_NAME) | [.status, (.runner_name // "")] | @tsv' || true)
+              --jq '.jobs[] | select(.name == env.SELF_HOSTED_JOB_NAME) | [.status, (.runner_name // "")] | @tsv') || state=""
             IFS=$'\t' read -r status runner <<< "$state" || true
             if [ -n "$status" ]; then last_status="$status"; fi
             if [ -n "$runner" ] || [ "$status" = "completed" ]; then
