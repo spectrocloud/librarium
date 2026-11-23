@@ -14,7 +14,9 @@ be able to access Local UI.
   bundles containing images, Helm charts, and packs, and create Edge clusters locally in disconnected environments
   without connections to a Palette instance.
 - In centrally managed Edge hosts, you cannot use the cluster-related functionalities because the cluster is managed by
-  Palette, but you can still utilize Local UI to configure and manage the Edge host itself.
+  Palette. The exception is reviewing and releasing the updates that the
+  [update lock](../cluster-management/lock-profile-updates.md) holds. You can still use Local UI to configure and manage
+  the Edge host itself.
 
 ![A diagram illustrating how users and use EdgeForge and Local UI to deploy clusters without a Palette connection](/clusters_edge_emc_workflow.webp)
 

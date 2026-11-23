@@ -37,8 +37,14 @@ upgrading, you review the information provided in the
   instead. For more information about creating an Edge cluster, refer to
   [Create Cluster Definition](../edge/site-deployment/cluster-deployment.md).
 
-- Avoid skipping minor versions when upgrading the Kubernetes version of a cluster. Refer to the documentation of your
-  Kubernetes distribution for upgrade guidance and follow the recommended upgrade paths.
+- You cannot skip a minor version or change the major version when you upgrade the Kubernetes version of a cluster.
+  Upgrade one minor version at a time, for example from 1.33 to 1.34 and then to 1.35. Palette rejects these updates
+  with the `K8sUpgradeNotSupported` error code, and the cluster stays on its current version. This check applies to
+  updates through the Palette UI, API, Terraform, and Crossplane, including pending and scheduled cluster template
+  updates. Patch upgrades and imported clusters are not affected. Local UI applies its own Kubernetes version limits to
+  locally managed Edge clusters. Refer to
+  [Update Local Cluster](../edge/local-ui/cluster-management/update-cluster.md#kubernetes-version-limits) for more
+  information. For upgrade guidance, refer to the documentation of your Kubernetes distribution.
 
   - For PXK and PXK-E, refer to
     [Upgrade Kubeadm Clusters](https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/).
@@ -142,6 +148,16 @@ You can follow these steps to validate all cluster update approaches.
 3. Select the cluster you updated, and navigate to the **Profile** tab of the cluster.
 
 4. Confirm that the cluster is now using an updated profile.
+
+5. If you updated an Edge cluster with [appliance mode](../../deployment-modes/appliance-mode/appliance-mode.md) hosts,
+   do the following:
+
+   1. Log in to [Local UI](../edge/local-ui/host-management/access-console.md) on an Edge host.
+
+   2. From the left main menu, select **Cluster**.
+
+   3. Verify that no **OS upgrade failed** banner appears. If the banner appears, refer to
+      [OS Upgrade Fails and Edge Host Rolls Back to Previous Image](../../troubleshooting/edge/edge.md#scenario---os-upgrade-fails-and-edge-host-rolls-back-to-previous-image).
 
 ## Trigger Worker Node Upgrade
 
