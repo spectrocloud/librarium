@@ -66,6 +66,9 @@ using agent mode. Refer to [Agent Mode](../../../deployment-modes/agent-mode/age
     `example.io/my-images/example-custom-os:v1.4.5`. You must ensure that the image is uploaded to this location when
     you create the cluster.
 
+    Reference the image by tag, not by digest. Edge clusters don't support digests, such as `@sha256:<digest>`, in
+    `system.uri` or in the `images` list.
+
     ```yaml
     pack:
     content:
