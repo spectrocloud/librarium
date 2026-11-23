@@ -11,6 +11,55 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## November 20, 2026 - Release 4.9.68
+
+<!-- PATCH RELEASE TICKET: DOC-3434 -->
+<!-- PATCH RELEASE VERSION: 4.9.68 -->
+<!-- PATCH RELEASE CANDIDATES: PEM-12541 PE-10137 PCP-8004 PCP-7964 -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12541 -->
+
+- Applied security fixes to improve the platform's security posture.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7964 -->
+
+- Fixed an issue that caused the Palette agent on a workload cluster to delete and recreate the namespaces that Palette
+  created through
+  [cluster Role-Based Access Control (RBAC) settings](../clusters/cluster-management/namespace-management.md) or a
+  workspace. This occurred when the Palette management plane briefly lost access to its database, and the recreated
+  namespaces were empty.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-10137 -->
+<!-- https://spectrocloud.atlassian.net/browse/PCP-8004 -->
+
+- Fixed an issue that caused the Kubelet to fail to start on [Edge](../clusters/edge/edge.md) control plane nodes that
+  use <VersionedLink text="Palette eXtended Kubernetes - Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" /> after
+  a node ran for more than one year without a reboot or an upgrade. When the Kubelet restarted (for example, during a
+  [certificate renewal](../clusters/edge/cluster-management/certificate-renewal.md)), it failed with the error
+  `part of the existing bootstrap client certificate in /etc/kubernetes/kubelet.conf is expired`, and the node became
+  `NotReady`.
+
+### Edge
+
+:::info
+
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.9.68 Palette release is 4.9.45.
+
+:::
+
+### Automation
+
+:::info
+
+The [Palette CLI](../automation/palette-cli/palette-cli.md) version corresponding to the 4.9.68 Palette release is
+4.9.30. Refer to [CLI Tools](/downloads/cli-tools/) for the download URL and checksum.
+
+:::
+
 ## October 29, 2026 - Release 4.9.66
 
 <!-- PATCH RELEASE TICKET: DOC-3360 -->
