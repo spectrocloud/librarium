@@ -47,6 +47,15 @@ both are limits of Cursor's bring-your-own-key support rather than of the applia
   CA into your operating system trust store lets Cursor on your machine trust the appliance, but it does not change what
   Cursor's cloud trusts.
 
+## Usage Fees
+
+On Cursor Teams and Enterprise plans, Cursor can charge a usage fee on requests made with your own API key. Cursor calls
+this fee the Cursor Token Rate. The `lpai_` token that you enter in the **OpenAI API Key** field counts as your own API
+key. As a result, Cursor can charge the fee on the requests it sends to the appliance, even when the appliance serves
+the model. The appliance's [estimated savings](../explanation/estimated-savings.md) do not include this fee. For the
+rate, the models it covers, and its exemptions, refer to Cursor's
+[Team Pricing](https://cursor.com/docs/account/teams/pricing#cursor-token-rate) documentation.
+
 ## Platform CA Certificate
 
 When the appliance serves HTTPS with a certificate issued by its own platform Certificate Authority (CA), the connect

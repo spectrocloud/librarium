@@ -176,9 +176,10 @@ The **Network Interfaces** view is already open in Local UI, so you do not need 
 If you do not configure storage, Local UI configures it automatically and adds every available data disk on the host to
 the **Data volume group**, always excluding the operating system disk. Configure it manually only when you need to
 control which disks [Piraeus](../reference/glossary.md#piraeus) uses, for example, to keep a data disk out of the
-storage pool. The **Data volume group** tells Piraeus which physical disks to use for cluster storage, and model weights
-and the KV cache live on these disks. Local UI mounts the volume group at `/opt/data/spectrocloud`. Configure the volume
-group after the bond and before you link hosts, and on a multi-node cluster, complete this section on every node.
+storage pool. The **Data volume group** tells Piraeus which physical disks to use for cluster storage. Model weights and
+the KV cache live on these disks. Local UI mounts the volume group at `/opt/data/spectrocloud`. The appliance requires
+this mount point. Configure the volume group after you create the bond and before you link hosts. On a multi-node
+cluster, complete this section on every node.
 
 :::warning Read-only after cluster creation
 
@@ -195,6 +196,15 @@ creation, the group becomes read-only. Confirm the disk selection before you con
    operating system disk, so you cannot add it to the volume group by mistake. Deselect any data disk you want to keep
    out of the volume group. You can leave the wizard's other settings at their defaults for a standard installation.
 5. Select **Create** to apply. The new entry appears under **Data volume group**.
+6. Confirm that the **Mount point** column of the new entry shows `/opt/data/spectrocloud`. If it shows any other value,
+   select the pencil icon next to the value. Enter `/opt/data/spectrocloud`, and then select **Save**.
+
+   :::warning Required mount point
+
+   If the mount point is any other path, the appliance saves models to the operating system disk. Model deployments then
+   fail.
+
+   :::
 
 ## Link Hosts (Multi-Node Only)
 
