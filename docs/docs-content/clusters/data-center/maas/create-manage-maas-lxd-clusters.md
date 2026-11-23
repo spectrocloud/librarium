@@ -195,7 +195,7 @@ The cluster **Overview** tab displays the status and health of your cluster, as 
     | **Minimum Memory**                                          | Only select machines from the **Resource pool** that have at least the specified amount of memory.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
     | **Availability zones**                                      | The MAAS zones in which to deploy nodes. Palette distributes nodes across the selected zones for high availability. These must match the same zones used by the hosted LXD-based control plane.                                                                                                                                                                                                                                                                                                                                                                                    |
     | **Override Cluster API node pool configuration (Optional)** | Enable if you want to provide custom Cluster API manifests in YAML format. This is an advanced option that allows you to customize the underlying CAPI objects used to provision and manage your node pool. When enabled, the **Update Cluster API node pool configuration** option becomes available. Click this button to view the YAML code editor drawer, where you can provide your override configuration. Review the [Override CAPI Properties](../../../architecture/override-capi-properties/override-capi-properties.md) documentation to learn more about this feature. |
-    | **Tags**                                                    | Control which MAAS machines to use for the node pool based on [MAAS tags](https://canonical.com/maas/docs/stable/explanation/machine-groups/#tags-flexible-labels). If you specify multiple tags, Palette only selects machines that have _all_ of the specified tags. If you are using a hosted LXD-based control plane, the resource pool, availability zones, and tags must also match. <br /> <br /> **WARNING:** Modifying tags on an existing node pool triggers a node repave.                                                                                              |
+    | **Tags**                                                    | Control which MAAS machines to use for the node pool based on [MAAS tags](https://canonical.com/maas/docs/stable/explanation/machine-groups/#tags-flexible-labels). If you specify multiple tags, Palette only selects machines that have _all_ of the specified tags. If you use a hosted LXD-based control plane, the resource pool, availability zones, and tags must match the values that you set for the host cluster nodes. <br /> <br /> **WARNING:** Modifying tags on an existing node pool triggers a node repave.                                                      |
     | **Network Type**                                            | (Control plane pools only) Select **MAAS Automatic** or **Palette Static IP Pool**. For **Palette Static IP Pool**, select the **IP Address Management** drop-down and choose the desired [IPAM node pool](../../pcg/manage-pcg/create-manage-node-pool.md). The IP pool must have **Restrict to a single cluster** enabled. This option is only available when **Use LXD VMs** is enabled for the control plane pool.                                                                                                                                                             |
 
     :::danger
@@ -267,11 +267,11 @@ under maintenance before you service it, for example, to apply firmware updates,
 machine. You can cordon the host so that Palette stops placing new LXD VMs on it, or place it under full maintenance so
 that Palette also evacuates the control plane LXD VMs that already run on it.
 
-You control host maintenance with MAAS tags that you apply to the bare-metal machine of the LXD host in MAAS, not to a
-cluster or node pool in Palette. When Palette registers a machine as an LXD host, it also creates a MAAS VM host named
-`lxd-host-<machine-name>`, which the MAAS UI lists on the **LXD** page. For example, the VM host for the machine `bm-01`
-is named `lxd-host-bm-01`. Tags on the VM host have no effect on host maintenance, and neither do tags on the control
-plane LXD VMs, which MAAS lists as separate machines. For more information about MAAS tags, refer to the
+You control host maintenance with MAAS tags that you apply in MAAS, not to a cluster or node pool in Palette. MAAS
+tracks each LXD host as two separate objects: the bare-metal machine, such as `bm-01` on the **Machines** page, and a VM
+host that Palette creates for it when it registers the machine, such as `lxd-host-bm-01` on the **LXD** page. Apply
+maintenance tags to the machine. Tags on the VM host, or on the control plane LXD VMs, which MAAS lists as separate
+machines, have no effect on host maintenance. For more information about MAAS tags, refer to the
 [MAAS tags](https://canonical.com/maas/docs/stable/explanation/machine-groups/#tags-flexible-labels) documentation.
 
 ### Prerequisites {#prerequisites-host-maintenance}
@@ -290,15 +290,14 @@ plane LXD VMs, which MAAS lists as separate machines. For more information about
 
 The following tags control the maintenance state of an LXD host.
 
-| **Tag**                          | **Purpose**                                                                                       | **Required For**            |
-| -------------------------------- | ------------------------------------------------------------------------------------------------- | --------------------------- |
-| `maas-lxd-host-noschedule`       | Cordons the host so that Palette does not place new LXD VMs on it.                                | Cordon and full maintenance |
-| `maas-lxd-host-maintenance`      | Marks the host so that Palette evacuates its control plane LXD VMs.                               | Full maintenance            |
-| `maas-lxd-hcp-op-<operation-id>` | Identifies a single maintenance operation, where `<operation-id>` is a unique value that you set. | Full maintenance            |
+| **Tag**                          | **Purpose**                                                                                                                                                                            | **Required For**            |
+| -------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------- |
+| `maas-lxd-host-noschedule`       | Cordons the host so that Palette does not place new LXD VMs on it.                                                                                                                     | Cordon and full maintenance |
+| `maas-lxd-host-maintenance`      | Marks the host for maintenance. Palette evacuates its control plane LXD VMs only when the host carries all three tags.                                                                 | Full maintenance            |
+| `maas-lxd-hcp-op-<operation-id>` | Identifies a single maintenance operation. `<operation-id>` is any value that is unique to this operation, such as `bm-01-20261123`. Use only lowercase letters, numbers, and hyphens. | Full maintenance            |
 
 A host that carries either the `maas-lxd-host-noschedule` tag or the `maas-lxd-host-maintenance` tag receives no new LXD
-VMs. The control plane LXD VMs that already run on the host keep running until you start a
-[full maintenance operation](#place-a-host-under-full-maintenance).
+VMs.
 
 Palette matches the tag names literally, so enter them exactly as shown. A typo prevents the host from entering
 maintenance.
@@ -306,7 +305,8 @@ maintenance.
 :::warning
 
 Palette applies the same three tags to a host when it replaces a node in the host cluster and removes them when the
-evacuation finishes. Do not add or remove the `maas-lxd-host-noschedule`, `maas-lxd-host-maintenance`, or
+evacuation finishes. If a host carries a `maas-lxd-hcp-op-<operation-id>` tag that you did not apply, Palette is
+replacing it. Do not add or remove the `maas-lxd-host-noschedule`, `maas-lxd-host-maintenance`, or
 `maas-lxd-hcp-op-<operation-id>` tags on a host while Palette replaces it.
 
 :::
@@ -417,11 +417,12 @@ you can safely take the host offline.
 Before you start a full maintenance operation, review the following evacuation limits. If your environment does not meet
 them, Palette might not be able to evacuate the host.
 
-- Palette places each replacement VM only on a host in the same availability zone as the original VM, and that host must
-  have spare capacity. Palette does not use spare capacity in other availability zones.
+- Palette places each replacement VM only on a host that has spare capacity and is in the same availability zone as the
+  original VM.
 
 - Palette cannot evacuate the control plane of a workload cluster that has two control plane nodes. Palette can evacuate
-  a single-node control plane, but we recommend three control plane nodes spread across different availability zones.
+  a single-node control plane, but we recommend three control plane nodes, because Palette removes one at a time and the
+  other two keep the control plane running.
 
 :::
 
@@ -433,8 +434,9 @@ two tags.
 
 <TabItem label="MAAS UI" value="maas-ui">
 
-1. Choose a unique operation ID for this maintenance operation, such as a lowercase Universally Unique Identifier
-   (UUID). Record the value, because you need it to validate the evacuation.
+1. Choose an operation ID that is unique to this maintenance operation, such as the machine name and the date,
+   `bm-01-20261123`. Use only lowercase letters, numbers, and hyphens, because Palette also uses the ID in the tag that
+   it applies to each replacement VM. Record the value, because you need it to validate the evacuation.
 
 2. Log in to the MAAS UI.
 
