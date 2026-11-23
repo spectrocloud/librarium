@@ -31,6 +31,16 @@ tags: ["release-notes"]
 
 #### Deprecations and Removals
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12353 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12357 -->
+
+- The `POST /v1/users/summary` and `POST /v1/teams/summary` Palette [API endpoints](/api/introduction) are now
+  deprecated. Use the paginated `POST /v2/users/summary` and `POST /v2/teams/summary` endpoints instead. They accept the
+  same request body and return the same fields, one page at a time. If you use only the Palette UI, no action is
+  required. Update any scripts and integrations that call the v1 endpoints directly. Refer to
+  [Migrate to the v2 Users and Teams Summary Endpoints](/api/introduction#migrate-to-the-v2-users-and-teams-summary-endpoints)
+  for the steps, and to the [Deprecations](./announcements.md#deprecations) table for the removal timeline.
+
 ### Edge
 
 <!-- release-notes-edge-callout-4.10.c-start -->
