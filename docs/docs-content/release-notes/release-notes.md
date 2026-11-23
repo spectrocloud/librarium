@@ -144,6 +144,198 @@ The [Palette CLI](../automation/palette-cli/palette-cli.md) version correspondin
 
 <!-- {{ WEEKLY_COMPONENT_RELEASE_UPDATES }} -->
 
+## November 20, 2026 - Release 4.10.45
+
+<!-- PATCH RELEASE TICKET: DOC-3466 -->
+<!-- PATCH RELEASE VERSION: 4.10.45 -->
+<!-- PATCH RELEASE CANDIDATES: PE-10197 PCP-8019 PCP-8007 PCP-7991 -->
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-8019 -->
+
+- Fixed an issue that caused the control plane nodes of self-hosted [Palette](../enterprise-version/upgrade/upgrade.md)
+  and [Palette VerteX](../vertex/upgrade/upgrade.md) management clusters on VMware vSphere to stay on the previous
+  Kubernetes version after an upgrade from version 4.9. The `palette-controller-manager` logs showed the error
+  `no matches for kind "VSphereMachineTemplateList" in version "infrastructure.cluster.x-k8s.io/v1beta2"`.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-10197 -->
+<!-- https://spectrocloud.atlassian.net/browse/PCP-8007 -->
+
+- Fixed an issue that caused the Kubelet to fail to start on [Edge](../clusters/edge/edge.md) control plane nodes that
+  use <VersionedLink text="Palette eXtended Kubernetes - Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" /> after
+  a node ran for more than one year without a reboot or an upgrade. When the Kubelet restarted (for example, during a
+  [certificate renewal](../clusters/edge/cluster-management/certificate-renewal.md)), it failed with the error
+  `part of the existing bootstrap client certificate in /etc/kubernetes/kubelet.conf is expired`, and the node became
+  `NotReady`.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7991 -->
+
+- Fixed an issue that caused Palette to request a disk erase each time it released a machine back to MAAS, including
+  when Storage Area Network (SAN) volumes were still attached to the node. Palette no longer requests a disk erase by
+  default. To erase disks on release, set `eraseDisksOnRelease` in a cluster-level
+  [Cluster API override](../architecture/override-capi-properties/maas-capi-override-reference.md#disk-erase-on-machine-release).
+  MAAS still erases disks on release if your MAAS environment is configured to do so.
+
+### Edge
+
+:::info
+
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.10.45 Palette release is 4.10.15.
+
+:::
+
+## November 20, 2026 - Component Updates {#component-updates-2026-47}
+
+<!-- COMPONENT UPDATES TICKET: DOC-3450 -->
+<!-- RELEASE DATE: November 20, 2026 -->
+<!-- RELEASE MANAGEMENT APPLIANCE:  -->
+<!-- RELEASE ARTIFACT STUDIO: 4.10.9 -->
+<!-- RELEASE TERRAFORM VERSION: 0.30.7 -->
+
+The following components have been updated for Palette version 4.10.13 - 4.10.44.
+
+| Component                                                                                                         | Version |
+| ----------------------------------------------------------------------------------------------------------------- | ------- |
+| [Artifact Studio](../downloads/artifact-studio.md)                                                                | 4.10.9  |
+| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.30.7  |
+| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.30.7  |
+
+<!-- BEGIN COMPONENT UPDATES BODY: DOC-3450. DO NOT DELETE. -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-5247 -->
+
+- Added K3s 1.34.13 to the non-FIPS variant of the `edge-k3s` pack for Edge clusters.
+- Added RKE2 1.34.13, 1.35.10, 1.36.6, and 1.37.2 to the non-FIPS variant of the `edge-rke2` pack, and RKE2 1.36.6 to
+  its FIPS variant, for Edge clusters.
+- Added Kubernetes 1.36.6 and 1.37.2 to the FIPS and non-FIPS variants of the `edge-k8s` pack for Edge clusters.
+- Added Kubernetes 1.36.6 and 1.37.2 to the FIPS and non-FIPS variants of the `kubernetes` pack, and Kubernetes 1.34.13
+  to its FIPS variant.
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-5326 -->
+
+- Added the `calico/third-party-cni-plugins` image to the image list of the `tigera-operator` pack for Calico 3.33 and
+  later.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-1214 -->
+
+- Updated the Artifact Studio member invite acceptance screen to show **Back to Artifact Studio** and shortened the
+  invite card text.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-1304 -->
+
+- Artifact Studio sign-in records now store only a hash of the IP address, never the IP address in plain text.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-1364 -->
+
+- Removed the duplicate version switcher from the Artifact Studio v2 top navigation bar. The switcher in the top banner
+  is now the only way to change versions.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-1365 -->
+
+- Made Artifact Studio v2 the default version. Version 1 is still available.
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2441 -->
+
+- Added the `spectrocloud_registry_pack` resource to the Spectro Cloud Terraform provider. Use it to create, update,
+  delete, and import the pack registries listed under **Tenant Settings > Registries > Pack Registries**. It supports
+  only pack registries that use basic authentication.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4831 -->
+
+- Fixed an issue in Headlamp 0.45.0 where service account token authentication failed when accessing the Headlamp UI in
+  Direct mode.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-1368 -->
+
+- Fixed an issue where pack version listings across Artifact Studio failed to distinguish between FIPS and non-FIPS
+  builds of the same pack version.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-1371 -->
+
+- Fixed an issue where PaletteAI profile bundle downloads from Artifact Studio had a `.tar.tar` file extension instead
+  of `.tar.gz`.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-1373 -->
+
+- Fixed an issue where the **Helm Chart** row for Palette Enterprise and VerteX on the Artifact Studio **Appliances**
+  page listed a `.tgz` file, although the download is a `.zip` file.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-1374 -->
+
+- Fixed an issue where the **Machine Owner Key** row on the Artifact Studio **Appliances** page listed a `.mok` file,
+  although the download is `mok.der`.
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2206 -->
+
+- Fixed an issue where changes to profile variable values in `spectrocloud_cluster_config_template` were accepted but
+  not saved. The new values now persist and show up as drift.
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2468 -->
+
+- Fixed an issue where `terraform import` of a static EKS cluster left `cloud_config.az_subnets` empty when the control
+  plane pool was not named `cp-pool`, as with clusters created in the Palette UI. Control plane subnets are now
+  imported, so correcting them no longer forces Terraform to replace the cluster.
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2495 -->
+
+- Fixed an issue where a stalled API response kept the Spectro Cloud Terraform provider waiting until the resource
+  timeout. Requests now time out after 300 seconds, and responses that stop sending data time out after 60 seconds. To
+  change these limits, use the new `request_timeout` and `response_idle_timeout` provider settings or the
+  `SPECTROCLOUD_REQUEST_TIMEOUT` and `SPECTROCLOUD_RESPONSE_IDLE_TIMEOUT` environment variables. A value of `-1` removes
+  the limit. A stalled call now fails and is retried, except for write requests, which are not retried.
+
+<!-- https://spectrocloud.atlassian.net/browse/PLT-2497 -->
+
+- Fixed an issue where `spectrocloud_cluster_profile` sent an empty pack UID for packs from ECR-type OCI registries,
+  including the Palette Registry. The Spectro Cloud Terraform provider now looks up the pack UID itself.
+
+<!-- END COMPONENT UPDATES BODY: DOC-3450. DO NOT DELETE. -->
+
+### Packs
+
+<!-- BEGIN PACKS LIST BODY: DOC-3450. DO NOT DELETE. -->
+<!-- prettier-ignore-start -->
+
+| Pack Name | Layer | Non-FIPS | FIPS | New Version |
+| --------- | ----- | -------- | ---- | ----------- |
+| <VersionedLink text="aws-alb" url="/integrations/packs/?pack=aws-alb" /> | `addon` | :white_check_mark: | :x: | 3.6.3 |
+| <VersionedLink text="aws-efs" url="/integrations/packs/?pack=aws-efs" /> | `addon` | :white_check_mark: | :x: | 3.6.0 |
+| <VersionedLink text="calico-network-policy" url="/integrations/packs/?pack=calico-network-policy" /> | `addon` | :white_check_mark: | :x: | 3.33.1 |
+| <VersionedLink text="cni-calico" url="/integrations/packs/?pack=cni-calico" /> | `cni` | :white_check_mark: | :x: | 3.32.4 |
+| <VersionedLink text="cni-calico" url="/integrations/packs/?pack=cni-calico" /> | `cni` | :white_check_mark: | :white_check_mark: | 3.33.1 |
+| <VersionedLink text="cni-calico-azure" url="/integrations/packs/?pack=cni-calico-azure" /> | `cni` | :white_check_mark: | :x: | 3.32.4 |
+| <VersionedLink text="cni-calico-azure" url="/integrations/packs/?pack=cni-calico-azure" /> | `cni` | :white_check_mark: | :white_check_mark: | 3.33.1 |
+| <VersionedLink text="csi-aws-ebs" url="/integrations/packs/?pack=csi-aws-ebs" /> | `csi` | :white_check_mark: | :white_check_mark: | 1.68.0 |
+| <VersionedLink text="csi-aws-efs" url="/integrations/packs/?pack=csi-aws-efs" /> | `csi` | :white_check_mark: | :x: | 3.6.0 |
+| <VersionedLink text="edge-k3s" url="/integrations/packs/?pack=edge-k3s" /> | `k8s` | :white_check_mark: | :x: | 1.34.13 |
+| <VersionedLink text="edge-k8s" url="/integrations/packs/?pack=edge-k8s" /> | `k8s` | :white_check_mark: | :white_check_mark: | 1.36.6 |
+| <VersionedLink text="edge-k8s" url="/integrations/packs/?pack=edge-k8s" /> | `k8s` | :white_check_mark: | :white_check_mark: | 1.37.2 |
+| <VersionedLink text="edge-rke2" url="/integrations/packs/?pack=edge-rke2" /> | `k8s` | :white_check_mark: | :x: | 1.34.13 |
+| <VersionedLink text="edge-rke2" url="/integrations/packs/?pack=edge-rke2" /> | `k8s` | :white_check_mark: | :x: | 1.35.10 |
+| <VersionedLink text="edge-rke2" url="/integrations/packs/?pack=edge-rke2" /> | `k8s` | :white_check_mark: | :white_check_mark: | 1.36.6 |
+| <VersionedLink text="edge-rke2" url="/integrations/packs/?pack=edge-rke2" /> | `k8s` | :white_check_mark: | :x: | 1.37.2 |
+| <VersionedLink text="external-secrets-operator" url="/integrations/packs/?pack=external-secrets-operator" /> | `addon` | :white_check_mark: | :x: | 2.15.0 |
+| <VersionedLink text="headlamp" url="/integrations/packs/?pack=headlamp" /> | `addon` | :x: | :white_check_mark: | 0.45.0 |
+| <VersionedLink text="karpenter" url="/integrations/packs/?pack=karpenter" /> | `addon` | :white_check_mark: | :white_check_mark: | 1.15.2 |
+| <VersionedLink text="kgateway" url="/integrations/packs/?pack=kgateway" /> | `addon` | :white_check_mark: | :x: | 2.5.2 |
+| <VersionedLink text="kubernetes" url="/integrations/packs/?pack=kubernetes" /> | `k8s` | :x: | :white_check_mark: | 1.34.13 |
+| <VersionedLink text="kubernetes" url="/integrations/packs/?pack=kubernetes" /> | `k8s` | :white_check_mark: | :white_check_mark: | 1.36.6 |
+| <VersionedLink text="kubernetes" url="/integrations/packs/?pack=kubernetes" /> | `k8s` | :white_check_mark: | :white_check_mark: | 1.37.2 |
+| <VersionedLink text="kyverno" url="/integrations/packs/?pack=kyverno" /> | `addon` | :white_check_mark: | :x: | 1.20.0 |
+| <VersionedLink text="openobserve" url="/integrations/packs/?pack=openobserve" /> | `addon` | :white_check_mark: | :x: | 1.1.2 |
+| <VersionedLink text="reloader" url="/integrations/packs/?pack=reloader" /> | `addon` | :white_check_mark: | :x: | 1.4.24 |
+| <VersionedLink text="tigera-operator" url="/integrations/packs/?pack=tigera-operator" /> | `cni` | :white_check_mark: | :x: | 3.33.1 |
+| <VersionedLink text="traefik" url="/integrations/packs/?pack=traefik" /> | `addon` | :white_check_mark: | :x: | 42.4.0 |
+
+<!-- prettier-ignore-end -->
+
+<!-- END PACKS LIST BODY: DOC-3450. DO NOT DELETE. -->
+
 ## November 15, 2026 - Release 4.10.44 {#release-notes-4.10.b}
 
 ### Security Notices
@@ -417,12 +609,6 @@ The [Palette CLI](../automation/palette-cli/palette-cli.md) version correspondin
 - Fixed an issue that caused the Palette UI to reject valid [node pool](../clusters/cluster-management/node-pool.md)
   **Additional Labels** whose value is a single character, such as `workload:a`, and to highlight the wrong label.
 
-<!-- https://spectrocloud.atlassian.net/browse/PEM-12478 -->
-
-- Fixed an issue that caused Headlamp to stay on its loading screen when you opened it from a cluster's **Connect** link
-  through Spectro Proxy. This occurred when Palette took longer than 15 seconds to respond, for example, over a slow
-  network connection.
-
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12512 -->
 
 - Fixed an issue that caused cluster profile creation through the Palette API or Terraform to fail with
@@ -544,6 +730,16 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   the limit for Edge hosts with slow network connections. Refer to
   [Configure the OS Upgrade Timeout](../clusters/edge/cluster-management/os-upgrade-timeout.md) for more information.
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-8868 -->
+<!-- https://spectrocloud.atlassian.net/browse/PE-9864 -->
+
+- Local UI now displays an **OS upgrade failed** banner when an Edge host in appliance mode rolls back to its previous
+  provider image after an OS upgrade fails. The banner appears on the **Edge Host** page and on the **Overview** tab of
+  the **Cluster** page for both centrally managed and locally managed clusters. It stays until a later OS upgrade
+  succeeds on the Edge host. Refer to
+  [OS Upgrade Fails and Edge Host Rolls Back to Previous Image](../troubleshooting/edge/edge.md#scenario---os-upgrade-fails-and-edge-host-rolls-back-to-previous-image)
+  for more information.
+
 <!-- https://spectrocloud.atlassian.net/browse/PEM-11827 -->
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12373 -->
 
@@ -559,12 +755,6 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   address changes in a Dynamic Host Configuration Protocol (DHCP) network can cause cluster instability. Refer to
   [Enable Overlay Network](../clusters/edge/networking/vxlan-overlay.md#when-should-you-consider-enabling-overlay-network)
   for guidance on when to enable an overlay network.
-
-<!-- https://spectrocloud.atlassian.net/browse/PE-9835 -->
-
-- When you create a cluster in Local UI, you can now enter a Fully Qualified Domain Name (FQDN) in the **Virtual IP
-  Address (VIP)** field, in addition to an IPv4 address. Refer to
-  [Create Local Cluster](../clusters/edge/local-ui/cluster-management/create-cluster.md) for more information.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-9630 -->
 
@@ -689,16 +879,18 @@ The [Palette CLI](../automation/palette-cli/palette-cli.md) version correspondin
 
 <!-- COMPONENT UPDATES TICKET: DOC-3428 -->
 <!-- RELEASE DATE: November 15, 2026 -->
-<!-- RELEASE MANAGEMENT APPLIANCE: NA -->
+<!-- RELEASE MANAGEMENT APPLIANCE: 4.10.44 -->
 <!-- RELEASE ARTIFACT STUDIO:  -->
 <!-- RELEASE TERRAFORM VERSION: 0.30.6 -->
 
-The following components have been updated for Palette version 4.10.41.
+The following components have been updated for Palette version 4.10.44.
 
 | Component                                                                                                         | Version |
 | ----------------------------------------------------------------------------------------------------------------- | ------- |
 | [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.30.6  |
 | [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.30.6  |
+| [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md)             | 4.10.44 |
+| [VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md)                    | 4.10.44 |
 
 <!-- BEGIN COMPONENT UPDATES BODY: DOC-3428. DO NOT DELETE. -->
 
@@ -743,6 +935,31 @@ The following components have been updated for Palette version 4.10.41.
 <!-- prettier-ignore-end -->
 
 <!-- END PACKS LIST BODY: DOC-3428. DO NOT DELETE. -->
+
+## November 15, 2026 - Release 4.10.34-rev.1
+
+<!-- PATCH RELEASE TICKET: DOC-3446 -->
+<!-- PATCH RELEASE VERSION: 4.10.34-rev.1 -->
+<!-- PATCH RELEASE CANDIDATES: PE-10161 -->
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-10161 -->
+
+- Fixed an issue that caused Edge hosts to lose their connection to Palette after registration and appear as
+  **Unhealthy**. The issue affected hosts that use [Trusted Boot](../clusters/edge/trusted-boot/trusted-boot.md) and
+  were installed from an Edge installer ISO with a Palette agent version earlier than 4.10. Upgrading Palette does not
+  recover Edge hosts that are already affected. For the recovery steps, refer to
+  [Troubleshooting - Edge](../troubleshooting/edge/edge.md#scenario---palette-agent-restarts-repeatedly-after-registration-on-trusted-boot-edge-hosts).
+
+### Edge
+
+:::info
+
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.10.34-rev.1 Palette release is
+4.10.11-rev.1.
+
+:::
 
 ## November 6, 2026 - Component Updates {#component-updates-2026-45}
 
@@ -982,7 +1199,7 @@ This release delivers version 4.10.25 of the PaletteAI VM Launchpad appliance, w
 <!-- https://spectrocloud.atlassian.net/browse/PE-9875 -->
 
 - Applied further fixes for CVE-2026-111943, the eMudhra certificate authority (CA) compromise. Provider images and Edge
-  installer ISOs that you build with CanvOS 4.10.11 or later no longer trust the affected root certificates. Refer to
+  installer ISOs that you build with CanvOS 4.10.11 no longer trust the affected root certificates. Refer to
   [Security Advisory 024](../security-bulletins/security-advisories/security-advisories.md#security-advisory-024---emudhra-certificate-authority-compromise-tls-trust-store-exposure)
   for the affected deployments and recommended actions. Appliance mode Edge hosts that use images built with an earlier
   CanvOS version can use the workaround in
