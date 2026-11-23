@@ -11,10 +11,10 @@ You can reboot, shut down and reset an Edge host from Local UI.
 
 :::warning
 
-Local UI drains the Edge host before it reboots or shuts down the host. If the drain fails, the host still powers off,
-and Local UI does not report the failure. Any virtual machines (VMs) on the host then stop instead of live-migrating to
-other nodes. On PaletteAI VM Launchpad clusters, drain the host with `kubectl` before you reboot or shut it down. Refer
-to [Host Maintenance](../../../../vm-management/vm-launchpad/infrastructure/host-maintenance.md) and
+On PaletteAI VM Launchpad clusters, drain the Edge host with `kubectl` before you reboot or shut it down from Local UI.
+Local UI drains the host first, but if that drain fails, the host still powers off, and Local UI does not report the
+failure. Any virtual machines (VMs) on the host then stop instead of live-migrating to other nodes. Refer to
+[Host Maintenance](../../../../vm-management/vm-launchpad/infrastructure/host-maintenance.md) and
 [Known Issues](../../../../release-notes/known-issues.md).
 
 :::
@@ -30,7 +30,7 @@ Edge host is rebooting.
 
 - Credentials to log in to Local UI. Any Operating System (OS) user can be used to log into Local UI.
 
-- On PaletteAI VM Launchpad clusters, the host is drained with `kubectl`. Refer to
+- On PaletteAI VM Launchpad clusters, you have drained the host with `kubectl`. Refer to
   [Host Maintenance](../../../../vm-management/vm-launchpad/infrastructure/host-maintenance.md).
 
 ### Instructions
@@ -107,7 +107,7 @@ You can shut down the Edge host from Local UI.
 
 - Credentials to log in to Local UI. Any OS user can be used to log into Local UI.
 
-- On PaletteAI VM Launchpad clusters, the host is drained with `kubectl`. Refer to
+- On PaletteAI VM Launchpad clusters, you have drained the host with `kubectl`. Refer to
   [Host Maintenance](../../../../vm-management/vm-launchpad/infrastructure/host-maintenance.md).
 
 ### Instructions

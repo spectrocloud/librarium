@@ -15,14 +15,13 @@ the host first, but the host powers off even if that drain fails. The VMs on the
 and Local UI does not report the failed drain. Refer to [Known Issues](../../../release-notes/known-issues.md) for
 details.
 
-`kubectl drain` waits while the VMs on the host live-migrate and the other pods leave the host. It retries each eviction
-that a VM migration or a pod disruption budget holds back, and by default it has no time limit. After the drain
-finishes, Local UI has nothing left to evict when it reboots or shuts down the host.
+`kubectl drain` waits while the VMs on the host live-migrate and the other pods leave the host. By default, it has no
+time limit. After the drain finishes, Local UI has nothing left to evict when it reboots or shuts down the host.
 
 ## Prerequisites
 
 - A VM Launchpad cluster with more than one node and enough free CPU and memory on the other nodes to run the VMs from
-  the host.
+  the host that you plan to reboot or shut down.
 
 - VMs that must keep running can live-migrate. Each VM uses the **LiveMigrate** eviction strategy, either set on the VM
   or inherited from the cluster's **Default eviction strategy** of **Live migrate**. Every disk of the VM uses the
@@ -34,7 +33,7 @@ finishes, Local UI has nothing left to evict when it reboots or shuts down the h
 
 ## Drain and Reboot or Shut Down a Host
 
-Maintain one host at a time. Finish this procedure, including [Validate](#validate), before you start on the next host.
+Work on one host at a time. Finish this procedure, including [Validate](#validate), before you start on the next host.
 
 Set the `KUBECONFIG` environment variable to point to the kubeconfig file of your VM Launchpad cluster. Run every
 command on this page in the same terminal session, or set the variable again in a new one.
@@ -45,7 +44,7 @@ export KUBECONFIG=<path-to-kubeconfig>
 
 Replace `<path-to-kubeconfig>` with the path to the kubeconfig file.
 
-1. List the nodes of the cluster, and note the name of the node that runs on the host you want to reboot or shut down.
+1. List the nodes of the cluster, and note the name of the node for the host you want to reboot or shut down.
 
    ```shell
    kubectl get nodes
@@ -99,11 +98,15 @@ Replace `<path-to-kubeconfig>` with the path to the kubeconfig file.
    kubectl get node <node-name>
    ```
 
+   Replace `<node-name>` with the name of the node.
+
    If the `STATUS` column includes `SchedulingDisabled`, turn scheduling back on for the node.
 
    ```shell
    kubectl uncordon <node-name>
    ```
+
+   Replace `<node-name>` with the name of the node.
 
 ## Validate
 
@@ -113,7 +116,7 @@ Replace `<path-to-kubeconfig>` with the path to the kubeconfig file.
    kubectl get node <node-name>
    ```
 
-   The `STATUS` column shows `Ready` without `SchedulingDisabled`.
+   Replace `<node-name>` with the name of the node. The `STATUS` column shows `Ready` without `SchedulingDisabled`.
 
 2. Confirm that your VMs are running.
 
