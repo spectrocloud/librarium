@@ -1,6 +1,7 @@
 # This workflow pushes updates to the production site at docs.spectrocloud.com. 
 # The workflow is triggered by a cron job that runs at 12:00 PM PST (8 PM UTC) Monday through Friday, 9:00 PM PST (5 AM UTC next day) Monday through Friday, 12:00 PM PST (8 PM UTC next day) Saturday, and 12:00 PM PST (8 PM UTC next day) Sunday.
 # The workflow uses the self-hosted runner by default. The GitHub-hosted large runner can be used by setting the useGitHubHostedLargeRunner input to true.
+# If the self-hosted runner does not pick up the build within 10 minutes, the self-hosted-runner-watchdog job posts to Slack and dispatches this workflow again on the GitHub-hosted large runner. The new run cancels the stuck one.
 # The workflow has built-in logic to prevent failed builds from being deployed to production.
 # Semantic versioning is used to determine the version number of the release. The project follows the Angular commit message convention. Depending on the commit message, the version number is incremented accordingly.
 # You can manually trigger the workflow to trigger on-demand push to production.
@@ -121,6 +122,82 @@ jobs:
           SLACKIFY_MARKDOWN: true
           ENABLE_ESCAPES: true
           SLACK_MESSAGE: "The self-hosted runner release job for `${{ github.workflow }}` in `${{ github.repository }}` failed at step: `${{ env.CURRENT_STEP }}`. [View details](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})."
+
+
+# Watches the self-hosted build. When the self-hosted runner is offline, the build job waits in the queue with no error until the next run cancels it.
+# If no runner picks up the build within PICKUP_TIMEOUT_MINUTES, this job posts to Slack, so that the outage stays visible, and dispatches this workflow again on the GitHub-hosted large runner.
+# The dispatched run is in the same concurrency group, so it cancels this run, including the queued self-hosted job. Normal pickup takes a few seconds.
+  self-hosted-runner-watchdog:
+    if: ${{ github.event.inputs.useGitHubHostedLargeRunner != 'true' || github.event_name == 'schedule' }}
+    name: Watch for the Self-Hosted Runner
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      actions: write # Reads this run's jobs and dispatches the large-runner fallback.
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      SELF_HOSTED_JOB_NAME: "Build Website (Self-Hosted Runner)"
+      PICKUP_TIMEOUT_MINUTES: "10"
+      POLL_INTERVAL_SECONDS: "15"
+    steps:
+      - name: Wait for the self-hosted runner
+        id: wait
+        run: |
+          echo "CURRENT_STEP=Wait for the self-hosted runner" >> "$GITHUB_ENV"
+          deadline=$(( $(date +%s) + PICKUP_TIMEOUT_MINUTES * 60 ))
+          while :; do
+            # Prints the job's status and runner name. A queued job has no runner yet.
+            state=$(gh api "repos/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}/jobs" \
+              --jq '.jobs[] | select(.name == env.SELF_HOSTED_JOB_NAME) | [.status, (.runner_name // "")] | @tsv' || true)
+            IFS=$'\t' read -r status runner <<< "$state" || true
+            if [ -n "$runner" ] || [ "$status" = "completed" ]; then
+              echo "The self-hosted build was picked up (status: ${status}, runner: ${runner:-none})."
+              echo "fallback=false" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            if [ "$(date +%s)" -ge "$deadline" ]; then
+              echo "::warning::No runner picked up '${SELF_HOSTED_JOB_NAME}' within ${PICKUP_TIMEOUT_MINUTES} minutes (status: ${status:-not found}). Falling back to the GitHub-hosted large runner."
+              echo "fallback=true" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            echo "Waiting for a runner (status: ${status:-not found})."
+            sleep "$POLL_INTERVAL_SECONDS"
+          done
+
+      # Post before dispatching. The dispatched run cancels this run, which would stop any later step.
+      - name: Post the Fallback to Slack
+        if: ${{ steps.wait.outputs.fallback == 'true' }}
+        uses: rtCamp/action-slack-notify@06cc13f74fa8d4d2296c09455d91e9453e4025f4 # v2.4.1
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
+          SLACK_USERNAME: "spectromate"
+          SLACK_ICON_EMOJI: ":robot_panic:"
+          SLACK_COLOR: "warning"
+          SLACKIFY_MARKDOWN: true
+          ENABLE_ESCAPES: true
+          SLACK_MESSAGE: "The self-hosted runner did not pick up `${{ github.workflow }}` within ${{ env.PICKUP_TIMEOUT_MINUTES }} minutes, so this release is falling back to the GitHub-hosted large runner, which costs extra. Check `docs-runner` under Settings > Actions > Runners. [View the stuck run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})."
+
+      - name: Dispatch the Large-Runner Build
+        if: ${{ steps.wait.outputs.fallback == 'true' }}
+        env:
+          SECURITY_ADVISORY_PUBLISHED: ${{ github.event.inputs.securityAdvisoryPublished || 'false' }}
+        run: |
+          echo "CURRENT_STEP=Dispatch the large-runner build" >> "$GITHUB_ENV"
+          gh workflow run release.yaml --repo "$GITHUB_REPOSITORY" --ref "$GITHUB_REF_NAME" \
+            -f useGitHubHostedLargeRunner=true \
+            -f securityAdvisoryPublished="$SECURITY_ADVISORY_PUBLISHED"
+
+      - name: Slack Notification on Failure
+        if: ${{ failure() }}
+        uses: rtCamp/action-slack-notify@06cc13f74fa8d4d2296c09455d91e9453e4025f4 # v2.4.1
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
+          SLACK_USERNAME: "spectromate"
+          SLACK_ICON_EMOJI: ":robot_panic:"
+          SLACK_COLOR: "danger"
+          SLACKIFY_MARKDOWN: true
+          ENABLE_ESCAPES: true
+          SLACK_MESSAGE: "The self-hosted runner watchdog for `${{ github.workflow }}` in `${{ github.repository }}` failed at step: `${{ env.CURRENT_STEP }}`. If the self-hosted runner is down, start a release on the large runner by hand. [View details](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})."
 
 
 #  Use this workflow if you want to use the GitHub-hosted large runner. Useful for scenarios when you need a change to deploy faster than the self-hosted runner can build it.
