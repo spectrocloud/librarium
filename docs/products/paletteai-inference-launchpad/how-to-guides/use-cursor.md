@@ -23,6 +23,9 @@ Cursor routes only **Ask** mode requests to a custom endpoint. **Agent**, **Edit
 Cursor's own models. This is a limit of Cursor's bring-your-own-key support, not of the appliance, so those modes do not
 use the appliance even after you complete this guide.
 
+On Cursor Teams and Enterprise plans, Cursor can charge a usage fee on the requests it sends to the appliance. For
+details, refer to [Usage Fees](../reference/cursor-reference.md#usage-fees).
+
 :::
 
 ## Prerequisites
