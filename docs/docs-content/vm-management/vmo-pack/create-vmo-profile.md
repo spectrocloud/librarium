@@ -107,10 +107,8 @@ for the fix on an existing class.
      Spectro VM Dashboard from anywhere. Check out the
      <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> guide to learn more. This is
      the default selection. This mode configures the `ClusterIP` service type, which cannot be overridden.
-   - **Direct** mode is intended for a private configuration where a proxy is not implemented or not desired. Ensure
-     that you configure the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> pack
-     separately in your cluster profile if you select this option. This mode configures the `LoadBalancer` service type,
-     which cannot be overridden.
+   - **Direct** mode is intended for a private configuration where a proxy is not implemented or not desired. This mode
+     configures the `LoadBalancer` service type, which cannot be overridden.
    - **Custom** mode allows you to provide your own access configuration. You can provide your own service type and
      custom configuration according to your environment.
 
@@ -177,10 +175,8 @@ for the fix on an existing class.
       Spectro VM Dashboard from anywhere. Check out the
       <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> guide to learn more. This is
       the default selection. This mode configures the `ClusterIP` service type, which cannot be overridden.
-    - **Direct** mode is intended for a private configuration where a proxy is not implemented or not desired. Ensure
-      that you configure the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> pack
-      separately in your cluster profile if you select this option. This mode configures the `LoadBalancer` service type,
-      which cannot be overridden.
+    - **Direct** mode is intended for a private configuration where a proxy is not implemented or not desired. This mode
+      configures the `LoadBalancer` service type, which cannot be overridden.
     - **Custom** mode allows you to provide your own access configuration. You can provide your own service type and
       custom configuration according to your environment.
 
@@ -302,10 +298,8 @@ for the fix on an existing class.
       Spectro VM Dashboard from anywhere. Check out the
       <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> guide to learn more. This is
       the default selection. This mode configures the `ClusterIP` service type, which cannot be overridden.
-    - **Direct** mode is intended for a private configuration where a proxy is not implemented or not desired. Ensure
-      that you configure the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> pack
-      separately in your cluster profile if you select this option. This mode configures the `LoadBalancer` service
-      type, which cannot be overridden.
+    - **Direct** mode is intended for a private configuration where a proxy is not implemented or not desired. This mode
+      configures the `LoadBalancer` service type, which cannot be overridden.
     - **Custom** mode allows you to provide your own access configuration. You can provide your own service type and
       custom configuration according to your environment.
 
