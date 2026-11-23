@@ -45,9 +45,10 @@ Use the following steps to create a new host cluster so that you can add Edge ho
 - [Two-node clusters](../architecture/two-node.md) operating in high availability mode only support K3s on Ubuntu 22.04
   or Ubuntu 24.04 and do not support FIPS. Other Kubernetes distributions and operating systems are not supported.
 
-- Edge clusters don't support image digests. In your [cluster profile](./model-profile.md), reference the provider image
-  and each entry in the `images` list by tag, such as `example.io/my-images/example-custom-os:v1.4.5`, not by digest,
-  such as `example.io/my-images/example-custom-os@sha256:<digest>`.
+- Edge clusters do not support image digests. In the OS pack of your [cluster profile](./model-profile.md), reference
+  the provider image in `system.uri` and each entry in the `images` list by tag, such as
+  `example.io/my-images/example-custom-os:v1.4.5`. Do not reference them by digest, such as
+  `example.io/my-images/example-custom-os@sha256:<digest>`.
 
 <!-- prettier-ignore-start -->
 

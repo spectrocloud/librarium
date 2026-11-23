@@ -61,13 +61,13 @@ using agent mode. Refer to [Agent Mode](../../../deployment-modes/agent-mode/age
     If you have not built the image yet, fill the parameter with where the image will be uploaded to or fill it with a
     placeholder value and update it when you upload the image.
 
+    Reference the image by tag, not by digest. Edge clusters do not support digests, such as `@sha256:<digest>`, in
+    `system.uri` or in the `images` list.
+
     Refer to the EdgeForge [Build Images](../edgeforge-workflow/palette-canvos/palette-canvos.md) guide for more
     information. The following snippet is an example where your cluster will expect a provider image at
     `example.io/my-images/example-custom-os:v1.4.5`. You must ensure that the image is uploaded to this location when
     you create the cluster.
-
-    Reference the image by tag, not by digest. Edge clusters don't support digests, such as `@sha256:<digest>`, in
-    `system.uri` or in the `images` list.
 
     ```yaml
     pack:
