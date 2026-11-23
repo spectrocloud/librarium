@@ -16,11 +16,18 @@
      NVIDIA GPU Operator pack deploys the Helm chart. Kevin did not name a Helm version, so the cell
      says "Helm v3" unless Kevin says otherwise (Linus Bourque, 2026-11-19). The hardware
      is as Kevin gave it: HPE DL380a Gen12, 2x Intel Xeon 6710E, 1 TB ECC RAM at 5200 MHz.
-   * About: wording review by Rob Eckhardt and Andreea Munteanu. The first two sentences follow
+   * About and FIPS/STIG wording: Andreea Munteanu approved it on 2026-11-23. Rob Eckhardt
+     deferred to others on 2026-11-20. The first two sentences follow
      https://docs.palette-ai.com/docs/what-is-paletteai/.
+   * Prerequisites: the NVIDIA AI Enterprise subscription and NGC API key follow NVIDIA's
+     gov-ready prerequisites (2026-11-23).
    * Matrix intro: the other partner pages say "<vendor> has self-validated". Here NVIDIA QA ran
      the validation on a Spectro Cloud cluster, so the intro says that. Confirm with Mike McKiernan.
-   * Getting Support: confirm the support contact with Support (DOC-3473).
+   * Getting Support: docs.palette-ai.com and support@spectrocloud.com, the contact that
+     docs.spectrocloud.com already publishes, unless Support asks for a change (DOC-3473,
+     2026-11-23).
+   * GitHub user name for end-user issues: still open (Jeremy Oakey). NVIDIA's partner rules
+     require it in the upstream PR.
    * No Procedure section: the validation cluster was decommissioned on 2026-11-18, so no steps
      can be verified. Related Information is optional and is left out.
    * The gov-ready labels might move when NVIDIA moves the Government Ready content to the NVIDIA
@@ -89,7 +96,7 @@ Prerequisites
 
 The validated configuration uses the NVIDIA ``gpu-driver-stig-fips`` driver container, which has its own prerequisites:
 
-* You must provide an NGC pull secret so that the cluster can pull the driver container.
+* You must have an active NVIDIA AI Enterprise subscription and an NGC API key, provided to the cluster as a pull secret, so that the cluster can pull the driver container.
 
 * You must provide an Ubuntu Pro token so that the driver container can download the kernel headers for the FIPS kernel.
 
