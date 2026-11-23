@@ -72,6 +72,7 @@ check whether your upgrade path skips a Kubernetes minor version.
 | 4.10.17             | 1.35.6                 |
 | 4.10.16             | 1.35.6                 |
 | 4.10.14             | 1.35.6                 |
+| 4.9.68              | 1.34.13                |
 | 4.9.36              | 1.34.9                 |
 | 4.9.14              | 1.34.6                 |
 | 4.9.5               | 1.34.6                 |
