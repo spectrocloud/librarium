@@ -92,7 +92,7 @@ match your environment.
     Release "cert-manager" has been upgraded. Happy Helming!
     NAME: cert-manager
     LAST DEPLOYED: Wed Jun 17 14:54:45 2026
-    NAMESPACE: default
+    NAMESPACE: cert-manager
     STATUS: deployed
     REVISION: 2
     TEST SUITE: None

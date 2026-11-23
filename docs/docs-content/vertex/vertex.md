@@ -52,6 +52,8 @@ installer image, credentials, and an endpoint URL to access the FIPS registry.
 
 - [Installation](install-palette-vertex/install-palette-vertex.md)
 
+- [Security Defaults](security-defaults.md)
+
 - [Supported Platforms](supported-platforms.md)
 
 - [System Management](system-management/system-management.md)
