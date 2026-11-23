@@ -17,11 +17,12 @@ definitions, StorageClasses, and namespaces you define here.
 
 ## Infrastructure Resources
 
-| **Resource**                  | **Description**                                                                                                                                |
-| ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Networks](./networking.md)   | Create Network Attachment Definitions that expose bridge, `macvlan`, or SR-IOV networks to VMs, and bulk-create one NAD per VLAN from a range. |
-| [Storage](./storage.md)       | Manage StorageClasses, storage pools, PersistentVolumeClaims, and DataVolumes that back VM disks.                                              |
-| [Namespaces](./namespaces.md) | Create, adopt, and edit managed namespaces, and apply resource quotas and limit ranges.                                                        |
+| **Resource**                              | **Description**                                                                                                                                |
+| ----------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Networks](./networking.md)               | Create Network Attachment Definitions that expose bridge, `macvlan`, or SR-IOV networks to VMs, and bulk-create one NAD per VLAN from a range. |
+| [Storage](./storage.md)                   | Manage StorageClasses, storage pools, PersistentVolumeClaims, and DataVolumes that back VM disks.                                              |
+| [Namespaces](./namespaces.md)             | Create, adopt, and edit managed namespaces, and apply resource quotas and limit ranges.                                                        |
+| [Host Maintenance](./host-maintenance.md) | Drain a host with `kubectl` so that its VMs live-migrate to other nodes before you reboot or shut it down.                                     |
 
 ## Related Workflows
 
