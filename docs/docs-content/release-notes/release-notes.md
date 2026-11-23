@@ -15,13 +15,9 @@ tags: ["release-notes"]
 
 <!-- PATCH RELEASE TICKET: DOC-3466 -->
 <!-- PATCH RELEASE VERSION: 4.10.45 -->
-<!-- PATCH RELEASE CANDIDATES: PEM-12761 PEM-12730 PEM-12724 PE-10197 PCP-8019 PCP-8007 PCP-7991 -->
+<!-- PATCH RELEASE CANDIDATES: PEM-12730 PEM-12724 PE-10197 PCP-8019 PCP-8007 PCP-7991 -->
 
 ### Improvements
-
-<!-- https://spectrocloud.atlassian.net/browse/PEM-12761 -->
-
-- Applied security fixes to improve the platform's security posture.
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12724 -->
 
