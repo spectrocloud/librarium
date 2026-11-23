@@ -124,7 +124,9 @@ Whatever brought you here, these are the fastest paths in.
 - **Understand the product**: [Architecture](./explanation/architecture.md) •
   [Model Placement](./explanation/model-placement.md) • [GPU Sharing](./explanation/gpu-sharing.md) •
   [Vision Preprocessing](./explanation/vision-preprocessing.md) •
-  [Clients and Quotas](./explanation/clients-and-quotas.md) • [Routing Behavior](./explanation/routing-behavior.md) •
+  [Clients and Quotas](./explanation/clients-and-quotas.md) •
+  [Prompt Cache Sharing](./explanation/prompt-cache-sharing.md) • [Routing Behavior](./explanation/routing-behavior.md)
+  • [Mid-Task Model Switching](./explanation/mid-task-model-switching.md) •
   [Model Certification](./explanation/model-certification.md) • [Inference Engines](./explanation/inference-engines.md)
 - **Connect your coding tools**: [Claude Code](./how-to-guides/use-claude-code.md) •
   [Cursor](./how-to-guides/use-cursor.md) • [OpenAI Codex](./how-to-guides/use-codex.md) •
@@ -135,9 +137,11 @@ Whatever brought you here, these are the fastest paths in.
   [Share a GPU between models](./how-to-guides/share-a-gpu-between-models.md) •
   [Enable vision preprocessing](./how-to-guides/enable-vision-preprocessing.md) •
   [Configure semantic routing](./how-to-guides/configure-semantic-routing.md) •
+  [Set up Mid-Task Model Switching](./how-to-guides/set-up-mid-task-model-switching.md) •
   [Create a workspace](./how-to-guides/create-a-workspace.md) •
   [Manage workspace members](./how-to-guides/manage-workspace-members.md) •
   [Manage users](./how-to-guides/manage-users.md) • [Manage groups](./how-to-guides/manage-groups.md) •
+  [Set prompt cache sharing](./how-to-guides/set-prompt-cache-sharing.md) •
   [Create a client](./how-to-guides/create-a-client.md) • [Set client quotas](./how-to-guides/manage-client-quotas.md) •
   [Register an external inference endpoint](./how-to-guides/register-an-external-inference-endpoint.md) •
   [View client usage](./how-to-guides/view-client-usage.md) •
