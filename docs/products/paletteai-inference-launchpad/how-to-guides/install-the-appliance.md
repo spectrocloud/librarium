@@ -402,10 +402,10 @@ Palette CLI is not available on the jumpbox.
 
    :::
 
-   In Storage, from the **Storage Replication Interface** drop-down menu, select a high-bandwidth network interface that
-   has an IPv4 address. This field is required. On a multi-node install, every node must have an interface with the same
-   name and an IPv4 address. Then set the **Storage Replica Count** to `1` for a single-node install, or to `2` or `3`
-   for a multi-node install.
+   In the **Storage** section, from the **Storage Replication Interface** drop-down menu, select a high-bandwidth
+   network interface that has an IPv4 address. This field is required. On a multi-node install, every node must have an
+   interface with the same name and an IPv4 address. Then set the **Storage Replica Count** to `1` for a single-node
+   install, or to `2` or `3` for a multi-node install.
 
    In Certificates, provide the CA certificate for the appliance's OIDC endpoint. The two certificate fields are labeled
    **OIDC CA cert** and **OIDC CA key**, so look for the **OIDC** labels. To create a self-signed certificate, select
