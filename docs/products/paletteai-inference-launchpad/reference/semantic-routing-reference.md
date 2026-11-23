@@ -26,14 +26,14 @@ steps to set them, refer to [Configure Semantic Routing](../how-to-guides/config
 
 ## Semantic Router Card
 
-The **Semantic router** card is on the **Configurations** tab of the **Settings** page.
+The **Semantic router** card is on **Settings** > **Request handling** > **Semantic Router**.
 
 | **Control**                                                  | **Type** | **Default**                           | **What it does**                                                                                                                                                                  |
 | ------------------------------------------------------------ | -------- | ------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Run the semantic router on this box**                      | Toggle   | On, wherever the appliance can run it | Runs the semantic router. Off stops its engine and frees its GPU memory. The main model keeps serving without a restart. On again redeploys the copy that stays on the appliance. |
 | **Refuse jailbreak attempts**                                | Toggle   | On                                    | Turns the jailbreak check on or off. For both states, refer to [Guard Toggles](#guard-toggles).                                                                                   |
 | **Scan prompts for personal data before they leave the box** | Toggle   | On                                    | Turns the personal data check on or off. For both states, refer to [Guard Toggles](#guard-toggles).                                                                               |
-| **Apply semantic router settings**                           | Button   | Not applicable                        | Applies the toggle changes. It reads **Turn on semantic router** or **Turn off semantic router** when the router toggle changed.                                                  |
+| **Apply**                                                    | Button   | Not applicable                        | Applies the toggle changes.                                                                                                                                                       |
 
 ## Semantic Router States
 

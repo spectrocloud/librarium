@@ -31,7 +31,7 @@ grants model access, and optionally issues the client's first API token.
 
 1. In the workspace drop-down menu in the console header, select the workspace that holds the client.
 
-2. From the left main menu, select **Access & Policy**. The **Clients** list opens.
+2. From the left main menu, select **Access Management**. The **Clients** list opens.
 
 3. Select **Add client**. The **Add client** wizard opens on the **Overview** step.
 
@@ -77,7 +77,7 @@ A client can hold more than one API token. To add another token to a client late
 Confirm that the appliance registered the client and its API token.
 
 1. In the console header, confirm that the workspace drop-down menu shows the workspace that holds the client, and then
-   from the left main menu, select **Access & Policy**.
+   from the left main menu, select **Access Management**.
 
 2. On the **Clients** list, confirm that the new client appears under the name you gave it.
 
