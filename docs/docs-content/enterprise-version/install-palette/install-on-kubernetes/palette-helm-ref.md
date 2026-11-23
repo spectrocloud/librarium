@@ -21,7 +21,7 @@ The following parameters are required for a successful installation of Palette.
 | **Parameters**                                          | **Description**                                                                                                                                                                                                                                                               | **Type** |
 | ------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | `config.env.rootDomain`                                 | Used to configure the domain for the Palette installation. We recommend you create a CNAME DNS record that supports multiple subdomains. You can achieve this using a wild card prefix, `*.palette.abc.com`. Review the [Environment parameters](#environment) to learn more. | String   |
-| `config.env.ociRegistry` or `config.env.ociEcrRegistry` | Specifies the FIPS image registry for Palette. You can use an a self-hosted OCI registry or a public OCI registry we maintain and support. For more information, refer to the [Registry](#registries) section.                                                                | Object   |
+| `config.ociPackRegistry` or `config.ociPackEcrRegistry` | Specifies the FIPS image registry for Palette. You can use an a self-hosted OCI registry or a public OCI registry we maintain and support. For more information, refer to the [Registry](#registries) section.                                                                | Object   |
 
 :::warning
 
@@ -52,7 +52,8 @@ management plane, workload clusters, and PCGs. The secret serves the following p
 
 - **Spectro Cloud registry authentication** - Authenticates with Spectro Cloud's registries to pull security-hardened
   images. These images are used by the management plane, workload clusters, and PCGs. To obtain this secret, contact
-  your Spectro Cloud customer support representative. Refer to
+  your Spectro Cloud customer support representative. In the message that they send, use the value that is labeled
+  **Docker Configuration JSON (`dockerconfigjson`)**. The value is already base64-encoded. Refer to
   [Configure Image Pull Secret for Security-Hardened Images](../../system-management/configure-image-pull-secret.md) for
   more information.
 
@@ -80,6 +81,64 @@ cat <path/to/.docker/config.json> | base64 | tr --delete '\n'
 ```
 
 :::
+
+### IP Family
+
+<!-- RELEASE DAY. Confirm that 4.10.46 is the 4.10 patch version that ships the global.ipFamily Helm values. Update the version in this section if it changed. -->
+
+The `ipFamily` block configures IPv6 support. Use it when you install Palette on a Kubernetes cluster that uses IPv6 or
+dual-stack networking. Both parameters keep the IPv4-only behavior by default. This block is available in the Helm
+charts for Palette 4.10.46 and later. Refer to [Install Palette on an IPv6 EKS Cluster](./install-ipv6-eks.md) for an
+example.
+
+| **Parameters**          | **Description**                                                                                                                                                                                                                                                                                                 | **Type** | **Default value** |
+| ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------------- |
+| `enableIPv6`            | Specifies whether Palette services listen on IPv6 addresses in addition to IPv4 addresses. A value of `true` also adds the `::1` address and the `fd00::/8` range to the `NO_PROXY` list. Set to `true` when the cluster uses IPv6 or dual-stack networking. A cluster that uses IPv6 only requires this value. | Boolean  | `false`           |
+| `serviceIpFamilyPolicy` | The IP family policy (`spec.ipFamilyPolicy`) of the ingress and gRPC services. Allowed values are `""`, `PreferDualStack`, and `RequireDualStack`. The table after the example describes the effect of each value.                                                                                              | String   | `""`              |
+
+The following example is for a cluster that uses dual-stack networking.
+
+```yaml
+global:
+  ipFamily:
+    enableIPv6: true
+    serviceIpFamilyPolicy: RequireDualStack
+```
+
+The effect of the `serviceIpFamilyPolicy` value depends on whether the cluster uses dual-stack or single-stack
+networking.
+
+| **Value**          | **Dual-stack cluster**                                                                                                         | **Single-stack cluster**                                          |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------- |
+| `""`               | The services receive one cluster IP address from the first service Classless Inter-Domain Routing (CIDR) range of the cluster. | The services receive one cluster IP address.                      |
+| `PreferDualStack`  | The services receive both an IPv4 and an IPv6 cluster IP address.                                                              | The services receive one cluster IP address, and no error occurs. |
+| `RequireDualStack` | The services receive both an IPv4 and an IPv6 cluster IP address.                                                              | The services cannot be created.                                   |
+
+On a cluster that uses dual-stack networking, we recommend `RequireDualStack`. If the cluster does not provide both IP
+families, `PreferDualStack` falls back to one IP family without an error, so the services might not receive IPv6
+addresses.
+
+You cannot use `serviceIpFamilyPolicy` to request services that use IPv6 only. With an empty value, the services use the
+first service CIDR range of the cluster, which is an IPv6 range on an Amazon EKS cluster that uses the IPv6 IP address
+family. Do not use `RequireDualStack` on an IPv6 EKS cluster, because its services use one IP family.
+
+The `serviceIpFamilyPolicy` parameter does not give the load balancers IPv6 addresses on its own. The load balancer
+controller of your cluster must also create dual-stack load balancers. On AWS, add the following annotation to the
+ingress service and, if `grpc.external` is `true`, to the gRPC service. For other providers, refer to the documentation
+of your load balancer controller.
+
+```yaml
+ingress:
+  ingress:
+    annotations:
+      service.beta.kubernetes.io/aws-load-balancer-ip-address-type: dualstack
+grpc:
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-ip-address-type: dualstack
+```
+
+If you map your domain to the IP addresses of a dual-stack load balancer, create `AAAA` DNS records in addition to the
+`A` records.
 
 ## MongoDB
 
@@ -299,8 +358,8 @@ AWS ECR registry. Our support team provides the credentials for the OCI ECR regi
 | --------------------------------------- | -------------------------------------------------------------------------------------------------- | -------- | ----------------- |
 | `ociPackEcrRegistry.endpoint`           | The endpoint URL for the registry.                                                                 | String   | `""`              |
 | `ociPackEcrRegistry.name`               | The name of the registry.                                                                          | String   | `""`              |
-| `ociPackEcrRegistry.accessKey`          | The base64-encoded access key for the registry.                                                    | String   | `""`              |
-| `ociPackEcrRegistry.secretKey`          | The base64-encoded secret key for the registry.                                                    | String   | `""`              |
+| `ociPackEcrRegistry.accessKey`          | The access key for the registry.                                                                   | String   | `""`              |
+| `ociPackEcrRegistry.secretKey`          | The secret key for the registry.                                                                   | String   | `""`              |
 | `ociPackEcrRegistry.baseContentPath`    | The base path for the registry.                                                                    | String   | `""`              |
 | `ociPackEcrRegistry.isPrivate`          | Specifies whether the registry is private.                                                         | Boolean  | `true`            |
 | `ociPackEcrRegistry.insecureSkipVerify` | Specifies whether to skip Transport Layer Security (TLS) verification for the registry connection. | Boolean  | `false`           |
