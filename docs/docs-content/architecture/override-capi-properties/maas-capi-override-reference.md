@@ -58,6 +58,40 @@ maasMachineTemplate:
           - pcp
 ```
 
+### Disk Erase on Machine Release
+
+When Palette removes a node from a MAAS cluster (for example, during a repave, a node pool scale-down, or a cluster
+deletion), it releases the machine back to MAAS. The `eraseDisksOnRelease` field of the `MaasCluster` resource controls
+whether Palette asks MAAS to erase the machine's disks during the release. Set this field in a cluster-level override.
+The following table describes the supported values.
+
+| Value    | Behavior                                                                                                                      |
+| -------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| `none`   | Default. Palette does not request a disk erase.                                                                               |
+| `full`   | MAAS overwrites each disk in full.                                                                                            |
+| `quick`  | MAAS removes the disk signatures and writes zeros to the first and last 2 MiB of each disk.                                   |
+| `secure` | MAAS uses the secure erase feature of each drive. If a drive does not support secure erase, MAAS overwrites the disk in full. |
+
+```yaml title="Erase disks when Palette releases a machine"
+maasCluster:
+  spec:
+    eraseDisksOnRelease: full
+```
+
+:::danger
+
+When disk erase is on, MAAS erases every disk that the machine can access, including Storage Area Network (SAN) volumes
+that are still attached to the node. Use `none` on clusters whose nodes attach SAN volumes.
+
+:::
+
+Removing `eraseDisksOnRelease` from the override does not turn off disk erase on a cluster where you already set it. To
+turn off disk erase, set the value to `none`. Refer to
+[How Overrides Work](./override-capi-properties.md#how-overrides-work) for more information.
+
+If your MAAS environment is configured to erase disks on release, MAAS erases them even when `eraseDisksOnRelease` is
+`none`. Refer to the MAAS documentation for its disk erase settings.
+
 ### Unsupported First-Class Properties
 
 All first-class properties are supported. To learn more about the difference between first-class properties and override
