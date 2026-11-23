@@ -15,23 +15,9 @@ tags: ["release-notes"]
 
 <!-- PATCH RELEASE TICKET: DOC-3466 -->
 <!-- PATCH RELEASE VERSION: 4.10.45 -->
-<!-- PATCH RELEASE CANDIDATES: PEM-12730 PEM-12724 PE-10197 PCP-8019 PCP-8007 PCP-7991 -->
-
-### Improvements
-
-<!-- https://spectrocloud.atlassian.net/browse/PEM-12724 -->
-
-- Reduced MongoDB memory usage during the scheduled cleanup of cluster metrics in Palette. Palette now runs each cleanup
-  job on one replica of its management services instead of on every replica.
+<!-- PATCH RELEASE CANDIDATES: PE-10197 PCP-8019 PCP-8007 PCP-7991 -->
 
 ### Bug Fixes
-
-<!-- https://spectrocloud.atlassian.net/browse/PEM-12730 -->
-<!-- https://spectrocloud.atlassian.net/browse/PEM-12478 -->
-
-- Fixed an issue that caused [Headlamp](../clusters/cluster-management/headlamp.md) to stay on its loading screen when
-  you opened it from a cluster's **Connect** link through Spectro Proxy. This occurred when Palette took longer than 15
-  seconds to respond, for example, over a slow network connection.
 
 <!-- https://spectrocloud.atlassian.net/browse/PCP-8019 -->
 
