@@ -69,12 +69,13 @@ Kubernetes version independently of Palette VerteX. The paths in the **Kubernete
 
 The following table lists the Kubernetes version bundled with each recent Palette VerteX release.
 
-| Palette VerteX Release                         | EC Binary | VerteX Management Appliance |
-| :--------------------------------------------- | :-------: | :-------------------------: |
-| 4.7.40, 4.7.43                                 |  1.31.8   |       Not applicable        |
-| 4.8.52, 4.8.54, 4.8.56, 4.8.58, 4.8.61, 4.8.62 |  1.32.9   |           1.33.9            |
-| 4.9.5, 4.9.8, 4.9.14                           |  1.33.10  |           1.34.6            |
-| 4.9.23 and later                               |  1.34.6   |           1.34.9            |
+| Palette VerteX Release                                                                                         | EC Binary | VerteX Management Appliance |
+| :------------------------------------------------------------------------------------------------------------- | :-------: | :-------------------------: |
+| 4.7.40, 4.7.43                                                                                                 |  1.31.8   |       Not applicable        |
+| 4.8.52, 4.8.54, 4.8.56, 4.8.58, 4.8.61, 4.8.62                                                                 |  1.32.9   |           1.33.9            |
+| 4.9.5, 4.9.8, 4.9.14                                                                                           |  1.33.10  |           1.34.6            |
+| 4.9.23, 4.9.24, 4.9.36, 4.9.38, 4.9.44, 4.9.46, 4.9.51, 4.9.53, 4.9.54, 4.9.59, 4.9.60, 4.9.62, 4.9.63, 4.9.64 |  1.34.6   |           1.34.9            |
+| 4.9.68 and later                                                                                               |  1.34.6   |           1.34.13           |
 
 On EC binary installations, direct upgrades from any `4.8.x` release to `4.9.23` or later are not supported. The `4.8.x`
 series ships Kubernetes `1.32.9`, and `4.9.23` and later ship Kubernetes `1.34.6`, which skips `1.33.x`. The upgrade
@@ -84,7 +85,7 @@ path tables mark these paths with :x:. To reach `4.9.23` or later from `4.8.x`, 
 2. After the cluster returns to a healthy state, upgrade to the target `4.9.23` or later release.
 
 VerteX Management Appliance installations are not affected, because they ship Kubernetes `1.33.9` on `4.8.x` and
-`1.34.9` on `4.9.24` and later, which crosses a single minor version.
+`1.34.9` or `1.34.13` on `4.9.24` and later, which crosses a single minor version.
 
 Before you start any Palette VerteX upgrade, compare the Kubernetes version of your current release with that of the
 target release. If the delta is two or more minor versions, plan an intermediate upgrade through a release on the
