@@ -53,7 +53,7 @@ management plane, workload clusters, and PCGs. The secret serves the following p
 - **Spectro Cloud registry authentication** - Authenticates with Spectro Cloud's registries to pull security-hardened
   images. These images are used by the management plane, workload clusters, and PCGs. To obtain this secret, contact
   your Spectro Cloud customer support representative. In the message that they send, use the value that is labeled
-  **Docker Configuration JSON (dockerconfigjson)**. The value is already base64-encoded. Refer to
+  **Docker Configuration JSON (`dockerconfigjson`)**. The value is already base64-encoded. Refer to
   [Configure Image Pull Secret for Security-Hardened Images](../../system-management/configure-image-pull-secret.md) for
   more information.
 
