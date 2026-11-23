@@ -316,11 +316,11 @@ subject to change. For production workloads, create the `.arg` and `user-data` f
     apply to the builder machine during the build process, while the settings in `user-data` apply to the Edge host
     after installation.
 
-    | Parameter                | Description                                                                           |
-    | ------------------------ | ------------------------------------------------------------------------------------- |
-    | `siteNetwork.httpProxy`  | The URL of the HTTP proxy endpoint.                                                   |
-    | `siteNetwork.httpsProxy` | The URL of the HTTPS proxy endpoint.                                                  |
-    | `siteNetwork.noProxy`    | The list of IP addresses or CIDR ranges to exclude routing through the network proxy. |
+    | Parameter                        | Description                                                                           |
+    | -------------------------------- | ------------------------------------------------------------------------------------- |
+    | `stylus.site.network.httpProxy`  | The URL of the HTTP proxy endpoint.                                                   |
+    | `stylus.site.network.httpsProxy` | The URL of the HTTPS proxy endpoint.                                                  |
+    | `stylus.site.network.noProxy`    | The list of IP addresses or CIDR ranges to exclude routing through the network proxy. |
 
     :::warning
 
