@@ -34,8 +34,8 @@ tags: ["release-notes"]
   displays a **Hardened Images** (**HI**) indicator next to them. Security-hardened pack versions are optional, and the
   standard versions of each pack remain available. Refer to
   [Security-Hardened Pack Versions](../clusters/cluster-management/hardened-images.md#security-hardened-pack-versions)
-  to check the cluster requirements, switch a pack to a security-hardened version, or download these versions for
-  airgap environments.
+  to check the cluster requirements, switch a pack to a security-hardened version, or download these versions for airgap
+  environments.
 
 #### Improvements
 
