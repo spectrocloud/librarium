@@ -190,8 +190,9 @@ the [Deprecations](/release-notes/announcements#deprecations) table for the remo
 | `POST /v1/users/summary` | `POST /v2/users/summary` |
 | `POST /v1/teams/summary` | `POST /v2/teams/summary` |
 
-The v2 endpoints accept the same request body as the v1 endpoints, and each item in the response has the same fields.
-Only pagination changes. Use the following steps to update your scripts and integrations.
+The v2 endpoints are available in Palette and Palette VerteX 4.10.32 and later, including self-hosted instances. They
+accept the same request body as the v1 endpoints, and each item in the response has the same fields. Only pagination
+changes. Use the following steps to update your scripts and integrations.
 
 1. Change the endpoint path from `/v1` to `/v2`. Keep the request body as it is.
 
