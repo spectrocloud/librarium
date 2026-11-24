@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## November 20, 2026 - Release 4.8.75
+## November 23, 2026 - Release 4.8.75
 
 <!-- PATCH RELEASE TICKET: DOC-3435 -->
 <!-- PATCH RELEASE VERSION: 4.8.75 -->
