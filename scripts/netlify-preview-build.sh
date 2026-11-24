@@ -27,7 +27,7 @@ log() { echo "[pack-preview] $*"; }
 repo="spectrocloud/librarium"
 label="${PACK_PREVIEW_LABEL:-pack-pr}"
 head_ref="${PACK_PREVIEW_HEAD:-HEAD}"
-pack_paths='^(static/packs-data/|_partials/packs/|plugins/packs-integrations\.js|src/constants/packs\.ts|src/services/api/|utils/pack-cves/|src/components/(Packs[A-Za-z]*|PackCVEVersion|RedirectPackPage|Technologies|Integrations/Packs)/|docs/docs-content/integrations/[^/]+\.mdx$)'
+pack_paths='^(static/packs-data/|_partials/packs/|plugins/packs-integrations\.js|plugins/packs-logo-fallback/|src/constants/packs\.ts|src/services/api/|utils/pack-cves/|src/components/(Packs[A-Za-z]*|PackCVEVersion|RedirectPackPage|Technologies|Integrations/Packs)/|docs/docs-content/integrations/[^/]+\.mdx$)'
 build_packs=false
 base_branch="master"
 
