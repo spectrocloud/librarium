@@ -42,6 +42,11 @@ Use the following steps to create a new host cluster so that you can add Edge ho
 - Two-node clusters operating in high availability mode only support K3s and no other Kubernetes distributions.
 - Palette Optimized Canonical Kubernetes clusters require at least three nodes to operate in high availability mode.
 
+- Edge clusters do not support image digests. In the OS pack of your [cluster profile](./model-profile.md), reference
+  the provider image in `system.uri` and each entry in the `images` list by tag, such as
+  `example.io/my-images/example-custom-os:v1.4.5`. Do not reference them by digest, such as
+  `example.io/my-images/example-custom-os@sha256:<digest>`.
+
 ### Prerequisites
 
 - One or more registered Edge host. For more information about Edge host registration, refer to
