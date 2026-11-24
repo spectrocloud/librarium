@@ -58,25 +58,27 @@ Replace `<path-to-kubeconfig>` with the path to the kubeconfig file.
    ```
 
    A VM that shows `False` and uses the **LiveMigrate** eviction strategy blocks the drain, and `kubectl drain` keeps
-   retrying until you stop the VM or change its eviction strategy. Before you drain the node, handle each of these VMs
-   in one of the following ways, listed in order of preference.
+   retrying until you stop the VM. Before you drain the node, handle each VM that blocks the drain in one of the
+   following ways, listed in order of preference.
 
-   - Fix what prevents the VM from live-migrating, such as a disk that does not use the `ReadWriteMany` access mode or a
-     GPU or PCI passthrough device. To find the reason, run `kubectl describe vmi <vm-name> --namespace <namespace>` and
-     check the `LiveMigratable` condition. Replace `<vm-name>` and `<namespace>` with the name and namespace of the VM.
+   1. Fix what prevents the VM from live-migrating, such as a GPU or PCI passthrough device, or a disk that does not use
+      the `ReadWriteMany` access mode. To find the reason, run `kubectl describe vmi <vm-name> --namespace <namespace>`
+      and check the `LiveMigratable` condition. Replace `<vm-name>` and `<namespace>` with the name and namespace of the
+      VM. Refer to [Live Migration](../virtual-machines/managing.md#live-migration).
 
-   - Use the **LiveMigrateIfPossible** eviction strategy. The VM then live-migrates when it can. When it cannot,
-     KubeVirt shuts the VM down so that the drain can finish, and the VM has downtime. Set the strategy on the VM, or,
-     for VMs that do not set their own, set the cluster's
-     [**Default eviction strategy**](../kubevirt-configuration.md#strategies) to **Live migrate if possible**. A running
-     VM keeps its eviction strategy until it restarts, so set the new strategy ahead of time, and then restart the VM.
-     Refer to [Edit a VM](../virtual-machines/managing.md#edit-a-vm).
+   2. Use the **LiveMigrateIfPossible** eviction strategy. The VM then live-migrates when it can. When it cannot,
+      KubeVirt shuts the VM down so that the drain can finish, and the VM has downtime. Set the strategy on the VM, or,
+      for VMs that do not set their own, set the cluster's
+      [**Default eviction strategy**](../kubevirt-configuration.md#strategies) to **Live migrate if possible**. A
+      running VM keeps its eviction strategy until it restarts, so restart the VM after you set the new strategy and
+      before you drain the node. Refer to [Edit a VM](../virtual-machines/managing.md#edit-a-vm).
 
-   - Stop the VM before you drain the node, and start it again after the host is back online. Refer to
-     [Start, Stop, Restart](../virtual-machines/managing.md#start-stop-restart).
+   3. Stop the VM before you drain the node, and start it again after the host is back online. Refer to
+      [Start, Stop, Restart](../virtual-machines/managing.md#start-stop-restart).
 
-3. Drain the node. The command turns off scheduling on the node and evicts its pods. It finishes when the VMs on the
-   node have live-migrated to other nodes or, if they use **LiveMigrateIfPossible** and cannot live-migrate, shut down.
+3. Drain the node. The command turns off scheduling on the node and evicts its pods. It finishes when each VM on the
+   node has live-migrated to another node or shut down. A VM that uses **LiveMigrateIfPossible** shuts down when it
+   cannot live-migrate.
 
    ```shell
    kubectl drain <node-name> --ignore-daemonsets --delete-emptydir-data --force
@@ -89,8 +91,8 @@ Replace `<path-to-kubeconfig>` with the path to the kubeconfig file.
    `node/<node-name> drained`.
 
    If the output repeats messages that end with `is configured with an eviction strategy but is not live-migratable`, a
-   VM on the node cannot live-migrate, and the drain does not finish on its own. Stop the VM that the message names, and
-   the drain then finishes. Refer to [Start, Stop, Restart](../virtual-machines/managing.md#start-stop-restart).
+   VM on the node cannot live-migrate. The drain does not finish until you stop the VM that the message names. Refer to
+   [Start, Stop, Restart](../virtual-machines/managing.md#start-stop-restart).
 
 4. Confirm that no VMs remain on the node. No row in the `NODENAME` column shows the name of the node.
 
@@ -142,6 +144,6 @@ Replace `<path-to-kubeconfig>` with the path to the kubeconfig file.
    kubectl get vm --all-namespaces
    ```
 
-   The `STATUS` column shows `Running` for each VM that you expect to run. If a VM that you stopped in step 2, or that
-   shut down during the drain, is not running, start it. Refer to
+   The `STATUS` column shows `Running` for each VM that you expect to run. If a VM that you stopped before the drain or
+   that shut down during the drain is not running, start it. Refer to
    [Start, Stop, Restart](../virtual-machines/managing.md#start-stop-restart).
