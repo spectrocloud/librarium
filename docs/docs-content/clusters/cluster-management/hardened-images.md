@@ -14,8 +14,8 @@ Spectro Cloud is transitioning workload clusters to security-hardened images to 
 clusters. Security-hardened images contain only the components that an application needs at runtime.
 
 To avoid disruption to existing clusters and new clusters that you deploy, verify that your workload clusters meet the
-[requirements](#requirements) on this page. To identify and use the pack versions that use security-hardened images,
-refer to [Security-Hardened Pack Versions](#security-hardened-pack-versions).
+[requirements](#requirements) on this page. To identify and use security-hardened pack versions, refer to
+[Security-Hardened Pack Versions](#security-hardened-pack-versions).
 
 ## Image Pull Secret
 
@@ -74,13 +74,13 @@ version each cluster profile uses.
 
 ### Identify Security-Hardened Pack Versions
 
-The version of a security-hardened pack includes `-shi`, for example `42.4.0-shi`. Palette also displays a **Hardened
+The version of a security-hardened pack includes `-shi` (for example, `42.4.0-shi`). Palette also displays a **Hardened
 Images** indicator, or **HI** where space is limited, next to the pack versions that use security-hardened images. The
 indicator appears in the following places:
 
 - Pack search, when you add a pack to a cluster profile.
 
-- The version drop-down menu of a pack layer.
+- The version drop-down menu in the **Edit Pack** panel.
 
 - The layers of a cluster profile.
 
@@ -101,9 +101,9 @@ Hold the pointer over the indicator to display a link to the image pull secret i
 3. Apply the updated cluster profile to your clusters. Refer to [Update a Cluster](./cluster-updates.md) for more
    information.
 
-### Download Security-Hardened Packs
+### Download Security-Hardened Pack Versions
 
 If your Palette instance cannot reach the Spectro Cloud registries, such as in an airgapped environment, download the
-security-hardened pack versions from Artifact Studio. In Artifact Studio, the security-hardened versions of a pack
-appear in the pack's version list with the `-shi` suffix. Refer to
-[Download a Pack](../../downloads/artifact-studio-v2.md#download-a-pack) for more information.
+security-hardened pack versions from Artifact Studio. When you download the pack, choose a version that includes `-shi`
+from **Select version**. Refer to [Download a Pack](../../downloads/artifact-studio-v2.md#download-a-pack) for more
+information.

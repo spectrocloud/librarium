@@ -30,12 +30,12 @@ tags: ["release-notes"]
 <!-- https://spectrocloud.atlassian.net/browse/DOC-3515 -->
 
 - Spectro Cloud now publishes security-hardened versions of many packs. These pack versions use security-hardened images
-  to reduce the attack surface of your clusters. Their versions include `-shi`, for example `42.4.0-shi`, and Palette
+  to reduce the attack surface of your clusters. Their versions include `-shi` (for example, `42.4.0-shi`). Palette
   displays a **Hardened Images** (**HI**) indicator next to them. Security-hardened pack versions are optional, and the
   standard versions of each pack remain available. Refer to
   [Security-Hardened Pack Versions](../clusters/cluster-management/hardened-images.md#security-hardened-pack-versions)
-  for the cluster requirements, the steps to switch a pack to a security-hardened version, and how to download these
-  versions for airgapped environments.
+  to check the cluster requirements, switch a pack to a security-hardened version, and download these versions for
+  airgapped environments.
 
 #### Improvements
 
