@@ -46,12 +46,13 @@ the steps and generates an environment block for `bash`, `zsh`, or PowerShell. F
    export ANTHROPIC_DEFAULT_FABLE_MODEL=claude-fable-5
    export CLAUDE_CODE_EFFORT_LEVEL=auto
    export CLAUDE_CODE_MAX_OUTPUT_TOKENS=64000
+   export CLAUDE_CODE_AUTO_MODE_SERVER=0
    ```
 
    Include the `NODE_EXTRA_CA_CERTS` line only when the panel shows the **CA certificate** step. Claude Code runs on
    Node.js, and this variable adds the platform CA to the certificates Node.js trusts, so certificate verification stays
-   on. Set it in the shell before you start Claude Code. On PowerShell, the panel writes the same path as
-   `$env:USERPROFILE\Downloads\palette-ai-inference-launchpad-ca.crt`.
+   on. Set it in the shell or in the `env` block of a Claude Code settings file before you start Claude Code. On
+   PowerShell, the panel writes the same path as `$env:USERPROFILE\Downloads\palette-ai-inference-launchpad-ca.crt`.
 
 2. Export your API token. The panel keeps the token out of the copied block, so you do not paste it alongside the shared
    values. Replace `<lpai-token>` with your token.
@@ -61,7 +62,9 @@ the steps and generates an environment block for `bash`, `zsh`, or PowerShell. F
    ```
 
 3. _(Optional)_ To keep the endpoint and token across sessions, add them to the `~/.claude/settings.json` file instead
-   of exporting them each time. Persisting the token there writes the secret to disk.
+   of exporting them each time. Persisting the token there writes the secret to disk. To keep the connection in
+   integrated development environments (IDEs) and in apps that you start outside a terminal, refer to
+   [Persist Claude Code Configuration](./persist-claude-code-configuration.md).
 
    ```json
    {
@@ -101,8 +104,9 @@ the steps and generates an environment block for `bash`, `zsh`, or PowerShell. F
 
 ## Next Steps
 
-To look up any configuration value, refer to [Claude Code Configuration](../reference/claude-code-reference.md). To
-deploy another model to the appliance, refer to [Deploy a Model](./deploy-a-model.md). To let the appliance answer
-questions about pasted screenshots, refer to [Enable Vision Preprocessing](./enable-vision-preprocessing.md). To
-understand how the Tier map and the semantic router pick a model for each request, refer to
-[Routing Behavior](../explanation/routing-behavior.md).
+To keep Claude Code connected in new terminals and IDEs, refer to
+[Persist Claude Code Configuration](./persist-claude-code-configuration.md). To look up any configuration value, refer
+to [Claude Code Configuration](../reference/claude-code-reference.md). To deploy another model to the appliance, refer
+to [Deploy a Model](./deploy-a-model.md). To let the appliance answer questions about pasted screenshots, refer to
+[Enable Vision Preprocessing](./enable-vision-preprocessing.md). To understand how the Tier map and the semantic router
+pick a model for each request, refer to [Routing Behavior](../explanation/routing-behavior.md).
