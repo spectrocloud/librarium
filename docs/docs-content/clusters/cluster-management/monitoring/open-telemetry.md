@@ -111,11 +111,15 @@ them to your deployed healthy clusters.
     :::tip
 
     The OpenObserve pack allows you to save metrics information on the pod or in an S3 bucket. This guide saves metrics
-    on the pod. Provide the following configurations if you want to persist your metrics to an existing S3 bucket.
+    on the pod. Provide the following configurations if you want to persist your metrics to an existing S3 bucket:
 
-        - Set `charts.openobserve.config.ZO_LOCAL_MODE` to false.
-        - Fill in an access key in the field `charts.openobserve.auth.ZO_S3_ACCESS_KEY` and a secret key in the field `charts.openobserve.auth.ZO_S3_SECRET_KEY`.
-        - Fill in the region of your S3 bucket in the field `charts.openobserve.config.ZO_S3_REGION_NAME` and the name of your bucket in the field `charts.openobserve.config.ZO_S3_BUCKET_NAME`.
+    - Set `charts.openobserve.config.ZO_LOCAL_MODE` to false.
+
+    - Fill in an access key in the field `charts.openobserve.auth.ZO_S3_ACCESS_KEY` and a secret key in the field
+      `charts.openobserve.auth.ZO_S3_SECRET_KEY`.
+
+    - Fill in the region of your S3 bucket in the field `charts.openobserve.config.ZO_S3_REGION_NAME` and the name of
+      your bucket in the field `charts.openobserve.config.ZO_S3_BUCKET_NAME`.
 
     :::
 
