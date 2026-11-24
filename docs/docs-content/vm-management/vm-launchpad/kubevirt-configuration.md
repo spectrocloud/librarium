@@ -124,11 +124,11 @@ on an airgapped or FIPS appliance, removing `Template` leaves the `virt-template
 
 ### Strategies
 
-| **Field**                     | **Description**                                                                                                                                                                                      | **Default**                            |
-| ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------- |
-| **Default eviction strategy** | What KubeVirt does with a running VM when its node is drained. An eviction strategy that is set on the VM overrides this default. Refer to [Host Maintenance](./infrastructure/host-maintenance.md). | **Live migrate**                       |
-| **VM rollout strategy**       | When a configuration change to a VM takes effect.                                                                                                                                                    | **Live update**                        |
-| **Uninstall strategy**        | Whether KubeVirt can be uninstalled while VM workloads still exist on the cluster.                                                                                                                   | **Block uninstall if workloads exist** |
+| **Field**                     | **Description**                                                                                                                                                                                                                                                        | **Default**                            |
+| ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------- |
+| **Default eviction strategy** | What KubeVirt does with a running VM when its node is drained. An eviction strategy that is set on the VM overrides this default. A running VM picks up a change to this default after it restarts. Refer to [Host Maintenance](./infrastructure/host-maintenance.md). | **Live migrate**                       |
+| **VM rollout strategy**       | When a configuration change to a VM takes effect.                                                                                                                                                                                                                      | **Live update**                        |
+| **Uninstall strategy**        | Whether KubeVirt can be uninstalled while VM workloads still exist on the cluster.                                                                                                                                                                                     | **Block uninstall if workloads exist** |
 
 ### Live Migration
 

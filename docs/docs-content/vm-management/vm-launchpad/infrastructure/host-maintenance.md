@@ -65,11 +65,12 @@ Replace `<path-to-kubeconfig>` with the path to the kubeconfig file.
      GPU or PCI passthrough device. To find the reason, run `kubectl describe vmi <vm-name> --namespace <namespace>` and
      check the `LiveMigratable` condition. Replace `<vm-name>` and `<namespace>` with the name and namespace of the VM.
 
-   - Set the eviction strategy of the VM to **LiveMigrateIfPossible**. The VM then live-migrates when it can. When it
-     cannot, KubeVirt shuts the VM down so that the drain can finish, and the VM has downtime. A new eviction strategy
-     takes effect after the VM restarts, so set it ahead of time, for example when you
-     [create the VM](../virtual-machines/creating.md#create-a-virtual-machine) or in its
-     [template](../virtual-machines/templates.md#create-a-template).
+   - Use the **LiveMigrateIfPossible** eviction strategy. The VM then live-migrates when it can. When it cannot,
+     KubeVirt shuts the VM down so that the drain can finish, and the VM has downtime. Set the strategy on the VM, or,
+     for VMs that do not set their own, set the cluster's
+     [**Default eviction strategy**](../kubevirt-configuration.md#strategies) to **Live migrate if possible**. A running
+     VM keeps its eviction strategy until it restarts, so set the new strategy ahead of time, and then restart the VM.
+     Refer to [Edit a VM](../virtual-machines/managing.md#edit-a-vm).
 
    - Stop the VM before you drain the node, and start it again after the host is back online. Refer to
      [Start, Stop, Restart](../virtual-machines/managing.md#start-stop-restart).
