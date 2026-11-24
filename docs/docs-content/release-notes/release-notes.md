@@ -27,9 +27,25 @@ tags: ["release-notes"]
 
 #### Improvements
 
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7765 -->
+<!-- https://spectrocloud.atlassian.net/browse/PCP-8079 -->
+
+- You can now select a specific patch version of the Canonical Kubernetes pack when you create or update a cluster
+  profile. If you select only a minor version, Palette continues to deploy the latest patch version of that minor
+  version. Refer to [Cluster Profiles](../profiles/cluster-profiles/cluster-profiles.md#profile-layers) for more
+  information about pack versions.
+
 #### Bug Fixes
 
 #### Deprecations and Removals
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12145 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12769 -->
+
+- Palette removes the `GET /v1/spectroclusters/{uid}/assets` [API endpoint](/api/introduction). Use
+  `GET /v1/spectroclusters/{uid}/assets/manifest` to retrieve the cluster manifest instead. Other
+  `/v1/spectroclusters/{uid}/assets` endpoints continue to work. Update any automation, script, or integration that
+  calls `GET /v1/spectroclusters/{uid}/assets` before you upgrade, because those calls fail after the upgrade.
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12353 -->
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12357 -->
@@ -64,6 +80,15 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 #### Bug Fixes
 
 #### Deprecations and Removals
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12289 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12772 -->
+
+- The `PATCH /v1/edgehosts/{uid}/hostPairingKey` and `PATCH /v1/edgehosts/{uid}/hostCheckSum` Palette
+  [API endpoints](/api/introduction) are now deprecated, along with the `hostPairingKey` and `hostChecksum` fields in
+  Edge host API requests and responses. They belong to the original, manual Edge host pairing workflow and have no
+  replacement. Remove any calls to these endpoints and any use of these fields from your automation, scripts, and
+  integrations. Refer to the [Deprecations](./announcements.md#deprecations) table for the removal timeline.
 
 ### VerteX
 
