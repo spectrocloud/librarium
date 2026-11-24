@@ -440,12 +440,6 @@ The following components have been updated for Palette version 4.10.13 - 4.10.44
   workspace. This occurred when the Palette management plane briefly lost access to its database, and the recreated
   namespaces were empty.
 
-<!-- https://spectrocloud.atlassian.net/browse/PCP-7958 -->
-
-- Fixed an issue that prevented the cluster autoscaler pod from being scheduled on control plane nodes. When all worker
-  [node pools](../clusters/cluster-management/node-pool.md) carried a `NoSchedule` taint, the pod stayed `Pending` after
-  a node drain, repave, or upgrade, and node pool autoscaling stopped.
-
 <!-- https://spectrocloud.atlassian.net/browse/PCP-7968 -->
 <!-- https://spectrocloud.atlassian.net/browse/DOC-3418 -->
 
