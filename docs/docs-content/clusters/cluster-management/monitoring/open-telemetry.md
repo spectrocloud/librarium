@@ -45,18 +45,25 @@ reducing duplication.
   [Data Center](../../data-center/data-center.md), or [Edge](../../edge/edge.md) clusters.
 - Network connectivity between the clusters.
 - The cluster that hosts OpenObserve must be a [VMware vSphere](../../data-center/vmware/vmware.md),
-  [MAAS](../../data-center/maas/maas.md), or [Edge](../../edge/edge.md) cluster. The Open Observe pack supports only
+  [MAAS](../../data-center/maas/maas.md), or [Edge](../../edge/edge.md) cluster. The OpenObserve pack supports only
   these environments.
-- The nodes of the cluster that hosts OpenObserve must use the AMD64 architecture. The Open Observe pack does not
-  support ARM64 nodes.
-- OpenObserve stores its metadata in PostgreSQL 14 or later. You can use a managed PostgreSQL service, a self-hosted
-  PostgreSQL server that the cluster can reach, or the embedded PostgreSQL database that the Open Observe pack deploys
-  by default. The embedded database requires the [CloudNativePG](https://cloudnative-pg.io/) operator, which the
-  PostgreSQL pack in this guide installs. Regardless of the source, provide the connection string in the
-  `charts.openobserve.auth.ZO_META_POSTGRES_DSN` field of the pack. For a managed or self-hosted server, use its
-  connection string, for example, `postgres://user:password@host:5432/dbname`. For the embedded database, use
-  `postgres://openobserve:<password>@o2-openobserve-postgres-rw:5432/app`, and replace `<password>` with the value of
-  the `charts.openobserve.postgres.spec.password` field.
+- The nodes of the cluster that hosts OpenObserve must use the AMD64 architecture. The OpenObserve pack does not support
+  ARM64 nodes.
+- The cluster that hosts OpenObserve must be able to provision the persistent volumes that the OpenObserve pack
+  requests. By default, the `ingester`, `querier`, `compactor`, and `scheduler` components each request a 100 GiB
+  volume, the NATS JetStream store requests a 20 GiB volume for each of its three replicas, and the in-cluster
+  PostgreSQL database requests a 10 GiB volume for each of its two instances.
+- OpenObserve stores its metadata in PostgreSQL 14 or later. The OpenObserve pack offers two presets for the database:
+
+  - **In-Cluster Postgres (Requires postgresql Pack)** is the default. The pack deploys a PostgreSQL database in the
+    cluster and connects OpenObserve to it automatically. This preset requires the
+    [CloudNativePG](https://cloudnative-pg.io/) operator, which the PostgreSQL pack installs. This guide uses this
+    preset.
+
+  - **External Postgres (Bring Your Own)** connects OpenObserve to a managed PostgreSQL service or a self-hosted
+    PostgreSQL server that the cluster can reach. With this preset, you do not need the PostgreSQL pack. Instead,
+    provide the connection string of your server in the `charts.openobserve.auth.ZO_META_POSTGRES_DSN` field of the
+    OpenObserve pack, in the format `postgres://<user>:<password>@<host>:<port>/<database>`.
 
 ## Deploy an OpenTelemetry Monitoring Stack
 
@@ -76,14 +83,26 @@ them to your deployed healthy clusters.
     Add the following packs in your cluster profile with customizations that suit your environment. Then, select
     **Next**.
 
-    | **Pack**     | **Version** | **Registry**           | **Customization**                                                                                                                                                                                                                                                                                                                                                                                                 |
-    | ------------ | ----------- | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | MetalLB      | 0.13.x      | Palette Registry (OCI) | Set an IP range that is available in your environment in the `manifests.metallb.addresses` field.                                                                                                                                                                                                                                                                                                                 |
-    | PostgreSQL   | 1.29.x      | Palette Registry (OCI) | No customization required.                                                                                                                                                                                                                                                                                                                                                                                        |
-    | Open Observe | 1.0.x       | Palette Registry (OCI) | Set a user email in the `charts.openobserve.auth.ZO_ROOT_USER_EMAIL` field or leave the default value of `root@example.com`. Set a user password in the `charts.openobserve.auth.ZO_ROOT_USER_PASSWORD` field. Set `charts.openobserve.config.ZO_LOCAL_MODE` to true. Set the PostgreSQL connection string in the `charts.openobserve.auth.ZO_META_POSTGRES_DSN` field. Refer to [Prerequisites](#prerequisites). |
+    | **Pack**    | **Version** | **Registry**           | **Customization**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+    | ----------- | ----------- | ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | MetalLB     | 0.13.x      | Palette Registry (OCI) | Set an IP range that is available in your environment in the `manifests.metallb.addresses` field.                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+    | PostgreSQL  | 1.29.x      | Palette Registry (OCI) | No customization required.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+    | OpenObserve | 1.1.x       | Palette Registry (OCI) | Keep the default **In-Cluster Postgres (Requires postgresql Pack)** preset. Set a user email in the `charts.openobserve.auth.ZO_ROOT_USER_EMAIL` field or leave the default value of `root@example.com`. Set a user password in the `charts.openobserve.auth.ZO_ROOT_USER_PASSWORD` field. Set `charts.openobserve.config.ZO_LOCAL_MODE` to true. Add the `spectrocloud.com/install-priority: "10"` annotation under the `pack` key so that Palette installs the PostgreSQL pack first. Refer to [Prerequisites](#prerequisites). |
 
-    Construct a Base64 encoding of the credentials you have configured in the format `useremail:password` in the Open
-    Observe pack. For example, the default credentials `root@example.com:Complexpass#123` encode to
+    Palette installs the packs with the lowest install order value first and waits until they are ready before it
+    installs the next ones. The PostgreSQL pack uses the default install order value of `0`, so the CloudNativePG
+    operator is ready before OpenObserve deploys its in-cluster PostgreSQL database. The following example shows the
+    annotation under the existing `pack` key of the OpenObserve pack YAML. Refer to
+    [Install Order](../../../profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-addon-profile.md#install-order)
+    for more information.
+
+    ```yaml
+    pack:
+      spectrocloud.com/install-priority: "10"
+    ```
+
+    Construct a Base64 encoding of the credentials you have configured in the format `useremail:password` in the
+    OpenObserve pack. For example, the default credentials `root@example.com:Complexpass#123` encode to
     `cm9vdEBleGFtcGxlLmNvbTpDb21wbGV4cGFzcyMxMjM=`.
 
     Review the configuration you have provided and click **Finish Configuration** to save your cluster profile. This
@@ -91,7 +110,7 @@ them to your deployed healthy clusters.
 
     :::tip
 
-    The Open Observe pack allows you to save metrics information on the pod or in an S3 bucket. This guide saves metrics
+    The OpenObserve pack allows you to save metrics information on the pod or in an S3 bucket. This guide saves metrics
     on the pod. Provide the following configurations if you want to persist your metrics to an existing S3 bucket.
 
         - Set `charts.openobserve.config.ZO_LOCAL_MODE` to false.
