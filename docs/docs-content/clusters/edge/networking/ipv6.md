@@ -11,7 +11,7 @@ tags: ["edge", "ipv6"]
 PE-10279. This page assumes that the engineering work for Edge IPv6 support (PEM-12742) ships before the page is
 published. Resolve each item, and then remove this comment.
 
-RELEASE DAY. Once the final tag exists, confirm that 4.10.46 is the 4.10 patch version of Palette that ships Edge IPv6
+RELEASE DAY. Once the final tag exists, confirm that 4.10.47 is the 4.10 patch version of Palette that ships Edge IPv6
              support, and update the version in Prerequisites if it changed. Confirm that the Edge Compatibility
              Matrix has a row for that version.
 
@@ -62,8 +62,8 @@ cluster.
 
 ## Prerequisites
 
-- Palette version 4.10.46 or later. Every Edge host must use the Palette agent version that corresponds to Palette
-  4.10.46, or a later version. Refer to the
+- Palette version 4.10.47 or later. Every Edge host must use the Palette agent version that corresponds to Palette
+  4.10.47, or a later version. Refer to the
   [Edge Compatibility Matrix](../edge-compatibility-matrix.md#compatibility-matrix) to identify the Palette agent
   version, which the matrix lists as the Edge host version.
 

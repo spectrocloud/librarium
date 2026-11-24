@@ -11,7 +11,7 @@ keywords: ["self-hosted", "vertex"]
 ---
 
 <!--
-RELEASE DAY. Confirm that 4.10.46 is the 4.10 patch version that ships the global.ipFamily Helm values, once the final
+RELEASE DAY. Confirm that 4.10.47 is the 4.10 patch version that ships the global.ipFamily Helm values, once the final
 tag exists. Update the version in Prerequisites if it changed.
 -->
 
@@ -48,7 +48,7 @@ and VerteX-created Kubernetes resources that will interfere with the installatio
 
 ### IPv6 and Amazon EKS
 
-- The Helm charts for Palette VerteX 4.10.46 or later.
+- The Helm charts for Palette VerteX 4.10.47 or later.
 
 - A Virtual Private Cloud (VPC) that has both an IPv4 and an IPv6 Classless Inter-Domain Routing (CIDR) block. The
   **Enable auto-assign IPv6 address** setting must be enabled on the private subnets that host the cluster. Refer to
