@@ -331,21 +331,21 @@ workloads.
 
 - The VM Migration Assistant pack must be version 4.10.9 or later.
 
-- The VMO cluster must have network connectivity to the Prism Element or Prism Central endpoint that you connect to, and
-  to every Prism Element cluster that hosts the VMs you want to migrate. When you connect through Prism Central, disk
-  transfers go directly to the Prism Element clusters.
+- The VMO cluster must have network connectivity to your Prism Element or Prism Central endpoint, and to every Prism
+  Element cluster that hosts the VMs you want to migrate. Disk transfers go directly to the Prism Element clusters, even
+  when you connect through Prism Central.
 
 - If you connect through Prism Central, it must support the Nutanix v4 APIs.
 
 - A Prism Element or Prism Central user account. The VM Migration Assistant uses it to read the VM inventory and to
   stage each VM disk as a temporary image in the Prism image catalog. The VM Migration Assistant deletes these images
-  after the migration. If a deletion fails, remove the leftover images in Prism.
+  after the migration.
 
 - One or more VMs hosted in Nutanix AHV. The VM's OS must be present in the
   [virt-v2v supported guest systems](https://libguestfs.org/virt-v2v-support.1.html) list.
 
-  - To preserve the static IPs of a VM, install Nutanix Guest Tools on the VM and keep the VM running when you create
-    the migration plan, so that Prism reports the IP addresses of the VM.
+  - To preserve the static IPs of a VM, install Nutanix Guest Tools on the VM. Keep the VM running when you create the
+    migration plan, so that Prism reports its IP addresses.
 
 - A certificate authority (CA) certificate bundle to validate your Prism certificates, unless you skip certificate
   validation.
@@ -377,7 +377,7 @@ Nutanix AHV migrations do not use a VDDK image.
    The provider namespace is the Kubernetes namespace where the provider credentials and configuration will be stored.
    This should be the same namespace where you plan to migrate your VMs to.
 
-4. From the **Provider type** drop-down menu, select **VMware vSphere** or **Nutanix AHV** <TpBadge />. Additional
+4. From the **Provider type** drop-down menu, select **VMware vSphere** or <TpBadge /> **Nutanix AHV**. Additional
    fields appear after you select a provider type. Use the tab for your provider type to fill in the fields.
 
    :::warning
@@ -401,17 +401,17 @@ Nutanix AHV migrations do not use a VDDK image.
    | **Upload a VDDK archive to generate the image URL**                      | _Unsupported method_.                                                                                                                                                                                                                                                                                                                                                                                              |
    | **Manually specify the VDDK image URL**                                  | Provide the registry URL to the VDDK image in the **VDDK init image** field. Specify the registry URL without the HTTP scheme `https://` or `http://`. For example, `docker.io/myorganization/vddk:v8.0.3`.                                                                                                                                                                                                        |
    | **Use VMware Virtual Disk Development Kit (VDDK) async IO Optimization** | When enabled, this option uses asynchronous input/output operations to process multiple disk read/write requests simultaneously during VM migration, rather than sequentially. This can significantly improve disk transfer speeds, particularly for environments with high-latency storage or high-bandwidth networks, but increases memory usage on the VMware ESXi host's Network File Copy (NFC) server.       |
-   | **Convert Disk**                                                         | When enabled, disk conversion is handled using virt-v2v. For example, if you are migrating from VMware vSphere to VMO, virt-v2v can convert Virtual Machine Disk (VMDK) to raw or QEMU copy-on-write version 2 (qcow2) formats that are optimal for the target environment. When disabled, disks are transferred using raw copy mode. This option appears after the [Provider Credentials](#provider-credentials). |
+   | **Convert disk**                                                         | When enabled, disk conversion is handled using virt-v2v. For example, if you are migrating from VMware vSphere to VMO, virt-v2v can convert Virtual Machine Disk (VMDK) to raw or QEMU copy-on-write version 2 (qcow2) formats that are optimal for the target environment. When disabled, disks are transferred using raw copy mode. This option appears after the [Provider Credentials](#provider-credentials). |
 
    #### Provider Credentials
 
-   | Setting                              | Description                                                                                               |
-   | ------------------------------------ | --------------------------------------------------------------------------------------------------------- |
-   | **Username**                         | Your vSphere / ESXi account username. For example, `user@vsphere.local`.                                  |
-   | **Password**                         | Your vSphere / ESXi account password.                                                                     |
-   | **Certificate validation**           | **Configure certificate validation** for your vSphere / ESXi provider or **Skip certificate validation**. |
-   | **Configure certificate validation** | Upload or drag and drop the certificate authority (CA) certificate for your vSphere / ESXi.               |
-   | **Skip certificate validation**      | Enabling this option bypasses x509 CA verification.                                                       |
+   | Setting                              | Description                                                                                                                                                                                                                                                             |
+   | ------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Username**                         | Your vSphere / ESXi account username. For example, `user@vsphere.local`.                                                                                                                                                                                                |
+   | **Password**                         | Your vSphere / ESXi account password.                                                                                                                                                                                                                                   |
+   | **Certificate validation**           | **Configure certificate validation** for your vSphere / ESXi provider or **Skip certificate validation**.                                                                                                                                                               |
+   | **Configure certificate validation** | Upload or drag and drop the certificate authority (CA) certificate for your vSphere / ESXi. Do not use **Fetch certificate from URL**, which does not work in the VM Migration Assistant service console. Refer to [Known Issues](../../release-notes/known-issues.md). |
+   | **Skip certificate validation**      | Enabling this option bypasses x509 CA verification.                                                                                                                                                                                                                     |
 
    </TabItem>
 

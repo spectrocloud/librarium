@@ -52,7 +52,7 @@ The following are general limitations of the VM Migration Assistant.
 ## Verified Migrations
 
 The following table lists `virt-v2v` migration combinations verified by Spectro Cloud for VMware vSphere source
-providers. Other combinations may be valid but have not been verified.
+providers. Other combinations might be valid but have not been verified.
 
 | Operating System                         | Cold Migration | Warm Migration |
 | ---------------------------------------- | :------------: | :------------: |

@@ -672,7 +672,7 @@ Ensure that your terminal is configured to access your VMO cluster using
     combinations.
 
     If your source provider is Nutanix AHV, the wizard skips this step, because Nutanix AHV providers support only cold
-    migrations.
+    migrations. Go to step 13.
 
     #### Migration Types
 
@@ -687,9 +687,9 @@ Ensure that your terminal is configured to access your VMO cluster using
     following table describes the available settings.
 
     The **Use NBDE/Clevis**, **Disk decryption passphrases**, **Preserve static IPs**, and **Migrate shared disks**
-    settings appear only for VMware vSphere source providers. Plans with a Nutanix AHV source provider preserve static
-    IPs by default. The migration preserves the static IPs only if Nutanix Guest Tools reports them and **Convert disk**
-    is turned on for the source provider.
+    settings appear only for VMware vSphere source providers. Plans with a Nutanix AHV source provider always try to
+    preserve static IPs, and you cannot turn this off. The migration preserves the static IPs only if Nutanix Guest
+    Tools reports them and **Convert disk** is turned on for the source provider.
 
     #### Other Settings (Optional)
 

@@ -92,6 +92,10 @@ for detailed instructions.
 
     ![Start migrated VM](/vm-migration-assistant/start-migration-plans_start-migrated-vm.webp)
 
+12. _(Nutanix AHV only)_ In the Prism image catalog, check for images whose names start with `forklift-migration-`. The
+    VM Migration Assistant creates these temporary images during the migration and deletes them afterward, but it does
+    not report a failed deletion. Delete any of these images that remain.
+
 ## Start Warm Migration Plans
 
 ### Prerequisites
