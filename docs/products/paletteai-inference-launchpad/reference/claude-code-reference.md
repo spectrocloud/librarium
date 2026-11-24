@@ -28,6 +28,7 @@ refer to [Use PaletteAI Inference Launchpad with Claude Code](../how-to-guides/u
 | `ANTHROPIC_DEFAULT_FABLE_MODEL`  | The alias Claude Code requests for its Fable-tier work.                                                                                                                                        | `claude-fable-5`                                        |
 | `CLAUDE_CODE_EFFORT_LEVEL`       | Claude Code's reasoning effort. One of `low`, `medium`, `high`, `xhigh`, `max`, or `auto`. The value `auto` leaves each model at its own default.                                              | `auto`                                                  |
 | `CLAUDE_CODE_MAX_OUTPUT_TOKENS`  | The maximum number of tokens in a single response. Lower it to cap response length and cost.                                                                                                   | `64000`                                                 |
+| `CLAUDE_CODE_AUTO_MODE_SERVER`   | Where auto mode safety checks run. The value `0` makes Claude Code run them itself. Refer to [Auto Mode Safety Checks](../explanation/claude-code-sessions.md#auto-mode-safety-checks).        | `0`                                                     |
 
 ## Endpoint URL
 
@@ -48,9 +49,9 @@ file as `palette-ai-inference-launchpad-ca.crt` in your `Downloads` folder.
 | Console served over plain HTTP                             | Not shown                | Omitted                                |
 | TLS status unavailable on an HTTPS console                 | Shown, with a note       | Included                               |
 
-Claude Code runs on Node.js, which reads `NODE_EXTRA_CA_CERTS` as the process starts, so set the variable in the shell
-before you start Claude Code. Certificate verification stays on. The appliance never requires
-`NODE_TLS_REJECT_UNAUTHORIZED=0`.
+Claude Code runs on Node.js, which reads `NODE_EXTRA_CA_CERTS` as the process starts. A value set in the shell or in the
+`env` block of a Claude Code settings file takes effect the next time Claude Code starts. Certificate verification stays
+on. The appliance never requires `NODE_TLS_REJECT_UNAUTHORIZED=0`.
 
 The panel writes the path in the dialect you select in its shell picker. The `bash` and `zsh` form is
 `$HOME/Downloads/palette-ai-inference-launchpad-ca.crt`, and the PowerShell form is
@@ -81,6 +82,8 @@ how quotas apply, refer to [Clients and Quotas](../explanation/clients-and-quota
 ## Resources
 
 - [Use PaletteAI Inference Launchpad with Claude Code](../how-to-guides/use-claude-code.md)
+- [Persist Claude Code Configuration](../how-to-guides/persist-claude-code-configuration.md)
+- [Claude Code Sessions](../explanation/claude-code-sessions.md)
 - [Generate an API Token](../how-to-guides/generate-an-api-token.md)
 - [Clients and Quotas](../explanation/clients-and-quotas.md)
 - [Routing Behavior](../explanation/routing-behavior.md)
