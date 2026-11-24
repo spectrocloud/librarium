@@ -27,6 +27,14 @@ tags: ["release-notes"]
 
 #### Improvements
 
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7765 -->
+<!-- https://spectrocloud.atlassian.net/browse/PCP-8079 -->
+
+- You can now select a specific patch version of the Canonical Kubernetes pack when you create or update a cluster
+  profile. If you select only a minor version, Palette continues to deploy the latest patch version of that minor
+  version. Refer to [Cluster Profiles](../profiles/cluster-profiles/cluster-profiles.md#profile-layers) for more
+  information about pack versions.
+
 #### Bug Fixes
 
 #### Deprecations and Removals
