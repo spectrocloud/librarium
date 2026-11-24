@@ -638,8 +638,8 @@ that Palette ships. Clusters that you move on version 4.10.25 or later are not a
    The file names in your output depend on which drop-in files the host had before the migration.
 
 3. List the drop-in files that Palette ships. A file in the backup directory with the same name as one of these files is
-   a Palette drop-in file, so do not copy it back. Every other file in the backup directory is one of your custom
-   drop-in files.
+   a Palette drop-in file, so do not copy it back. Every other file in the `containerd.service.d` and
+   `kubelet.service.d` backup directories is one of your custom drop-in files.
 
    ```shell
    ls /usr/lib/systemd/system/containerd.service.d/ /usr/lib/systemd/system/kubelet.service.d/
@@ -683,21 +683,26 @@ that Palette ships. Clusters that you move on version 4.10.25 or later are not a
    ```text hideClipboard title="Example Output"
    # /usr/lib/systemd/system/containerd.service
    ...
+
    # /usr/lib/systemd/system/containerd.service.d/10-custom-opt-bin.conf
    ...
+
    # /etc/systemd/system/containerd.service.d/http-proxy.conf
    [Service]
    Environment="HTTP_PROXY=http://proxy.example.com:3128"
 
    # /usr/lib/systemd/system/containerd.service.d/max-tasks.conf
    ...
+
    # /usr/lib/systemd/system/containerd.service.d/memory-pressure.conf
    ...
 
    # /usr/lib/systemd/system/kubelet.service
    ...
+
    # /usr/lib/systemd/system/kubelet.service.d/10-kubeadm.conf
    ...
+
    # /etc/systemd/system/kubelet.service.d/kubelet-credential-provider.conf
    ...
    ```
