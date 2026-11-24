@@ -635,6 +635,8 @@ that Palette ships. Clusters that you move on version 4.10.25 or later are not a
    10-kubeadm.conf  kubelet-credential-provider.conf
    ```
 
+   The file names in your output depend on which drop-in files the host had before the migration.
+
 3. List the drop-in files that Palette ships. A file in the backup directory with the same name as one of these files is
    a Palette drop-in file, so do not copy it back. Every other file in the backup directory is one of your custom
    drop-in files.
