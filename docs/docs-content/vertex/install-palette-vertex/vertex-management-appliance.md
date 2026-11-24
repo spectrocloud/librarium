@@ -60,6 +60,8 @@ Use the following CSV worksheet to gather and record information that you need d
 
 ### Install Palette VerteX {#install}
 
+<!-- If installation options are added/changed, the static/assets/docs/csv/management-appliance-preinstall-worksheet.csv mentioned in Before You Begin section must also be updated. -->
+
 Installing Palette VerteX consists of the following tasks.
 
 1. [Download the Artifacts](#download-the-artifacts)
