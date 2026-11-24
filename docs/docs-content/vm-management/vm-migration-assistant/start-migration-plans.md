@@ -181,6 +181,51 @@ completed. The target VM is then created and powered on on the destination VMO c
 
     ![Running VM in VMO](/vm-migration-assistant/start-migration-plans_running-vm-vmo.webp)
 
+## Install the QEMU Guest Agent in Airgap Environments
+
+During guest conversion, virt-v2v configures each migrated Linux VM to install the
+[QEMU guest agent](https://wiki.qemu.org/Features/GuestAgent) when the VM first boots. The installation downloads the
+`qemu-guest-agent` package from the package repositories that the guest OS is configured to use. If the VM cannot reach
+those repositories, such as in an airgap environment, the installation fails. The VM boots and works, but its IP address
+is not displayed, and features that depend on the guest agent are unavailable.
+
+To avoid this, install the `qemu-guest-agent` package on the source VM before you start the migration. If you migrated
+the VM to [PaletteAI VM Launchpad](../vm-launchpad/vm-launchpad.md) without the guest agent, use the following steps to
+install it from the VM Launchpad package repository.
+
+1. Log in to VM Launchpad. From the left main menu, select **Image Catalog** > **Packages**.
+
+2. Check that the package list includes `qemu-guest-agent` for the OS and architecture of the VM. If it does not, upload
+   the package and its dependencies. Refer to
+   [Upload a Package](../vm-launchpad/virtual-machines/packages.md#upload-a-package) for guidance.
+
+3. Select **URLs**. The **APT (Debian/Ubuntu)** and **YUM/DNF (RHEL/CentOS)** sections list a repository URL for each
+   architecture.
+
+4. Next to the URL that matches the OS and architecture of the VM, select the second copy icon, **Copy config snippet**.
+
+   The repository is unsigned, so the snippet marks it as trusted. If the repository URL uses HTTPS, the snippet also
+   turns off certificate verification for the repository, because the guest does not trust the self-signed certificate
+   of the cluster. You do not need to configure certificate trust in the guest.
+
+5. Log in to the migrated VM as the `root` user, and run the commands in the snippet.
+
+   For APT, replace `<package>` in the last command with `qemu-guest-agent` before you run it. For YUM/DNF, the snippet
+   adds the repository only, so issue the following command after the snippet.
+
+   ```shell
+   dnf install --assumeyes qemu-guest-agent
+   ```
+
+6. Issue the following command to enable and start the guest agent.
+
+   ```shell
+   systemctl enable --now qemu-guest-agent
+   ```
+
+7. In VM Launchpad, from the left main menu, select **Workloads** > **Virtual Machines**, and select the name of the VM
+   to open its detail page. On the **Overview** tab, the **IP Addresses** field displays the IP address of the VM.
+
 ## Next Steps
 
 - You can [create more migration plans](./create-migration-plans.md) and start them as needed.
