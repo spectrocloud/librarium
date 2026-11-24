@@ -61,19 +61,8 @@ the steps and generates an environment block for `bash`, `zsh`, or PowerShell. F
    export ANTHROPIC_AUTH_TOKEN=<lpai-token>
    ```
 
-3. _(Optional)_ To keep the endpoint and token across sessions, add them to the `~/.claude/settings.json` file instead
-   of exporting them each time. Persisting the token there writes the secret to disk. To keep the connection in
-   integrated development environments (IDEs) and in apps that you start outside a terminal, refer to
-   [Persist Claude Code Configuration](./persist-claude-code-configuration.md).
-
-   ```json
-   {
-     "env": {
-       "ANTHROPIC_BASE_URL": "https://<appliance-host>",
-       "ANTHROPIC_AUTH_TOKEN": "<lpai-token>"
-     }
-   }
-   ```
+3. _(Optional)_ To keep the connection in new terminals, after a restart, and in integrated development environments
+   (IDEs), refer to [Persist Claude Code Configuration](./persist-claude-code-configuration.md).
 
 ## Verify the Connection
 

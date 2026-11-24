@@ -56,8 +56,7 @@ settings file.
      `<project>/.claude/settings.local.json`. Add `.claude/settings.local.json` to the project's `.gitignore` file.
 
 2. Open the file in a text editor, or create it if it does not exist. Add the following `env` block at the top level of
-   the file, next to any other settings. If the file already has an `env` key, add the variables to it instead of adding
-   a second one. Do not add them to the `environment` key inside `autoMode`.
+   the file, next to any other settings.
 
    ```json
    {
@@ -72,6 +71,10 @@ settings file.
 
    Replace `<appliance-host>` with your appliance address, `<lpai-token>` with your API token, and `<username>` with
    your macOS user name.
+
+   - If the file already has an `env` key, add the variables to it instead of adding a second one.
+
+   - Do not add the variables to the `environment` key inside `autoMode`.
 
    - Include the `NODE_EXTRA_CA_CERTS` line only when the panel shows the **CA certificate** step. Use the full path to
      the file.
@@ -91,14 +94,15 @@ To make the variables available to every `zsh` shell, including scripts and the 
 1. Open `~/.zshenv` in a text editor, or create it if it does not exist. Add the following lines.
 
    ```bash
-   export ANTHROPIC_BASE_URL=https://<appliance-host>
-   export ANTHROPIC_AUTH_TOKEN=<lpai-token>
+   export ANTHROPIC_BASE_URL="https://<appliance-host>"
+   export ANTHROPIC_AUTH_TOKEN="<lpai-token>"
    export NODE_EXTRA_CA_CERTS=$HOME/Downloads/palette-ai-inference-launchpad-ca.crt
    export CLAUDE_CODE_AUTO_MODE_SERVER=0
    ```
 
    Replace `<appliance-host>` with your appliance address and `<lpai-token>` with your API token. Include the
-   `NODE_EXTRA_CA_CERTS` line only when the panel shows the **CA certificate** step. Do not share the file.
+   `NODE_EXTRA_CA_CERTS` line only when the panel shows the **CA certificate** step. To save another variable from the
+   panel, add another `export` line. Do not share the file.
 
 2. Open a new terminal, and confirm that `ANTHROPIC_BASE_URL` is set.
 
@@ -110,7 +114,7 @@ To make the variables available to every `zsh` shell, including scripts and the 
    https://<appliance-host>
    ```
 
-## Set the Variables for Apps Opened from the Dock
+## Set the Variables for Apps Opened Outside a Terminal
 
 To make the variables available to IDEs and other apps that you open from Spotlight, Finder, or the Dock, set them with
 `launchctl`.
@@ -118,15 +122,15 @@ To make the variables available to IDEs and other apps that you open from Spotli
 1. Set each variable.
 
    ```bash
-   launchctl setenv ANTHROPIC_BASE_URL https://<appliance-host>
-   launchctl setenv ANTHROPIC_AUTH_TOKEN <lpai-token>
+   launchctl setenv ANTHROPIC_BASE_URL "https://<appliance-host>"
+   launchctl setenv ANTHROPIC_AUTH_TOKEN "<lpai-token>"
    launchctl setenv NODE_EXTRA_CA_CERTS $HOME/Downloads/palette-ai-inference-launchpad-ca.crt
    launchctl setenv CLAUDE_CODE_AUTO_MODE_SERVER 0
    ```
 
    Replace `<appliance-host>` with your appliance address and `<lpai-token>` with your API token. Include the
-   `NODE_EXTRA_CA_CERTS` line only when the panel shows the **CA certificate** step. The commands print nothing when
-   they succeed.
+   `NODE_EXTRA_CA_CERTS` line only when the panel shows the **CA certificate** step. To save another variable from the
+   panel, add another `launchctl setenv` command. The commands print nothing when they succeed.
 
 2. Confirm that `ANTHROPIC_BASE_URL` is set.
 
@@ -164,8 +168,8 @@ To make the variables available to IDEs and other apps that you open from Spotli
    ```
 
    Replace `<appliance-host>` with your appliance address, `<lpai-token>` with your API token, and `<username>` with
-   your macOS user name. Remove the `NODE_EXTRA_CA_CERTS` command when the panel shows no **CA certificate** step. Do
-   not share the file.
+   your macOS user name. Include a `launchctl setenv` command for each variable that you set in step 1. Remove the
+   `NODE_EXTRA_CA_CERTS` command when the panel shows no **CA certificate** step. Do not share the file.
 
 5. _(Optional)_ If you created the LaunchAgent file, load it.
 
@@ -177,7 +181,7 @@ To make the variables available to IDEs and other apps that you open from Spotli
 
 ## Trust the Platform CA in the macOS Keychain
 
-_(Platform-issued certificate only)_ To let tools that do not read `NODE_EXTRA_CA_CERTS` trust the appliance, add the
+If the panel shows the **CA certificate** step and you use tools that do not read `NODE_EXTRA_CA_CERTS`, add the
 platform Certificate Authority (CA) certificate to your login keychain.
 
 1. Add the certificate. If macOS asks you to authenticate, approve the prompt.
@@ -207,7 +211,7 @@ platform Certificate Authority (CA) certificate to your login keychain.
    ```
 
    A `401` status code means that macOS trusts the appliance certificate. If the command prints a certificate error
-   instead, repeat step 1.
+   instead, confirm that the certificate path in step 1 points to the file that you downloaded, and run step 1 again.
 
 ## Verify the Configuration
 

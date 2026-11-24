@@ -12,9 +12,9 @@ keywords: ["launchpad", "ai", "claude code", "ide", "vs code", "environment vari
 
 Claude Code is a coding agent. You run it as the `claude` command in a terminal, or through its extensions for VS Code
 and other integrated development environments (IDEs). It can send its requests to a PaletteAI Inference Launchpad
-appliance instead of Anthropic's API. This page explains where Claude Code reads its configuration and why a setup in
-one terminal does not reach your IDE. It also covers which tools reach the appliance, how auto mode safety checks run,
-and what a session on the appliance does not include.
+appliance instead of Anthropic's hosted API. This page explains where Claude Code reads its configuration and why a
+setup in one terminal does not reach your IDE. It also covers which tools reach the appliance, how auto mode safety
+checks run, and what a session on the appliance does not include.
 
 ## Where Claude Code Reads Its Configuration
 
@@ -26,9 +26,9 @@ programs that you start from that terminal.
 - If you add the `export` lines to `~/.zshrc`, only interactive `zsh` shells read them. Scripts and other
   non-interactive shells skip `~/.zshrc`.
 
-- On macOS, apps that you open from Spotlight, Finder, or the Dock do not always inherit the exports in `~/.zshrc`. The
-  Claude Code extension for VS Code and JetBrains IDEs runs Claude Code. An IDE opened this way can start Claude Code
-  without your exports. Claude Code then sends its requests to Anthropic's API instead of the appliance.
+- On macOS, apps that you open from Spotlight, Finder, or the Dock do not always inherit the exports in `~/.zshrc`. An
+  IDE opened this way can start its Claude Code extension without them, so Claude Code sends its requests to Anthropic's
+  hosted API instead of the appliance.
 
 Each persistence method reaches a different set of programs. We recommend a Claude Code settings file as the default.
 
@@ -52,7 +52,7 @@ different set of sessions.
 | User file, `~/.claude/settings.json`                  | Every Claude Code session in every project and IDE window on this machine | You use Claude Code only with the appliance.                                                               |
 | Project file, `<project>/.claude/settings.local.json` | Claude Code sessions in the `<project>` folder only                       | You also use Claude Code with your Anthropic account. Other projects and IDE windows stay on that account. |
 
-Either settings file, `~/.zshenv`, and a LaunchAgent file each store your token in plain text. A project file is inside
+The settings files, `~/.zshenv`, and the LaunchAgent file all store your token in plain text. A project file is inside
 the project folder. If that folder is a Git repository, you might commit the file and your token by mistake. Listing
 `.claude/settings.local.json` in the project's `.gitignore` file prevents that.
 
@@ -72,10 +72,9 @@ that path, refer to [Use PaletteAI Inference Launchpad with Cursor](../how-to-gu
 
 ## Auto Mode Safety Checks
 
-In auto mode, Claude Code checks some actions, such as shell commands, before it runs them. In version 2.1.278 and
-later, Claude Code asks the API server to run these safety checks. The appliance does not run Anthropic's server-side
-safety checks. As a result, Claude Code runs its own checks instead. It shows a warning and holds the checked action
-until you respond.
+In auto mode, Claude Code checks some actions, such as shell commands, before it runs them. By default, Claude Code asks
+the API server to run these checks. The appliance does not run Anthropic's server-side safety checks, so Claude Code
+falls back to its own checks, shows a warning, and holds the checked action until you respond.
 
 The `CLAUDE_CODE_AUTO_MODE_SERVER=0` setting makes Claude Code run its own checks from the start. The warning then does
 not appear. The **Connect a coding agent** panel includes this setting in the environment block on its **Claude Code
