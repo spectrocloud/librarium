@@ -179,6 +179,74 @@ curl --location 'https://api.spectrocloud.com/v1/packs?continue=eyJvZmZzZXQiOjUw
  --header 'apiKey: yourAPIKey'
 ```
 
+### Migrate to the v2 Users and Teams Summary Endpoints
+
+The `POST /v1/users/summary` and `POST /v1/teams/summary` endpoints are deprecated. They return every user or team in a
+single response, which is slow for tenants with many users and teams. Use the paginated v2 endpoints instead. Refer to
+the [Deprecations](/release-notes/announcements#deprecations) table for the removal timeline.
+
+| Deprecated Endpoint      | Replacement              |
+| ------------------------ | ------------------------ |
+| `POST /v1/users/summary` | `POST /v2/users/summary` |
+| `POST /v1/teams/summary` | `POST /v2/teams/summary` |
+
+The v2 endpoints are available in Palette and Palette VerteX 4.10.32 and later, including self-hosted instances. They
+accept the same request body as the v1 endpoints, and each item in the response has the same fields. Only pagination
+changes. Use the following steps to update your scripts and integrations.
+
+1. Change the endpoint path from `/v1` to `/v2`. Keep the request body as it is.
+
+2. Optionally, set the page size with the `limit` query parameter. The default and maximum value is `50`. A larger
+   value, `0`, or no value returns pages of `50`.
+
+3. Read `listmeta.continue` in the response. If it is not empty, send the same request again with its value in the
+   `continue` query parameter to retrieve the next page.
+
+4. Repeat step 3 until `listmeta.continue` is an empty string, which marks the last page.
+
+Example of a first request for teams, two per page.
+
+```shell hideClipboard
+curl --location --request POST 'https://api.spectrocloud.com/v2/teams/summary?limit=2' \
+ --header 'Content-Type: application/json' \
+ --header 'apiKey: yourAPIKey' \
+ --data '{}'
+```
+
+The response contains the page of teams in `items` and the pagination details in `listmeta`.
+
+```json hideClipboard
+    "listmeta": {
+        "continue": "eyJvZmZzZXQiOjIsImNvdW50IjozLCJ0b2tlbiI6IiJ9",
+        "count": 3,
+        "limit": 2,
+        "offset": 2
+    }
+```
+
+Example of the next request, which passes the `continue` token back unchanged.
+
+```shell hideClipboard
+curl --location --request POST 'https://api.spectrocloud.com/v2/teams/summary?limit=2&continue=eyJvZmZzZXQiOjIsImNvdW50IjozLCJ0b2tlbiI6IiJ9' \
+ --header 'Content-Type: application/json' \
+ --header 'apiKey: yourAPIKey' \
+ --data '{}'
+```
+
+Keep the following behavior in mind when you page through results.
+
+- `listmeta.count` is the total number of records that match the filter.
+
+- `listmeta.offset` is the offset of the next page, not the current one, and is `0` on the last page. Don't send it back
+  as the position of the current page.
+
+- If you send both the `offset` and `continue` query parameters, Palette uses `offset` and ignores the position in the
+  token.
+
+- Pagination uses offsets, so creating or deleting users or teams while you page through the results can shift the
+  pages. If that happens, start again from the first page instead of reusing a `continue` token. The endpoints return
+  users oldest first and teams in alphabetical order by name.
+
 ### Rate Limits
 
 The API rate limits are as follows:
