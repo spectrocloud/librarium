@@ -13,6 +13,8 @@ keywords: ["launchpad", "ai", "access", "user", "directory", "password", "identi
 Add and maintain people on the **Users** tab. Adding a user gives no workspace access. To give access, add the person,
 or a group they are in, as a [workspace member](./manage-workspace-members.md).
 
+To add many users at once, refer to [Import Users in Bulk](./import-users-in-bulk.md).
+
 ## Prerequisites
 
 - A running PaletteAI Inference Launchpad appliance, with the console reachable.
@@ -23,8 +25,7 @@ or a group they are in, as a [workspace member](./manage-workspace-members.md).
 
 ## Add a User
 
-1. From the left main menu, select **Access & Policy**, and then select **All workspaces** in the workspace drop-down
-   menu.
+1. From the left main menu, select **Users**.
 
 2. Select the **Users** tab, and then select **Add User**. The **Add user** wizard opens on the **Identity** step.
 
@@ -66,8 +67,7 @@ or a group they are in, as a [workspace member](./manage-workspace-members.md).
 
 ## Validate
 
-1. From the left main menu, select **Access & Policy**, and then select **All workspaces** in the workspace drop-down
-   menu.
+1. From the left main menu, select **Users**.
 
 2. Select the **Users** tab. Confirm that each person you added appears with the **Groups** they are in and the
    **State** you set.
@@ -78,5 +78,5 @@ or a group they are in, as a [workspace member](./manage-workspace-members.md).
 
 - [Manage Groups](./manage-groups.md) to put people in groups.
 
-- [Access and Policy Reference](../reference/access-and-policy-reference.md#users-tab) describes the **Users** tab and
+- [Access Management Reference](../reference/access-and-policy-reference.md#users-tab) describes the **Users** tab and
   the **Add user** wizard.
