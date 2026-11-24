@@ -106,6 +106,47 @@ This release delivers version 4.10.TBD of the PaletteAI VM Launchpad appliance, 
   API keys without waiting for the user to sign in again. Refer to
   [Edit a Group](../vm-management/vm-launchpad/access-management/groups.md#edit-a-group).
 
+## November 20, 2026 - Release 4.10.45
+
+<!-- PATCH RELEASE TICKET: DOC-3466 -->
+<!-- PATCH RELEASE VERSION: 4.10.45 -->
+<!-- PATCH RELEASE CANDIDATES: PE-10197 PCP-8019 PCP-8007 PCP-7991 -->
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-8019 -->
+
+- Fixed an issue that caused the control plane nodes of self-hosted [Palette](../enterprise-version/upgrade/upgrade.md)
+  and [Palette VerteX](../vertex/upgrade/upgrade.md) management clusters on VMware vSphere to stay on the previous
+  Kubernetes version after an upgrade from version 4.9. The `palette-controller-manager` logs showed the error
+  `no matches for kind "VSphereMachineTemplateList" in version "infrastructure.cluster.x-k8s.io/v1beta2"`.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-10197 -->
+<!-- https://spectrocloud.atlassian.net/browse/PCP-8007 -->
+
+- Fixed an issue that caused the Kubelet to fail to start on [Edge](../clusters/edge/edge.md) control plane nodes that
+  use <VersionedLink text="Palette eXtended Kubernetes - Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" /> after
+  a node ran for more than one year without a reboot or an upgrade. When the Kubelet restarted (for example, during a
+  [certificate renewal](../clusters/edge/cluster-management/certificate-renewal.md)), it failed with the error
+  `part of the existing bootstrap client certificate in /etc/kubernetes/kubelet.conf is expired`, and the node became
+  `NotReady`.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7991 -->
+
+- Fixed an issue that caused Palette to request a disk erase each time it released a machine back to MAAS, including
+  when Storage Area Network (SAN) volumes were still attached to the node. Palette no longer requests a disk erase by
+  default. To erase disks on release, set `eraseDisksOnRelease` in a cluster-level
+  [Cluster API override](../architecture/override-capi-properties/maas-capi-override-reference.md#disk-erase-on-machine-release).
+  MAAS still erases disks on release if your MAAS environment is configured to do so.
+
+### Edge
+
+:::info
+
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.10.45 Palette release is 4.10.15.
+
+:::
+
 ## November 20, 2026 - Component Updates {#component-updates-2026-47}
 
 <!-- COMPONENT UPDATES TICKET: DOC-3450 -->
@@ -494,12 +535,6 @@ The following components have been updated for Palette version 4.10.13 - 4.10.44
   workspace. This occurred when the Palette management plane briefly lost access to its database, and the recreated
   namespaces were empty.
 
-<!-- https://spectrocloud.atlassian.net/browse/PCP-7958 -->
-
-- Fixed an issue that prevented the cluster autoscaler pod from being scheduled on control plane nodes. When all worker
-  [node pools](../clusters/cluster-management/node-pool.md) carried a `NoSchedule` taint, the pod stayed `Pending` after
-  a node drain, repave, or upgrade, and node pool autoscaling stopped.
-
 <!-- https://spectrocloud.atlassian.net/browse/PCP-7968 -->
 <!-- https://spectrocloud.atlassian.net/browse/DOC-3418 -->
 
@@ -529,12 +564,6 @@ The following components have been updated for Palette version 4.10.13 - 4.10.44
 
 - Fixed an issue that caused the Palette UI to reject valid [node pool](../clusters/cluster-management/node-pool.md)
   **Additional Labels** whose value is a single character, such as `workload:a`, and to highlight the wrong label.
-
-<!-- https://spectrocloud.atlassian.net/browse/PEM-12478 -->
-
-- Fixed an issue that caused Headlamp to stay on its loading screen when you opened it from a cluster's **Connect** link
-  through Spectro Proxy. This occurred when Palette took longer than 15 seconds to respond, for example, over a slow
-  network connection.
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12512 -->
 

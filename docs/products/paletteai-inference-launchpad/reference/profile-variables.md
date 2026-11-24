@@ -56,9 +56,10 @@ For the step-by-step procedure, refer to
 
 ## Storage (Piraeus)
 
-| Variable                  | Type   | Required | Default | Description                                                                                                                                                                                             |
-| ------------------------- | ------ | -------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Storage Replica Count** | string | Optional | `1`     | Number of Piraeus replicas kept for each stored volume. Allowed values are `1`, `2`, or `3`. Values above `1` require a matching number of nodes in the cluster, so a single-node install must use `1`. |
+| Variable                          | Type   | Required | Default | Description                                                                                                                                                                                                                                                                           |
+| --------------------------------- | ------ | -------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Storage Replication Interface** | string | Yes      | —       | Network interface that carries storage replication traffic between nodes. The wizard lists the interfaces on the host. Select a high-bandwidth interface that has an IPv4 address. On a multi-node install, every node must have an interface with the same name and an IPv4 address. |
+| **Storage Replica Count**         | string | Optional | `1`     | Number of Piraeus replicas kept for each stored volume. Allowed values are `1`, `2`, or `3`. Values above `1` require a matching number of nodes in the cluster, so a single-node install must use `1`.                                                                               |
 
 ## Certificates
 
