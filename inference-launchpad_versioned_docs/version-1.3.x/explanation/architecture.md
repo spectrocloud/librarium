@@ -1,0 +1,294 @@
+---
+sidebar_label: "Architecture Overview"
+title: "PaletteAI Inference Launchpad Architecture Overview"
+description:
+  "An explanation of the PaletteAI Inference Launchpad architecture, including its component stack, data flow, network
+  topology, and data residency model."
+hide_table_of_contents: false
+sidebar_position: 1
+tags: ["paletteai-inference-launchpad", "architecture", "explanation"]
+keywords: ["launchpad", "ai", "architecture", "kubernetes", "kairos", "helm", "data flow", "data residency"]
+---
+
+import ThemedImage from "@theme/ThemedImage";
+
+This page explains how PaletteAI Inference Launchpad works, how its components interact, and what key decisions shaped
+the design. Use this page to build an understanding of the architecture before you deploy or operate PaletteAI Inference
+Launchpad.
+
+## Component Stack
+
+The following diagram shows the appliance as a stack of four layers, where each layer runs on the layer below it. The
+numbers follow a request from an AI application down to the GPU, and they match the list after the diagram.
+
+<p>
+  <ThemedImage
+    className="markdown-image"
+    alt="Layered diagram of the appliance. From the bottom up, the layers are the hardware, the Kairos operating system, Kubernetes, and the PaletteAI Inference Launchpad services. A request path runs down the middle from AI applications to the gateway, the vLLM engine, and the GPU, and an optional path leads to external inference endpoints. The list after the diagram describes each numbered component."
+    sources={{
+      light: "/assets/docs/images/architecture_inference-launchpad-overview.webp",
+      dark: "/assets/docs/images/architecture_inference-launchpad-overview-dark.webp",
+    }}
+  />
+</p>
+
+<!-- vale Vale.Terms = NO -->
+
+1. AI applications, such as [Claude Code](../how-to-guides/use-claude-code.md), [Codex](../how-to-guides/use-codex.md),
+   [Cursor](../how-to-guides/use-cursor.md), and [OpenCode](../how-to-guides/use-opencode.md), send their requests to
+   the gateway through the Platform IP. The gateway serves the OpenAI-compatible and Anthropic Messages APIs. It
+   authenticates each client, enforces the client's quotas, and routes each request to a model. Refer to
+   [Request Routing](#request-routing) and [Network Topology](#network-topology).
+
+2. The vLLM engine serves the model that the gateway chose. Refer to [Model Placement](./model-placement.md).
+
+3. Kubernetes runs the engine as a pod. The kubelet on the node starts the pod, with containerd as its runtime, and the
+   GPU Operator makes the GPUs available to it.
+
+4. The GPU drivers in the operating system let the engine use the GPUs.
+
+5. The model runs on the appliance's GPUs. For how to size the GPUs, refer to [Hardware Sizing](#hardware-sizing).
+
+<!-- vale Vale.Terms = YES -->
+
+When a platform administrator allows egress, the gateway can send a request to an external inference endpoint instead of
+a local model. Egress is off by default. An endpoint is either a built-in one for Anthropic, OpenAI, or Gemini, or an
+OpenAI-compatible host that a platform administrator registered. Refer to
+[External Inference Endpoints](#external-inference-endpoints) and
+[Data Residency and Isolation](#data-residency-and-isolation).
+
+Platform administrators open the console in a web browser to configure the appliance and observe how it is used. The
+control plane, which is separate from the Kubernetes control plane, keeps the appliance in line with the settings that
+platform administrators save for models, clients, and policies. Refer to
+[Model Provisioning Lifecycle](#model-provisioning-lifecycle).
+
+The lower layers hold the parts that every service relies on. In Kubernetes, the API server, backed by etcd, is the one
+place where the appliance's components coordinate. The operating system is Kairos, an immutable Linux distribution. In
+it, the Palette agent applies the appliance's cluster profile, and model weights live on the host filesystem, on local
+NVMe storage.
+
+The appliance serves each model through an inference engine, such as vLLM, running on its Kubernetes cluster. Each
+loaded model is exposed as an OpenAI-compatible endpoint, such as `/v1/chat/completions` and `/v1/models`. For the
+engine kinds the appliance supports and how it selects one, refer to [Inference Engines](./inference-engines.md).
+
+## Hardware Sizing
+
+The appliance is designed and tuned for a single high-density GPU server. That shape avoids the storage-replication,
+network-fabric, and scheduling complexity that appears as soon as nodes multiply, and it matches how most deployments
+start. Multi-server clusters are possible: you choose which nodes run each model when you deploy it. For that choice,
+refer to [Model Placement](./model-placement.md).
+
+Sizing follows from the model rather than from a fixed value. The target model sets the GPU count, and the rest of the
+machine scales with it.
+
+The CPU is dual-socket because high-density GPU servers use two sockets, and 128 total cores give Kubernetes, the
+inference server, and system tasks enough headroom while leaving room to reuse the server for other workloads later.
+
+Host RAM is sized as GPU-adjacent memory, which covers host-side buffers and KV cache spill, plus a base for the
+operating system, the Kubernetes control plane, cluster services, and the hot KV cache tier. Undersized RAM forces the
+KV cache to spill to disk sooner, where it is far slower.
+
+Storage is NVMe only because model loading and KV cache I/O exceed what SATA solid-state drives or spinning disks can
+sustain. The disks split into two pools with different lifetimes. A small system pool on the OS disks holds the
+container registry and airgap content that must be available before the cluster builds, and a larger data pool on
+separate NVMe drives is created after the cluster comes up, once Piraeus is available. Piraeus stripes the data pool
+across its drives to combine read and write bandwidth for model loading and KV cache spill.
+
+The network uses bonded NICs so that the ports on a high-density server present one logical interface, which the
+appliance detects and configures automatically.
+
+For the specific values and example server configurations, refer to
+[Suggested Hardware](../reference/hardware-requirements.md).
+
+## Appliance and Cluster Formation
+
+## Model Provisioning Lifecycle
+
+Deploying a model is a guarded sequence. The appliance first previews the change so you can review it, and it writes
+nothing until you confirm. It then brings the model through gate, provision, smoke-test, and ready stages. A model
+becomes routable only after its signature is verified and its smoke test passes, so the appliance never presents a model
+as ready before it can serve requests.
+
+On a multi-server cluster, the appliance runs one inference engine per chosen node and exposes those engines through a
+single per-model endpoint. The appliance treats unknown GPU capacity as unusable rather than as free. For how you choose
+which nodes run a model, why a node may be ineligible, and how the Cluster view reports placement, refer to
+[Model Placement](./model-placement.md).
+
+The appliance does not support in-place replacement: changing what a node serves requires removing the current model and
+then deploying the replacement. Removing the model from one node leaves it serving on the others. Refer to
+[Replace a Model](../how-to-guides/replace-a-model.md).
+
+## Request Routing
+
+<!-- vale Vale.Spelling = NO -->
+
+The gateway routes each request to a model in two stages. The Tier map rewrites a client-supplied model name to a model
+the appliance serves. Some requests that the Tier map does not settle then pass to the semantic router, which picks a
+model from a category and a complexity band. For how the two controls combine and where each rule lives, on a
+workspace's policy or on a client, refer to [Routing Behavior](./routing-behavior.md).
+
+<!-- vale Vale.Spelling = YES -->
+
+The semantic router runs on your GPUs and shares them with the main model. The appliance deploys it at installation,
+before any local model, so an appliance that answers only through frontier providers still routes semantically. When a
+deploy starts a new GPU sharing group, the semantic router moves into that group. For the GPU requirements, refer to
+[Suggested Hardware](../reference/hardware-requirements.md#gpu).
+
+Because the semantic router shares one set of GPUs, an appliance runs its models in one of two modes. Text mode runs a
+text model with the semantic router. Vision mode runs a text model with the semantic router and a vision model. The
+deploy picker offers only models of the appliance's current mode. For how a model's catalog entry decides its mode,
+refer to [One Mode per Appliance](./routing-behavior.md#one-mode-per-appliance).
+
+When you change the routing configuration the gateway follows, it rebuilds its router in place. The gateway does not
+restart, and it does not drain requests that are in progress. Requests that the gateway already routed continue on their
+assigned model, and the new configuration applies only to later requests.
+
+Before it routes a request, the gateway authenticates the calling client from its API token and enforces that client's
+quotas. When routing policy sends a request off the appliance, the gateway reaches an external inference endpoint. That
+traffic is metered as egress. For how clients, API tokens, and quotas work together, refer to
+[Clients and Quotas](./clients-and-quotas.md). To register a host, refer to
+[Register an External Inference Endpoint](../how-to-guides/register-an-external-inference-endpoint.md).
+
+When vision preprocessing is on, a request that includes images is rewritten before that routing step. A reader converts
+each image to text, and the text model then answers as it would for any other prompt. The reader is a local vision model
+or a model on an external inference endpoint. Text-only requests skip this step. For the request path, refer to
+[Vision Preprocessing](./vision-preprocessing.md). To turn the feature on, refer to
+[Enable Vision Preprocessing](../how-to-guides/enable-vision-preprocessing.md) or
+[Read Images with an External Model](../how-to-guides/read-images-with-an-external-model.md).
+
+### The Box Default Model {#the-default-model}
+
+The box default model answers a request when routing does not choose a model for it. The appliance chooses it
+automatically. There is no operator control to change it. For how the appliance chooses it, refer to
+[The Box Default Model](./routing-behavior.md#the-box-default-model).
+
+### System Prompts {#system-prompts}
+
+A client can send its own system prompt with a request. A platform administrator can also set a system prompt, which the
+console calls an instruction, on the **Prompt Instructions** settings page. The **Apply to every turn** toggle, which is
+off by default, controls whether a request that carries its own system prompt also receives the instruction.
+
+| **Apply to every turn** | **A request without a system prompt** | **A request with its own system prompt**                                        |
+| ----------------------- | ------------------------------------- | ------------------------------------------------------------------------------- |
+| Off                     | The gateway adds the instruction.     | The gateway keeps the client's system prompt and adds nothing.                  |
+| On                      | The gateway adds the instruction.     | The gateway keeps the client's system prompt and adds the instruction after it. |
+
+The table applies to the Chat Completions API (`/v1/chat/completions`) and the Anthropic Messages API (`/v1/messages`).
+A request to the Responses API (`/v1/responses`) never receives the instruction.
+[OpenAI Codex](../reference/codex-reference.md) uses the Responses API.
+
+[Coding assistants](../reference/glossary.md#coding-assistant) such as
+[Claude Code](../how-to-guides/use-claude-code.md) send their own system prompt with every request. A request from
+Claude Code receives the instruction only while **Apply to every turn** is on. For example, with the toggle on and the
+instruction `Answer every question in Spanish.`, the gateway keeps the system prompt that Claude Code sends and adds the
+instruction after it.
+
+Leave the toggle off when a client's own system prompt should decide how the model answers. Turn it on when the
+instruction must also reach clients that send their own system prompt, such as Claude Code.
+
+The appliance holds one default instruction and, optionally, an instruction for each model. A model's own instruction
+replaces the default instruction for that model, and every other model keeps the default. The gateway chooses the
+instruction after routing picks the model. A per-model instruction applies to each request that routing sends to that
+model, whatever model name the client sent.
+
+A saved change applies to new requests. A new appliance has no instruction, so it adds nothing to any request until a
+platform administrator sets one. To set or remove an instruction, or to turn **Apply to every turn** on or off, refer to
+[Set a System Prompt](../how-to-guides/set-a-system-prompt.md).
+
+### External Inference Endpoints {#external-inference-endpoints}
+
+An external inference endpoint is a host outside the appliance that the gateway can route tier traffic to as egress.
+Three endpoints are built in, `anthropic`, `openai`, and `gemini`, and a platform administrator can register any
+OpenAI-compatible host as another one. A platform administrator sets up each endpoint once for the whole appliance,
+under **Settings** > **External access** > **Ext. Inference Endpoints**. A built-in endpoint is not available until that
+happens.
+
+A policy or a client selects an endpoint that is already set up, and never defines one, so an endpoint that is not set
+up is not offered to a policy or a client.
+
+Each registered endpoint carries a short **Endpoint ID**. The ID names the endpoint wherever the console lists an
+external model, written as `<endpoint> / <model>`, such as `lan-ollama-endpoint / qwen2.5:0.5b`. The ID cannot be
+changed after registration, and it cannot collide with a built-in endpoint; registration refuses a colliding ID. The
+**Endpoint URL** can be an origin or an origin followed by a path prefix; the appliance appends the OpenAI-compatible
+request paths itself, so the URL does not include `/v1`.
+
+The credential for an endpoint is stored once, on the endpoint, and every policy and client that lists the endpoint uses
+it. A policy or a client can override the key for itself alone by typing one in its **Key** field; the endpoint's key
+does not change. The credential can be an API key, one or more custom headers, or both. The appliance sends any custom
+headers on both the model-catalog probe and every routed request.
+
+The appliance can additionally trust a self-signed or private-CA certificate presented by the endpoint on the outbound
+connection to it. That trust is scoped to the endpoint, and it does not change the certificate the appliance itself
+presents on its own inbound console. Header values are stored as secrets, but a CA certificate is not; the appliance
+shows a stored CA certificate in full whenever an operator edits the endpoint.
+
+Removing an endpoint takes effect immediately, and it is fail-safe: any routing rule that still points at that endpoint
+falls back to the appliance's local serving in flight rather than returning an error. To register a host, refer to
+[Register an External Inference Endpoint](../how-to-guides/register-an-external-inference-endpoint.md).
+
+## Network Topology
+
+A client reaches a served model over a single address. The **Platform IP Address** set during cluster deployment is an
+unused address that MetalLB assigns to Traefik, and Traefik fronts both the appliance console and the OpenAI-compatible
+API. MetalLB announces that address on the node's [bond](../reference/glossary.md#bond) through the interface selected
+as the Cilium and MetalLB interface, so platform traffic arrives on the bond and is delivered to Traefik. Traefik passes
+each request to the gateway, which authenticates the calling client, applies routing, and forwards the request to the
+inference engine serving the chosen model.
+
+The node keeps its own management address, the Host IP, and the two addresses do different jobs. The Host IP belongs to
+the node and carries SSH, Local UI, and the Kubernetes API. The Platform IP belongs to the cluster load balancer and
+carries the console and the API. Both must be distinct addresses in the same subnet, because setting the Platform IP to
+the Host IP on a single-node appliance makes MetalLB intercept traffic bound for the node's own services. Refer to
+[SSH, Local UI, or Kubernetes API unreachable after cluster deploy](../reference/known-issues.md#ssh-local-ui-or-kubernetes-api-unreachable-after-cluster-deploy).
+
+The Traefik Service also carries a load-balancer access control list that restricts which source addresses may reach the
+Platform IP. That list is enforced at the load balancer, so a request from a source outside it is rejected before it
+reaches Traefik. Because Traefik fronts both surfaces, a list narrower than the network an operator works from locks
+that host out of the console and the API alike, even though the cluster is healthy. Refer to
+[Appliance console unreachable from the jumpbox after cluster deploy](../reference/known-issues.md#appliance-console-unreachable-from-the-jumpbox-after-cluster-deploy).
+
+The node's operating system serves [Local UI](../reference/glossary.md#local-ui) on port `5080`, rather than the cluster
+serving it, so Local UI sits outside the MetalLB and Traefik path. That separation is why Local UI stays reachable when
+platform services are unavailable, and why it is the surface for install and for platform upgrades.
+
+## Data Residency and Isolation
+
+Inference runs on the appliance, so requests and the models that answer them stay inside your environment by default. No
+part of a prompt leaves the appliance unless an operator gives the client [egress](../reference/glossary.md#egress).
+Egress is permission to send requests off the appliance. A new client has no egress. Refer to
+[Manage a Client's Model Access](../how-to-guides/manage-client-model-access.md).
+
+Once an operator enables egress on a policy, or on a client that overrides its policy, a client can reach each
+[external inference endpoint](#external-inference-endpoints) that the policy or client lists. An endpoint is one of the
+following:
+
+- A built-in endpoint for Anthropic, OpenAI, or Gemini, which serves a
+  [frontier model](../reference/glossary.md#frontier-model) hosted by that vendor rather than served from the appliance.
+
+- A registered endpoint, which is any OpenAI-compatible host that a platform administrator has added.
+
+Egress is not only a destination a client asks for. An operator can turn on bursting on a policy, or on a client that
+overrides its policy. With bursting on, the appliance does not refuse a client that runs out of local quota. It sends
+the client's local requests to an external inference endpoint instead. As a result, a request that names a local model
+can still leave the appliance. Bursting is still egress and needs the same permission. A client that cannot reach an
+external destination cannot burst to one either.
+
+Vision preprocessing can also send data off the appliance. A platform administrator can choose an external reader. The
+appliance then sends the images in a client's current turn to the reader's endpoint. It also sends up to 4,096
+characters of the client's current question. Each read goes through the same egress checks as that client's own
+requests. A client that cannot reach the endpoint keeps its images on the appliance. Refer to
+[An External Reader](./vision-preprocessing.md#an-external-reader).
+
+Sovereignty sits above the per-client controls as an appliance-wide switch that overrides every client's egress. While
+it is armed, no request leaves the box regardless of what any client is permitted to do, so an operator holds residency
+for the whole appliance rather than one client at a time. Refer to
+[Sovereignty and Egress](./clients-and-quotas.md#sovereignty-and-egress).
+
+The **Usage** page reports what share of traffic stayed on the appliance and what share went off the box, and it pairs
+the two per client rather than summing them into one figure. Refer to
+[Usage Metrics Reference](../reference/usage-metrics-reference.md).
+
+The appliance needs no outbound internet access to install or to run day to day, so an appliance on which no client has
+egress enabled answers every request without reaching a network beyond your own. The residency guarantee is therefore an
+operator-controlled one rather than a physical one. The appliance is capable of reaching an external host, and it does
+so only where an operator has allowed it.
