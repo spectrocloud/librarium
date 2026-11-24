@@ -8,7 +8,17 @@ const { setTimeout } = require("timers/promises");
 const BASE_URL = require("../static/scripts/constants.js").BASE_URL;
 const fetch = require("node-fetch");
 const excludeList = require("../static/packs-data/exclude_packs.json");
-const { existsSync, promises, open, mkdirSync, writeFile, close, createWriteStream, copyFileSync } = require("node:fs");
+const {
+  existsSync,
+  promises,
+  open,
+  mkdirSync,
+  writeFile,
+  close,
+  createWriteStream,
+  copyFileSync,
+  rm,
+} = require("node:fs");
 import logger from "@docusaurus/logger";
 
 const filterLimit = 100; //Limit for fetching the packs from the Palette API
@@ -20,6 +30,8 @@ const fallbackLogoExtensions = ["png", "svg", "jpeg"];
 // Known-good logos committed to the repo, for packs whose logo is missing from both the registry and the
 // published site. The site does not serve this folder.
 const committedLogoDirname = "plugins/packs-logo-fallback/";
+// Give up on a logo download that stalls, so that one slow server cannot hang the build.
+const logoFetchTimeoutMs = 15000;
 const packs_filename = "api_pack_response.json";
 const repos_filename = "api_repositories_response.json";
 const options = {
@@ -356,21 +368,34 @@ async function mapRepositories(repositories) {
 
 async function write(res, packName, logoUrlMap) {
   return new Promise((resolve, reject) => {
-    const type = res.headers.get("Content-Type");
-    if (mime.extension(type) !== "html") {
-      const destination = path.resolve(logoDirname, packName);
-      const fileStream = createWriteStream(`${destination}.${mime.extension(type)}`);
-      res.body.pipe(fileStream);
-      res.body.on("error", (err) => {
-        reject(err);
-      });
-      fileStream.on("finish", function () {
-        resolve();
-        logoUrlMap[packName] = `${packName}.${mime.extension(type)}`;
-      });
-    } else {
-      reject(`Invalid MIME type received for the logo ${packName}`);
+    const type = res.headers.get("Content-Type") || "";
+    const extension = mime.extension(type);
+    // Write only image responses. Anything else, such as an error body served with status 200, would land in the
+    // logo folder with a non-image extension, and the fallback would not run for that pack.
+    if (!type.startsWith("image/") || !extension) {
+      res.body?.resume();
+      reject(new Error(`Received ${type || "no Content-Type"} instead of an image for the logo of ${packName}`));
+      return;
     }
+    const fileName = `${packName}.${extension}`;
+    const destination = path.resolve(logoDirname, fileName);
+    const fileStream = createWriteStream(destination);
+    let failed = false;
+    const fail = (err) => {
+      if (failed) return;
+      failed = true;
+      fileStream.destroy();
+      // Delete the partial file, so that a later build does not reuse it as a local fallback.
+      rm(destination, { force: true }, () => reject(err));
+    };
+    res.body.on("error", fail);
+    fileStream.on("error", fail);
+    fileStream.on("finish", () => {
+      if (failed) return;
+      logoUrlMap[packName] = fileName;
+      resolve();
+    });
+    res.body.pipe(fileStream);
   });
 }
 
@@ -378,26 +403,36 @@ async function write(res, packName, logoUrlMap) {
 // blobs. Rather than ship the pack without a logo, reuse a logo from an earlier build in this
 // workspace, download the copy that the last production build published on docs.spectrocloud.com,
 // or copy a known-good logo committed to the repo, in that order.
+// Returns { source } naming the fallback that was used, or { source: null, error } with the last error from the
+// published and committed fallbacks, so that the caller can log why no fallback worked.
 async function useFallbackLogo(packName, logoUrlMap) {
+  let lastFallbackError = null;
+
   for (const extension of fallbackLogoExtensions) {
     const fileName = `${packName}.${extension}`;
     if (existsSync(path.resolve(logoDirname, fileName))) {
       logoUrlMap[packName] = fileName;
-      return `the existing local file ${logoDirname}${fileName}`;
+      return { source: `the existing local file ${logoDirname}${fileName}` };
     }
   }
 
   for (const extension of fallbackLogoExtensions) {
     const url = `${publishedLogoBaseUrl}${packName}.${extension}`;
     try {
-      const res = await fetch(url);
-      const type = res.headers.get("Content-Type") || "";
-      if (res.ok && type.startsWith("image/")) {
-        await write(res, packName, logoUrlMap);
-        return `the published logo ${url}`;
+      const res = await fetch(url, { signal: AbortSignal.timeout(logoFetchTimeoutMs) });
+      if (!res.ok) {
+        // Drain the body, so that the connection is released.
+        res.body?.resume();
+        // A 404 only means that the site has no logo with this extension.
+        if (res.status !== 404) {
+          lastFallbackError = new Error(`${url} returned status ${res.status}`);
+        }
+        continue;
       }
+      await write(res, packName, logoUrlMap);
+      return { source: `the published logo ${url}` };
     } catch (e) {
-      // Try the next extension.
+      lastFallbackError = e;
     }
   }
 
@@ -405,13 +440,17 @@ async function useFallbackLogo(packName, logoUrlMap) {
     const fileName = `${packName}.${extension}`;
     const committedFile = path.resolve(committedLogoDirname, fileName);
     if (existsSync(committedFile)) {
-      copyFileSync(committedFile, path.resolve(logoDirname, fileName));
-      logoUrlMap[packName] = fileName;
-      return `the committed logo ${committedLogoDirname}${fileName}`;
+      try {
+        copyFileSync(committedFile, path.resolve(logoDirname, fileName));
+        logoUrlMap[packName] = fileName;
+        return { source: `the committed logo ${committedLogoDirname}${fileName}` };
+      } catch (e) {
+        lastFallbackError = e;
+      }
     }
   }
 
-  return null;
+  return { source: null, error: lastFallbackError };
 }
 
 async function getLogoUrl(packsAllData, logoUrlMap) {
@@ -433,9 +472,11 @@ async function getLogoUrl(packsAllData, logoUrlMap) {
       if (!Object.prototype.hasOwnProperty.call(logoUrlMap, packName)) {
         try {
           options.headers["Accept"] = "image/png";
-          const res = await fetch(url, options);
+          const res = await fetch(url, { ...options, signal: AbortSignal.timeout(logoFetchTimeoutMs) });
 
           if (!res.ok) {
+            // Drain the body, so that the connection is released.
+            res.body?.resume();
             throw new Error(`Failed to fetch logo for ${packName} from ${url}. Got status ${res.status}`);
           }
 
@@ -452,12 +493,17 @@ async function getLogoUrl(packsAllData, logoUrlMap) {
     }
 
     if (!Object.prototype.hasOwnProperty.call(logoUrlMap, packName) && lastError) {
-      const fallbackSource = await useFallbackLogo(packName, logoUrlMap);
-      if (fallbackSource) {
-        logger.warn(`${lastError.message || lastError}. Used ${fallbackSource} instead.`);
+      const fallback = await useFallbackLogo(packName, logoUrlMap);
+      const reason = lastError.message || lastError;
+      if (fallback.source) {
+        logger.warn(`${reason}. Used ${fallback.source} instead.`);
       } else {
-        logger.error(lastError);
-        logger.error(`No fallback logo found for ${packName}, so the pack has no logo in this build.`);
+        const fallbackReason = fallback.error
+          ? ` The last fallback error was: ${fallback.error.message || fallback.error}.`
+          : "";
+        logger.error(
+          `${reason}. No fallback logo found for ${packName}, so the pack has no logo in this build.${fallbackReason}`
+        );
       }
     }
   }
