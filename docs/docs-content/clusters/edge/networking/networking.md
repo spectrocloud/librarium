@@ -19,4 +19,5 @@ ensure that you can keep your Edge clusters and their services operational and a
 
 - [Publish Cluster Services with Kube-vip](kubevip.md)
 - [Enable Overlay Network](vxlan-overlay.md)
+- [Deploy an IPv6 Edge Cluster](./ipv6.md)
 - [Connect Intel NUC Edge Host to Wifi](./connect-wifi.md)
