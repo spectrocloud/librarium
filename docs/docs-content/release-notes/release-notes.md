@@ -39,6 +39,14 @@ tags: ["release-notes"]
 
 #### Deprecations and Removals
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12145 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12769 -->
+
+- Palette removes the `GET /v1/spectroclusters/{uid}/assets` [API endpoint](/api/introduction). Use
+  `GET /v1/spectroclusters/{uid}/assets/manifest` to retrieve the cluster manifest instead. Other
+  `/v1/spectroclusters/{uid}/assets` endpoints continue to work. Update any automation, script, or integration that
+  calls `GET /v1/spectroclusters/{uid}/assets` before you upgrade, because those calls fail after the upgrade.
+
 ### Edge
 
 <!-- release-notes-edge-callout-4.10.c-start -->
