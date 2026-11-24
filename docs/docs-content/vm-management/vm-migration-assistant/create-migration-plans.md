@@ -580,7 +580,7 @@ Ensure that your terminal is configured to access your VMO cluster using
 
    The wizard groups its steps under **Basic setup**, **Additional setup**, and **Review and create**. **Basic setup**
    contains the **General**, **Virtual machines**, **Network map**, **Storage map**, and **Migration type** steps.
-   **Additional setup** contains the optional **Other settings** and **Hooks** steps.
+   **Additional setup** contains the **Other settings (optional)** and **Hooks (optional)** steps.
 
 3. For the **General** step, fill in the details for your migration plan.
 
@@ -682,8 +682,8 @@ Ensure that your terminal is configured to access your VMO cluster using
     | **Cold migration** | VMs are shut down prior to migration.                                                                                                                                                                                                                                                                                             |
     | **Warm migration** | Active VMs are migrated while they are running and are shut down during the final switchover. Ensure that [Changed Block Tracking](https://knowledge.broadcom.com/external/article/315370/enabling-or-disabling-changed-block-trac.html) is enabled on your VMs and that they have no snapshots before starting a warm migration. |
 
-12. Click **Next**. To leave the **Additional setup** steps at their defaults, select **Skip to review** instead and
-    continue with step 17.
+12. Select **Next** to configure the optional **Additional setup** steps, or select **Skip to review** to keep their
+    default settings and go to step 17.
 
 13. For the **Other settings (optional)** step, review and adjust the optional settings for your migration plan. The
     following table describes the available settings.
