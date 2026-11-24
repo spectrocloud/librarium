@@ -28,10 +28,13 @@ for detailed instructions.
 - A cold migration plan created and ready to start. Refer to [Create Migration Plans](./create-migration-plans.md) for
   guidance.
 
-- One or more VMs hosted in VMware vSphere 7.0 or 8.0. The VM's OS must be present in the
+- One or more VMs hosted in VMware vSphere 7.0 or 8.0, or in Nutanix AHV. The VM's OS must be present in the
   [virt-v2v supported guest systems](https://libguestfs.org/virt-v2v-support.1.html) list.
 
   - VMs operating Windows must be shut down at the virtualized OS level.
+
+  - For Nutanix AHV, the migration shuts down running VMs with an ACPI shutdown request and does not force them off. If
+    a VM does not respond to ACPI shutdown requests, shut it down yourself before you start the migration.
 
 ### Start Cold Migration
 

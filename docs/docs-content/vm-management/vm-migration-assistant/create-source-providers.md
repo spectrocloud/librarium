@@ -24,7 +24,13 @@ Machines (VMs) that need to be migrated.
 - A healthy Virtual Machine Orchestrator (VMO) cluster. Refer to the
   [Create a VMO Profile](../vmo-pack/create-vmo-profile.md) for further guidance.
 
-  - The VMO cluster must have network connectivity to vCenter and ESXi hosts, and the VMs you want to migrate.
+The remaining prerequisites depend on your source provider type.
+
+<Tabs groupId="provider-type">
+
+<TabItem label="VMware vSphere" value="vsphere">
+
+- The VMO cluster must have network connectivity to vCenter and ESXi hosts, and the VMs you want to migrate.
 
 - A vCenter user account with the following necessary privileges to perform migrations.
 
@@ -312,6 +318,54 @@ Machines (VMs) that need to be migrated.
 
     </details>
 
+</TabItem>
+
+<TabItem label="Nutanix AHV" value="nutanix">
+
+:::preview
+
+Migrating VMs from Nutanix AHV is a Tech Preview feature and is subject to change. Do not use it in production
+workloads.
+
+:::
+
+- The VM Migration Assistant pack must be version 4.10.9 or later.
+
+- The VMO cluster must have network connectivity to the Prism Element or Prism Central endpoint that you connect to, and
+  to every Prism Element cluster that hosts the VMs you want to migrate. When you connect through Prism Central, disk
+  transfers go directly to the Prism Element clusters.
+
+- If you connect through Prism Central, it must support the Nutanix v4 APIs.
+
+- A Prism Element or Prism Central user account. The VM Migration Assistant uses it to read the VM inventory and to
+  stage each VM disk as a temporary image in the Prism image catalog. The VM Migration Assistant deletes these images
+  after the migration. If a deletion fails, remove the leftover images in Prism.
+
+- One or more VMs hosted in Nutanix AHV. The VM's OS must be present in the
+  [virt-v2v supported guest systems](https://libguestfs.org/virt-v2v-support.1.html) list.
+
+  - To preserve the static IPs of a VM, install Nutanix Guest Tools on the VM and keep the VM running when you create
+    the migration plan, so that Prism reports the IP addresses of the VM.
+
+- A certificate authority (CA) certificate bundle to validate your Prism certificates, unless you skip certificate
+  validation.
+
+  - For Prism Element, the bundle must contain the CA certificate that issued the Prism Element certificate.
+
+  - For Prism Central, the bundle must contain the CA certificates for Prism Central and for every Prism Element cluster
+    that hosts the VMs. Prism Central redirects disk transfers to the Prism Element clusters by IP address, so each
+    Prism Element certificate must include its IP address as a Subject Alternative Name (SAN).
+
+  - The factory certificate that Nutanix installs on Prism (`CN=*.nutanix.local`) has no SANs and cannot pass
+    validation. Replace it with a certificate that has SANs, or select **Skip certificate validation** when you create
+    the provider.
+
+Nutanix AHV migrations do not use a VDDK image.
+
+</TabItem>
+
+</Tabs>
+
 ## Create Source Provider
 
 1. [Access the VM Migration Assistant service console](./create-vm-migration-assistant-profile.md#access-the-vm-migration-assistant-service-console).
@@ -323,14 +377,18 @@ Machines (VMs) that need to be migrated.
    The provider namespace is the Kubernetes namespace where the provider credentials and configuration will be stored.
    This should be the same namespace where you plan to migrate your VMs to.
 
-4. Select the **VMware vSphere** from the **Provider type** drop-down. Once you select a provider type, additional
-   fields appear. The following table describes the details to fill in for the provider.
+4. From the **Provider type** drop-down menu, select **VMware vSphere** or **Nutanix AHV** <TpBadge />. Additional
+   fields appear after you select a provider type. Use the tab for your provider type to fill in the fields.
 
    :::warning
 
    The Open Virtual Appliance (OVA) provider type is not supported.
 
    :::
+
+   <Tabs groupId="provider-type">
+
+   <TabItem label="VMware vSphere" value="vsphere">
 
    #### Provider Settings
 
@@ -355,7 +413,36 @@ Machines (VMs) that need to be migrated.
    | **Configure certificate validation** | Upload or drag and drop the certificate authority (CA) certificate for your vSphere / ESXi.               |
    | **Skip certificate validation**      | Enabling this option bypasses x509 CA verification.                                                       |
 
-5. Click **Create Provider**.
+   </TabItem>
+
+   <TabItem label="Nutanix AHV" value="nutanix">
+
+   #### Provider Settings {#provider-settings-ahv}
+
+   | Setting                 | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+   | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Provider name**       | A unique name for your provider.                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+   | **Prism endpoint type** | Select **Prism Element** to connect directly to a single Nutanix cluster, or **Prism Central** to connect to Prism Central and migrate VMs from the clusters it manages. The default is **Prism Element**.                                                                                                                                                                                                                                                                                                     |
+   | **Prism URL**           | The URL of your Prism Element or Prism Central endpoint, including the scheme and the port. For example, `https://prism.example.com:9440`. The VM Migration Assistant does not add a default port. Specify a Fully Qualified Domain Name (FQDN) or an IPv4 address. IPv6 addresses are not supported.                                                                                                                                                                                                          |
+   | **Convert disk**        | Turned on by default. When turned on, the migration uses virt-v2v to convert the guest OS for the target environment. On Windows VMs, the conversion also removes Nutanix Guest Tools and the Nutanix VirtIO drivers at first boot, so that Windows uses the VirtIO drivers that virt-v2v installs. Keep this option turned on to preserve static IPs. When turned off, the migration copies the VM disks without conversion. This option appears after the [Provider Credentials](#provider-credentials-ahv). |
+
+   #### Provider Credentials {#provider-credentials-ahv}
+
+   The **Username** and **Password** fields appear after you enter the **Prism URL**.
+
+   | Setting                              | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+   | ------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Username**                         | Your Prism account username.                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+   | **Password**                         | Your Prism account password.                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+   | **Certificate validation**           | **Configure certificate validation** for your Prism endpoint, or **Skip certificate validation**.                                                                                                                                                                                                                                                                                                                                                                          |
+   | **Configure certificate validation** | Paste the CA certificate bundle into the **CA certificate** field, or select **Upload** or drag and drop the file. This field is required. For Prism Central, include the CA certificates for Prism Central and for every Prism Element cluster. Refer to the [Prerequisites](#prerequisites). Do not use **Fetch certificate from URL**, which does not work in the VM Migration Assistant service console. Refer to [Known Issues](../../release-notes/known-issues.md). |
+   | **Skip certificate validation**      | Enabling this option bypasses x509 CA verification. Select this option if your Prism endpoints use the factory Nutanix certificate.                                                                                                                                                                                                                                                                                                                                        |
+
+   </TabItem>
+
+   </Tabs>
+
+5. Select **Create provider**.
 
 6. On the provider details page, if you need to change a setting, click the **Edit** icon next to each value and adjust
    it in the pop-up window. Click **Save** after making changes.

@@ -17,7 +17,7 @@ automated with open source tools such as [Forklift](https://github.com/kubev2v/f
 
 <!-- prettier-ignore-start -->
 
-Palette provides the ability to migrate VMs from VMware vSphere to Virtual Machine Orchestrator (VMO) using the Virtual Machine Migration Assistant (VM Migration Assistant).
+Palette provides the ability to migrate VMs from VMware vSphere and Nutanix AHV to Virtual Machine Orchestrator (VMO) using the Virtual Machine Migration Assistant (VM Migration Assistant).
 The <VersionedLink text="VM Migration Assistant" url="/integrations/packs/?pack=vm-migration-assistant"/> is an
 add-on pack that can be added to your cluster profile and works alongside the
 <VersionedLink text="VMO" url="/integrations/packs/?pack=virtual-machine-orchestrator" /> pack.
@@ -27,11 +27,21 @@ add-on pack that can be added to your cluster profile and works alongside the
 It provides a user-friendly interface to manage the migration process, including creating source providers, defining
 migration plans, and monitoring the status of migrations.
 
+:::preview
+
+Migrating VMs from Nutanix AHV is a Tech Preview feature and is subject to change. Do not use it in production
+workloads.
+
+:::
+
 ## Limitations
 
 The following are general limitations of the VM Migration Assistant.
 
-- You can migrate only VMs hosted in VMware vSphere 7.0 or 8.0.
+- You can migrate only VMs hosted in VMware vSphere 7.0 or 8.0, or in Nutanix AHV.
+
+- Nutanix AHV migrations require version 4.10.9 or later of the VM Migration Assistant pack. They support only cold
+  migrations. Shared disks, Nutanix Volume Groups, and LUKS-encrypted disks are not supported.
 
 - You can migrate only VMs whose operating systems are present in the
   [`virt-v2v` supported guest systems](https://libguestfs.org/virt-v2v-support.1.html) list. Refer to
@@ -41,8 +51,8 @@ The following are general limitations of the VM Migration Assistant.
 
 ## Verified Migrations
 
-The following table lists `virt-v2v` migration combinations verified by Spectro Cloud. Other combinations may be valid
-but have not been verified.
+The following table lists `virt-v2v` migration combinations verified by Spectro Cloud for VMware vSphere source
+providers. Other combinations may be valid but have not been verified.
 
 | Operating System                         | Cold Migration | Warm Migration |
 | ---------------------------------------- | :------------: | :------------: |
