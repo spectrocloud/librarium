@@ -14,9 +14,9 @@ Refer to the following sections to troubleshoot errors encountered when installi
 
 Palette Management Appliance version 4.9.44 and later, and VerteX Management Appliance version 4.10.11 and later,
 encrypt [Distributed Replicated Block Device (DRBD)](https://linbit.com/drbd-user-guide/drbd-guide-9_0-en/) replication
-traffic between appliance nodes with TLS. DRBD cannot switch an active connection to TLS, so connections that were
-already open before the upgrade keep using plain TCP. This issue affects three-node appliances only. On a single-node
-appliance, volumes have no replicas on other nodes, so there are no connections to switch.
+traffic between appliance nodes with TLS. DRBD cannot switch an active connection to TLS, so connections that were open
+before you upgraded to one of these versions keep using plain TCP. This issue affects three-node appliances only. On a
+single-node appliance, volumes have no replicas on other nodes, so there are no connections to switch.
 
 On a three-node appliance, the volume of the internal Zot registry has a replica on each node and a connection between
 each pair of nodes. Its plain TCP connections keep working until a node restarts, the LINSTOR satellite pods restart, or
@@ -27,6 +27,9 @@ cannot attach, and the Zot pod cannot start. Because the management cluster pull
 
 The following symptoms point to this issue:
 
+- Management cluster pods are in the `ImagePullBackOff` state, and the Zot pod in the `zot-system` namespace does not
+  start.
+
 - The LINSTOR error reports contain `Failed to adjust DRBD resource`, `Failure: (162) Invalid configuration request`,
   and `transport net_conf_change failed: -22`. To list the error reports, complete steps 1 - 4 of
   [Debug Steps](#debug-steps-drbd-tls), and then issue the command
@@ -34,23 +37,33 @@ The following symptoms point to this issue:
 
 - The Zot volume does not attach, and the LINSTOR CSI driver reports `could not determine device path`.
 
-To resolve this issue, close the plain TCP connection of the Zot volume and let LINSTOR reopen it with TLS. The steps
+To resolve this issue, close the plain TCP connection of the Zot volume, and let LINSTOR reopen it with TLS. The steps
 stop only Zot and change only the Zot volume, so other volumes, such as the MongoDB volumes, stay connected throughout.
-If your upgrade stalled, you then resume it one node at a time. Each node reboots during its upgrade, so Local UI and
-the management plane can be briefly unavailable. If your appliance already runs Palette Management Appliance 4.9.44 or
-later, or VerteX Management Appliance 4.10.11 or later, use the same debug steps before you upgrade to check the Zot
-volume and switch its connection to TLS.
+Use the [Debug Steps](#debug-steps-drbd-tls) in the following cases:
+
+- If your upgrade stalled, complete the debug steps, and then [resume the stalled upgrade](#resume-the-stalled-upgrade)
+  one node at a time. Each node reboots during its upgrade, so Local UI and the management plane can be briefly
+  unavailable.
+
+- If your appliance runs Palette Management Appliance 4.9.44 or later, or VerteX Management Appliance 4.10.11 or later,
+  complete the debug steps before you upgrade. If you upgraded to one of these versions from an earlier version,
+  complete them after the upgrade completes.
 
 :::danger
 
-Do not run `drbdadm invalidate` or any command with the `--discard-my-data` option, and do not delete the Zot
-PersistentVolumeClaim (PVC), PersistentVolume (PV), or VolumeAttachment. This issue is not a split-brain, and the data
-on all three replicas remains intact.
+This issue is not a split-brain, and the data on all three replicas remains intact. Do not take any of the following
+actions:
 
-Do not run `drbdadm adjust` yourself, and do not run `drbdadm connect` or `drbdadm disconnect` on any volume or
-connection other than the one in step 10. After a failed adjust, LINSTOR restores the previous resource file, so a
-manual `drbdadm adjust` reopens the connection with plain TCP. Do not use the `suspend-io`, `disconnect`, and `adjust`
-sequence from the upstream Piraeus TLS guide either.
+- Run `drbdadm invalidate` or any command with the `--discard-my-data` option.
+
+- Delete the Zot PersistentVolumeClaim (PVC), PersistentVolume (PV), or VolumeAttachment.
+
+- Run `drbdadm adjust`. After a failed adjust, LINSTOR restores the previous resource file, so a manual `drbdadm adjust`
+  reopens the connection with plain TCP.
+
+- Run `drbdadm connect` or `drbdadm disconnect` on any volume or connection other than the one in step 10.
+
+- Use the `suspend-io`, `disconnect`, and `adjust` sequence from the upstream Piraeus TLS guide.
 
 :::
 
@@ -68,7 +81,7 @@ sequence from the upstream Piraeus TLS guide either.
    environment variable to the path of the kubeconfig file that you downloaded in step 3.
 
    ```shell
-   export KUBECONFIG=<path-to-kubeconfig-file>
+   export KUBECONFIG="<path-to-kubeconfig-file>"
    ```
 
    Replace `<path-to-kubeconfig-file>` with the path to the kubeconfig file.
@@ -110,17 +123,18 @@ sequence from the upstream Piraeus TLS guide either.
      contact Spectro Cloud support.
 
 7. Back up the appliance database before you make any changes, and store the backup outside the appliance. Follow the
-   steps in the **Take a Database Backup** section of
-   [Back Up and Restore the Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance-backup-restore.md)
-   or
-   [Back Up and Restore the VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance-backup-restore.md).
+   steps in
+   [Take a Database Backup](../enterprise-version/install-palette/palette-management-appliance-backup-restore.md#take-a-database-backup)
+   for the Palette Management Appliance or
+   [Take a Database Backup](../vertex/install-palette-vertex/vertex-management-appliance-backup-restore.md#take-a-database-backup)
+   for the VerteX Management Appliance.
 
 8. Issue the following commands to set variables for the two nodes whose connection uses plain TCP, and to find the
    satellite pod of the first node.
 
    ```shell
-   NODE_A=<node-a>
-   NODE_B=<node-b>
+   NODE_A="<node-a>"
+   NODE_B="<node-b>"
    SAT_A=$(kubectl get pods --namespace piraeus-system --selector app.kubernetes.io/component=linstor-satellite --field-selector spec.nodeName=$NODE_A --output name)
    echo $SAT_A
    ```
@@ -215,9 +229,15 @@ sequence from the upstream Piraeus TLS guide either.
 Complete the following steps in the same terminal session to let the management cluster recover and to resume the node
 upgrades one node at a time.
 
-1. Wait for the pods that were waiting on images to start. They start on their own over the next few minutes. Pods in
-   the `palette-system` namespace that show `ContainerStatusUnknown` are usually left over from the stalled upgrade, and
-   you can ignore them.
+1. Wait for the pods in the `ImagePullBackOff` state to start. They start on their own over the next few minutes. Issue
+   the following command, and repeat it until it returns no pods.
+
+   ```shell
+   kubectl get pods --all-namespaces | grep --extended-regexp 'ImagePullBackOff|ErrImagePull'
+   ```
+
+   Pods in the `palette-system` namespace that show `ContainerStatusUnknown` are usually left over from the stalled
+   upgrade, and you can ignore them.
 
 2. Issue the following commands to check the MongoDB pods and replica set.
 
