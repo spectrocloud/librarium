@@ -87,6 +87,11 @@ An upgrade from version 1.2 has the following effects.
   platform administrator chooses an external reader and confirms the choice. Refer to
   [Read Images with an External Model](./how-to-guides/read-images-with-an-external-model.md) for more information.
 
+- An upgrade from version 1.2 can run out of disk space after you upload the content bundle. A workaround frees disk
+  space on every node before the upload. Refer to
+  [Upgrade from Version 1.2 to 1.3.0 Can Run Out of Disk Space](./reference/known-issues.md#upgrade-from-version-12-to-130-can-run-out-of-disk-space)
+  for more information.
+
 ## Version 1.2.1 - October 30, 2026 {#version-1-2-1}
 
 PaletteAI Inference Launchpad 1.2.1 is a patch release that fixes a security issue.

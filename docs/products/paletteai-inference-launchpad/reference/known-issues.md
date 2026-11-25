@@ -2,20 +2,24 @@
 id: known-issues
 title: Known Issues
 description: >
-  Known issues that operators may encounter during PaletteAI Inference Launchpad installation and validation, and the
-  workarounds for each.
+  Known issues that operators may encounter during PaletteAI Inference Launchpad installation, validation, and upgrade,
+  and the workarounds for each.
 sidebar_label: Known Issues
 sidebar_position: 9
 tags:
   - paletteai-inference-launchpad
   - reference
   - troubleshooting
-keywords: ["launchpad", "ai", "install", "known issues", "workaround", "troubleshooting", "hpe", "pci"]
+keywords:
+  ["launchpad", "ai", "install", "upgrade", "known issues", "workaround", "troubleshooting", "disk space", "hpe", "pci"]
 ---
 
-This page lists the known issues that operators may encounter during installation and validation of the PaletteAI
-Inference Launchpad appliance, and the workaround for each. For the ordered procedure, refer to
-[Install the Appliance](../how-to-guides/install-the-appliance.md).
+import ThemedImage from "@theme/ThemedImage";
+
+This page lists the known issues that operators may encounter during installation, validation, and upgrade of the
+PaletteAI Inference Launchpad appliance, and the workaround for each. For the installation procedure, refer to
+[Install the Appliance](../how-to-guides/install-the-appliance.md). For the upgrade procedure, refer to
+[Upgrade the Platform](../how-to-guides/upgrade-the-platform.md).
 
 ## Slim ISO Does Not Boot on a GPU Server
 
@@ -208,3 +212,114 @@ Any HTML5 Remote Console session is dropped by the reset and must be re-launched
 restarting. The server operating system is not affected.
 
 <!-- vale on -->
+
+## Upgrade from Version 1.2 to 1.3.0 Can Run Out of Disk Space
+
+**Affected.** This issue can affect appliances that upgrade from version 1.2 to 1.3.0, because you upload the content
+bundle before you start the upgrade. It does not happen every time. It depends on the size of the uploaded content and
+on the image data already on the node. New installations of version 1.3.0 are not affected.
+
+**Symptom.** The upgrade to 1.3.0 runs out of disk space. The Kubelet may then evict pods to reclaim space. The content
+upload can also fail with an error that shows the required bytes.
+
+**Root cause.** Version 1.3.0 adds a Kubelet image garbage collection policy that reclaims unused images before the disk
+reaches the eviction threshold. The policy applies only after a node completes its upgrade to 1.3.0. On version 1.2, the
+Kubelet reclaims unused images only under image eviction pressure. A content bundle that you upload before the upgrade
+starts leaves little free space on the image filesystem. The images that the upgrade pulls can then use up that space
+before the 1.3.0 policy is in effect.
+
+**Workaround.** This workaround prevents the issue. It does not recover an upgrade that has already run out of disk
+space. In that case, contact Spectro Cloud support at [support@spectrocloud.com](mailto:support@spectrocloud.com).
+
+Use the workaround before you upload the content bundle for the upgrade, or after an upload that failed. Do not use it
+after a successful upload, because the pending upgrade needs the local content bundle.
+
+The workaround frees disk space on every node in the cluster. It removes the local content bundle and the peer content
+cache. The next upload recreates the local content bundle, and content sync copies it to the linked hosts. While the
+local content bundle and the peer content cache are absent, content sync to linked hosts pauses. The appliance also
+cannot stage Palette Edge node agent images for an air-gapped upgrade.
+
+The following diagram shows which path to take through the steps. The numbers match the steps that follow.
+
+<p>
+  <ThemedImage
+    className="markdown-image"
+    alt="Flowchart of the workaround steps, with the main path in green. The numbered steps describe each path."
+    sources={{
+      light: "/assets/docs/images/known-issues_upgrade-disk-workaround.webp",
+      dark: "/assets/docs/images/known-issues_upgrade-disk-workaround-dark.webp",
+    }}
+  />
+</p>
+
+1. If you have not already, download the new content bundle from Artifact Studio. Refer to
+   [Download the Artifacts](../how-to-guides/install-the-appliance.md#download-the-artifacts).
+
+2. Confirm that an upgrade is not already in progress. In Local UI on the leader node, from the left main menu, select
+   **Cluster**, and check that the cluster is in the **Running** state.
+
+   If an upgrade is in progress, do not continue with this workaround. Wait for the upgrade to finish.
+
+   - If the cluster returns to the **Running** state, finish the upgrade from step 11 of
+     [Upgrade the Platform](../how-to-guides/upgrade-the-platform.md#upgrade-the-platform).
+
+   - If the upgrade runs out of disk space, contact Spectro Cloud support at
+     [support@spectrocloud.com](mailto:support@spectrocloud.com).
+
+3. Confirm that no earlier upload succeeded. On the **Cluster** page, select the **Overview** tab, and check that the
+   **Update available** indicator does not appear.
+
+   If the **Update available** indicator appears, an earlier upload succeeded. Do not continue with this workaround.
+   Continue the upgrade from step 3 of
+   [Upgrade the Platform](../how-to-guides/upgrade-the-platform.md#upgrade-the-platform).
+
+   - If the cluster returns to the **Running** state, finish the upgrade from step 11 of
+     [Upgrade the Platform](../how-to-guides/upgrade-the-platform.md#upgrade-the-platform).
+
+   - If the upgrade runs out of disk space, contact Spectro Cloud support at
+     [support@spectrocloud.com](mailto:support@spectrocloud.com).
+
+4. Confirm that an upload is not already in progress. Check that no Palette CLI or Local UI upload shows a progress bar
+   below 100 percent, and that no upload reached 100 percent in the last 30 minutes.
+
+   If an upload is in progress, wait for it to end. After the transfer reaches 100 percent, allow 30 minutes for the
+   node to unpack the bundle.
+
+   - If the upload fails, go to step 5.
+
+   - If the upload succeeds, do not continue with this workaround. Continue the upgrade from step 3 of
+     [Upgrade the Platform](../how-to-guides/upgrade-the-platform.md#upgrade-the-platform).
+
+     - If the cluster returns to the **Running** state, finish the upgrade from step 11 of
+       [Upgrade the Platform](../how-to-guides/upgrade-the-platform.md#upgrade-the-platform).
+
+     - If the upgrade runs out of disk space, contact Spectro Cloud support at
+       [support@spectrocloud.com](mailto:support@spectrocloud.com).
+
+5. From a shell on each node in the cluster, remove the local content bundle and the peer content cache.
+
+   ```bash
+   sudo rm --recursive --force /usr/local/spectrocloud/bundle /usr/local/spectrocloud/peerbundle
+   ```
+
+   The command prints nothing when it succeeds.
+
+6. If no earlier upload failed, or the upload error does not show the required bytes, go to step 7.
+
+   If an earlier upload failed with an error that shows the required bytes, check the free space on the leader node.
+
+   ```bash
+   df --block-size=1 /usr/local
+   ```
+
+   ```bash hideClipboard title="Example Output"
+   Filesystem        1B-blocks         Used    Available Use% Mounted on
+   /dev/sda5      257698037760 126905546179 130792491581  50% /usr/local
+   ```
+
+   Your device name and values differ. Confirm that the `Available` value is greater than the required bytes in the
+   upload error. If it is not, contact Spectro Cloud support at
+   [support@spectrocloud.com](mailto:support@spectrocloud.com).
+
+7. Upload the content bundle right away, and then continue the upgrade. For the steps, refer to step 2 of
+   [Upgrade the Platform](../how-to-guides/upgrade-the-platform.md#upgrade-the-platform).
