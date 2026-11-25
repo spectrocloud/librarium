@@ -13,6 +13,14 @@ You can configure a reverse proxy for Palette VerteX. The reverse proxy can be u
 private network. Host clusters deployed in a private network are not accessible from the public internet or by users in
 different networks. You can use a reverse proxy to access the cluster's Kubernetes API server from a different network.
 
+:::info
+
+This page covers the Spectro Proxy reverse proxy for host clusters. To record sign-in attempts, refused requests, and
+System Console actions at a reverse proxy in front of Palette VerteX itself, refer to
+[Record Console Activity at a Reverse Proxy](./audit-reverse-proxy.md).
+
+:::
+
 <!-- prettier-ignore -->
 When you configure reverse proxy server for Palette VerteX, clusters that use the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> will use the reverse proxy server address in the kubeconfig file. Clusters not using the Spectro Proxy pack will use the default cluster address in the
 kubeconfig file.
