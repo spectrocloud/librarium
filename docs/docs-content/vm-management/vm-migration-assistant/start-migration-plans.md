@@ -33,6 +33,10 @@ for detailed instructions.
 
   - VMs operating Windows must be shut down at the virtualized OS level.
 
+- In airgap environments, we recommend installing the `qemu-guest-agent` package on each Linux VM before you migrate it.
+  Refer to [Install the QEMU Guest Agent in Airgap Environments](#install-the-qemu-guest-agent-in-airgap-environments)
+  for more information.
+
 ### Start Cold Migration
 
 1. [Access the VM Migration Assistant service console](./create-vm-migration-assistant-profile.md#access-the-vm-migration-assistant-service-console).
@@ -104,6 +108,10 @@ for detailed instructions.
 
 - [Changed Block Tracking](https://knowledge.broadcom.com/external/article/315370/enabling-or-disabling-changed-block-trac.html)
   must be enabled on your VMs.
+
+- In airgap environments, we recommend installing the `qemu-guest-agent` package on each Linux VM before you migrate it.
+  Refer to [Install the QEMU Guest Agent in Airgap Environments](#install-the-qemu-guest-agent-in-airgap-environments)
+  for more information.
 
 ### Start Warm Migration
 
@@ -177,6 +185,56 @@ completed. The target VM is then created and powered on on the destination VMO c
     migrated VMs appear with a **Running** status.
 
     ![Running VM in VMO](/vm-migration-assistant/start-migration-plans_running-vm-vmo.webp)
+
+## Install the QEMU Guest Agent in Airgap Environments
+
+During guest conversion, `virt-v2v` configures each migrated Linux VM to install the
+[QEMU guest agent](https://wiki.qemu.org/Features/GuestAgent) when the VM first boots. The installation downloads the
+`qemu-guest-agent` package from the package repositories that the guest OS is configured to use. If the VM cannot reach
+those repositories, such as in an airgap environment, the installation fails. The VM boots and works, but its IP address
+is not displayed, and features that depend on the guest agent are unavailable.
+
+To avoid this, install the `qemu-guest-agent` package on the source VM before you start the migration. If you migrated
+the VM to [PaletteAI VM Launchpad](../vm-launchpad/vm-launchpad.md) without the guest agent, use the following steps to
+install it from the VM Launchpad package repository.
+
+1. Log in to VM Launchpad. From the left main menu, select **Image Catalog** > **Packages**.
+
+2. Check that the package list includes `qemu-guest-agent` for the OS and architecture of the VM. If it does not, upload
+   the package and its dependencies, and then select **Rebuild Repository**. Refer to
+   [Upload a Package](../vm-launchpad/virtual-machines/packages.md#upload-a-package) and
+   [Metadata Rebuild](../vm-launchpad/virtual-machines/packages.md#metadata-rebuild) for guidance.
+
+3. Select **URLs**. The **APT (Debian/Ubuntu)** and **YUM/DNF (RHEL/CentOS)** sections list a repository URL for each
+   architecture.
+
+4. Next to the URL that matches the OS and architecture of the VM, select the second copy icon, **Copy config snippet**.
+
+   The snippet marks the unsigned repository as trusted and, if the repository URL uses HTTPS, turns off certificate
+   verification for it. You do not need to configure certificate trust in the guest.
+
+5. Log in to the migrated VM as the `root` user, for example, from the
+   [VNC console](../vm-launchpad/virtual-machines/managing.md#vnc-console) of the VM.
+
+6. Run the snippet on the VM.
+
+   - For APT, first replace `<package>` in the last command with `qemu-guest-agent`, and then run the commands.
+
+   - For YUM/DNF, run the commands, and then issue the following command to install the guest agent. The snippet adds
+     the repository only.
+
+     ```shell
+     dnf install --assumeyes qemu-guest-agent
+     ```
+
+7. Issue the following command to enable and start the guest agent.
+
+   ```shell
+   systemctl enable --now qemu-guest-agent
+   ```
+
+8. In VM Launchpad, from the left main menu, select **Workloads** > **Virtual Machines**, and select the name of the VM
+   to open its detail page. On the **Overview** tab, the **IP Addresses** field displays the IP address of the VM.
 
 ## Next Steps
 
