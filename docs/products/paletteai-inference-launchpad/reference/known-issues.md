@@ -2,8 +2,8 @@
 id: known-issues
 title: Known Issues
 description: >
-  Known issues that operators may encounter during PaletteAI Inference Launchpad installation, validation, and upgrade,
-  and the workarounds for each.
+  Known issues that operators might encounter during PaletteAI Inference Launchpad installation, validation, and
+  upgrade, and the workarounds for each.
 sidebar_label: Known Issues
 sidebar_position: 9
 tags:
@@ -16,7 +16,7 @@ keywords:
 
 import ThemedImage from "@theme/ThemedImage";
 
-This page lists the known issues that operators may encounter during installation, validation, and upgrade of the
+This page lists the known issues that operators might encounter during installation, validation, and upgrade of the
 PaletteAI Inference Launchpad appliance, and the workaround for each. For the installation procedure, refer to
 [Install the Appliance](../how-to-guides/install-the-appliance.md). For the upgrade procedure, refer to
 [Upgrade the Platform](../how-to-guides/upgrade-the-platform.md).
@@ -215,12 +215,12 @@ restarting. The server operating system is not affected.
 
 ## Upgrade from Version 1.2 to 1.3.0 Can Run Out of Disk Space
 
-**Affected.** This issue can affect appliances that upgrade from version 1.2 to 1.3.0, because you upload the content
-bundle before you start the upgrade. It does not happen every time. It depends on the size of the uploaded content and
-on the image data already on the node. New installations of version 1.3.0 are not affected.
+**Affected.** This issue can affect appliances that upgrade from version 1.2 to 1.3.0. Whether it occurs depends on the
+size of the uploaded content and on the image data already on the node. New installations of version 1.3.0 are not
+affected.
 
-**Symptom.** The upgrade to 1.3.0 runs out of disk space. The Kubelet may then evict pods to reclaim space. The content
-upload can also fail with an error that shows the required bytes.
+**Symptom.** The upgrade to 1.3.0 runs out of disk space. The Kubelet might then evict pods to reclaim space. The
+content upload can also fail with an error that shows the required bytes.
 
 **Root cause.** Version 1.3.0 adds a Kubelet image garbage collection policy that reclaims unused images before the disk
 reaches the eviction threshold. The policy applies only after a node completes its upgrade to 1.3.0. On version 1.2, the
@@ -235,9 +235,9 @@ Use the workaround before you upload the content bundle for the upgrade, or afte
 after a successful upload, because the pending upgrade needs the local content bundle.
 
 The workaround frees disk space on every node in the cluster. It removes the local content bundle and the peer content
-cache. The next upload recreates the local content bundle, and content sync copies it to the linked hosts. While the
-local content bundle and the peer content cache are absent, content sync to linked hosts pauses. The appliance also
-cannot stage Palette Edge node agent images for an air-gapped upgrade.
+cache. The next upload recreates the local content bundle, and content synchronization copies it to the linked hosts.
+While the local content bundle and the peer content cache are absent, content synchronization to linked hosts pauses.
+The appliance also cannot stage Palette agent images for an air-gapped upgrade.
 
 The following diagram shows which path to take through the steps. The numbers match the steps that follow.
 
@@ -258,7 +258,8 @@ The following diagram shows which path to take through the steps. The numbers ma
 2. Confirm that an upgrade is not already in progress. In Local UI on the leader node, from the left main menu, select
    **Cluster**, and check that the cluster is in the **Running** state.
 
-   If an upgrade is in progress, do not continue with this workaround. Wait for the upgrade to finish.
+   If the cluster is not in the **Running** state because an upgrade is in progress, do not continue with this
+   workaround. Wait for the upgrade to finish.
 
    - If the cluster returns to the **Running** state, finish the upgrade from step 11 of
      [Upgrade the Platform](../how-to-guides/upgrade-the-platform.md#upgrade-the-platform).
