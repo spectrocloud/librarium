@@ -83,6 +83,15 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 #### Breaking Changes {#breaking-changes-edge-4.10.c}
 
+<!-- https://spectrocloud.atlassian.net/browse/PE-10264 -->
+
+- Connected Edge hosts with agent upgrades paused now keep their current Palette agent version when you add them to a
+  cluster or use them to create one. Previously, the agent upgraded to the latest version in both cases. To install a
+  specific agent version instead, set the `stylusPackage` parameter in the OS pack of the cluster profile. To upgrade
+  the agent to the latest version, resume agent upgrades. Refer to
+  [Pause Agent Upgrades](../clusters/cluster-management/platform-settings/pause-platform-upgrades.md#agent-upgrades-for-pcg-and-edge-hosts)
+  for more information.
+
 #### Upgrade Notes {#upgrade-notes-edge-4.10.c}
 
 #### Features
