@@ -9,6 +9,9 @@
 #     pack-pipeline file (listed in pack_paths).
 # If a check fails, it counts as no, and the log says why.
 #
+# Builds with the pack pages turn off the Rspack persistent cache and run Docusaurus in two processes, bundling and
+# then static site generation, to stay under the memory limit (DOC 3452). Refer to step 4.
+#
 # Production (Release to Production) and the version-* branch deploys do not use this script.
 #
 # The Rspack persistent cache (node_modules/.cache/rspack, which Netlify restores between builds) is cleared when the
@@ -93,18 +96,14 @@ fi
 if [[ "$build_packs" == true ]]; then
   export DISABLE_PACKS_INTEGRATIONS=false
   log "Building the pack pages."
-  # The pack pages take the build to the build machine's 11 GiB memory limit (DOC 3452). Render fewer pages at once
-  # during static site generation (the Docusaurus default is 32), and print how long each build phase takes
-  # (DOCUSAURUS_PERF_LOGGER, an undocumented Docusaurus variable). A memory kill (exit code 137) after the
-  # "[PERF] ... Bundling with rspack" line happened during static site generation; one before it happened while
-  # Rspack was bundling. To try another concurrency without a code change, set DOCUSAURUS_SSR_CONCURRENCY in Netlify.
-  # The Rspack persistent cache is off (read in docusaurus.config.js): it adds about 1.7 GiB while Rspack bundles.
-  # The build runs in two processes (step 5), so static site generation does not start with the bundler's memory.
-  export DOCUSAURUS_SSR_CONCURRENCY="${DOCUSAURUS_SSR_CONCURRENCY:-4}"
-  export DOCUSAURUS_PERF_LOGGER=true
+  # The pack pages take the build to the build machine's memory limit, 10.72 GiB (DOC 3452). Two changes keep it
+  # under: the Rspack persistent cache is off (read in docusaurus.config.js), which saves about 1.7 GiB while Rspack
+  # bundles, and the build runs in two processes (step 4). DOCUSAURUS_PERF_LOGGER, an undocumented Docusaurus variable,
+  # prints how long each build phase takes, so the log shows which phase a memory kill (exit code 137) happened in.
   export DISABLE_RSPACK_PERSISTENT_CACHE=true
-  log "Static site generation renders ${DOCUSAURUS_SSR_CONCURRENCY} pages at a time. Build phase timings are on."
-  log "The Rspack persistent cache is off. The build runs in two steps: bundling, then static site generation."
+  export DOCUSAURUS_PERF_LOGGER=true
+  log "The Rspack persistent cache is off, and build phase timings are on."
+  log "The build runs in two steps: bundling, then static site generation."
 else
   export DISABLE_PACKS_INTEGRATIONS=true
   log "Skipping the pack pages. Add the ${label} label and retry the deploy to build them."
@@ -142,101 +141,7 @@ fi
 
 mkdir -p "$(dirname "$mode_file")" && echo "$mode" >"$mode_file"
 
-# 4. Memory sampler (temporary diagnostic for DOC 3452; remove once the memory kills are resolved). For builds with
-# the pack pages, log the container's memory every few seconds until the build exits. Netlify's usage table reports
-# only the container total, which includes file cache that the kernel can free. The sampler splits the total into
-# process memory (anon) and file cache, and adds the resident memory of all processes and of the largest one (Node,
-# which also holds Rspack's native memory). Netlify's build machine has no cgroup memory files, so the sampler falls
-# back to /proc/meminfo there: memory in use (MemTotal minus MemAvailable), file cache, shared memory, and kernel
-# memory that cannot be freed. PACK_PREVIEW_MEM_SAMPLER=0 turns it off, PACK_PREVIEW_MEM_INTERVAL sets the seconds
-# between samples (default 3), and PACK_PREVIEW_CGROUP_DIR and PACK_PREVIEW_PROC_DIR override /sys/fs/cgroup and
-# /proc for testing.
-cgroup_dir="${PACK_PREVIEW_CGROUP_DIR:-/sys/fs/cgroup}"
-proc_dir="${PACK_PREVIEW_PROC_DIR:-/proc}"
-mem_interval="${PACK_PREVIEW_MEM_INTERVAL:-3}"
-
-to_gib() { awk -v b="${1:-}" 'BEGIN { if (b ~ /^[0-9]+$/) printf "%.2f", b / 1073741824; else printf "?" }'; }
-kib_to_gib() { awk -v k="${1:-}" 'BEGIN { if (k ~ /^[0-9]+$/) printf "%.2f", k / 1048576; else printf "?" }'; }
-stat_value() { awk -v k="$1" '$1 == k { print $2; exit }' "$2" 2>/dev/null; }
-
-mem_sample() {
-  local total="" anon="" file="" dirty="" ooms="" procs="" out mi="$proc_dir/meminfo" m_total="" m_avail="" m_used=""
-  if [[ -f "$cgroup_dir/memory.current" ]]; then
-    total=$(cat "$cgroup_dir/memory.current" 2>/dev/null)
-    anon=$(stat_value anon "$cgroup_dir/memory.stat")
-    file=$(stat_value file "$cgroup_dir/memory.stat")
-    dirty=$(stat_value file_dirty "$cgroup_dir/memory.stat")
-    ooms=$(stat_value oom_kill "$cgroup_dir/memory.events")
-  elif [[ -f "$cgroup_dir/memory/memory.usage_in_bytes" ]]; then
-    total=$(cat "$cgroup_dir/memory/memory.usage_in_bytes" 2>/dev/null)
-    anon=$(stat_value total_rss "$cgroup_dir/memory/memory.stat")
-    file=$(stat_value total_cache "$cgroup_dir/memory/memory.stat")
-    dirty=$(stat_value total_dirty "$cgroup_dir/memory/memory.stat")
-    ooms=$(stat_value oom_kill "$cgroup_dir/memory/memory.oom_control")
-  elif [[ -f "$mi" ]]; then
-    m_total=$(stat_value MemTotal: "$mi")
-    m_avail=$(stat_value MemAvailable: "$mi")
-    [[ "$m_total" =~ ^[0-9]+$ && "$m_avail" =~ ^[0-9]+$ ]] && m_used=$((m_total - m_avail))
-    ooms=$(stat_value oom_kill "$proc_dir/vmstat")
-  fi
-  # Resident memory in bytes: "<all processes> <largest process> <its name>".
-  if [[ -d "$proc_dir/self" ]]; then
-    procs=$(cat "$proc_dir"/[0-9]*/status 2>/dev/null | awk '
-      /^Name:/ { n = $2 }
-      /^VmRSS:/ { t += $2; if ($2 > m) { m = $2; mn = n } }
-      END { printf "%d %d %s", t * 1024, m * 1024, (mn == "" ? "?" : mn) }')
-  else
-    procs=$(ps -A -o rss=,comm= 2>/dev/null | awk '
-      { n = $2; sub(/.*\//, "", n); t += $1; if ($1 > m) { m = $1; mn = n } }
-      END { printf "%d %d %s", t * 1024, m * 1024, (mn == "" ? "?" : mn) }')
-  fi
-  read -r procs_total procs_max procs_name <<<"$procs"
-  out="Memory:"
-  if [[ -n "$total" ]]; then
-    out+=" container $(to_gib "$total") GiB (anon $(to_gib "$anon"), file cache $(to_gib "$file"),"
-    out+=" dirty $(to_gib "$dirty")),"
-  elif [[ -n "$m_total" ]]; then
-    out+=" system $(kib_to_gib "$m_used") of $(kib_to_gib "$m_total") GiB in use"
-    out+=" (file cache $(kib_to_gib "$(stat_value Cached: "$mi")"),"
-    out+=" shared $(kib_to_gib "$(stat_value Shmem: "$mi")"),"
-    out+=" kernel unreclaimable $(kib_to_gib "$(stat_value SUnreclaim: "$mi")"),"
-    out+=" dirty $(kib_to_gib "$(stat_value Dirty: "$mi")")),"
-  fi
-  out+=" processes $(to_gib "${procs_total:-}") GiB (largest: ${procs_name:-?} $(to_gib "${procs_max:-}") GiB)"
-  [[ -n "$ooms" ]] && out+=", oom_kill ${ooms}"
-  log "$out"
-}
-
-start_mem_sampler() {
-  local watch_pid="$1" limit="" version=""
-  if [[ -f "$cgroup_dir/memory.max" ]]; then
-    limit=$(cat "$cgroup_dir/memory.max" 2>/dev/null) version="v2"
-  elif [[ -f "$cgroup_dir/memory/memory.limit_in_bytes" ]]; then
-    limit=$(cat "$cgroup_dir/memory/memory.limit_in_bytes" 2>/dev/null) version="v1"
-  fi
-  local where
-  where="cgroup ${version}, limit $(to_gib "$limit") GiB"
-  if [[ -z "$version" && -f "$proc_dir/meminfo" ]]; then
-    where="no cgroup memory files, so ${proc_dir}/meminfo"
-    where+=", MemTotal $(kib_to_gib "$(stat_value MemTotal: "$proc_dir/meminfo")") GiB"
-  elif [[ -z "$version" ]]; then
-    where="no cgroup memory files in ${cgroup_dir} or ${proc_dir}/meminfo, so processes only"
-  fi
-  log "Memory sampler on: every ${mem_interval} s until the build exits (${where})."
-  (
-    while kill -0 "$watch_pid" 2>/dev/null; do
-      mem_sample
-      sleep "$mem_interval"
-    done
-  ) &
-}
-
-# exec keeps this shell's PID, so the sampler stops within one interval of npm exiting.
-if [[ "$build_packs" == true && "${PACK_PREVIEW_MEM_SAMPLER:-1}" != "0" ]]; then
-  start_mem_sampler "$$"
-fi
-
-# 5. Builds with the pack pages run Docusaurus twice. Rspack keeps the memory it used to bundle the site (about 8 GiB)
+# 4. Builds with the pack pages run Docusaurus twice. Rspack keeps the memory it used to bundle the site (about 8 GiB)
 # until its process exits, and static site generation needs more on top. So the first process loads the site and
 # bundles it, then exits (DOCUSAURUS_EXIT_AFTER_BUNDLING). The second process loads the site again, which reuses the
 # pack data that the first one saved in .docusaurus/packs-integrations/, skips bundling, and generates the static pages
