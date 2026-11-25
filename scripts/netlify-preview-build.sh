@@ -99,10 +99,17 @@ if [[ "$build_packs" == true ]]; then
   # "[PERF] ... Bundling with rspack" line happened during static site generation; one before it happened while
   # Rspack was bundling. To try another concurrency without a code change, set DOCUSAURUS_SSR_CONCURRENCY in Netlify.
   # The build also runs with --no-minify (step 4), which skips JavaScript and CSS minification while Rspack bundles.
+  # Two more memory tests: turn off the Rspack persistent cache (read in docusaurus.config.js), and start Node with
+  # --expose-gc (appended to NODE_OPTIONS by the build script in package.json). With --expose-gc, the Docusaurus phase
+  # timings run a full garbage collection at each phase boundary, so memory the bundler no longer uses can be freed
+  # before static site generation starts.
   export DOCUSAURUS_SSR_CONCURRENCY="${DOCUSAURUS_SSR_CONCURRENCY:-4}"
   export DOCUSAURUS_PERF_LOGGER=true
+  export DISABLE_RSPACK_PERSISTENT_CACHE=true
+  export EXTRA_BUILD_NODE_OPTIONS="--expose-gc"
   log "Static site generation renders ${DOCUSAURUS_SSR_CONCURRENCY} pages at a time. Build phase timings are on."
   log "JavaScript and CSS are not minified (--no-minify)."
+  log "The Rspack persistent cache is off, and Node runs with --expose-gc."
 else
   export DISABLE_PACKS_INTEGRATIONS=true
   log "Skipping the pack pages. Add the ${label} label and retry the deploy to build them."
