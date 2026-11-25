@@ -98,7 +98,7 @@ if [[ "$build_packs" == true ]]; then
   # (DOCUSAURUS_PERF_LOGGER, an undocumented Docusaurus variable). A memory kill (exit code 137) after the
   # "[PERF] ... Bundling with rspack" line happened during static site generation; one before it happened while
   # Rspack was bundling. To try another concurrency without a code change, set DOCUSAURUS_SSR_CONCURRENCY in Netlify.
-  export DOCUSAURUS_SSR_CONCURRENCY="${DOCUSAURUS_SSR_CONCURRENCY:-8}"
+  export DOCUSAURUS_SSR_CONCURRENCY="${DOCUSAURUS_SSR_CONCURRENCY:-4}"
   export DOCUSAURUS_PERF_LOGGER=true
   log "Static site generation renders ${DOCUSAURUS_SSR_CONCURRENCY} pages at a time. Build phase timings are on."
 else
@@ -137,5 +137,78 @@ if [[ "$dry_run" == true ]]; then
 fi
 
 mkdir -p "$(dirname "$mode_file")" && echo "$mode" >"$mode_file"
+
+# 4. Memory sampler (temporary diagnostic for DOC 3452; remove once the memory kills are resolved). For builds with
+# the pack pages, log the container's memory every few seconds until the build exits. Netlify's usage table reports
+# only the container total, which includes file cache that the kernel can free. The sampler splits the total into
+# process memory (anon) and file cache, and adds the resident memory of all processes and of the largest one (Node,
+# which also holds Rspack's native memory). PACK_PREVIEW_MEM_SAMPLER=0 turns it off, PACK_PREVIEW_MEM_INTERVAL sets
+# the seconds between samples (default 3), and PACK_PREVIEW_CGROUP_DIR overrides /sys/fs/cgroup for testing.
+cgroup_dir="${PACK_PREVIEW_CGROUP_DIR:-/sys/fs/cgroup}"
+mem_interval="${PACK_PREVIEW_MEM_INTERVAL:-3}"
+
+to_gib() { awk -v b="${1:-}" 'BEGIN { if (b ~ /^[0-9]+$/) printf "%.2f", b / 1073741824; else printf "?" }'; }
+stat_value() { awk -v k="$1" '$1 == k { print $2; exit }' "$2" 2>/dev/null; }
+
+mem_sample() {
+  local total="" anon="" file="" dirty="" ooms="" procs="" out
+  if [[ -f "$cgroup_dir/memory.current" ]]; then
+    total=$(cat "$cgroup_dir/memory.current" 2>/dev/null)
+    anon=$(stat_value anon "$cgroup_dir/memory.stat")
+    file=$(stat_value file "$cgroup_dir/memory.stat")
+    dirty=$(stat_value file_dirty "$cgroup_dir/memory.stat")
+    ooms=$(stat_value oom_kill "$cgroup_dir/memory.events")
+  elif [[ -f "$cgroup_dir/memory/memory.usage_in_bytes" ]]; then
+    total=$(cat "$cgroup_dir/memory/memory.usage_in_bytes" 2>/dev/null)
+    anon=$(stat_value total_rss "$cgroup_dir/memory/memory.stat")
+    file=$(stat_value total_cache "$cgroup_dir/memory/memory.stat")
+    dirty=$(stat_value total_dirty "$cgroup_dir/memory/memory.stat")
+    ooms=$(stat_value oom_kill "$cgroup_dir/memory/memory.oom_control")
+  fi
+  # Resident memory in bytes: "<all processes> <largest process> <its name>".
+  if [[ -d /proc/self ]]; then
+    procs=$(cat /proc/[0-9]*/status 2>/dev/null | awk '
+      /^Name:/ { n = $2 }
+      /^VmRSS:/ { t += $2; if ($2 > m) { m = $2; mn = n } }
+      END { printf "%d %d %s", t * 1024, m * 1024, (mn == "" ? "?" : mn) }')
+  else
+    procs=$(ps -A -o rss=,comm= 2>/dev/null | awk '
+      { n = $2; sub(/.*\//, "", n); t += $1; if ($1 > m) { m = $1; mn = n } }
+      END { printf "%d %d %s", t * 1024, m * 1024, (mn == "" ? "?" : mn) }')
+  fi
+  read -r procs_total procs_max procs_name <<<"$procs"
+  out="Memory:"
+  if [[ -n "$total" ]]; then
+    out+=" container $(to_gib "$total") GiB (anon $(to_gib "$anon"), file cache $(to_gib "$file"),"
+    out+=" dirty $(to_gib "$dirty")),"
+  fi
+  out+=" processes $(to_gib "${procs_total:-}") GiB (largest: ${procs_name:-?} $(to_gib "${procs_max:-}") GiB)"
+  [[ -n "$ooms" ]] && out+=", oom_kill ${ooms}"
+  log "$out"
+}
+
+start_mem_sampler() {
+  local watch_pid="$1" limit="" version=""
+  if [[ -f "$cgroup_dir/memory.max" ]]; then
+    limit=$(cat "$cgroup_dir/memory.max" 2>/dev/null) version="v2"
+  elif [[ -f "$cgroup_dir/memory/memory.limit_in_bytes" ]]; then
+    limit=$(cat "$cgroup_dir/memory/memory.limit_in_bytes" 2>/dev/null) version="v1"
+  fi
+  local where
+  where="cgroup ${version}, limit $(to_gib "$limit") GiB"
+  [[ -z "$version" ]] && where="no cgroup memory files in ${cgroup_dir}, so processes only"
+  log "Memory sampler on: every ${mem_interval} s until the build exits (${where})."
+  (
+    while kill -0 "$watch_pid" 2>/dev/null; do
+      mem_sample
+      sleep "$mem_interval"
+    done
+  ) &
+}
+
+# exec keeps this shell's PID, so the sampler stops within one interval of npm exiting.
+if [[ "$build_packs" == true && "${PACK_PREVIEW_MEM_SAMPLER:-1}" != "0" ]]; then
+  start_mem_sampler "$$"
+fi
 
 exec npm run build
