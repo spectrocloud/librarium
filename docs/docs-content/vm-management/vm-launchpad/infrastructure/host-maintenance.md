@@ -66,12 +66,15 @@ Replace `<path-to-kubeconfig>` with the path to the kubeconfig file.
       and check the `LiveMigratable` condition. Replace `<vm-name>` and `<namespace>` with the name and namespace of the
       VM. Refer to [Live Migration](../virtual-machines/managing.md#live-migration).
 
-   2. Use the **LiveMigrateIfPossible** eviction strategy. The VM then live-migrates when it can. When it cannot,
-      KubeVirt shuts the VM down so that the drain can finish, and the VM has downtime. Set the strategy on the VM, or,
-      for VMs that do not set their own, set the cluster's
+   2. Change the eviction strategy of the VM to **LiveMigrateIfPossible**. With this strategy, the VM live-migrates when
+      it can. When it cannot, KubeVirt shuts the VM down so that the drain can finish, and the VM has downtime. To set
+      the strategy on the VM, open the VM, select the **Configuration** tab, and select **Edit Configuration**. In the
+      **Scheduling & Lifecycle** section, select **LiveMigrateIfPossible** from the **Eviction Strategy** drop-down
+      menu, and select **Save Changes**. Refer to [Edit a VM](../virtual-machines/managing.md#edit-a-vm). For VMs that
+      do not set their own strategy, you can instead set the cluster's
       [**Default eviction strategy**](../kubevirt-configuration.md#strategies) to **Live migrate if possible**. A
       running VM keeps its eviction strategy until it restarts, so restart the VM after you set the new strategy and
-      before you drain the node. Refer to [Edit a VM](../virtual-machines/managing.md#edit-a-vm).
+      before you drain the node.
 
    3. Stop the VM before you drain the node, and start it again after the host is back online. Refer to
       [Start, Stop, Restart](../virtual-machines/managing.md#start-stop-restart).
