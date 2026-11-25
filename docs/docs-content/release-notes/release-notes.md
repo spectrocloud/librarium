@@ -21,6 +21,14 @@ tags: ["release-notes"]
 
 #### Breaking Changes {#breaking-changes-4.10.c}
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12743 -->
+<!-- https://spectrocloud.atlassian.net/browse/DOC-3514 -->
+
+- To improve security, Palette [API](/api/introduction) requests that use an unknown API key, such as a mistyped or
+  deleted key, now fail with the `UnAuthorizedAccess` error code instead of `ResourceNotFound`. The response still has
+  the HTTP 401 status code but no longer includes the unknown key. Update any automation that checks for the
+  `ResourceNotFound` error code or the `API Key '<key>' is not found` message.
+
 #### Upgrade Notes {#upgrade-notes-4.10.c}
 
 #### Features
