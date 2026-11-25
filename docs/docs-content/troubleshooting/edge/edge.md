@@ -68,9 +68,10 @@ recreated. Palette might still show the Calico pack as installed. Rolling the cl
 Edge hosts that use [Trusted Boot](../../clusters/edge/trusted-boot/trusted-boot.md) can lose their connection to
 Palette when they register. This affects Edge hosts that you installed from an Edge Installer ISO with a Palette agent
 version earlier than 4.10.0. During registration, Palette upgrades the Palette agent on the Edge host to the version
-that matches your Palette instance. Palette agent versions 4.10.0 and later, but earlier than 4.10.14, cannot detect
-that these Edge hosts are in registration mode. The upgraded agent starts in cluster mode, cannot find the cluster
-configuration that the Edge host receives only after registration, and restarts every few seconds.
+that matches your Palette instance. Palette agent versions 4.10.0 and later, but earlier than 4.10.14 (except version
+4.10.11-rev.1), cannot detect that these Edge hosts are in registration mode. The upgraded agent starts in cluster mode,
+cannot find the cluster configuration that the Edge host receives only after registration, and restarts every few
+seconds.
 
 In Palette, the Edge host stops sending heartbeats, its health status changes to **Unhealthy**, and it still shows the
 earlier Palette agent version. On the **Events** tab of the Edge host, the last event is
@@ -677,13 +678,37 @@ that Palette ships. Clusters that you move on version 4.10.25 or later are not a
    sudo ls --recursive /opt/.extensions/migrations/backups/kubeadm-sysext-migrations
    ```
 
+   ```text hideClipboard title="Example Output"
+   /opt/.extensions/migrations/backups/kubeadm-sysext-migrations:
+   containerd.service  containerd.service.d  kubelet.service  kubelet.service.d
+
+   /opt/.extensions/migrations/backups/kubeadm-sysext-migrations/containerd.service.d:
+   10-custom-opt-bin.conf  http-proxy.conf  max-tasks.conf  memory-pressure.conf
+
+   /opt/.extensions/migrations/backups/kubeadm-sysext-migrations/kubelet.service.d:
+   10-kubeadm.conf  kubelet-credential-provider.conf
+   ```
+
+   The file names in your output depend on which drop-in files the host had before the migration.
+
 3. List the drop-in files that Palette ships. A file in the backup directory with the same name as one of these files is
-   a Palette drop-in file, so do not copy it back. Every other file in the backup directory is one of your custom
-   drop-in files.
+   a Palette drop-in file, so do not copy it back. Every other file in the `containerd.service.d` and
+   `kubelet.service.d` backup directories is one of your custom drop-in files.
 
    ```shell
    ls /usr/lib/systemd/system/containerd.service.d/ /usr/lib/systemd/system/kubelet.service.d/
    ```
+
+   ```text hideClipboard title="Example Output"
+   /usr/lib/systemd/system/containerd.service.d/:
+   10-custom-opt-bin.conf  max-tasks.conf  memory-pressure.conf
+
+   /usr/lib/systemd/system/kubelet.service.d/:
+   10-kubeadm.conf
+   ```
+
+   In this example, `http-proxy.conf` and `kubelet-credential-provider.conf` are in the backup directory but not in this
+   list, so they are your custom drop-in files.
 
 4. Re-create the original directory, and then copy each custom drop-in file back to it.
 
@@ -708,6 +733,35 @@ that Palette ships. Clusters that you move on version 4.10.25 or later are not a
    ```shell
    systemctl cat containerd kubelet
    ```
+
+   ```text hideClipboard title="Example Output"
+   # /usr/lib/systemd/system/containerd.service
+   ...
+
+   # /usr/lib/systemd/system/containerd.service.d/10-custom-opt-bin.conf
+   ...
+
+   # /etc/systemd/system/containerd.service.d/http-proxy.conf
+   [Service]
+   Environment="HTTP_PROXY=http://proxy.example.com:3128"
+
+   # /usr/lib/systemd/system/containerd.service.d/max-tasks.conf
+   ...
+
+   # /usr/lib/systemd/system/containerd.service.d/memory-pressure.conf
+   ...
+
+   # /usr/lib/systemd/system/kubelet.service
+   ...
+
+   # /usr/lib/systemd/system/kubelet.service.d/10-kubeadm.conf
+   ...
+
+   # /etc/systemd/system/kubelet.service.d/kubelet-credential-provider.conf
+   ...
+   ```
+
+   The paths under `/etc/systemd/system/` are the custom drop-in files that you copied back.
 
 7. Repeat steps 1 - 6 on each Edge host in the cluster.
 
