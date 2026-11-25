@@ -215,18 +215,10 @@ restarting. The server operating system is not affected.
 
 ## Upgrade from Version 1.2 to 1.3.0 Can Run Out of Disk Space
 
-**Affected.** This issue can affect appliances that upgrade from version 1.2 to 1.3.0. Whether it occurs depends on the
-size of the uploaded content and on the image data already on the node. New installations of version 1.3.0 are not
-affected.
-
-**Symptom.** The upgrade to 1.3.0 runs out of disk space. The Kubelet might then evict pods to reclaim space. The
-content upload can also fail with an error that shows the required bytes.
-
-**Root cause.** Version 1.3.0 adds a Kubelet image garbage collection policy that reclaims unused images before the disk
-reaches the eviction threshold. The policy applies only after a node completes its upgrade to 1.3.0. On version 1.2, the
-Kubelet reclaims unused images only under image eviction pressure. A content bundle that you upload before the upgrade
-starts leaves little free space on the image filesystem. The images that the upgrade pulls can then use up that space
-before the 1.3.0 policy is in effect.
+**Symptom.** On appliances that upgrade from version 1.2 to 1.3.0, the upgrade can run out of disk space. The Kubelet
+might then evict pods to reclaim space. The content upload can also fail with an error that shows the required bytes.
+Whether this happens depends on the size of the uploaded content and on the image data already on the node. New
+installations of version 1.3.0 are not affected.
 
 **Workaround.** This workaround prevents the issue. It does not recover an upgrade that has already run out of disk
 space. In that case, contact Spectro Cloud support at [support@spectrocloud.com](mailto:support@spectrocloud.com).
