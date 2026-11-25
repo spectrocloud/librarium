@@ -3,14 +3,14 @@ partial_category: self-hosted
 partial_name: drbd-tls-switch
 ---
 
-**(Any to {props.edition === "Palette VerteX" ? "4.10.11" : "4.9.51"}+, three-node appliances only)** Starting with
-version {props.edition === "Palette VerteX" ? "4.10.11" : "4.9.51"}, {props.edition} encrypts Distributed Replicated
+**(Any to {props.edition === "Palette VerteX" ? "4.10.11" : "4.9.44"}+, three-node appliances only)** Starting with
+version {props.edition === "Palette VerteX" ? "4.10.11" : "4.9.44"}, {props.edition} encrypts Distributed Replicated
 Block Device (DRBD) replication traffic between appliance nodes with TLS. DRBD cannot switch an active connection to
 TLS, so volumes created on an earlier version, including the volume of the internal Zot registry, keep their plain TCP
 connections after you upgrade. The next time a node or the LINSTOR satellite pods restart, for example during a later
 upgrade, the Zot volume cannot attach. The upgrade then stalls because the management cluster cannot pull its images.
 
-If your appliance already runs {props.edition === "Palette VerteX" ? "4.10.11" : "4.9.51"} or later, check whether the
+If your appliance already runs {props.edition === "Palette VerteX" ? "4.10.11" : "4.9.44"} or later, check whether the
 Zot volume uses TLS before you upgrade, and switch its connections to TLS if it does not. If you upgrade from an earlier
 version, perform the check after the upgrade completes, or when the upgrade stalls. Refer to
 [Scenario - Palette/VerteX Management Appliance Upgrade Stalls Because DRBD Connections Do Not Use TLS](/troubleshooting/enterprise-install#scenario---palettevertex-management-appliance-upgrade-stalls-because-drbd-connections-do-not-use-tls)

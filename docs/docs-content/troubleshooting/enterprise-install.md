@@ -12,7 +12,7 @@ Refer to the following sections to troubleshoot errors encountered when installi
 
 ## Scenario - Palette/VerteX Management Appliance Upgrade Stalls Because DRBD Connections Do Not Use TLS
 
-Palette Management Appliance version 4.9.51 and later, and VerteX Management Appliance version 4.10.11 and later,
+Palette Management Appliance version 4.9.44 and later, and VerteX Management Appliance version 4.10.11 and later,
 encrypt [Distributed Replicated Block Device (DRBD)](https://linbit.com/drbd-user-guide/drbd-guide-9_0-en/) replication
 traffic between appliance nodes with TLS. DRBD cannot switch an active connection to TLS, so connections that were
 already open before the upgrade keep using plain TCP. This issue affects three-node appliances only. On a single-node
@@ -37,7 +37,7 @@ The following symptoms point to this issue:
 To resolve this issue, close the plain TCP connection of the Zot volume and let LINSTOR reopen it with TLS. The steps
 stop only Zot and change only the Zot volume, so other volumes, such as the MongoDB volumes, stay connected throughout.
 If your upgrade stalled, you then resume it one node at a time. Each node reboots during its upgrade, so Local UI and
-the management plane can be briefly unavailable. If your appliance already runs Palette Management Appliance 4.9.51 or
+the management plane can be briefly unavailable. If your appliance already runs Palette Management Appliance 4.9.44 or
 later, or VerteX Management Appliance 4.10.11 or later, use the same debug steps before you upgrade to check the Zot
 volume and switch its connection to TLS.
 
