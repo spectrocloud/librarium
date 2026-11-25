@@ -93,6 +93,14 @@ fi
 if [[ "$build_packs" == true ]]; then
   export DISABLE_PACKS_INTEGRATIONS=false
   log "Building the pack pages."
+  # The pack pages take the build to the build machine's 11 GiB memory limit (DOC 3452). Render fewer pages at once
+  # during static site generation (the Docusaurus default is 32), and print how long each build phase takes
+  # (DOCUSAURUS_PERF_LOGGER, an undocumented Docusaurus variable). A memory kill (exit code 137) after the
+  # "[PERF] ... Bundling with rspack" line happened during static site generation; one before it happened while
+  # Rspack was bundling. To try another concurrency without a code change, set DOCUSAURUS_SSR_CONCURRENCY in Netlify.
+  export DOCUSAURUS_SSR_CONCURRENCY="${DOCUSAURUS_SSR_CONCURRENCY:-8}"
+  export DOCUSAURUS_PERF_LOGGER=true
+  log "Static site generation renders ${DOCUSAURUS_SSR_CONCURRENCY} pages at a time. Build phase timings are on."
 else
   export DISABLE_PACKS_INTEGRATIONS=true
   log "Skipping the pack pages. Add the ${label} label and retry the deploy to build them."
