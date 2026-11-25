@@ -14,14 +14,15 @@ Refer to the following sections to troubleshoot errors encountered when installi
 
 Palette Management Appliance version 4.9.51 and later, and VerteX Management Appliance version 4.10.11 and later,
 encrypt [Distributed Replicated Block Device (DRBD)](https://linbit.com/drbd-user-guide/drbd-guide-9_0-en/) replication
-traffic between appliance nodes with TLS. DRBD cannot switch an active connection to TLS, so volumes created on an
-earlier version keep their plain TCP connections after you upgrade. This issue affects three-node appliances only. On a
-single-node appliance, volumes have no replicas on other nodes, so there are no connections to switch.
+traffic between appliance nodes with TLS. DRBD cannot switch an active connection to TLS, so connections that were
+already open before the upgrade keep using plain TCP. This issue affects three-node appliances only. On a single-node
+appliance, volumes have no replicas on other nodes, so there are no connections to switch.
 
-On a three-node appliance, the volume of the internal Zot registry has a replica on each node. Its plain TCP connections
-keep working until a node restarts, the LINSTOR satellite pods restart, or the Zot pod moves to another node, for
-example during a later upgrade. LINSTOR then fails to apply the TLS setting to the Zot volume, the volume cannot attach,
-and the Zot pod cannot start. Because the management cluster pulls its images from Zot, pods enter the
+On a three-node appliance, the volume of the internal Zot registry has a replica on each node and a connection between
+each pair of nodes. Its plain TCP connections keep working until a node restarts, the LINSTOR satellite pods restart, or
+the Zot pod moves to another node, for example during a later upgrade. Some connections can then reopen with TLS while
+others stay on plain TCP. LINSTOR fails to apply the TLS setting to the connections that stay on plain TCP, the volume
+cannot attach, and the Zot pod cannot start. Because the management cluster pulls its images from Zot, pods enter the
 `ImagePullBackOff` state, and the upgrade stalls.
 
 The following symptoms point to this issue:
@@ -33,16 +34,23 @@ The following symptoms point to this issue:
 
 - The Zot volume does not attach, and the LINSTOR CSI driver reports `could not determine device path`.
 
-To resolve this issue, switch the DRBD connections to TLS. The switch pauses I/O on every DRBD volume, including the
-MongoDB volumes, from step 8 until step 10 completes, so Palette or VerteX is unavailable during that time. If your
-appliance already runs Palette Management Appliance 4.9.51 or later, or VerteX Management Appliance 4.10.11 or later,
-use the same steps before you upgrade to check the Zot volume and switch its connections.
+To resolve this issue, close the plain TCP connection of the Zot volume and let LINSTOR reopen it with TLS. The steps
+stop only Zot and change only the Zot volume, so other volumes, such as the MongoDB volumes, stay connected throughout.
+If your upgrade stalled, you then resume it one node at a time. Each node reboots during its upgrade, so Local UI and
+the management plane can be briefly unavailable. If your appliance already runs Palette Management Appliance 4.9.51 or
+later, or VerteX Management Appliance 4.10.11 or later, use the same debug steps before you upgrade to check the Zot
+volume and switch its connection to TLS.
 
 :::danger
 
 Do not run `drbdadm invalidate` or any command with the `--discard-my-data` option, and do not delete the Zot
 PersistentVolumeClaim (PVC), PersistentVolume (PV), or VolumeAttachment. This issue is not a split-brain, and the data
 on all three replicas remains intact.
+
+Do not run `drbdadm adjust` yourself, and do not run `drbdadm connect` or `drbdadm disconnect` on any volume or
+connection other than the one in step 10. After a failed adjust, LINSTOR restores the previous resource file, so a
+manual `drbdadm adjust` reopens the connection with plain TCP. Do not use the `suspend-io`, `disconnect`, and `adjust`
+sequence from the upstream Piraeus TLS guide either.
 
 :::
 
@@ -67,7 +75,7 @@ on all three replicas remains intact.
 
 5. Issue the following command to find the name of the DRBD resource that backs the Zot volume. The resource has the
    same name as the PV that is bound to the `zot-pvc` PVC. Use the same terminal session for the remaining steps,
-   because they use the `ZOT_RESOURCE` variable.
+   because they reuse the variables that you set.
 
    ```shell
    ZOT_RESOURCE=$(kubectl get pvc zot-pvc --namespace zot-system --output jsonpath='{.spec.volumeName}')
@@ -78,99 +86,193 @@ on all three replicas remains intact.
    pvc-6d603d91-d5f6-459a-b600-0a699cbb4936
    ```
 
-6. Issue the following command to check whether the connections of the Zot volume use TLS on each LINSTOR satellite pod.
+6. Issue the following command to check the disks and connections of the Zot volume on each LINSTOR satellite pod. The
+   command only reads information. Each satellite pod name includes the name of its node.
 
    ```shell
    for SATELLITE in $(kubectl get pods --namespace piraeus-system --selector app.kubernetes.io/component=linstor-satellite --output name); do
-     echo "$SATELLITE: $(kubectl exec --namespace piraeus-system $SATELLITE --container linstor-satellite -- drbdsetup show $ZOT_RESOURCE | grep tls)"
+     echo "== $SATELLITE"
+     kubectl exec --namespace piraeus-system $SATELLITE --container linstor-satellite -- drbdsetup status --verbose $ZOT_RESOURCE | grep --extended-regexp 'connection|tls|disk'
    done
    ```
 
-   If the output shows `tls yes` for every satellite pod, the Zot volume already uses TLS, and you do not need to
-   continue. If any satellite pod does not show `tls yes`, continue to the next step.
+   Each satellite pod lists its own disk, the disks of the other two nodes, and its connection to each of them, so every
+   connection appears twice, once for each of its nodes. A connection that shows `tls:no`, or that has no `tls:` field,
+   uses plain TCP. Use the output to decide how to continue.
 
-7. Scale down the Zot deployment so that the volume is no longer in use.
+   - If every `disk:` and `peer-disk:` value is `UpToDate` and every connection shows `tls:yes`, the Zot volume already
+     uses TLS, and this issue does not apply. You do not need to continue.
+
+   - If every disk is `UpToDate` and only the connection between one pair of nodes uses plain TCP, continue to the next
+     step.
+
+   - If any disk is not `UpToDate`, or the connections between more than one pair of nodes use plain TCP, stop and
+     contact Spectro Cloud support.
+
+7. Back up the appliance database before you make any changes, and store the backup outside the appliance. Follow the
+   steps in the **Take a Database Backup** section of
+   [Back Up and Restore the Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance-backup-restore.md)
+   or
+   [Back Up and Restore the VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance-backup-restore.md).
+
+8. Issue the following commands to set variables for the two nodes whose connection uses plain TCP, and to find the
+   satellite pod of the first node.
+
+   ```shell
+   NODE_A=<node-a>
+   NODE_B=<node-b>
+   SAT_A=$(kubectl get pods --namespace piraeus-system --selector app.kubernetes.io/component=linstor-satellite --field-selector spec.nodeName=$NODE_A --output name)
+   echo $SAT_A
+   ```
+
+   Replace `<node-a>` and `<node-b>` with the names of the two nodes whose connection uses plain TCP, as they appear in
+   the output of `kubectl get nodes`. Check that the output shows the name of one satellite pod.
+
+9. Scale down the Zot deployment so that the volume is no longer in use.
 
    ```shell
    kubectl scale deployment zot --namespace zot-system --replicas=0
    ```
 
-   Wait until the Zot pod no longer appears in the output of the following command.
+   Wait until the Zot pod no longer appears in the output of the following command. This can take a minute.
 
    ```shell
    kubectl get pods --namespace zot-system
    ```
 
-8. Issue the following command to suspend I/O on all DRBD volumes on each satellite pod. I/O on every DRBD volume,
-   including the MongoDB volumes, stays paused until step 10 completes, so Palette or VerteX is unavailable during this
-   time.
+   Then, issue the following command and check that the `READY` column shows `0/0`.
 
    ```shell
-   for SATELLITE in $(kubectl get pods --namespace piraeus-system --selector app.kubernetes.io/component=linstor-satellite --output name); do
-     kubectl exec --namespace piraeus-system $SATELLITE --container linstor-satellite -- drbdadm suspend-io all
-   done
+   kubectl get deployment zot --namespace zot-system
    ```
 
-9. Issue the following command to disconnect all DRBD connections on each satellite pod.
-
-   ```shell
-   for SATELLITE in $(kubectl get pods --namespace piraeus-system --selector app.kubernetes.io/component=linstor-satellite --output name); do
-     kubectl exec --namespace piraeus-system $SATELLITE --container linstor-satellite -- drbdadm disconnect --force all
-   done
-   ```
-
-10. Issue the following command to reconnect the DRBD connections with the TLS setting on each satellite pod.
+10. Repeat the last command of step 9 and check that the Zot deployment still shows `0/0`. Then, issue the following
+    commands to close the connection from `NODE_A` to `NODE_B` and display the connections of the Zot volume on
+    `NODE_A`.
 
     ```shell
-    for SATELLITE in $(kubectl get pods --namespace piraeus-system --selector app.kubernetes.io/component=linstor-satellite --output name); do
-      kubectl exec --namespace piraeus-system $SATELLITE --container linstor-satellite -- drbdadm adjust all
-    done
+    kubectl exec --namespace piraeus-system $SAT_A --container linstor-satellite -- drbdadm disconnect $ZOT_RESOURCE:$NODE_B
+    kubectl exec --namespace piraeus-system $SAT_A --container linstor-satellite -- drbdsetup status --verbose $ZOT_RESOURCE | grep --extended-regexp 'connection|tls'
     ```
 
-11. Restart the LINSTOR satellite pods so that the connections come back with TLS.
+    In the output, the connection to `NODE_B` shows `StandAlone`, and the connection to the third node shows `Connected`
+    and `tls:yes`. `NODE_A` stays in sync with the third node while its connection to `NODE_B` is closed, which keeps
+    the data available. Do not continue unless the connection to the third node shows `Connected`. If it does not,
+    contact Spectro Cloud support.
 
-    ```shell
-    kubectl delete pods --namespace piraeus-system --selector app.kubernetes.io/component=linstor-satellite
-    ```
-
-    Wait until all the satellite pods are in the `Running` state.
+11. Issue the following command and wait until all three satellite pods are in the `Running` state. LINSTOR reopens the
+    connection only when the satellite pod on every node that holds a replica is running.
 
     ```shell
     kubectl get pods --namespace piraeus-system --selector app.kubernetes.io/component=linstor-satellite
     ```
 
-12. Issue the following command to check the state of the Zot volume.
+12. Issue the following command to set a placeholder property on the Zot volume. The property has no effect on the
+    volume, but setting it prompts LINSTOR to apply the volume configuration again, which reopens the connection with
+    TLS.
 
     ```shell
-    kubectl exec --namespace piraeus-system deployment/linstor-controller -- linstor resource list --resources $ZOT_RESOURCE
+    kubectl exec --namespace piraeus-system deployment/linstor-controller -- linstor resource-definition set-property $ZOT_RESOURCE Aux/touch 1
     ```
 
-    In the output, check that all three nodes show `UpToDate` in the `State` column and `Ok` in the `Conns` column.
-    Then, repeat step 6 and check that every satellite pod shows `tls yes`.
+    Check that the command reports success for each node.
 
-13. Scale the Zot deployment back up and wait for the rollout to complete.
+13. Wait 30 seconds, and then repeat step 6. Check that every connection shows `Connected` and `tls:yes`, and that every
+    disk shows `UpToDate`.
+
+14. Issue the following command to remove the placeholder property. Issue it even if the command in step 12 returned an
+    error.
+
+    ```shell
+    kubectl exec --namespace piraeus-system deployment/linstor-controller -- linstor resource-definition set-property $ZOT_RESOURCE Aux/touch
+    ```
+
+    If the connection between `NODE_A` and `NODE_B` did not show `Connected` and `tls:yes` in step 13, wait a few
+    minutes and repeat step 6. If the connection still has not reopened, repeat steps 11 - 14 once. If the connection
+    does not reopen after the second attempt, contact Spectro Cloud support.
+
+15. Scale the Zot deployment back up and wait for the rollout to complete.
 
     ```shell
     kubectl scale deployment zot --namespace zot-system --replicas=1
     kubectl rollout status deployment zot --namespace zot-system
     ```
 
-14. _(Stalled upgrades only)_ Issue the following command to list the pods that remain in the `ImagePullBackOff` state.
+    Then, issue the following command to check that the registry responds.
 
     ```shell
-    kubectl get pods --all-namespaces | grep ImagePullBackOff
+    curl --insecure --silent --output /dev/null --write-out '%{http_code}\n' https://<node-ip>:30003/v2/
     ```
 
-    Issue the following command for each pod in the output so that it pulls its images again.
+    Replace `<node-ip>` with the IP address of any node. The registry is available if the command returns `401` or
+    `200`.
 
-    ```shell
-    kubectl delete pod <pod-name> --namespace <namespace>
-    ```
+    If your upgrade stalled, continue to [Resume the Stalled Upgrade](#resume-the-stalled-upgrade). Otherwise, the Zot
+    volume now uses TLS, and you can upgrade your appliance.
 
-    Replace `<namespace>` and `<pod-name>` with the first and second columns of each line in the output. Then, retry the
-    upgrade. Refer to
-    [Upgrade Palette Management Appliance](../enterprise-version/upgrade/palette-management-appliance.md) or
-    [Upgrade VerteX Management Appliance](../vertex/upgrade/vertex-management-appliance.md) for guidance.
+### Resume the Stalled Upgrade
+
+Complete the following steps in the same terminal session to let the management cluster recover and to resume the node
+upgrades one node at a time.
+
+1. Wait for the pods that were waiting on images to start. They start on their own over the next few minutes. Pods in
+   the `palette-system` namespace that show `ContainerStatusUnknown` are usually left over from the stalled upgrade, and
+   you can ignore them.
+
+2. Issue the following commands to check the MongoDB pods and replica set.
+
+   ```shell
+   kubectl get pods --namespace hubble-system --selector role=mongo
+   kubectl exec --namespace hubble-system mongo-0 --container mongo -- sh -c 'HOME=/tmp mongosh --quiet --username "$MONGO_INITDB_ROOT_USERNAME" --password "$MONGO_INITDB_ROOT_PASSWORD" --authenticationDatabase admin --eval "rs.status().members.forEach(m => print(m.name, m.stateStr, m.health))"'
+   ```
+
+   Check that all three `mongo-*` pods are `Running` and ready, and that the second command lists three members, one
+   `PRIMARY` and two `SECONDARY`, each with a health of `1`. A member whose pod must pull its image first can take a few
+   more minutes. Wait until all three members are healthy before you continue, because the node upgrades restart the
+   nodes one at a time.
+
+3. Issue the following command to check the upgrade status of each node.
+
+   ```shell
+   kubectl get nodes --output custom-columns='NODE:.metadata.name,VERSION:.status.nodeInfo.kubeletVersion,TASK:.metadata.labels.task\.cluster\.spectrocloud\.com/control-plan,RETRY_AT:.metadata.annotations.retry-at\.task\.cluster\.spectrocloud\.com/control-plan'
+   ```
+
+   A node whose `TASK` value starts with `failed-` retries its upgrade on its own at the `RETRY_AT` time, which can be
+   up to 24 hours away. You do not need to update the cluster profile, even if Local UI prompts you to.
+
+4. Issue the following command to retry the upgrade of one node now instead of waiting. The trailing hyphen removes the
+   `retry-at` annotation, so the node retries its upgrade immediately.
+
+   ```shell
+   kubectl annotate node <node-name> retry-at.task.cluster.spectrocloud.com/control-plan-
+   ```
+
+   Replace `<node-name>` with the name of the first node whose `TASK` value starts with `failed-` in the output of
+   step 3.
+
+   The node upgrades and reboots, which takes 10 to 15 minutes. Repeat step 3 to follow its progress. The node upgrade
+   is complete when the node shows the new version and its `TASK` value no longer starts with `failed-`. If a node shows
+   the new version but its `TASK` value still starts with `failed-`, do not remove the annotation again. While a node
+   reboots, the Zot pod can stop briefly and move to another node.
+
+5. Before you upgrade the next node, repeat step 2, and issue the following command to check every DRBD volume on each
+   satellite pod.
+
+   ```shell
+   for SATELLITE in $(kubectl get pods --namespace piraeus-system --selector app.kubernetes.io/component=linstor-satellite --output name); do
+     echo "== $SATELLITE"
+     kubectl exec --namespace piraeus-system $SATELLITE --container linstor-satellite -- drbdsetup status --verbose | grep --extended-regexp '^pvc|tls:|disk:'
+   done
+   ```
+
+   Continue only when the MongoDB check passes, every `disk:` and `peer-disk:` value is `UpToDate`, and every connection
+   shows `tls:yes`. Right after a reboot, some disks can briefly show `Inconsistent` or `Outdated`, with
+   `replication:SyncSource` or `replication:SyncTarget`, while they resynchronize. Wait until they return to `UpToDate`.
+
+6. Repeat steps 4 and 5 for each remaining node whose `TASK` value starts with `failed-`. If a node starts its retry on
+   its own when its `RETRY_AT` time passes, wait for it to finish before you start another node.
+
+If any check fails, contact Spectro Cloud support.
 
 ## Scenario - Errors in API Calls After Traefik Migration
 
