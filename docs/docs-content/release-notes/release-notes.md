@@ -59,6 +59,15 @@ tags: ["release-notes"]
   `/v1/spectroclusters/{uid}/assets` endpoints continue to work. Update any automation, script, or integration that
   calls `GET /v1/spectroclusters/{uid}/assets` before you upgrade, because those calls fail after the upgrade.
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-5289 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12767 -->
+
+- The Quickstart installation mode for self-hosted Palette and the migration from a Quickstart installation to an
+  Enterprise Cluster are no longer available. Use the [EC command](../automation/palette-cli/commands/ec.md) of the
+  [Palette CLI](../automation/palette-cli/palette-cli.md) or the
+  [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) to install
+  self-hosted Palette.
+
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12353 -->
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12357 -->
 
