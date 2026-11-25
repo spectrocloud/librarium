@@ -98,18 +98,13 @@ if [[ "$build_packs" == true ]]; then
   # (DOCUSAURUS_PERF_LOGGER, an undocumented Docusaurus variable). A memory kill (exit code 137) after the
   # "[PERF] ... Bundling with rspack" line happened during static site generation; one before it happened while
   # Rspack was bundling. To try another concurrency without a code change, set DOCUSAURUS_SSR_CONCURRENCY in Netlify.
-  # The build also runs with --no-minify (step 4), which skips JavaScript and CSS minification while Rspack bundles.
-  # Two more memory tests: turn off the Rspack persistent cache (read in docusaurus.config.js), and start Node with
-  # --expose-gc (appended to NODE_OPTIONS by the build script in package.json). With --expose-gc, the Docusaurus phase
-  # timings run a full garbage collection at each phase boundary, so memory the bundler no longer uses can be freed
-  # before static site generation starts.
+  # The Rspack persistent cache is off (read in docusaurus.config.js): it adds about 1.7 GiB while Rspack bundles.
+  # The build runs in two processes (step 5), so static site generation does not start with the bundler's memory.
   export DOCUSAURUS_SSR_CONCURRENCY="${DOCUSAURUS_SSR_CONCURRENCY:-4}"
   export DOCUSAURUS_PERF_LOGGER=true
   export DISABLE_RSPACK_PERSISTENT_CACHE=true
-  export EXTRA_BUILD_NODE_OPTIONS="--expose-gc"
   log "Static site generation renders ${DOCUSAURUS_SSR_CONCURRENCY} pages at a time. Build phase timings are on."
-  log "JavaScript and CSS are not minified (--no-minify)."
-  log "The Rspack persistent cache is off, and Node runs with --expose-gc."
+  log "The Rspack persistent cache is off. The build runs in two steps: bundling, then static site generation."
 else
   export DISABLE_PACKS_INTEGRATIONS=true
   log "Skipping the pack pages. Add the ${label} label and retry the deploy to build them."
@@ -122,9 +117,7 @@ fi
 # and clear the cache when the mode changes.
 cache_dir="${PACK_PREVIEW_CACHE_DIR:-node_modules/.cache/rspack}"
 mode_file="$(dirname "$cache_dir")/pack-preview-mode"
-# Builds with the pack pages also skip minification, so their mode is not "packs-on", and a cache from an earlier
-# minified packs-on build is cleared rather than reused.
-if [[ "$build_packs" == true ]]; then mode="packs-on-no-minify"; else mode="packs-off"; fi
+if [[ "$build_packs" == true ]]; then mode="packs-on"; else mode="packs-off"; fi
 cached_mode=$(cat "$mode_file" 2>/dev/null) || true
 cached_mode="${cached_mode:-unknown}"
 dry_run=false
@@ -243,8 +236,22 @@ if [[ "$build_packs" == true && "${PACK_PREVIEW_MEM_SAMPLER:-1}" != "0" ]]; then
   start_mem_sampler "$$"
 fi
 
-# npm adds arguments after -- to the end of the build script, which is the docusaurus build command.
+# 5. Builds with the pack pages run Docusaurus twice. Rspack keeps the memory it used to bundle the site (about 8 GiB)
+# until its process exits, and static site generation needs more on top. So the first process loads the site and
+# bundles it, then exits (DOCUSAURUS_EXIT_AFTER_BUNDLING). The second process loads the site again, which reuses the
+# pack data that the first one saved in .docusaurus/packs-integrations/, skips bundling, and generates the static pages
+# from the bundle in build/ (DOCUSAURUS_SKIP_BUNDLING). It sets the same NODE_OPTIONS and GENERATE_SOURCEMAP as the
+# build script in package.json. Both variables are in Docusaurus 3.9.2 (lib/commands/build/buildLocale.js).
 if [[ "$build_packs" == true ]]; then
-  exec npm run build -- --no-minify
+  log "Step 1 of 2: loading the site and bundling it, then exiting (DOCUSAURUS_EXIT_AFTER_BUNDLING)."
+  DOCUSAURUS_EXIT_AFTER_BUNDLING=true npm run build
+  rc=$?
+  if [[ $rc -ne 0 ]]; then
+    log "Step 1 failed with exit code ${rc}."
+    exit "$rc"
+  fi
+  log "Step 2 of 2: loading the site again and generating the static pages from the bundle (DOCUSAURUS_SKIP_BUNDLING)."
+  exec env DOCUSAURUS_SKIP_BUNDLING=true NODE_OPTIONS="--max-old-space-size=6144" GENERATE_SOURCEMAP=false \
+    npm run docusaurus -- build
 fi
 exec npm run build
