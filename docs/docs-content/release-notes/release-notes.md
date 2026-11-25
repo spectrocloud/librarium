@@ -11,6 +11,194 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## December 13, 2026 - Release 4.10.c {#release-notes-4.10.c}
+
+### Security Notices
+
+- Review the [Security Bulletins](../security-bulletins/reports/reports.mdx) page for the latest security advisories.
+
+### Palette Enterprise {#palette-enterprise-4.10.c}
+
+#### Breaking Changes {#breaking-changes-4.10.c}
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12743 -->
+<!-- https://spectrocloud.atlassian.net/browse/DOC-3514 -->
+
+- To improve security, Palette [API](/api/introduction) requests that use an unknown API key, such as a mistyped or
+  deleted key, now fail with the `UnAuthorizedAccess` error code instead of `ResourceNotFound`. The response still has
+  the HTTP 401 status code but no longer includes the unknown key. Update any automation that checks for the
+  `ResourceNotFound` error code or the `API Key '<key>' is not found` message.
+
+#### Upgrade Notes {#upgrade-notes-4.10.c}
+
+#### Features
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-4916 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-11915 -->
+<!-- https://spectrocloud.atlassian.net/browse/DOC-3515 -->
+
+- Spectro Cloud now publishes security-hardened versions of many packs. These pack versions use security-hardened images
+  to reduce the attack surface of your clusters. Their versions include `-shi` (for example, `42.4.0-shi`). Palette
+  displays a **Hardened Images** (**HI**) indicator next to them. Security-hardened pack versions are optional, and the
+  standard versions of each pack remain available. Refer to
+  [Security-Hardened Pack Versions](../clusters/cluster-management/hardened-images.md#security-hardened-pack-versions)
+  to check the cluster requirements, switch a pack to a security-hardened version, or download these versions for airgap
+  environments.
+
+#### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PCP-7765 -->
+<!-- https://spectrocloud.atlassian.net/browse/PCP-8079 -->
+
+- You can now select a specific patch version of the Canonical Kubernetes pack when you create or update a cluster
+  profile. If you select only a minor version, Palette continues to deploy the latest patch version of that minor
+  version. Refer to [Cluster Profiles](../profiles/cluster-profiles/cluster-profiles.md#profile-layers) for more
+  information about pack versions.
+
+#### Bug Fixes
+
+#### Deprecations and Removals
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12145 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12769 -->
+
+- Palette removes the `GET /v1/spectroclusters/{uid}/assets` [API endpoint](/api/introduction). Use
+  `GET /v1/spectroclusters/{uid}/assets/manifest` to retrieve the cluster manifest instead. Other
+  `/v1/spectroclusters/{uid}/assets` endpoints continue to work. Update any automation, script, or integration that
+  calls `GET /v1/spectroclusters/{uid}/assets` before you upgrade, because those calls fail after the upgrade.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12353 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12357 -->
+
+- The `POST /v1/users/summary` and `POST /v1/teams/summary` Palette [API endpoints](/api/introduction) are now
+  deprecated. Use the paginated `POST /v2/users/summary` and `POST /v2/teams/summary` endpoints instead. They accept the
+  same request body and return the same fields, one page at a time. If you use only the Palette UI, no action is
+  required. Update any scripts and integrations that call the v1 endpoints directly. Refer to
+  [Migrate to the v2 Users and Teams Summary Endpoints](/api/introduction#migrate-to-the-v2-users-and-teams-summary-endpoints)
+  for the steps, and to the [Deprecations](./announcements.md#deprecations) table for the removal timeline.
+
+### Edge
+
+<!-- release-notes-edge-callout-4.10.c-start -->
+
+:::info
+
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.10.c Palette release is 4.10.c.
+
+:::
+
+<!-- release-notes-edge-callout-4.10.c-end -->
+
+#### Breaking Changes {#breaking-changes-edge-4.10.c}
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-10264 -->
+
+- Connected Edge hosts with agent upgrades paused now keep their current Palette agent version when you add them to a
+  cluster or use them to create one. Previously, the agent upgraded to the latest version in both cases. To install a
+  specific agent version instead, set the `stylusPackage` parameter in the OS pack of the cluster profile. To upgrade
+  the agent to the latest version, resume agent upgrades. Refer to
+  [Pause Agent Upgrades](../clusters/cluster-management/platform-settings/pause-platform-upgrades.md#agent-upgrades-for-pcg-and-edge-hosts)
+  for more information.
+
+#### Upgrade Notes {#upgrade-notes-edge-4.10.c}
+
+#### Features
+
+#### Improvements
+
+#### Bug Fixes
+
+#### Deprecations and Removals
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12289 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12772 -->
+
+- The `PATCH /v1/edgehosts/{uid}/hostPairingKey` and `PATCH /v1/edgehosts/{uid}/hostCheckSum` Palette
+  [API endpoints](/api/introduction) are now deprecated, along with the `hostPairingKey` and `hostChecksum` fields in
+  Edge host API requests and responses. They belong to the original, manual Edge host pairing workflow and have no
+  replacement. Remove any calls to these endpoints and any use of these fields from your automation, scripts, and
+  integrations. Refer to the [Deprecations](./announcements.md#deprecations) table for the removal timeline.
+
+### VerteX
+
+#### Breaking Changes {#breaking-changes-vertex-4.10.c}
+
+#### Upgrade Notes {#upgrade-notes-vertex-4.10.c}
+
+#### Features
+
+- Includes all Palette features, improvements, breaking changes, and deprecations in this release. Refer to the
+  [Palette section](#palette-enterprise-4.10.c) for more details.
+
+#### Improvements
+
+#### Bug Fixes
+
+### Virtual Machine Orchestrator (VMO)
+
+#### VMO Pack
+
+##### Breaking Changes {#breaking-changes-vmo-pack-4.10.c}
+
+##### Features
+
+##### Improvements
+
+##### Bug Fixes
+
+##### Deprecations and Removals
+
+#### PaletteAI VM Launchpad {#paletteai-vm-launchpad-4.10.c}
+
+##### Breaking Changes {#breaking-changes-vm-launchpad-4.10.c}
+
+##### Features
+
+##### Improvements
+
+##### Bug Fixes
+
+##### Deprecations and Removals
+
+### Automation
+
+<!-- release-notes-automation-callout-4.10.c-start -->
+
+:::info
+
+The [Palette CLI](../automation/palette-cli/palette-cli.md) version corresponding to the 4.10.c Palette release is
+4.10.c. Refer to [CLI Tools](/downloads/cli-tools/) for the download URL and checksum.
+
+:::
+
+<!-- release-notes-automation-callout-4.10.c-end -->
+
+#### Breaking Changes {#breaking-changes-automation-4.10.c}
+
+#### Features
+
+<!-- release-notes-automation-features-4.10.c-start -->
+
+- Terraform version 4.10.c of the
+  [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
+  now available. For more details, refer to the Terraform provider
+  [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
+- Crossplane version 4.10.c of the
+  [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) is
+  now available.
+
+<!-- release-notes-automation-features-4.10.c-end -->
+
+#### Improvements
+
+#### Bug Fixes
+
+#### Deprecations and Removals
+
+### Docs and Education
+
+<!-- {{ WEEKLY_COMPONENT_RELEASE_UPDATES }} -->
+
 ## November 20, 2026 - Release 4.10.45
 
 <!-- PATCH RELEASE TICKET: DOC-3466 -->

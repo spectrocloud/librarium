@@ -72,7 +72,8 @@ Edge hosts that are part of a cluster have their agent upgrades managed by the s
 that are not part of a cluster have their agent upgrades managed at the project and tenant level. Similar to clusters,
 pausing or resuming agent upgrades at the tenant level will automatically pause or resume agent upgrades for all
 projects within that tenant. However, you can override the tenant level setting by manually changing the upgrade setting
-at the project level.
+at the project level. If you pause agent upgrades, a connected Edge host also keeps its current agent version when you
+add it to a cluster or use it to create one.
 
 The following is a table showing the scopes at which you can pause agent upgrades for different objects. The same
 relationship between the scopes applies: Changing the setting in a higher scope will trigger a one-time change to the
