@@ -35,7 +35,8 @@
       "label": "1. Download the content bundle",
       "sublabel": "if you have not already",
       "pos": [318, 40],
-      "size": [250, 64]
+      "size": [250, 64],
+      "icon": "none"
     },
     {
       "id": "step2",
@@ -43,7 +44,8 @@
       "label": "2. Upgrade in progress?",
       "sublabel": "check the Cluster page",
       "pos": [318, 140],
-      "size": [250, 64]
+      "size": [250, 64],
+      "icon": "decision"
     },
     {
       "id": "step3",
@@ -51,7 +53,8 @@
       "label": "3. Earlier upload succeeded?",
       "sublabel": "Update available on Overview",
       "pos": [318, 240],
-      "size": [250, 64]
+      "size": [250, 64],
+      "icon": "decision"
     },
     {
       "id": "step4",
@@ -59,14 +62,16 @@
       "label": "4. Upload in progress?",
       "sublabel": "check Palette CLI or Local UI",
       "pos": [628, 340],
-      "size": [250, 64]
+      "size": [250, 64],
+      "icon": "decision"
     },
     {
       "id": "upgrade_end",
       "type": "database",
       "label": "How does the upgrade end?",
       "pos": [8, 440],
-      "size": [250, 64]
+      "size": [250, 64],
+      "icon": "decision"
     },
     {
       "id": "continue",
@@ -74,7 +79,8 @@
       "label": "Continue the upgrade",
       "sublabel": "from step 3 of Upgrade the Platform",
       "pos": [318, 440],
-      "size": [250, 64]
+      "size": [250, 64],
+      "icon": "active"
     },
     {
       "id": "finish_upgrade",
@@ -82,7 +88,8 @@
       "label": "Finish the upgrade",
       "pos": [8, 540],
       "size": [250, 64],
-      "sublabel": "from step 11 of Upgrade the Platform"
+      "sublabel": "from step 11 of Upgrade the Platform",
+      "icon": "success"
     },
     {
       "id": "support_upgrade",
@@ -90,7 +97,8 @@
       "label": "Contact Spectro Cloud support",
       "sublabel": "support@spectrocloud.com",
       "pos": [318, 540],
-      "size": [250, 64]
+      "size": [250, 64],
+      "icon": "person"
     },
     {
       "id": "step5",
@@ -98,7 +106,8 @@
       "label": "5. Remove bundle and cache",
       "sublabel": "on each node in the cluster",
       "pos": [628, 640],
-      "size": [250, 64]
+      "size": [250, 64],
+      "icon": "none"
     },
     {
       "id": "free_space",
@@ -106,7 +115,8 @@
       "label": "Enough space on the leader?",
       "sublabel": "compare df with required bytes",
       "pos": [318, 740],
-      "size": [250, 64]
+      "size": [250, 64],
+      "icon": "decision"
     },
     {
       "id": "step6",
@@ -114,7 +124,8 @@
       "label": "6. Earlier upload failed?",
       "sublabel": "with required bytes in the error",
       "pos": [628, 740],
-      "size": [250, 64]
+      "size": [250, 64],
+      "icon": "decision"
     },
     {
       "id": "support_space",
@@ -122,7 +133,8 @@
       "label": "Contact Spectro Cloud support",
       "sublabel": "support@spectrocloud.com",
       "pos": [318, 840],
-      "size": [250, 64]
+      "size": [250, 64],
+      "icon": "person"
     },
     {
       "id": "step7",
@@ -130,7 +142,8 @@
       "label": "7. Upload the bundle right away",
       "sublabel": "from step 2 of Upgrade the Platform",
       "pos": [628, 840],
-      "size": [250, 64]
+      "size": [250, 64],
+      "icon": "none"
     }
   ],
   "boundaries": [
