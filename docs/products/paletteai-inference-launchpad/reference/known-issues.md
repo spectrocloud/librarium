@@ -234,10 +234,10 @@ space. In that case, contact Spectro Cloud support at [support@spectrocloud.com]
 Use the workaround before you upload the content bundle for the upgrade, or after an upload that failed. Do not use it
 after a successful upload, because the pending upgrade needs the local content bundle.
 
-The workaround frees disk space on every node in the cluster. It removes the local content bundle and the peer content
-cache. The next upload recreates the local content bundle, and content synchronization copies it to the linked hosts.
-While the local content bundle and the peer content cache are absent, content synchronization to linked hosts pauses.
-The appliance also cannot stage Palette agent images for an air-gapped upgrade.
+The workaround frees disk space on the leader node, where you trigger the upload. It removes the local content bundle
+and the peer content cache. The next upload recreates the local content bundle. While the local content bundle and the
+peer content cache are absent, content synchronization to linked hosts pauses. The appliance also cannot stage Palette
+agent images for an air-gapped upgrade.
 
 The following diagram shows which path to take through the steps. The numbers match the steps that follow.
 
@@ -288,8 +288,8 @@ The following diagram shows which path to take through the steps. The numbers ma
      [Upgrade the Platform](../how-to-guides/upgrade-the-platform.md#upgrade-the-platform). If the upgrade runs out of
      disk space, contact Spectro Cloud support at [support@spectrocloud.com](mailto:support@spectrocloud.com).
 
-5. From a shell on each node in the cluster, such as an SSH session from the jumpbox or the BMC serial console, remove
-   the local content bundle and the peer content cache.
+5. From a shell on the leader node, such as an SSH session from the jumpbox or the BMC serial console, remove the local
+   content bundle and the peer content cache.
 
    ```bash
    sudo rm --recursive --force /usr/local/spectrocloud/bundle /usr/local/spectrocloud/peerbundle

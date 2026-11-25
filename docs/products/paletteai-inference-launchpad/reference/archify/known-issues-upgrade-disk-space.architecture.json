@@ -104,7 +104,7 @@
       "id": "step5",
       "type": "frontend",
       "label": "5. Remove bundle and cache",
-      "sublabel": "on each node in the cluster",
+      "sublabel": "on the leader node",
       "pos": [628, 640],
       "size": [250, 64],
       "icon": "none"
