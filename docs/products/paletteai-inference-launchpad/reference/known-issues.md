@@ -272,13 +272,8 @@ The following diagram shows which path to take through the steps. The numbers ma
 
    If the **Update available** indicator appears, an earlier upload succeeded. Do not continue with this workaround.
    Continue the upgrade from step 3 of
-   [Upgrade the Platform](../how-to-guides/upgrade-the-platform.md#upgrade-the-platform).
-
-   - If the cluster returns to the **Running** state, finish the upgrade from step 11 of
-     [Upgrade the Platform](../how-to-guides/upgrade-the-platform.md#upgrade-the-platform).
-
-   - If the upgrade runs out of disk space, contact Spectro Cloud support at
-     [support@spectrocloud.com](mailto:support@spectrocloud.com).
+   [Upgrade the Platform](../how-to-guides/upgrade-the-platform.md#upgrade-the-platform). If the upgrade runs out of
+   disk space, contact Spectro Cloud support at [support@spectrocloud.com](mailto:support@spectrocloud.com).
 
 4. Confirm that an upload is not already in progress. Check that no Palette CLI or Local UI upload shows a progress bar
    below 100 percent, and that no upload reached 100 percent in the last 30 minutes.
@@ -288,16 +283,13 @@ The following diagram shows which path to take through the steps. The numbers ma
 
    - If the upload fails, go to step 5.
 
-   - If the upload succeeds, do not continue with this workaround. Continue the upgrade from step 3 of
-     [Upgrade the Platform](../how-to-guides/upgrade-the-platform.md#upgrade-the-platform).
+   - If the upload succeeds, the **Update available** indicator appears on the **Overview** tab. Do not continue with
+     this workaround. Continue the upgrade from step 3 of
+     [Upgrade the Platform](../how-to-guides/upgrade-the-platform.md#upgrade-the-platform). If the upgrade runs out of
+     disk space, contact Spectro Cloud support at [support@spectrocloud.com](mailto:support@spectrocloud.com).
 
-     - If the cluster returns to the **Running** state, finish the upgrade from step 11 of
-       [Upgrade the Platform](../how-to-guides/upgrade-the-platform.md#upgrade-the-platform).
-
-     - If the upgrade runs out of disk space, contact Spectro Cloud support at
-       [support@spectrocloud.com](mailto:support@spectrocloud.com).
-
-5. From a shell on each node in the cluster, remove the local content bundle and the peer content cache.
+5. From a shell on each node in the cluster, such as an SSH session from the jumpbox or the BMC serial console, remove
+   the local content bundle and the peer content cache.
 
    ```bash
    sudo rm --recursive --force /usr/local/spectrocloud/bundle /usr/local/spectrocloud/peerbundle
