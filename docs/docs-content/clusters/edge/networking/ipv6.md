@@ -7,17 +7,6 @@ sidebar_position: 40
 tags: ["edge", "ipv6"]
 ---
 
-<!--
-PE-10279. This page assumes that the engineering work for Edge IPv6 support (PEM-12742) ships before the page is
-published. Resolve each item, and then remove this comment.
-
-VERIFY 1. OVN-Kubernetes: add it to the supported CNIs once the Edge team finishes verifying it.
-VERIFY 2. Dual-stack CIDR order: the instruction to list first the range that matches the IP family of the VIP is
-          inferred from the PEM-12742 test notes. Confirm it.
-VERIFY 3. Hardened images: the PEM-12742 test notes say that the CIS hardening profile disables router advertisements,
-          so SLAAC does not work under it. The Edge team is reviewing whether this belongs in the limitations.
--->
-
 Palette Edge supports IPv6-only clusters and dual-stack clusters. In an IPv6-only cluster, the nodes, pods, and services
 use IPv6 addresses. In a dual-stack cluster, they use both IPv4 and IPv6 addresses. In both cases, the cluster has a
 single Virtual IP (VIP) address.
