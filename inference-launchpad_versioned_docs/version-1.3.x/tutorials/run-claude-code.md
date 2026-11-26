@@ -252,6 +252,10 @@ Now connect the two halves.
 
 2. In your terminal, paste the configuration. Any directory works.
 
+   Notice the `CLAUDE_CODE_AUTO_MODE_SERVER=0` line. The appliance does not run Anthropic's server-side safety checks
+   for auto mode. This line makes Claude Code run its own checks instead. Without this line, Claude Code in auto mode
+   shows a warning and holds the action until you respond.
+
 3. In the panel, select the copy button next to the `export ANTHROPIC_AUTH_TOKEN=...` line. In your terminal, paste it.
    The panel fills in your real token, so nothing needs replacing.
 
@@ -348,6 +352,7 @@ Undo the changes the tutorial made.
    unset ANTHROPIC_DEFAULT_FABLE_MODEL
    unset CLAUDE_CODE_EFFORT_LEVEL
    unset CLAUDE_CODE_MAX_OUTPUT_TOKENS
+   unset CLAUDE_CODE_AUTO_MODE_SERVER
    ```
 
 3. Remove the platform CA certificate.
@@ -389,6 +394,9 @@ Undo the changes the tutorial made.
    />
 
 ## Next Steps
+
+- To connect Claude Code in every new terminal and in your integrated development environment (IDE), refer to
+  [Persist Claude Code Configuration](../how-to-guides/persist-claude-code-configuration.md).
 
 - To cap what a client can spend, refer to [Set and Manage Client Quotas](../how-to-guides/manage-client-quotas.md).
 
