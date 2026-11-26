@@ -156,8 +156,9 @@ const config = {
       swcHtmlMinimizer: true,
       lightningCssMinimizer: true,
       rspackBundler: true,
-      // scripts/netlify-preview-build.sh sets DISABLE_RSPACK_PERSISTENT_CACHE=true in previews that build the pack
-      // pages, where the cache adds about 1.7 GiB to the memory Rspack uses while bundling (DOC 3452).
+      // scripts/netlify-preview-build.sh sets DISABLE_RSPACK_PERSISTENT_CACHE=true in the deploy previews that build
+      // the pack pages and in the version-* branch deploys, where the cache adds about 1.7 GiB to the memory Rspack
+      // uses while bundling (DOC 3452).
       rspackPersistentCache: process.env.DISABLE_RSPACK_PERSISTENT_CACHE !== "true",
       mdxCrossCompilerCache: true,
     },
