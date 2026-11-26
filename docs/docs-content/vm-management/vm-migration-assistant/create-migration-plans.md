@@ -707,7 +707,8 @@ Ensure that your terminal is configured to access your VMO cluster using
     | **Root device**                 | Choose the root filesystem for the VM. By default, the first root device is chosen in multi-boot systems. You can specify a root device (for example, `/dev/sda1` for multi-boot systems), but if it is not detected as a root device, the migration will fail.                  |
     | **Migrate shared disks**        | Choose whether to migrate shared disks. If you enable this option, ensure that your VMO cluster has access to the shared storage from the storage maps configured for the migration.                                                                                             |
 
-14. Click **Next**.
+14. Select **Next** to configure the **Hooks (optional)** step, or select **Skip to review** to keep the default hook
+    settings and go to step 17.
 
 15. For the **Hooks (optional)** step, you can choose to enable pre-migration and post-migration hooks. Hooks are
     scripts that run at different stages of the migration process.
