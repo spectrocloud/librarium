@@ -1,6 +1,7 @@
 #!/bin/bash
 #
-# Build command for Netlify deploy previews (DOC 3427). Wired up in netlify.toml.
+# Build command for Netlify deploy previews (DOC 3427) and the version-* branch deploys (DOC 3452). Wired up in
+# netlify.toml.
 #
 # Deploy previews skip the pack pages (DISABLE_PACKS_INTEGRATIONS=true) to stay under the build machine's memory
 # limit. A preview builds the pack pages when either of these is true:
@@ -12,7 +13,8 @@
 # Builds with the pack pages turn off the Rspack persistent cache and run Docusaurus in two processes, bundling and
 # then static site generation, to stay under the memory limit (DOC 3452). Refer to step 4.
 #
-# Production (Release to Production) and the version-* branch deploys do not use this script.
+# Branch deploys, the twice-daily builds of the version-* branches (refer to scripts/netlify.sh), always build the pack
+# pages, so they skip the checks in steps 1 and 2. Production (Release to Production) does not use this script.
 #
 # The Rspack persistent cache (node_modules/.cache/rspack, which Netlify restores between builds) is cleared when the
 # pack mode differs from the mode of the cached build. Refer to step 3.
@@ -35,7 +37,11 @@ build_packs=false
 base_branch="master"
 
 # 1. The pack-pr label, and the PR's base branch for step 2. REVIEW_ID is the PR number that Netlify sets for previews.
-if [[ -n "${REVIEW_ID:-}" ]]; then
+# CONTEXT is the deploy context, and BRANCH is the branch being built. Branch deploys skip this step and step 2.
+if [[ "${CONTEXT:-}" == "branch-deploy" ]]; then
+  build_packs=true
+  log "This is a branch deploy of ${BRANCH:-an unknown branch}, which always builds the pack pages."
+elif [[ -n "${REVIEW_ID:-}" ]]; then
   if [[ -n "${GITHUB_READ_TOKEN:-}" ]]; then
     pr_json=$(curl -fsS --max-time 15 -H "Accept: application/vnd.github+json" \
       -H "Authorization: Bearer ${GITHUB_READ_TOKEN}" "https://api.github.com/repos/${repo}/pulls/${REVIEW_ID}")
