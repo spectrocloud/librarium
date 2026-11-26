@@ -27,6 +27,9 @@ Confirm each prerequisite before starting:
 - _(Upgrade from version 1.2 only)_ A decision on prompt cache sharing for each existing policy. For the choices and the
   risk that sharing brings, refer to
   [Prompt Cache Sharing](../explanation/prompt-cache-sharing.md#who-shares-the-prompt-cache).
+- _(Upgrade from version 1.2 only)_ The disk space workaround, completed before you upload the content bundle. For the
+  steps, refer to
+  [Known Issues: Upgrade from Version 1.2 to 1.3.0 Can Run Out of Disk Space](../reference/known-issues.md#upgrade-from-version-12-to-130-can-run-out-of-disk-space).
 
 ## Upgrade the Platform
 
