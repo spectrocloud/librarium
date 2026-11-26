@@ -67,7 +67,7 @@ jobs:
           if [ "$STATE" != "open" ]; then
             REASON="the PR is closed."
           elif [ "$DRAFT" = "true" ]; then
-            REASON="the PR is a Draft. Mark it ready for review, then comment \`/review-again\` again."
+            REASON="the PR is a Draft. Mark it ready for review, and then comment \`/review-again\`."
           elif [ -z "$MARKER_ID" ]; then
             REASON="the PR has not been posted there yet. Add the \`notify-slack\` label instead."
           fi
@@ -184,8 +184,10 @@ jobs:
           BODY=$(gh api "repos/$GITHUB_REPOSITORY/issues/comments/$MARKER_ID" --jq '.body')
           # Move the marker to the end, after the new line. Command substitution drops the trailing newlines.
           BODY=$(printf '%s' "${BODY//"$MARKER"/}")
-          # Markers from before November 17, 2026 end with a literal \n.
+          # Markers from before November 17, 2026 end with a literal " \n " (a space on each side).
+          BODY=${BODY% }
           BODY=${BODY%\\n}
+          BODY=${BODY% }
           BODY=$(printf '%s\n🔁 Posted again for another review at %s\n%s' "$BODY" "$TIMESTAMP" "$MARKER")
           gh api -X PATCH "repos/$GITHUB_REPOSITORY/issues/comments/$MARKER_ID" -f body="$BODY" > /dev/null
           gh api -X POST "repos/$GITHUB_REPOSITORY/issues/comments/$COMMENT_ID/reactions" -f content=+1 > /dev/null

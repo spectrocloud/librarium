@@ -36,8 +36,8 @@ Before submitting your PR for review, please complete this checklist to ensure q
       after you mark the PR ready for review.
 - [ ] Add the `notify-slack` label after all other labels and checklist items. It posts the review request to
       #docs-pr-review only once. On a Draft PR, the post goes out when you mark the PR ready for review. When the PR is
-      ready for another review, for example after you address review comments, comment `/review-again` on the PR to post
-      it again.
+      ready for another review (for example, after you address review comments), comment `/review-again` on the PR to
+      post the review request again.
 
 Good job! 👏👏👏
 
