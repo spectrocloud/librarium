@@ -9,11 +9,6 @@ tags: ["self-hosted", "enterprise", "eks", "ipv6"]
 keywords: ["self-hosted", "enterprise"]
 ---
 
-<!--
-RELEASE DAY. Confirm that 4.10.47 is the 4.10 patch version that ships the global.ipFamily Helm values, once the final
-tag exists. Update the version in Prerequisites if it changed.
--->
-
 You can install self-hosted Palette on an Amazon EKS cluster that uses the IPv6 IP address family. In an IPv6 EKS
 cluster, pods and services receive IPv6 addresses only. You enable IPv6 support through a parameter in the Palette Helm
 chart values file.

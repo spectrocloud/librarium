@@ -11,20 +11,15 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## DATE PENDING - Release 4.10.47
+## November 23, 2026 - Release 4.10.47
 
 <!-- PATCH RELEASE TICKET: DOC-3490 -->
 <!-- PATCH RELEASE VERSION: 4.10.47 -->
 <!-- PATCH RELEASE CANDIDATES: PEM-12742 -->
 
+Palette 4.10.47 is available for self-hosted Palette and Palette VerteX instances that you install with Helm.
+
 ### Improvements
-
-<!-- https://spectrocloud.atlassian.net/browse/PEM-12742 -->
-
-- Added IPv6 support for centrally managed [Edge](../clusters/edge/edge.md) clusters. Edge clusters that use
-  <VersionedLink text="Palette eXtended Kubernetes - Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" /> and the
-  Cilium Container Network Interface (CNI) can now use IPv6-only or dual-stack networking. Refer to [Deploy an IPv6 Edge
-  Cluster](../clusters/edge/networking/ipv6.md) for the prerequisites and limitations.
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12742 -->
 
@@ -34,6 +29,13 @@ tags: ["release-notes"]
   [Install Palette on an IPv6 EKS Cluster](../enterprise-version/install-palette/install-on-kubernetes/install-ipv6-eks.md)
   and
   [Install Palette VerteX on an IPv6 EKS Cluster](../vertex/install-palette-vertex/install-on-kubernetes/install-ipv6-eks.md).
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12742 -->
+
+- Added IPv6 support for centrally managed [Edge](../clusters/edge/edge.md) clusters. Edge clusters that use
+  <VersionedLink text="Palette eXtended Kubernetes - Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" /> and the
+  Cilium Container Network Interface (CNI) can now use IPv6-only or dual-stack networking. Refer to [Deploy an IPv6 Edge
+  Cluster](../clusters/edge/networking/ipv6.md) for the prerequisites and limitations.
 
 ### Edge
 
