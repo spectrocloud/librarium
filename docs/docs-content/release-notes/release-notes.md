@@ -17,7 +17,8 @@ tags: ["release-notes"]
 <!-- PATCH RELEASE VERSION: 4.10.47 -->
 <!-- PATCH RELEASE CANDIDATES: PEM-12742 -->
 
-Palette 4.10.47 is available for self-hosted Palette and Palette VerteX instances that you install with Helm.
+Palette 4.10.47 is a Helm-only release. It is available only for self-hosted Palette and Palette VerteX instances that
+you install with Helm.
 
 ### Improvements
 
