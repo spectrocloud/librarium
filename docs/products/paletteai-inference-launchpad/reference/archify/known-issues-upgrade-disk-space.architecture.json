@@ -1,0 +1,266 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Disk Space Workaround Steps",
+    "locale": "en",
+    "output": "known-issues-upgrade-disk-space.html",
+    "quality_profile": "standard",
+    "legend": {
+      "mode": "auto",
+      "entries": {
+        "database": {
+          "label": "Check"
+        },
+        "frontend": {
+          "label": "Workaround step"
+        },
+        "cloud": {
+          "label": "Continue the upgrade"
+        },
+        "security": {
+          "label": "Contact support"
+        },
+        "external": {
+          "label": "Finish the upgrade"
+        }
+      }
+    },
+    "viewBox": [910, 992]
+  },
+  "components": [
+    {
+      "id": "step1",
+      "type": "frontend",
+      "label": "1. Download the content bundle",
+      "sublabel": "if you have not already",
+      "pos": [318, 40],
+      "size": [250, 64],
+      "icon": "none"
+    },
+    {
+      "id": "step2",
+      "type": "database",
+      "label": "2. Upgrade in progress?",
+      "sublabel": "check the Cluster page",
+      "pos": [318, 140],
+      "size": [250, 64],
+      "icon": "decision"
+    },
+    {
+      "id": "step3",
+      "type": "database",
+      "label": "3. Earlier upload succeeded?",
+      "sublabel": "Update available on Overview",
+      "pos": [318, 240],
+      "size": [250, 64],
+      "icon": "decision"
+    },
+    {
+      "id": "step4",
+      "type": "database",
+      "label": "4. Upload in progress?",
+      "sublabel": "check Palette CLI or Local UI",
+      "pos": [628, 340],
+      "size": [250, 64],
+      "icon": "decision"
+    },
+    {
+      "id": "upgrade_end",
+      "type": "database",
+      "label": "How does the upgrade end?",
+      "pos": [8, 440],
+      "size": [250, 64],
+      "icon": "decision"
+    },
+    {
+      "id": "continue",
+      "type": "cloud",
+      "label": "Continue the upgrade",
+      "sublabel": "from step 3 of Upgrade the Platform",
+      "pos": [318, 440],
+      "size": [250, 64],
+      "icon": "active"
+    },
+    {
+      "id": "finish_upgrade",
+      "type": "external",
+      "label": "Finish the upgrade",
+      "pos": [8, 540],
+      "size": [250, 64],
+      "sublabel": "from step 11 of Upgrade the Platform",
+      "icon": "success"
+    },
+    {
+      "id": "support_upgrade",
+      "type": "security",
+      "label": "Contact Spectro Cloud support",
+      "sublabel": "support@spectrocloud.com",
+      "pos": [318, 540],
+      "size": [250, 64],
+      "icon": "person"
+    },
+    {
+      "id": "step5",
+      "type": "frontend",
+      "label": "5. Remove bundle and cache",
+      "sublabel": "on the leader node",
+      "pos": [628, 640],
+      "size": [250, 64],
+      "icon": "none"
+    },
+    {
+      "id": "free_space",
+      "type": "database",
+      "label": "Enough space on the leader?",
+      "sublabel": "compare df with required bytes",
+      "pos": [318, 740],
+      "size": [250, 64],
+      "icon": "decision"
+    },
+    {
+      "id": "step6",
+      "type": "database",
+      "label": "6. Earlier upload failed?",
+      "sublabel": "with required bytes in the error",
+      "pos": [628, 740],
+      "size": [250, 64],
+      "icon": "decision"
+    },
+    {
+      "id": "support_space",
+      "type": "security",
+      "label": "Contact Spectro Cloud support",
+      "sublabel": "support@spectrocloud.com",
+      "pos": [318, 840],
+      "size": [250, 64],
+      "icon": "person"
+    },
+    {
+      "id": "step7",
+      "type": "frontend",
+      "label": "7. Upload the bundle right away",
+      "sublabel": "from step 2 of Upgrade the Platform",
+      "pos": [628, 840],
+      "size": [250, 64],
+      "icon": "none"
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "Free disk space and upload",
+      "pad": 16,
+      "wraps": ["step5", "step6", "step7", "free_space", "support_space"]
+    }
+  ],
+  "connections": [
+    {
+      "from": "step1",
+      "to": "step2",
+      "variant": "emphasis"
+    },
+    {
+      "from": "step2",
+      "to": "step3",
+      "label": "No",
+      "variant": "emphasis",
+      "labelAt": [443, 222]
+    },
+    {
+      "from": "step3",
+      "to": "step4",
+      "label": "No",
+      "variant": "emphasis",
+      "fromSide": "right",
+      "toSide": "top",
+      "labelAt": [660, 272]
+    },
+    {
+      "from": "step4",
+      "to": "step5",
+      "label": "No, or the upload fails",
+      "variant": "emphasis",
+      "labelAt": [753, 472]
+    },
+    {
+      "from": "step5",
+      "to": "step6",
+      "variant": "emphasis"
+    },
+    {
+      "from": "step6",
+      "to": "step7",
+      "label": "No",
+      "variant": "emphasis",
+      "labelAt": [753, 822]
+    },
+    {
+      "from": "step2",
+      "to": "upgrade_end",
+      "label": "Yes, wait for it to finish",
+      "variant": "default",
+      "fromSide": "left",
+      "toSide": "top",
+      "labelAt": [133, 272]
+    },
+    {
+      "from": "step3",
+      "to": "continue",
+      "label": "Yes",
+      "variant": "default",
+      "labelAt": [443, 372]
+    },
+    {
+      "from": "step4",
+      "to": "continue",
+      "label": "Yes, wait, then the upload succeeds",
+      "variant": "default",
+      "fromSide": "left",
+      "toSide": "right",
+      "labelAt": [598, 422]
+    },
+    {
+      "from": "continue",
+      "to": "upgrade_end",
+      "variant": "default"
+    },
+    {
+      "from": "upgrade_end",
+      "to": "finish_upgrade",
+      "label": "Returns to Running",
+      "variant": "default",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "labelAt": [133, 531]
+    },
+    {
+      "from": "upgrade_end",
+      "to": "support_upgrade",
+      "label": "Runs out of disk space",
+      "variant": "default",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "labelAt": [443, 522]
+    },
+    {
+      "from": "step6",
+      "to": "free_space",
+      "label": "Yes",
+      "variant": "default"
+    },
+    {
+      "from": "free_space",
+      "to": "step7",
+      "label": "Yes",
+      "variant": "default"
+    },
+    {
+      "from": "free_space",
+      "to": "support_space",
+      "label": "No",
+      "variant": "default",
+      "labelAt": [443, 822]
+    }
+  ]
+}
