@@ -31,25 +31,24 @@ The following components have been updated for Palette version 4.10.13 - 4.10.47
 
 <!-- https://spectrocloud.atlassian.net/browse/PAC-5334 -->
 
-- Updated Kubernetes packs for release week 2026-48: edge-canonical 1.34.12 (non-FIPS) and edge-canonical 1.35.10
-  (non-FIPS).
+- Added Canonical Kubernetes 1.34.12 and 1.35.10 to the non-FIPS variant of the `edge-canonical` pack for Edge clusters.
 
 ### Bug Fixes
 
 <!-- https://spectrocloud.atlassian.net/browse/PCOM-1283 -->
 
-- Fixed confusing helper text on the Palette Enterprise download drawer that referenced a non-existent ISO-with-content
-  option.
+- Fixed an issue in Artifact Studio where the helper text on the Palette Enterprise download drawer referred to an ISO
+  with content download option that the drawer does not offer.
 
 <!-- https://spectrocloud.atlassian.net/browse/PCOM-1284 -->
 
-- Fixed inconsistent role labeling across the user interface so that Org admin is displayed consistently in both the
-  header and the Members tab.
+- Fixed an issue in Artifact Studio where some pages labeled the organization administrator role **Org admin** and
+  others labeled it **Admin**. All pages now label the role **Admin**.
 
 <!-- https://spectrocloud.atlassian.net/browse/PCOM-1385 -->
 
-- Fixed an issue in Artifact Studio where application and profile bundle versions were not displayed prominently on the
-  profile bundles overview page and detail drawer.
+- Fixed an issue in Artifact Studio where the app version and profile bundle version were not displayed prominently on
+  the profile bundles overview page and detail drawer.
 
 <!-- END COMPONENT UPDATES BODY: DOC-3496. DO NOT DELETE. -->
 
@@ -67,15 +66,12 @@ The following components have been updated for Palette version 4.10.13 - 4.10.47
 | <VersionedLink text="csi-aws-ebs" url="/integrations/packs/?pack=csi-aws-ebs" /> | `csi` | :white_check_mark: | :white_check_mark: | 1.68.1 |
 | <VersionedLink text="csi-gcp-driver" url="/integrations/packs/?pack=csi-gcp-driver" /> | `csi` | :white_check_mark: | :x: | 1.29.1 |
 | <VersionedLink text="csi-portworx-generic" url="/integrations/packs/?pack=csi-portworx-generic" /> | `csi` | :white_check_mark: | :x: | 3.7.2 |
-| <VersionedLink text="csi-rook-ceph-helm" url="/integrations/packs/?pack=csi-rook-ceph-helm" /> | `csi` | :white_check_mark: | :x: | 1.21.1 |
-| <VersionedLink text="csi-rook-ceph-helm-addon" url="/integrations/packs/?pack=csi-rook-ceph-helm-addon" /> | `addon` | :white_check_mark: | :x: | 1.21.1 |
 | <VersionedLink text="edge-canonical" url="/integrations/packs/?pack=edge-canonical" /> | `k8s` | :white_check_mark: | :x: | 1.34.12 |
 | <VersionedLink text="edge-canonical" url="/integrations/packs/?pack=edge-canonical" /> | `k8s` | :white_check_mark: | :x: | 1.35.10 |
 | <VersionedLink text="external-dns" url="/integrations/packs/?pack=external-dns" /> | `addon` | :white_check_mark: | :x: | 0.24.0 |
 | <VersionedLink text="headlamp" url="/integrations/packs/?pack=headlamp" /> | `addon` | :white_check_mark: | :x: | 0.46.0 |
 | <VersionedLink text="karpenter" url="/integrations/packs/?pack=karpenter" /> | `addon` | :white_check_mark: | :white_check_mark: | 1.15.3 |
 | <VersionedLink text="kgateway" url="/integrations/packs/?pack=kgateway" /> | `addon` | :x: | :white_check_mark: | 2.5.2 |
-| <VersionedLink text="nvidia-gpu-operator-ai" url="/integrations/packs/?pack=nvidia-gpu-operator-ai" /> | `addon` | :white_check_mark: | :x: | 26.7.2 |
 | <VersionedLink text="portworx-add-on" url="/integrations/packs/?pack=portworx-add-on" /> | `addon` | :white_check_mark: | :x: | 3.7.2 |
 | <VersionedLink text="prometheus-agent" url="/integrations/packs/?pack=prometheus-agent" /> | `addon` | :white_check_mark: | :x: | 30.0.0 |
 | <VersionedLink text="prometheus-operator" url="/integrations/packs/?pack=prometheus-operator" /> | `addon` | :white_check_mark: | :x: | 93.9.0 |
@@ -87,10 +83,6 @@ The following components have been updated for Palette version 4.10.13 - 4.10.47
 <!-- prettier-ignore-end -->
 
 <!-- END PACKS LIST BODY: DOC-3496. DO NOT DELETE. -->
-
-#### Pack Notes
-
-#### Deprecations and Removals
 
 ## November 23, 2026 - Release 4.10.47
 
