@@ -27,8 +27,8 @@ tags: ["release-notes"]
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12724 -->
 
-- Reduced MongoDB memory usage during the scheduled cleanup of cluster metrics in Palette. Palette now runs each cleanup
-  job on one replica of its management services instead of on every replica.
+- Reduced MongoDB memory usage during the scheduled cleanup of cluster metrics. Palette now runs each cleanup job on one
+  replica of its management services instead of on every replica.
 
 ### Bug Fixes
 
@@ -42,14 +42,14 @@ tags: ["release-notes"]
 <!-- https://spectrocloud.atlassian.net/browse/PE-10239 -->
 
 - Fixed an issue that caused Palette to report an [Edge](../clusters/edge/edge.md) host as upgraded when its operating
-  system and Kubernetes upgrade did not complete, for example, when the upgrade rolled back to the previous image. The
-  host stayed on the previous Kubernetes version, and the upgrade was not retried.
+  system and Kubernetes upgrade did not complete. For example, if the upgrade rolled back to the previous image, the
+  host stayed on the previous Kubernetes version, and Palette did not retry the upgrade.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-10267 -->
 
 - Fixed an issue that caused pods on airgapped Edge clusters to enter the `ImagePullBackOff` state during a cluster
   profile upgrade. This occurred when a pod that used an image from the previous profile version restarted before its
-  add-on finished upgrading.
+  add-on pack finished upgrading.
 
 ### Edge
 
