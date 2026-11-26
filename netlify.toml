@@ -7,3 +7,8 @@
 # version-* branch deploys still build them.
 [context.deploy-preview]
   command = "./scripts/netlify-preview-build.sh"
+
+# DOC 3452: the twice-daily version-* branch deploys (refer to scripts/netlify.sh) always build the pack pages, and a
+# plain npm run build can go over the build machine's memory limit. The script builds them in two processes.
+[context.branch-deploy]
+  command = "./scripts/netlify-preview-build.sh"
