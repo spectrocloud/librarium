@@ -9,6 +9,9 @@
 #     pack-pipeline file (listed in pack_paths).
 # If a check fails, it counts as no, and the log says why.
 #
+# Builds with the pack pages turn off the Rspack persistent cache and run Docusaurus in two processes, bundling and
+# then static site generation, to stay under the memory limit (DOC 3452). Refer to step 4.
+#
 # Production (Release to Production) and the version-* branch deploys do not use this script.
 #
 # The Rspack persistent cache (node_modules/.cache/rspack, which Netlify restores between builds) is cleared when the
@@ -93,6 +96,14 @@ fi
 if [[ "$build_packs" == true ]]; then
   export DISABLE_PACKS_INTEGRATIONS=false
   log "Building the pack pages."
+  # The pack pages take the build to the build machine's memory limit, 10.72 GiB (DOC 3452). Two changes keep it
+  # under: the Rspack persistent cache is off (read in docusaurus.config.js), which saves about 1.7 GiB while Rspack
+  # bundles, and the build runs in two processes (step 4). DOCUSAURUS_PERF_LOGGER, an undocumented Docusaurus variable,
+  # prints how long each build phase takes, so the log shows which phase a memory kill (exit code 137) happened in.
+  export DISABLE_RSPACK_PERSISTENT_CACHE=true
+  export DOCUSAURUS_PERF_LOGGER=true
+  log "The Rspack persistent cache is off, and build phase timings are on."
+  log "The build runs in two steps: bundling, then static site generation."
 else
   export DISABLE_PACKS_INTEGRATIONS=true
   log "Skipping the pack pages. Add the ${label} label and retry the deploy to build them."
@@ -130,4 +141,22 @@ fi
 
 mkdir -p "$(dirname "$mode_file")" && echo "$mode" >"$mode_file"
 
+# 4. Builds with the pack pages run Docusaurus twice. Rspack keeps the memory it used to bundle the site (about 8 GiB)
+# until its process exits, and static site generation needs more on top. So the first process loads the site and
+# bundles it, then exits (DOCUSAURUS_EXIT_AFTER_BUNDLING). The second process loads the site again, which reuses the
+# pack data that the first one saved in .docusaurus/packs-integrations/, skips bundling, and generates the static pages
+# from the bundle in build/ (DOCUSAURUS_SKIP_BUNDLING). It sets the same NODE_OPTIONS and GENERATE_SOURCEMAP as the
+# build script in package.json. Both variables are in Docusaurus 3.9.2 (lib/commands/build/buildLocale.js).
+if [[ "$build_packs" == true ]]; then
+  log "Step 1 of 2: loading the site and bundling it, then exiting (DOCUSAURUS_EXIT_AFTER_BUNDLING)."
+  DOCUSAURUS_EXIT_AFTER_BUNDLING=true npm run build
+  rc=$?
+  if [[ $rc -ne 0 ]]; then
+    log "Step 1 failed with exit code ${rc}."
+    exit "$rc"
+  fi
+  log "Step 2 of 2: loading the site again and generating the static pages from the bundle (DOCUSAURUS_SKIP_BUNDLING)."
+  exec env DOCUSAURUS_SKIP_BUNDLING=true NODE_OPTIONS="--max-old-space-size=6144" GENERATE_SOURCEMAP=false \
+    npm run docusaurus -- build
+fi
 exec npm run build
