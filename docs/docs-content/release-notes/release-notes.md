@@ -20,6 +20,7 @@ tags: ["release-notes"]
 ### Improvements
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12761 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12813 -->
 <!-- https://spectrocloud.atlassian.net/browse/PE-10295 -->
 
 - Applied security fixes to improve the platform's security posture.
@@ -37,12 +38,6 @@ tags: ["release-notes"]
 - Fixed an issue that caused [Headlamp](../clusters/cluster-management/headlamp.md) to stay on its loading screen when
   you opened it from a cluster's **Connect** link through Spectro Proxy. This occurred when Palette took longer than 15
   seconds to respond, for example, over a slow network connection.
-
-<!-- https://spectrocloud.atlassian.net/browse/PEM-12813 -->
-
-- Fixed an issue that caused your browser to prompt for credentials, and pack logos to not load, when you viewed packs
-  from a [legacy pack registry](../registries-and-packs/registries/pack-registries.md), for example, when you created or
-  edited a cluster profile.
 
 <!-- https://spectrocloud.atlassian.net/browse/PE-10239 -->
 
