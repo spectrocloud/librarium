@@ -57,12 +57,31 @@ Replace `<path-to-kubeconfig>` with the path to the kubeconfig file.
    kubectl get vmi --all-namespaces --output wide
    ```
 
-   A VM that shows `False` and uses the **LiveMigrate** eviction strategy blocks the drain. Stop that VM before you
-   drain the node, and start it again after the host is back online. Refer to
-   [Start, Stop, Restart](../virtual-machines/managing.md#start-stop-restart).
+   A VM that shows `False` and uses the **LiveMigrate** eviction strategy blocks the drain, and `kubectl drain` keeps
+   retrying until you stop the VM. Before you drain the node, handle each VM that blocks the drain in one of the
+   following ways, listed in order of preference.
 
-3. Drain the node. The command turns off scheduling on the node and evicts its pods. It finishes when the VMs on the
-   node have live-migrated to other nodes.
+   1. Fix what prevents the VM from live-migrating, such as a GPU or PCI passthrough device, or a disk that does not use
+      the `ReadWriteMany` access mode. To find the reason, run `kubectl describe vmi <vm-name> --namespace <namespace>`
+      and check the `LiveMigratable` condition. Replace `<vm-name>` and `<namespace>` with the name and namespace of the
+      VM. Refer to [Live Migration](../virtual-machines/managing.md#live-migration).
+
+   2. Change the eviction strategy of the VM to **LiveMigrateIfPossible**. With this strategy, the VM live-migrates when
+      it can. When it cannot, KubeVirt shuts the VM down so that the drain can finish, and the VM has downtime. To set
+      the strategy on the VM, open the VM, select the **Configuration** tab, and select **Edit Configuration**. In the
+      **Scheduling & Lifecycle** section, select **LiveMigrateIfPossible** from the **Eviction Strategy** drop-down
+      menu, and select **Save Changes**. Refer to [Edit a VM](../virtual-machines/managing.md#edit-a-vm). For VMs that
+      do not set their own strategy, you can instead set the cluster's
+      [**Default eviction strategy**](../kubevirt-configuration.md#strategies) to **Live migrate if possible**. A
+      running VM keeps its eviction strategy until it restarts, so restart the VM after you set the new strategy and
+      before you drain the node.
+
+   3. Stop the VM before you drain the node, and start it again after the host is back online. Refer to
+      [Start, Stop, Restart](../virtual-machines/managing.md#start-stop-restart).
+
+3. Drain the node. The command turns off scheduling on the node and evicts its pods. It finishes when each VM on the
+   node has live-migrated to another node or shut down. A VM that uses **LiveMigrateIfPossible** shuts down when it
+   cannot live-migrate.
 
    ```shell
    kubectl drain <node-name> --ignore-daemonsets --delete-emptydir-data --force
@@ -74,13 +93,17 @@ Replace `<path-to-kubeconfig>` with the path to the kubeconfig file.
    `Eviction triggered evacuation of VMI`. You can ignore these messages. The drain is complete when the output shows
    `node/<node-name> drained`.
 
+   If the output repeats messages that end with `is configured with an eviction strategy but is not live-migratable`, a
+   VM on the node cannot live-migrate. The drain does not finish until you stop the VM that the message names. Refer to
+   [Start, Stop, Restart](../virtual-machines/managing.md#start-stop-restart).
+
 4. Confirm that no VMs remain on the node. No row in the `NODENAME` column shows the name of the node.
 
    ```shell
    kubectl get vmi --all-namespaces --output wide
    ```
 
-5. Confirm that the migrations succeeded. For each VM that you noted in step 2, a migration whose name begins with
+5. Confirm that the migrations succeeded. For each VM from step 2 that live-migrated, a migration whose name begins with
    `kubevirt-evacuation-` shows `Succeeded` in the `PHASE` column. The `VMI` column names the VM. The list can also
    include earlier migrations.
 
@@ -124,4 +147,6 @@ Replace `<path-to-kubeconfig>` with the path to the kubeconfig file.
    kubectl get vm --all-namespaces
    ```
 
-   The `STATUS` column shows `Running` for each VM that you expect to run.
+   The `STATUS` column shows `Running` for each VM that you expect to run. If a VM that you stopped before the drain or
+   that shut down during the drain is not running, start it. Refer to
+   [Start, Stop, Restart](../virtual-machines/managing.md#start-stop-restart).

@@ -578,6 +578,10 @@ Ensure that your terminal is configured to access your VMO cluster using
 
 2. From the left main menu, select **Migration plans**, then click **Create plan** in the top-right corner.
 
+   The wizard groups its steps under **Basic setup**, **Additional setup**, and **Review and create**. **Basic setup**
+   contains the **General**, **Virtual machines**, **Network map**, **Storage map**, and **Migration type** steps.
+   **Additional setup** contains the **Other settings (optional)** and **Hooks (optional)** steps.
+
 3. For the **General** step, fill in the details for your migration plan.
 
    #### General Settings
@@ -681,7 +685,8 @@ Ensure that your terminal is configured to access your VMO cluster using
     | **Cold migration** | VMs are shut down prior to migration.                                                                                                                                                                                                                                                                                             |
     | **Warm migration** | Active VMs are migrated while they are running and are shut down during the final switchover. Ensure that [Changed Block Tracking](https://knowledge.broadcom.com/external/article/315370/enabling-or-disabling-changed-block-trac.html) is enabled on your VMs and that they have no snapshots before starting a warm migration. |
 
-12. Click **Next**.
+12. Select **Next** to configure the optional **Additional setup** steps, or select **Skip to review** to keep their
+    default settings and go to step 17.
 
 13. For the **Other settings (optional)** step, review and adjust the optional settings for your migration plan. The
     following table describes the available settings.
@@ -719,8 +724,8 @@ Ensure that your terminal is configured to access your VMO cluster using
 
 16. Click **Next**.
 
-17. For the **Review and create** step, check that the following settings are configured to your requirements, and click
-    **Create plan**.
+17. For the **Review and create** step, check the settings from the previous steps. To change a setting, select **Edit
+    step** next to its section. When the settings meet your requirements, select **Create plan**.
 
 If you want to explore all additional plan settings, refer to
 [Additional Configuration - Plan Settings](./additional-configuration.md#plan-settings) for guidance.
