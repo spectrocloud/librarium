@@ -669,6 +669,11 @@ check only confirms that the database accepts connections, so run an actual quer
    kubectl --namespace "$NS" get pod "$DB_POD"
    ```
 
+   ```shell hideClipboard title="Example Output"
+   NAME            READY   STATUS    RESTARTS   AGE
+   keycloak-db-2   1/1     Running   0          3d
+   ```
+
    The `STATUS` column shows `Running`. If the command returns an error, confirm that `DB_POD` is not empty.
 
 5. Retrieve the password and run the query. Piping the password into the pod over standard input keeps it out of your
