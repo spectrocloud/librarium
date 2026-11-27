@@ -1,0 +1,471 @@
+name: "Link Fix Agent"
+
+# Fixes the broken external links from the weekly link report with small,
+# single-purpose agents and scripts, opens a PR, tests the deploy preview, and
+# merges when every check agrees. .github/link-fix-agent/README.md explains the
+# flow, the files, and the tests.
+#
+# Each agent does one job with the least access that job needs:
+#   researcher       one per broken URL; web tools only, no file access
+#   guidance editor  only when a resource changed; edits only the files that
+#                    use its link, and cannot browse
+#   reviewer         pr-review-buddy on a smaller model; read-only, and its
+#                    shell runs only Vale and printf
+#   responder        answers the review; edits only the changed docs files,
+#                    and cannot browse
+#   preview tester   web fetch only
+# Scripts do everything else, including every URL swap (apply-research.mjs) and
+# every decision that gates a PR or a merge.
+#
+# A live run (weekly on master, or by manual dispatch) opens a PR. A pull
+# request that changes the agent gets a dry run instead, which never pushes or
+# opens a PR: the live case plus a replay of the docs before 516ac87b5 (Linus's
+# Nov 2 fix), so the result can be compared with a human answer key.
+#
+# SECURITY: no agent holds a GitHub token. The checkout keeps no credentials,
+# and the Vault token stays in step outputs that only the checkout and GitHub
+# steps read. Each agent run gets an exact tool set, which agent-run.mjs and
+# research-links.mjs verify. The agents that read web pages cannot read or edit
+# files, and the agents that edit files cannot read the web. The agents that
+# can read files are denied /proc and /sys, where the Claude key lives in the
+# process environment. The diff check, the PR step, the job summary, and the
+# artifact upload all refuse text that holds a credential. A dedicated,
+# spend-capped Claude key for this workflow is the recommended backstop, a
+# follow-up for whoever manages the CLAUDE_API_KEY secret.
+
+on:
+  schedule:
+    - cron: "0 15 * * 1" # Mondays, an hour after the weekly URL checks
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - ".github/workflows/link-fix-agent.yaml"
+      - ".github/link-fix-agent/**"
+
+permissions:
+  # Pushing, labeling, and merging use the Vault-issued org token, so the
+  # default GITHUB_TOKEN needs no write scope.
+  contents: read
+
+concurrency:
+  group: link-fix-agent-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  NODE_VERSION: "24"
+  CLAUDE_CODE_VERSION: "2.1.311"
+  MODEL: "claude-opus-5-5"
+  REVIEW_MODEL: "claude-haiku-5-5"
+  # Budgets per agent run. Each researcher handles one URL.
+  RESEARCH_BUDGET_USD: "1"
+  EDIT_BUDGET_USD: "2"
+  REVIEW_BUDGET_USD: "1"
+  TEST_BUDGET_USD: "1"
+  AGENT_DIR: .github/link-fix-agent
+  # Exact tool sets, one per agent. Edit rules in each step limit the editors to
+  # named files, and the reviewer's Bash is limited to Vale and printf.
+  RESEARCH_TOOLS: "WebFetch,WebSearch"
+  EDIT_TOOLS: "Edit,Read"
+  REVIEW_TOOLS: "Bash,Glob,Grep,Read,Skill"
+  TEST_TOOLS: "WebFetch"
+  # Pinned docs-ai-context commit (private repo) for the pr-review-buddy and
+  # style-guide skills.
+  DOCS_AI_CONTEXT_REF: "56ad3a796e146f87120687a2ff78e5ae4e0e52eb" # main, 2026-11-04
+  # The same Vale release as spellcheck-report.yaml.
+  VALE_VERSION: "v3.24.0"
+  # The oldest supported version branch, from the PR template.
+  OLDEST_BACKPORT: version-4-7
+  PR_BRANCH: bot/fix-broken-links
+  # npm ci installs the husky hooks, and the pre-commit hook fails in CI on the
+  # missing algolia.appId.
+  HUSKY: "0"
+
+jobs:
+  test:
+    name: Unit tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Setup Nodejs
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Run the unit tests
+        run: node --test "$AGENT_DIR/test/*.test.mjs"
+
+  fix-links:
+    name: Fix broken links (${{ matrix.case }})
+    needs: test
+    # Pull request runs need the repo secrets, so only branches in this
+    # repository get them.
+    if: ${{ github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository }}
+    runs-on: ubuntu-latest
+    # About 10 minutes of agent work, plus 15 to 30 minutes of CI and Netlify.
+    timeout-minutes: 75
+    strategy:
+      fail-fast: false
+      matrix:
+        case: ${{ fromJSON(github.event_name == 'pull_request' && '["live","replay-nov02"]' || '["live"]') }}
+    env:
+      # Only a live run on master opens a PR.
+      DRY_RUN: ${{ github.ref != 'refs/heads/master' || matrix.case != 'live' }}
+      DOCS_REF: ${{ matrix.case == 'replay-nov02' && '516ac87b5e6c46634519291b6237175e6987b15a' || '' }}
+
+    steps:
+      # Setup
+
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Setup Nodejs
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: "npm"
+
+      # linkinator comes from package-lock.json, the same version the weekly
+      # report uses. The diff check imports it as a library.
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Retrieve org GitHub token
+        id: vault
+        uses: hashicorp/vault-action@892a26828f195e65540a40b4768ae4571f51ebfc # v4.0.0
+        with:
+          url: https://vault.prism.spectrocloud.com
+          method: approle
+          roleId: ${{ secrets.VAULT_ROLE_ID }}
+          secretId: ${{ secrets.VAULT_SECRET_ID }}
+          # Keep the token in this step's outputs, out of the agents' environment.
+          exportEnv: false
+          secrets: /providers/github/organizations/spectrocloud/token?org_name=spectrocloud token | VAULT_GITHUB_TOKEN
+
+      - name: Prepare workspace
+        run: |
+          set -euo pipefail
+          WORK="$RUNNER_TEMP/link-fix"
+          mkdir -p "$WORK/out" "$WORK/review"
+          {
+            echo "WORK=$WORK"
+            echo "PR_TITLE=docs: fix broken external links ($(date -u +'%b %-d') report)"
+          } >> "$GITHUB_ENV"
+
+          # Replay: swap in the docs as they were before the human fix, and
+          # commit them locally so the diff check compares against that tree.
+          # Production carries the human fix, so it stands in for the deploy
+          # preview, and no CI runs.
+          if [[ -n "$DOCS_REF" ]]; then
+            git fetch --quiet --depth=2 origin "$DOCS_REF"
+            git rm -rq docs _partials linkinator
+            git checkout "${DOCS_REF}^" -- docs _partials linkinator
+            git -c user.name=link-fix-agent -c user.email=link-fix-agent@local \
+              commit -qm "replay baseline ${DOCS_REF}^"
+            echo "PREVIEW_BASE=https://docs.spectrocloud.com" >> "$GITHUB_ENV"
+            echo "Dry run: no PR, so no CI checks ran." > "$WORK/out/pr-checks.txt"
+          fi
+
+      - name: Build the broken-link report
+        id: report
+        run: |
+          set -euo pipefail
+          # Same file list, config, and filter as `make verify-url-links-ci`.
+          find ./docs ./_partials \( -name "*.md" -o -name "*.mdx" \) \
+            | sed 's|^\./||' \
+            | sed '/security-bulletins/d;/cve-reports/d;/oss-licenses/d;/deprecated/d' > "$WORK/paths.txt"
+          # shellcheck disable=SC2046 # one argument per path, as in the Makefile
+          npx linkinator $(cat "$WORK/paths.txt") \
+            --config ./linkinator/linkinator-ci.config.json > "$WORK/raw.json" || true
+          jq -e 'has("links")' "$WORK/raw.json" > /dev/null || { echo "linkinator produced no usable report"; exit 1; }
+          jq '[.links[] | select(.url | test("^https?://")) | select(.status >= 400)]' "$WORK/raw.json" > "$WORK/link_report.json"
+          rm "$WORK/raw.json"
+          count=$(jq length "$WORK/link_report.json")
+          echo "count=$count" >> "$GITHUB_OUTPUT"
+          echo "Broken external links: $count"
+          jq -r '.[] | "\(.status) \(.url) <- \(.parent)"' "$WORK/link_report.json"
+
+      # Research and fix
+
+      - name: Install Claude Code
+        if: ${{ steps.report.outputs.count != '0' }}
+        run: npm install -g "@anthropic-ai/claude-code@${CLAUDE_CODE_VERSION}"
+
+      # One researcher per broken URL, with web tools only. Not --bare: bare
+      # mode drops the web tools, and the agent then guesses URLs from memory.
+      - name: Research the broken links
+        if: ${{ steps.report.outputs.count != '0' }}
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.CLAUDE_API_KEY }}
+        run: node "$AGENT_DIR/research-links.mjs" "$WORK/link_report.json" . "$WORK/out"
+
+      # A script, not an agent, makes every URL swap.
+      - name: Apply the research
+        id: apply
+        if: ${{ steps.report.outputs.count != '0' }}
+        run: node "$AGENT_DIR/apply-research.mjs" "$WORK/out/research.json" . "$WORK/out"
+
+      - name: Run the guidance editor
+        if: ${{ steps.apply.outputs.guidance == 'true' }}
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.CLAUDE_API_KEY }}
+        run: |
+          set -euo pipefail
+          # The editor can edit only the files that use a changed resource's link.
+          rules=()
+          while IFS= read -r file; do rules+=("Edit($file)"); done < "$WORK/out/guidance-files.txt"
+          prompt=$(node "$AGENT_DIR/render-prompt.mjs" "$AGENT_DIR/prompts/edit-guidance.md" \
+            TASKS=@"$WORK/out/guidance-tasks.json")
+          claude -p "$prompt" \
+            --model "$MODEL" \
+            --setting-sources project \
+            --strict-mcp-config \
+            --tools "$EDIT_TOOLS" \
+            --allowedTools Read "${rules[@]}" \
+            --disallowedTools Bash "Read(//proc/**)" "Read(//sys/**)" \
+            --max-budget-usd "$EDIT_BUDGET_USD" \
+            --output-format stream-json \
+            --verbose \
+            --no-session-persistence \
+            > "$WORK/out/guidance-run.jsonl"
+          tail -n 1 "$WORK/out/guidance-run.jsonl" > "$WORK/out/guidance-run.json"
+          node "$AGENT_DIR/agent-run.mjs" "$WORK/out/guidance-run.jsonl" \
+            --tools "$EDIT_TOOLS" --result-to "$WORK/out/guidance-summary.md"
+
+      # The first check only informs the responder. The final check after it decides.
+      - name: Check the first diff
+        id: first-check
+        if: ${{ steps.report.outputs.count != '0' }}
+        run: |
+          node "$AGENT_DIR/check-link-fix-diff.mjs" . "$WORK/link_report.json" | tee "$WORK/out/diff-check-1.txt" || true
+          if [[ -n "$(git status --porcelain)" ]]; then echo "changed=true" >> "$GITHUB_OUTPUT"; fi
+
+      # Review
+
+      - name: Install Vale
+        if: ${{ steps.first-check.outputs.changed == 'true' }}
+        run: |
+          set -euo pipefail
+          curl -fsSL "https://github.com/vale-cli/vale/releases/download/${VALE_VERSION}/vale_${VALE_VERSION#v}_Linux_64-bit.tar.gz" \
+            | sudo tar -xz -C /usr/local/bin vale
+          vale --version
+          # The style packages download from GitHub, which sometimes answers 504
+          # for minutes at a time. A missing lint result must not stop the fix, so
+          # after the last attempt the reviewer is told that Vale did not run.
+          for attempt in 1 2 3 4 5; do
+            vale sync && exit 0
+            sleep $((attempt * 15))
+          done
+          echo "::warning::vale sync failed 5 times, so the reviewer runs without Vale."
+          echo "Vale did not run: its style packages could not be downloaded." > "$WORK/review/vale-unavailable.txt"
+
+      - name: Gather the review inputs
+        if: ${{ steps.first-check.outputs.changed == 'true' }}
+        run: node "$AGENT_DIR/gather-review.mjs" "$WORK/review" "$PR_TITLE"
+
+      # Checked out only now, and deleted when the reviewer step ends.
+      - name: Checkout docs-ai-context
+        if: ${{ steps.first-check.outputs.changed == 'true' }}
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: spectrocloud/docs-ai-context
+          ref: ${{ env.DOCS_AI_CONTEXT_REF }}
+          path: .docs-ai-context
+          token: ${{ steps.vault.outputs.VAULT_GITHUB_TOKEN }}
+          persist-credentials: false
+
+      - name: Run the reviewer agent
+        if: ${{ steps.first-check.outputs.changed == 'true' }}
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.CLAUDE_API_KEY }}
+        run: |
+          set -euo pipefail
+          # The private checkout and its skills exist only during this step, so
+          # no other agent, whose transcripts the artifacts publish, sees them.
+          trap 'rm -rf .docs-ai-context .claude/skills/pr-review-buddy .claude/skills/style-guide' EXIT
+          mkdir -p .claude/skills
+          cp -R .docs-ai-context/.claude/skills/pr-review-buddy .docs-ai-context/.claude/skills/style-guide .claude/skills/
+          # A fresh session on a smaller model, as the PR template asks.
+          claude -p "/pr-review-buddy $WORK/review" \
+            --model "$REVIEW_MODEL" \
+            --setting-sources project \
+            --strict-mcp-config \
+            --tools "$REVIEW_TOOLS" \
+            --allowedTools Read Grep Glob "Bash(vale *)" "Bash(printf *)" \
+            --disallowedTools "Read(//proc/**)" "Read(//sys/**)" "Grep(//proc/**)" "Grep(//sys/**)" \
+              "Glob(//proc/**)" "Glob(//sys/**)" \
+            --append-system-prompt-file "$AGENT_DIR/prompts/review-in-ci.md" \
+            --add-dir "$WORK/review" \
+            --max-budget-usd "$REVIEW_BUDGET_USD" \
+            --output-format stream-json \
+            --verbose \
+            --no-session-persistence \
+            > "$WORK/out/review-run.jsonl"
+          tail -n 1 "$WORK/out/review-run.jsonl" > "$WORK/out/review-run.json"
+          node "$AGENT_DIR/agent-run.mjs" "$WORK/out/review-run.jsonl" \
+            --tools "$REVIEW_TOOLS" --result-to "$WORK/review/review.md"
+
+      - name: Run the review responder
+        if: ${{ steps.first-check.outputs.changed == 'true' }}
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.CLAUDE_API_KEY }}
+        run: |
+          set -euo pipefail
+          # The responder can edit only the docs files that the fix changed.
+          mapfile -t files < <(git diff --name-only -- docs _partials | grep -E '\.mdx?$' | grep -v '^docs/deprecated/' || true)
+          rules=()
+          for file in "${files[@]}"; do rules+=("Edit($file)"); done
+          prompt=$(node "$AGENT_DIR/render-prompt.mjs" "$AGENT_DIR/prompts/address-review.md" \
+            FILES="${files[*]:-none}" REVIEW=@"$WORK/review/review.md" \
+            DIFF_CHECK=@"$WORK/out/diff-check-1.txt" FIX_REPORT=@"$WORK/out/fix-report.md")
+          claude -p "$prompt" \
+            --model "$MODEL" \
+            --setting-sources project \
+            --strict-mcp-config \
+            --tools "$EDIT_TOOLS" \
+            --allowedTools Read "${rules[@]}" \
+            --disallowedTools Bash "Read(//proc/**)" "Read(//sys/**)" \
+            --max-budget-usd "$EDIT_BUDGET_USD" \
+            --json-schema "$(cat "$AGENT_DIR/prompts/decision.schema.json")" \
+            --output-format stream-json \
+            --verbose \
+            --no-session-persistence \
+            > "$WORK/out/address-run.jsonl"
+          tail -n 1 "$WORK/out/address-run.jsonl" > "$WORK/out/address-run.json"
+          node "$AGENT_DIR/agent-run.mjs" "$WORK/out/address-run.jsonl" \
+            --tools "$EDIT_TOOLS" --decision-to "$WORK/out/decision.json"
+
+      - name: Check the final diff
+        id: check
+        if: ${{ steps.first-check.outputs.changed == 'true' }}
+        run: |
+          set +e
+          node "$AGENT_DIR/check-link-fix-diff.mjs" . "$WORK/link_report.json" | tee "$WORK/out/diff-check.txt"
+          echo "exit=${PIPESTATUS[0]}" >> "$GITHUB_OUTPUT"
+          if [[ -n "$(git status --porcelain)" ]]; then echo "changed=true" >> "$GITHUB_OUTPUT"; fi
+          git diff > "$WORK/out/fix.patch"
+          git diff --stat
+
+      # PR
+
+      - name: Pick backport labels
+        if: ${{ steps.check.outputs.exit == '0' && steps.check.outputs.changed == 'true' }}
+        run: node "$AGENT_DIR/backport-labels.mjs" "$WORK/out/fix.patch" "$OLDEST_BACKPORT" "$WORK/out"
+
+      - name: Write the PR description
+        if: ${{ steps.check.outputs.exit == '0' && steps.check.outputs.changed == 'true' }}
+        run: node "$AGENT_DIR/write-pr-text.mjs" "$WORK"
+
+      - name: Open or update the PR
+        id: pr
+        if: ${{ env.DRY_RUN == 'false' && steps.check.outputs.exit == '0' && steps.check.outputs.changed == 'true' }}
+        env:
+          GH_TOKEN: ${{ steps.vault.outputs.VAULT_GITHUB_TOKEN }}
+        run: node "$AGENT_DIR/open-pr.mjs" "$WORK"
+
+      # Deploy preview and merge
+
+      - name: Wait for CI and the deploy preview
+        id: ci
+        if: ${{ steps.pr.outputs.number != '' }}
+        env:
+          GH_TOKEN: ${{ steps.vault.outputs.VAULT_GITHUB_TOKEN }}
+          PR: ${{ steps.pr.outputs.number }}
+        run: node "$AGENT_DIR/wait-for-ci.mjs" "$PR" "$WORK/out/pr-checks.txt"
+
+      - name: Check the deploy preview
+        id: preview
+        if: ${{ env.PREVIEW_BASE != '' && steps.check.outputs.exit == '0' && steps.check.outputs.changed == 'true' }}
+        run: |
+          set +e
+          node "$AGENT_DIR/check-preview.mjs" . "$PREVIEW_BASE" "$WORK/out/preview-check.json" "${DIFF_BASE:-HEAD}" \
+            | tee "$WORK/out/preview-check.txt"
+          echo "exit=${PIPESTATUS[0]}" >> "$GITHUB_OUTPUT"
+
+      - name: Run the preview tester
+        if: ${{ steps.preview.outputs.exit != '' }}
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.CLAUDE_API_KEY }}
+        run: |
+          set -euo pipefail
+          # The tester gets its inputs in the prompt, because it can only fetch web pages.
+          prompt=$(node "$AGENT_DIR/render-prompt.mjs" "$AGENT_DIR/prompts/test-preview.md" \
+            PREVIEW_BASE="$PREVIEW_BASE" PREVIEW_CHECK=@"$WORK/out/preview-check.txt" \
+            CI_CHECKS=@"$WORK/out/pr-checks.txt" DIFF_CHECK=@"$WORK/out/diff-check.txt" \
+            FIX_REPORT=@"$WORK/out/fix-report.md")
+          claude -p "$prompt" \
+            --model "$MODEL" \
+            --setting-sources project \
+            --strict-mcp-config \
+            --tools "$TEST_TOOLS" \
+            --allowedTools WebFetch \
+            --disallowedTools Bash \
+            --max-budget-usd "$TEST_BUDGET_USD" \
+            --json-schema "$(cat "$AGENT_DIR/prompts/decision.schema.json")" \
+            --output-format stream-json \
+            --verbose \
+            --no-session-persistence \
+            > "$WORK/out/preview-run.jsonl"
+          tail -n 1 "$WORK/out/preview-run.jsonl" > "$WORK/out/preview-run.json"
+          node "$AGENT_DIR/agent-run.mjs" "$WORK/out/preview-run.jsonl" \
+            --tools "$TEST_TOOLS" --decision-to "$WORK/out/final-decision.json"
+
+      - name: Merge or hand off
+        if: ${{ always() && steps.pr.outputs.number != '' }}
+        env:
+          GH_TOKEN: ${{ steps.vault.outputs.VAULT_GITHUB_TOKEN }}
+          PR: ${{ steps.pr.outputs.number }}
+          CI_OK: ${{ steps.ci.outputs.ok }}
+          PREVIEW_EXIT: ${{ steps.preview.outputs.exit }}
+        run: node "$AGENT_DIR/merge-or-hand-off.mjs" "$WORK" "$PR"
+
+      # Reporting
+
+      - name: Write the job summary
+        if: ${{ always() && steps.report.outputs.count != '' }}
+        env:
+          CASE: ${{ matrix.case }}
+          COUNT: ${{ steps.report.outputs.count }}
+          CHECK_EXIT: ${{ steps.check.outputs.exit }}
+          PREVIEW_EXIT: ${{ steps.preview.outputs.exit }}
+          PR_URL: ${{ steps.pr.outputs.url }}
+        run: node "$AGENT_DIR/job-summary.mjs" "$WORK" >> "$GITHUB_STEP_SUMMARY"
+
+      # The artifacts are public, so any file that holds a credential is deleted first.
+      - name: Keep credentials out of the artifacts
+        if: ${{ always() }}
+        run: node "$AGENT_DIR/scan-secrets.mjs" "$WORK"
+
+      - name: Upload results
+        if: ${{ always() }}
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
+        with:
+          name: link-fix-${{ matrix.case }}
+          path: |
+            ${{ env.WORK }}/link_report.json
+            ${{ env.WORK }}/out/
+            ${{ env.WORK }}/review/
+            !${{ env.WORK }}/out/review-run.jsonl
+          if-no-files-found: warn
+
+      - name: Fail if the final diff check failed
+        if: ${{ steps.check.outputs.exit != '' && steps.check.outputs.exit != '0' }}
+        run: |
+          echo "::error::The diff check rejected the fix. See the job summary."
+          exit 1
+
+      - name: Failure Slack Notification
+        if: ${{ failure() && env.DRY_RUN == 'false' }}
+        uses: rtCamp/action-slack-notify@06cc13f74fa8d4d2296c09455d91e9453e4025f4 # v2.4.1
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
+          SLACK_COLOR: ${{ job.status }}
+          SLACKIFY_MARKDOWN: true
+          ENABLE_ESCAPES: true
+          SLACK_MESSAGE: 'The Link Fix Agent job in `${{ github.repository }}` failed. [View details](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}).'
