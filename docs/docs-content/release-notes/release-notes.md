@@ -37,18 +37,18 @@ The following components have been updated for Palette version 4.10.13 - 4.10.48
 
 <!-- https://spectrocloud.atlassian.net/browse/PCOM-1283 -->
 
-- Fixed an issue in Artifact Studio where the helper text on the Palette Enterprise download drawer referred to an ISO
-  with content download option that the drawer does not offer.
+- Fixed an issue in Artifact Studio where the **Content Bundle** helper text in the **Download Options** drawer for
+  Palette Enterprise referred to an ISO with content, which the drawer does not offer.
 
 <!-- https://spectrocloud.atlassian.net/browse/PCOM-1284 -->
 
-- Fixed an issue in Artifact Studio where some pages labeled the organization administrator role **Org admin** and
-  others labeled it **Admin**. All pages now label the role **Admin**.
+- Fixed an issue in Artifact Studio where some pages labeled the organization admin role **Org admin** and others
+  labeled it **Admin**. All pages now label the role **Admin**.
 
 <!-- https://spectrocloud.atlassian.net/browse/PCOM-1385 -->
 
-- Fixed an issue in Artifact Studio where the app version and profile bundle version were not displayed prominently on
-  the profile bundles overview page and detail drawer.
+- Fixed an issue in Artifact Studio where the profile bundle details drawer and details page made the app version and
+  profile bundle version hard to find. Both now show these two versions for the selected build as labeled fields.
 
 <!-- END COMPONENT UPDATES BODY: DOC-3496. DO NOT DELETE. -->
 
