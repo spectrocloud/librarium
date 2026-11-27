@@ -84,3 +84,158 @@ Native load balancer support was introduced in Canonical Kubernetes pack version
 </TabItem>
 
 </Tabs>
+
+## OIDC Authentication
+
+<!-- TODO(PAC-4968): Confirm with Medha before Ready. (1) Which pack revision adds the OIDC Identity Provider option, whether selecting Palette or Inherit from Tenant still requires the YAML in step 5, and
+whether the Prerequisites must name it. (2) Whether this section applies to Edge clusters or only MAAS. (3) Whether the
+clientConfig section is required for the Kubeconfig file. (4) The Validate steps follow the PXK kubelogin flow and are not
+yet tested on a Canonical Kubernetes cluster. -->
+
+The Canonical Kubernetes pack supports OpenID Connect (OIDC) authentication for the Kubernetes API server. When you
+enable OIDC, users log in to the cluster through an OIDC identity provider (IdP), and Kubernetes Role-Based Access Control
+(RBAC) role bindings determine what each user can access.
+
+The **OIDC Identity Provider** option of the Canonical Kubernetes layer determines which IdP the cluster trusts. The
+following table describes each option and the value that appears in the pack YAML.
+
+| **Option** | **YAML Value** | **Description** |
+| --- | --- | --- |
+| **None** | `noauth` | Does not configure OIDC for the cluster. We do not recommend this option for production environments, because it might disable authentication for add-ons that rely on OIDC. |
+| **Custom** | `none` | The default option. Uses a third-party IdP that you configure with literal values in the pack YAML. |
+| **Palette** | `palette` | Uses Palette as the IdP. Any user with a Palette account in the tenant and permissions to the project's resources can log in to the cluster. |
+| **Inherit from Tenant** | `tenant` | Uses the OIDC IdP configured in **Tenant Settings** > **SSO**, which applies the same IdP to many clusters. If your IdP uses Security Assertion Markup Language (SAML), use **Custom** instead, because Kubernetes supports only OIDC authentication. |
+
+Selecting an option does not configure the API server by itself. You also add the OIDC arguments to the pack YAML, as
+described in [Enablement](#enablement-oidc).
+
+:::warning
+
+Any change to the `canonicalK8sConfig` section of the pack YAML after cluster creation triggers a repave of the cluster
+nodes. To enable OIDC on an existing cluster, plan for the repave. Refer to
+[Repave Behavior and Configuration](../clusters/cluster-management/node-pool.md#repave-behavior-and-configuration) to
+learn more.
+
+:::
+
+### Prerequisites {#prerequisites-oidc}
+
+- A cluster profile that uses the Canonical Kubernetes pack version `1.35`.
+
+- If you plan to use **Inherit from Tenant**, OIDC configured in **Tenant Settings** > **SSO**. Refer to
+  [SAML and OIDC SSO](../user-management/saml-sso/saml-sso.md) for guidance.
+
+- If you plan to use **Custom**, an OIDC application in your IdP. You need its issuer URL, client ID, and client secret,
+  and the names of the claims that carry the username and group memberships.
+
+- The [kubelogin](https://github.com/int128/kubelogin) plugin on the machine where you run `kubectl`.
+
+### Enablement {#enablement-oidc}
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+2. From the left main menu, select **Profiles**.
+
+3. Select the cluster profile that you plan to use, and then select the Canonical Kubernetes layer.
+
+4. Under **OIDC Identity Provider**, select the option that matches your IdP.
+
+5. In the YAML editor, add a `canonicalK8sConfig` section and a `clientConfig` section at the top level of the YAML, at
+   the same indentation as `pack`. Do not nest them under `pack`. A `canonicalK8sConfig` section nested under `pack`
+   causes Palette to update the control plane nodes repeatedly, and the worker nodes are never provisioned.
+
+   The `canonicalK8sConfig.extraKubeAPIServerArgs` section passes the OIDC arguments to the Kubernetes API server. Each
+   key requires the `--` prefix. The `clientConfig` section adds the OIDC login settings to the **Kubeconfig** file that
+   Palette provides for the cluster. If the YAML already contains a `canonicalK8sConfig` section, add
+   `extraKubeAPIServerArgs` to that section instead of adding a second one.
+
+   <Tabs queryString="ck8s-oidc">
+
+   <TabItem label="Palette or Inherit from Tenant" value="palette-tenant">
+
+   Use OIDC macros for each value. Palette resolves the macros to the OIDC configuration of the option that you selected.
+   Refer to [OIDC Macros](../registries-and-packs/pack-constraints.md#oidc-macros) to learn more.
+
+   ```yaml
+   canonicalK8sConfig:
+     extraKubeAPIServerArgs:
+       --oidc-issuer-url: "{{ .spectro.system.oidc.issuerurl }}"
+       --oidc-client-id: "{{ .spectro.system.oidc.clientid }}"
+       --oidc-username-claim: "{{ .spectro.system.oidc.usernameclaim }}"
+       --oidc-groups-claim: "{{ .spectro.system.oidc.groupsclaim }}"
+
+   clientConfig:
+     oidc-issuer-url: "{{ .spectro.system.oidc.issuerurl }}"
+     oidc-client-id: "{{ .spectro.system.oidc.clientid }}"
+     oidc-client-secret: "{{ .spectro.system.oidc.clientsecret }}"
+     oidc-extra-scope: "{{ .spectro.system.oidc.extrascopes }}"
+   ```
+
+   </TabItem>
+
+   <TabItem label="Custom" value="custom">
+
+   Use literal values from your IdP. With **Custom**, OIDC macros in the `clientConfig` section resolve to empty strings.
+
+   ```yaml
+   canonicalK8sConfig:
+     extraKubeAPIServerArgs:
+       --oidc-issuer-url: "<issuer-url>"
+       --oidc-client-id: "<client-id>"
+       --oidc-username-claim: "<username-claim>"
+       --oidc-groups-claim: "<groups-claim>"
+
+   clientConfig:
+     oidc-issuer-url: "<issuer-url>"
+     oidc-client-id: "<client-id>"
+     oidc-client-secret: "<client-secret>"
+     oidc-extra-scope: "<extra-scopes>"
+   ```
+
+   Replace the placeholders with the following values from your IdP.
+
+   | **Placeholder** | **Value** |
+   | --- | --- |
+   | `<issuer-url>` | The issuer URL of your IdP. |
+   | `<client-id>` | The client ID of the OIDC application. |
+   | `<username-claim>` | The claim that carries the username, such as `email`. |
+   | `<groups-claim>` | The claim that carries group memberships, such as `groups`. |
+   | `<client-secret>` | The client secret of the OIDC application. |
+   | `<extra-scopes>` | A comma-separated list of extra scopes to request, such as `profile,email`. |
+
+   </TabItem>
+
+   </Tabs>
+
+6. Save the changes to the cluster profile.
+
+7. Deploy a cluster with this cluster profile, or update an existing cluster to the new profile version.
+
+8. Create role bindings that map your OIDC users or groups to Kubernetes roles. Refer to
+   [Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings) for guidance.
+
+### Validate {#validate-oidc}
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+2. From the left main menu, select **Clusters**, and then select your cluster.
+
+3. On the **Overview** tab, download the **Kubeconfig** file. Refer to
+   [Kubeconfig](../clusters/cluster-management/kubeconfig.md) for details about the kubeconfig files that Palette
+   provides.
+
+4. Set the `KUBECONFIG` environment variable to the file that you downloaded. Replace `<path-to-kubeconfig>` with the
+   path to the file.
+
+   ```shell
+   export KUBECONFIG=<path-to-kubeconfig>
+   ```
+
+5. List the namespaces in the cluster.
+
+   ```shell
+   kubectl get namespaces
+   ```
+
+6. Log in with your IdP credentials in the browser window that opens. After you log in, the command returns the
+   namespaces of the cluster if your role bindings allow you to list them.
