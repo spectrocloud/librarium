@@ -208,7 +208,9 @@ length, or format. Refer to [Create API Key](../user-management/authentication/a
 - When Palette VerteX acts as an OpenID Connect identity provider for clusters, it signs the tokens it issues with RS256
   under a per-tenant key pair.
 - The only token setting an operator can change is the session lifetime, from 15 to 1,440 minutes. Values outside that
-  range are refused. Refer to [Session Timeout](../tenant-settings/session-timeout.md).
+  range are refused. The setting applies to Tenant Console and API sessions. System Console sessions do not follow it
+  and always time out after 240 minutes of inactivity. Refer to
+  [Session Timeout](../tenant-settings/session-timeout.md).
 
 <details>
 <summary>Verify</summary>

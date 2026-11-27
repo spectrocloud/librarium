@@ -33,7 +33,8 @@ when setting or updating their passwords. The password blocklist is enforced whe
 
 All system administrators are allowed a maximum of five failed login attempts. After five failed login attempts, the
 user account will be placed in a temporary suspended state for a duration of 15 minutes. Upon expiration of the 15
-minutes, the user can try to log in again. The default session timeout for system console users is set to 4 hours.
+minutes, the user can try to log in again. System console sessions time out after four hours of inactivity. You cannot
+change this value.
 
 ## Timeout and Session Management
 
