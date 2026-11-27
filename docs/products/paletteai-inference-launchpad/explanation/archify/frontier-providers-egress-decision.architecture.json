@@ -30,7 +30,7 @@
   },
   "components": [
     {
-      "id": "gateway",
+      "id": "ingress",
       "type": "frontend",
       "label": "Request enters gateway",
       "pos": [318, 40],
@@ -41,16 +41,15 @@
       "id": "sovereignty",
       "type": "database",
       "label": "Sovereignty armed?",
-      "sublabel": "appliance-wide",
       "pos": [318, 140],
       "size": [250, 64],
       "icon": "decision"
     },
     {
-      "id": "blocked",
+      "id": "blocked_sovereignty",
       "type": "security",
       "label": "Blocked by sovereignty",
-      "sublabel": "egress override",
+      "sublabel": "appliance-wide egress override",
       "pos": [8, 140],
       "size": [250, 64],
       "icon": "stop"
@@ -58,14 +57,14 @@
     {
       "id": "tier",
       "type": "database",
-      "label": "Tier alias resolves to?",
-      "sublabel": "a local or external model",
+      "label": "Tier alias resolves to",
+      "sublabel": "external or local?",
       "pos": [318, 240],
       "size": [250, 64],
       "icon": "decision"
     },
     {
-      "id": "local",
+      "id": "served_local",
       "type": "backend",
       "label": "Served locally",
       "sublabel": "no X-AIBox-Frontier",
@@ -74,27 +73,27 @@
       "icon": "success"
     },
     {
-      "id": "enabled",
+      "id": "egress_cap",
       "type": "database",
-      "label": "External inferencing enabled?",
-      "sublabel": "for the client",
+      "label": "External inferencing",
+      "sublabel": "enabled for the client?",
       "pos": [318, 340],
       "size": [250, 64],
       "icon": "decision"
     },
     {
-      "id": "key",
+      "id": "key_present",
       "type": "database",
-      "label": "Key available?",
-      "sublabel": "for the endpoint",
+      "label": "Key available",
+      "sublabel": "for the endpoint?",
       "pos": [318, 440],
       "size": [250, 64],
       "icon": "decision"
     },
     {
-      "id": "denied",
+      "id": "denied_no_key",
       "type": "security",
-      "label": "HTTP 401",
+      "label": "HTTP 401 · OutcomeDenied",
       "sublabel": "missing endpoint credential",
       "pos": [8, 440],
       "size": [250, 64],
@@ -112,8 +111,8 @@
     {
       "id": "budget",
       "type": "database",
-      "label": "Egress budget remaining?",
-      "sublabel": "per endpoint",
+      "label": "Per-endpoint egress",
+      "sublabel": "budget remaining?",
       "pos": [318, 540],
       "size": [250, 64],
       "icon": "decision"
@@ -127,16 +126,16 @@
       "icon": "decision"
     },
     {
-      "id": "answered",
+      "id": "endpoint_ok",
       "type": "database",
-      "label": "Endpoint answered?",
-      "sublabel": "within the timeout",
+      "label": "Endpoint answered",
+      "sublabel": "within timeout?",
       "pos": [318, 640],
       "size": [250, 64],
       "icon": "decision"
     },
     {
-      "id": "fell_back",
+      "id": "endpoint_fell_back",
       "type": "backend",
       "label": "Served locally",
       "sublabel": "X-AIBox-Frontier: fell-back",
@@ -145,7 +144,7 @@
       "icon": "success"
     },
     {
-      "id": "exhausted",
+      "id": "budget_fell_back",
       "type": "backend",
       "label": "Served locally",
       "sublabel": "X-AIBox-Frontier: budget-exhausted",
@@ -154,87 +153,107 @@
       "icon": "success"
     },
     {
-      "id": "external",
+      "id": "served_external",
       "type": "cloud",
       "label": "External response",
-      "sublabel": "X-AIBox-Frontier: endpoint name",
-      "pos": [318, 740],
-      "size": [250, 64],
+      "sublabel": "X-AIBox-Frontier: anthropic | openai | gemini",
+      "pos": [273, 740],
+      "size": [340, 64],
       "icon": "success"
     }
   ],
   "connections": [
     {
-      "from": "gateway",
+      "from": "ingress",
       "to": "sovereignty",
       "variant": "emphasis"
     },
     {
       "from": "sovereignty",
-      "to": "blocked",
-      "label": "Yes",
+      "to": "blocked_sovereignty",
+      "label": "yes",
       "variant": "default"
     },
     {
       "from": "sovereignty",
       "to": "tier",
-      "label": "No",
+      "label": "no",
       "variant": "emphasis",
       "labelAt": [443, 222]
     },
     {
       "from": "tier",
-      "to": "local",
-      "label": "Local",
+      "to": "served_local",
+      "label": "local",
       "variant": "default"
     },
     {
       "from": "tier",
-      "to": "enabled",
-      "label": "External",
+      "to": "egress_cap",
+      "label": "external",
       "variant": "emphasis",
       "labelAt": [443, 322]
     },
     {
-      "from": "enabled",
-      "to": "key",
-      "label": "Yes",
-      "variant": "emphasis",
-      "labelAt": [443, 422]
-    },
-    {
-      "from": "enabled",
+      "from": "egress_cap",
       "to": "refused",
-      "label": "No",
+      "label": "no",
       "variant": "default",
       "fromSide": "right",
       "toSide": "top"
     },
     {
-      "from": "key",
-      "to": "denied",
-      "label": "No",
+      "from": "egress_cap",
+      "to": "key_present",
+      "label": "yes",
+      "variant": "emphasis",
+      "labelAt": [443, 422]
+    },
+    {
+      "from": "key_present",
+      "to": "denied_no_key",
+      "label": "no",
       "variant": "default"
     },
     {
-      "from": "key",
+      "from": "key_present",
       "to": "budget",
-      "label": "Yes",
+      "label": "yes",
       "variant": "emphasis",
       "labelAt": [443, 522]
     },
     {
       "from": "budget",
-      "to": "answered",
-      "label": "Yes",
+      "to": "endpoint_ok",
+      "label": "yes",
       "variant": "emphasis",
       "labelAt": [443, 622]
     },
     {
       "from": "budget",
       "to": "on_exceed",
-      "label": "No",
+      "label": "no",
       "variant": "default"
+    },
+    {
+      "from": "endpoint_ok",
+      "to": "served_external",
+      "label": "yes",
+      "variant": "emphasis",
+      "labelAt": [443, 722]
+    },
+    {
+      "from": "endpoint_ok",
+      "to": "endpoint_fell_back",
+      "label": "no",
+      "variant": "default"
+    },
+    {
+      "from": "on_exceed",
+      "to": "budget_fell_back",
+      "label": "local (default)",
+      "variant": "default",
+      "labelAt": [753, 622]
     },
     {
       "from": "on_exceed",
@@ -244,26 +263,6 @@
       "fromSide": "top",
       "toSide": "bottom",
       "labelAt": [753, 530]
-    },
-    {
-      "from": "on_exceed",
-      "to": "exhausted",
-      "label": "local (default)",
-      "variant": "default",
-      "labelAt": [753, 622]
-    },
-    {
-      "from": "answered",
-      "to": "external",
-      "label": "Yes",
-      "variant": "emphasis",
-      "labelAt": [443, 722]
-    },
-    {
-      "from": "answered",
-      "to": "fell_back",
-      "label": "No",
-      "variant": "default"
     }
   ]
 }

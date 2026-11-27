@@ -120,16 +120,20 @@ to one of seven terminal outcomes: blocked by sovereignty, local by alias, egres
 the `fell-back` marker after the endpoint itself did not answer, local fallback with the `budget-exhausted` marker, an
 HTTP 401 for a missing endpoint credential, or an HTTP 429 when egress is refused outright.
 
+<!-- vale Vale.Spelling = NO -->
+
 <p>
   <ThemedImage
     className="markdown-image"
-    alt="Flowchart of the external egress decision, with the main path in green. A request passes checks for sovereignty, the tier alias, external inferencing, the key, the egress budget, and the endpoint's answer before it gets an external response. Each branch to the side ends with the request served locally or refused, and an exhausted budget reaches the on_exceed setting first."
+    alt="Egress decision flowchart showing a request entering the gateway, first checking whether sovereignty is armed appliance-wide, then resolving the tier alias to an external or local model, then checking whether external inferencing is enabled for the client, whether a key is available for the endpoint, whether the per-endpoint egress budget remains, whether the endpoint answered, and the on_exceed setting, arriving at one of seven outcomes: blocked by sovereignty, served locally by alias, an external response, served locally with X-AIBox-Frontier fell-back, served locally with X-AIBox-Frontier budget-exhausted, HTTP 401 OutcomeDenied for a missing endpoint credential, or HTTP 429 when egress is refused."
     sources={{
       light: "/assets/docs/images/frontier-providers_egress-decision.webp",
       dark: "/assets/docs/images/frontier-providers_egress-decision-dark.webp",
     }}
   />
 </p>
+
+<!-- vale Vale.Spelling = YES -->
 
 Three subtleties in the flow are worth calling out. Sovereignty is checked first and overrides every downstream lever; a
 request never reaches the tier decision on a sovereignty-armed appliance. A missing endpoint credential is an
