@@ -1,0 +1,269 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "External Egress Decision",
+    "locale": "en",
+    "output": "frontier-providers-egress-decision.html",
+    "quality_profile": "showcase",
+    "legend": {
+      "mode": "auto",
+      "entries": {
+        "frontend": {
+          "label": "Request entry"
+        },
+        "database": {
+          "label": "Check"
+        },
+        "backend": {
+          "label": "Served locally"
+        },
+        "cloud": {
+          "label": "Served by an external endpoint"
+        },
+        "security": {
+          "label": "Refused"
+        }
+      }
+    },
+    "viewBox": [910, 880]
+  },
+  "components": [
+    {
+      "id": "gateway",
+      "type": "frontend",
+      "label": "Request enters gateway",
+      "pos": [318, 40],
+      "size": [250, 64],
+      "icon": "start"
+    },
+    {
+      "id": "sovereignty",
+      "type": "database",
+      "label": "Sovereignty armed?",
+      "sublabel": "appliance-wide",
+      "pos": [318, 140],
+      "size": [250, 64],
+      "icon": "decision"
+    },
+    {
+      "id": "blocked",
+      "type": "security",
+      "label": "Blocked by sovereignty",
+      "sublabel": "egress override",
+      "pos": [8, 140],
+      "size": [250, 64],
+      "icon": "stop"
+    },
+    {
+      "id": "tier",
+      "type": "database",
+      "label": "Tier alias resolves to?",
+      "sublabel": "a local or external model",
+      "pos": [318, 240],
+      "size": [250, 64],
+      "icon": "decision"
+    },
+    {
+      "id": "local",
+      "type": "backend",
+      "label": "Served locally",
+      "sublabel": "no X-AIBox-Frontier",
+      "pos": [8, 240],
+      "size": [250, 64],
+      "icon": "success"
+    },
+    {
+      "id": "enabled",
+      "type": "database",
+      "label": "External inferencing enabled?",
+      "sublabel": "for the client",
+      "pos": [318, 340],
+      "size": [250, 64],
+      "icon": "decision"
+    },
+    {
+      "id": "key",
+      "type": "database",
+      "label": "Key available?",
+      "sublabel": "for the endpoint",
+      "pos": [318, 440],
+      "size": [250, 64],
+      "icon": "decision"
+    },
+    {
+      "id": "denied",
+      "type": "security",
+      "label": "HTTP 401",
+      "sublabel": "missing endpoint credential",
+      "pos": [8, 440],
+      "size": [250, 64],
+      "icon": "stop"
+    },
+    {
+      "id": "refused",
+      "type": "security",
+      "label": "HTTP 429",
+      "sublabel": "egress refused",
+      "pos": [628, 440],
+      "size": [250, 64],
+      "icon": "stop"
+    },
+    {
+      "id": "budget",
+      "type": "database",
+      "label": "Egress budget remaining?",
+      "sublabel": "per endpoint",
+      "pos": [318, 540],
+      "size": [250, 64],
+      "icon": "decision"
+    },
+    {
+      "id": "on_exceed",
+      "type": "database",
+      "label": "on_exceed setting",
+      "pos": [628, 540],
+      "size": [250, 64],
+      "icon": "decision"
+    },
+    {
+      "id": "answered",
+      "type": "database",
+      "label": "Endpoint answered?",
+      "sublabel": "within the timeout",
+      "pos": [318, 640],
+      "size": [250, 64],
+      "icon": "decision"
+    },
+    {
+      "id": "fell_back",
+      "type": "backend",
+      "label": "Served locally",
+      "sublabel": "X-AIBox-Frontier: fell-back",
+      "pos": [8, 640],
+      "size": [250, 64],
+      "icon": "success"
+    },
+    {
+      "id": "exhausted",
+      "type": "backend",
+      "label": "Served locally",
+      "sublabel": "X-AIBox-Frontier: budget-exhausted",
+      "pos": [628, 640],
+      "size": [250, 64],
+      "icon": "success"
+    },
+    {
+      "id": "external",
+      "type": "cloud",
+      "label": "External response",
+      "sublabel": "X-AIBox-Frontier: endpoint name",
+      "pos": [318, 740],
+      "size": [250, 64],
+      "icon": "success"
+    }
+  ],
+  "connections": [
+    {
+      "from": "gateway",
+      "to": "sovereignty",
+      "variant": "emphasis"
+    },
+    {
+      "from": "sovereignty",
+      "to": "blocked",
+      "label": "Yes",
+      "variant": "default"
+    },
+    {
+      "from": "sovereignty",
+      "to": "tier",
+      "label": "No",
+      "variant": "emphasis",
+      "labelAt": [443, 222]
+    },
+    {
+      "from": "tier",
+      "to": "local",
+      "label": "Local",
+      "variant": "default"
+    },
+    {
+      "from": "tier",
+      "to": "enabled",
+      "label": "External",
+      "variant": "emphasis",
+      "labelAt": [443, 322]
+    },
+    {
+      "from": "enabled",
+      "to": "key",
+      "label": "Yes",
+      "variant": "emphasis",
+      "labelAt": [443, 422]
+    },
+    {
+      "from": "enabled",
+      "to": "refused",
+      "label": "No",
+      "variant": "default",
+      "fromSide": "right",
+      "toSide": "top"
+    },
+    {
+      "from": "key",
+      "to": "denied",
+      "label": "No",
+      "variant": "default"
+    },
+    {
+      "from": "key",
+      "to": "budget",
+      "label": "Yes",
+      "variant": "emphasis",
+      "labelAt": [443, 522]
+    },
+    {
+      "from": "budget",
+      "to": "answered",
+      "label": "Yes",
+      "variant": "emphasis",
+      "labelAt": [443, 622]
+    },
+    {
+      "from": "budget",
+      "to": "on_exceed",
+      "label": "No",
+      "variant": "default"
+    },
+    {
+      "from": "on_exceed",
+      "to": "refused",
+      "label": "refuse",
+      "variant": "default",
+      "fromSide": "top",
+      "toSide": "bottom",
+      "labelAt": [753, 530]
+    },
+    {
+      "from": "on_exceed",
+      "to": "exhausted",
+      "label": "local (default)",
+      "variant": "default",
+      "labelAt": [753, 622]
+    },
+    {
+      "from": "answered",
+      "to": "external",
+      "label": "Yes",
+      "variant": "emphasis",
+      "labelAt": [443, 722]
+    },
+    {
+      "from": "answered",
+      "to": "fell_back",
+      "label": "No",
+      "variant": "default"
+    }
+  ]
+}

@@ -23,6 +23,8 @@ keywords:
   ]
 ---
 
+import ThemedImage from "@theme/ThemedImage";
+
 A PaletteAI Inference Launchpad appliance serves inference locally and can also, on operator opt-in, send a request to a
 model outside the appliance. The console calls this _external inferencing_. This page explains where an external model
 is set up, which key the appliance sends, the levers that keep external traffic to the intended small slice, and the two
@@ -118,11 +120,16 @@ to one of seven terminal outcomes: blocked by sovereignty, local by alias, egres
 the `fell-back` marker after the endpoint itself did not answer, local fallback with the `budget-exhausted` marker, an
 HTTP 401 for a missing endpoint credential, or an HTTP 429 when egress is refused outright.
 
-<!-- vale Vale.Spelling = NO -->
-
-![Egress decision flowchart showing a request entering the gateway, first checking whether sovereignty is armed appliance-wide, then resolving the tier alias to an external or local model, then checking whether external inferencing is enabled for the client, whether a key is available for the endpoint, whether the per-endpoint egress budget remains, whether the endpoint answered, and the on_exceed setting, arriving at one of seven outcomes: blocked by sovereignty, served locally by alias, an external response, served locally with X-AIBox-Frontier fell-back, served locally with X-AIBox-Frontier budget-exhausted, HTTP 401 OutcomeDenied for a missing endpoint credential, or HTTP 429 when egress is refused.](/assets/docs/images/frontier-providers_decision.webp)
-
-<!-- vale Vale.Spelling = YES -->
+<p>
+  <ThemedImage
+    className="markdown-image"
+    alt="Flowchart of the external egress decision, with the main path in green. A request passes checks for sovereignty, the tier alias, external inferencing, the key, the egress budget, and the endpoint's answer before it gets an external response. Each branch to the side ends with the request served locally or refused, and an exhausted budget reaches the on_exceed setting first."
+    sources={{
+      light: "/assets/docs/images/frontier-providers_egress-decision.webp",
+      dark: "/assets/docs/images/frontier-providers_egress-decision-dark.webp",
+    }}
+  />
+</p>
 
 Three subtleties in the flow are worth calling out. Sovereignty is checked first and overrides every downstream lever; a
 request never reaches the tier decision on a sovereignty-armed appliance. A missing endpoint credential is an
