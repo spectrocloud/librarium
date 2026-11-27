@@ -11,6 +11,79 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## November 27, 2026 - Component Updates {#component-updates-2026-48}
+
+<!-- COMPONENT UPDATES TICKET: DOC-3496 -->
+<!-- RELEASE DATE: November 27, 2026 -->
+<!-- RELEASE MANAGEMENT APPLIANCE:  -->
+<!-- RELEASE ARTIFACT STUDIO: 4.10.10 -->
+<!-- RELEASE TERRAFORM VERSION:  -->
+
+The following components have been updated for Palette version 4.10.13 - 4.10.48.
+
+| Component                                          | Version |
+| -------------------------------------------------- | ------- |
+| [Artifact Studio](../downloads/artifact-studio.md) | 4.10.10 |
+
+<!-- BEGIN COMPONENT UPDATES BODY: DOC-3496. DO NOT DELETE. -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PAC-5334 -->
+
+- Added Canonical Kubernetes 1.34.12 and 1.35.10 to the non-FIPS variant of the `edge-canonical` pack for Edge clusters.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-1283 -->
+
+- Fixed an issue in Artifact Studio where the **Content Bundle** helper text in the **Download Options** drawer for
+  Palette Enterprise referred to an ISO with content, which the drawer does not offer.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-1284 -->
+
+- Fixed an issue in Artifact Studio where some pages labeled the organization admin role **Org admin** and others
+  labeled it **Admin**. All pages now label the role **Admin**.
+
+<!-- https://spectrocloud.atlassian.net/browse/PCOM-1385 -->
+
+- Fixed an issue in Artifact Studio where the profile bundle details drawer and details page made the app version and
+  profile bundle version hard to find. Both now show these two versions for the selected build as labeled fields.
+
+<!-- END COMPONENT UPDATES BODY: DOC-3496. DO NOT DELETE. -->
+
+### Packs
+
+<!-- BEGIN PACKS LIST BODY: DOC-3496. DO NOT DELETE. -->
+<!-- prettier-ignore-start -->
+
+| Pack Name | Layer | Non-FIPS | FIPS | New Version |
+| --------- | ----- | -------- | ---- | ----------- |
+| <VersionedLink text="argo-cd" url="/integrations/packs/?pack=argo-cd" /> | `addon` | :white_check_mark: | :x: | 10.18.3 |
+| <VersionedLink text="cni-aws-vpc-eks-helm" url="/integrations/packs/?pack=cni-aws-vpc-eks-helm" /> | `cni` | :white_check_mark: | :white_check_mark: | 1.23.3 |
+| <VersionedLink text="cni-cilium-oss" url="/integrations/packs/?pack=cni-cilium-oss" /> | `cni` | :white_check_mark: | :x: | 1.20.5 |
+| <VersionedLink text="cni-flannel" url="/integrations/packs/?pack=cni-flannel" /> | `cni` | :white_check_mark: | :x: | 0.28.11 |
+| <VersionedLink text="csi-aws-ebs" url="/integrations/packs/?pack=csi-aws-ebs" /> | `csi` | :white_check_mark: | :white_check_mark: | 1.68.1 |
+| <VersionedLink text="csi-gcp-driver" url="/integrations/packs/?pack=csi-gcp-driver" /> | `csi` | :white_check_mark: | :x: | 1.29.1 |
+| <VersionedLink text="csi-portworx-generic" url="/integrations/packs/?pack=csi-portworx-generic" /> | `csi` | :white_check_mark: | :x: | 3.7.2 |
+| <VersionedLink text="edge-canonical" url="/integrations/packs/?pack=edge-canonical" /> | `k8s` | :white_check_mark: | :x: | 1.34.12 |
+| <VersionedLink text="edge-canonical" url="/integrations/packs/?pack=edge-canonical" /> | `k8s` | :white_check_mark: | :x: | 1.35.10 |
+| <VersionedLink text="external-dns" url="/integrations/packs/?pack=external-dns" /> | `addon` | :white_check_mark: | :x: | 0.24.0 |
+| <VersionedLink text="headlamp" url="/integrations/packs/?pack=headlamp" /> | `addon` | :white_check_mark: | :x: | 0.46.0 |
+| <VersionedLink text="karpenter" url="/integrations/packs/?pack=karpenter" /> | `addon` | :white_check_mark: | :white_check_mark: | 1.15.3 |
+| <VersionedLink text="kgateway" url="/integrations/packs/?pack=kgateway" /> | `addon` | :x: | :white_check_mark: | 2.5.2 |
+| <VersionedLink text="portworx-add-on" url="/integrations/packs/?pack=portworx-add-on" /> | `addon` | :white_check_mark: | :x: | 3.7.2 |
+| <VersionedLink text="prometheus-agent" url="/integrations/packs/?pack=prometheus-agent" /> | `addon` | :white_check_mark: | :x: | 30.0.0 |
+| <VersionedLink text="prometheus-operator" url="/integrations/packs/?pack=prometheus-operator" /> | `addon` | :white_check_mark: | :x: | 93.9.0 |
+| <VersionedLink text="reloader" url="/integrations/packs/?pack=reloader" /> | `addon` | :x: | :white_check_mark: | 1.4.24 |
+| <VersionedLink text="reloader" url="/integrations/packs/?pack=reloader" /> | `addon` | :white_check_mark: | :x: | 1.4.25 |
+| <VersionedLink text="traefik" url="/integrations/packs/?pack=traefik" /> | `addon` | :white_check_mark: | :x: | 42.4.1 |
+| <VersionedLink text="zot-registry" url="/integrations/packs/?pack=zot-registry" /> | `addon` | :white_check_mark: | :white_check_mark: | 0.1.133 |
+
+<!-- prettier-ignore-end -->
+
+<!-- END PACKS LIST BODY: DOC-3496. DO NOT DELETE. -->
+
 ## November 26, 2026 - Release 4.10.48
 
 <!-- PATCH RELEASE TICKET: DOC-3512 -->
@@ -349,6 +422,46 @@ The following components have been updated for Palette version 4.10.13 - 4.10.44
   the system APIs must take it from its source instead, such as the identity provider, cloud storage account, or
   registry. To keep a stored secret when you update a system configuration, send `********` in that field of the `PUT`
   request.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12229 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12207 -->
+<!-- https://spectrocloud.atlassian.net/browse/DOC-3525 -->
+
+- To improve security, the following system API endpoints on self-hosted Palette and Palette VerteX now require a root
+  administrator or an operations administrator. Requests from an account administrator fail with the
+  `RestrictedToOperationAdmin` error code. For `PUT` and `DELETE` requests to
+  `/v1/system/config/registries/{registryName}` and `PUT` requests to `/v1/system/config/registries/oci/image`,
+  `RestrictedToOperationAdmin` replaces the `RestrictedToSysAdmin` error code. If you manage these settings only in the
+  system console, no action is required. Update any automation that calls these endpoints as an account administrator to
+  use an operations administrator instead. Refer to Account Management for
+  [self-hosted Palette](../enterprise-version/system-management/account-management/account-management.md#operations-administrator)
+  or [Palette VerteX](../vertex/system-management/account-management/account-management.md#operations-administrator).
+
+  | Area                        | Endpoints                                                                                                                                                                                                                                                                                            | Methods              |
+  | --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------- |
+  | System settings             | `/v1/system/config/auth`, `/v1/system/config/domain/certificates`, `/v1/system/config/kubectl`, `/v1/system/config/logger`, `/v1/system/config/proxy`, `/v1/system/config/reverseproxy`, `/v1/system/config/scar`, `/v1/system/config/smtp`, `/v1/system/config/sso`, `/v1/system/config/timeseries` | `GET`, `PUT`         |
+  | Preferences                 | `/v1/system/config/preferences/billing`, `/v1/system/config/preferences/cluster`                                                                                                                                                                                                                     | `GET`, `PUT`         |
+  | Cloud accounts              | `/v1/system/config/aws/account`, `/v1/system/config/aws/marketplace/account`, `/v1/system/config/aws/sts/account`, `/v1/system/config/azure/account`, `/v1/system/config/gcp/account`                                                                                                                | `GET`, `PUT`         |
+  | Cloud accounts              | `/v1/system/config/awsgov/sts/account`                                                                                                                                                                                                                                                               | `GET`, `POST`, `PUT` |
+  | Images                      | `/v1/system/config/apache-cloudstack/image`, `/v1/system/config/aws/image`, `/v1/system/config/edgeNative/image`, `/v1/system/config/gcp/image`, `/v1/system/config/maas/image`, `/v1/system/config/vsphere/image`                                                                                   | `GET`, `PUT`         |
+  | Storage and backup          | `/v1/system/config/azure/storage`, `/v1/system/config/storage/s3`, `/v1/system/config/database/backup/ftp`, `/v1/system/config/database/backup/s3`                                                                                                                                                   | `GET`, `PUT`         |
+  | Registries                  | `/v1/system/config/registries/oci/image`                                                                                                                                                                                                                                                             | `GET`, `PUT`         |
+  | Registries                  | `/v1/system/config/registries/{registryName}`                                                                                                                                                                                                                                                        | `PUT`, `DELETE`      |
+  | Key-value store             | `/v1/system/config/keyValueStore`                                                                                                                                                                                                                                                                    | `PUT`                |
+  | Key-value store             | `/v1/system/config/keyValueStore/{key}`                                                                                                                                                                                                                                                              | `GET`, `DELETE`      |
+  | Database backup and restore | `/v1/system/database/backup`, `/v1/system/database/restore/{backupUid}`                                                                                                                                                                                                                              | `PATCH`              |
+  | Database backup and restore | `/v1/system/database/backups/{backupUid}`                                                                                                                                                                                                                                                            | `DELETE`             |
+  | Alerts                      | `/v1/system/alerts/{component}`                                                                                                                                                                                                                                                                      | `PUT`, `DELETE`      |
+  | Encryption                  | `/v1/system/encrypt`                                                                                                                                                                                                                                                                                 | `POST`               |
+  | Security                    | `/v1/system/password/policy/default`, `/v1/system/security/mode`                                                                                                                                                                                                                                     | `PUT`                |
+  | Rate limits                 | `/v1/system/ratelimit`                                                                                                                                                                                                                                                                               | `PATCH`              |
+  | Users                       | `/v1/system/users/email/verify/resend`                                                                                                                                                                                                                                                               | `PATCH`              |
+  | Plans and billing           | `/v1/system/config/paymentsecrets`                                                                                                                                                                                                                                                                   | `PUT`                |
+  | Plans and billing           | `/v1/system/plan`                                                                                                                                                                                                                                                                                    | `GET`                |
+  | Plans and billing           | `/v1/system/plan/credits/{creditUid}`                                                                                                                                                                                                                                                                | `PUT`, `DELETE`      |
+  | Plans and billing           | `/v1/system/plan/freeCredit`, `/v1/system/plan/slaCredit`                                                                                                                                                                                                                                            | `POST`               |
+  | Plans and billing           | `/v1/system/plan/planLimit`                                                                                                                                                                                                                                                                          | `PUT`                |
+  | Plans and billing           | `/v1/system/plan/startDate`                                                                                                                                                                                                                                                                          | `PATCH`              |
 
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12231 -->
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12378 -->

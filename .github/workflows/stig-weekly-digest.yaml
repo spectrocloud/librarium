@@ -1,0 +1,80 @@
+# Every Monday, posts the STIG epic's unassigned docs tickets to #private-team-docs, so team members can self-assign one.
+# The logic lives in scripts/jira-epic-digest.sh, which you can run locally with DRY_RUN=1.
+# librarium is public and anyone can read these logs, so the script prints only counts and HTTP status codes, never ticket data.
+# Scheduled and dispatched runs read this file from master, so it needs no backport.
+
+name: "STIG Weekly Digest"
+
+on:
+  schedule:
+    # 13:15 UTC on Mondays: 9:15 AST, or 10:15 ADT during daylight saving time. Not on the hour, because GitHub delays top-of-hour schedules under load.
+    - cron: "15 13 * * 1"
+  workflow_dispatch:
+    inputs:
+      use_test_webhook:
+        description: "Post to the test channel (SLACK_PRIVATE_TEAM_TEST_WEBHOOK) instead of #private-team-docs."
+        type: boolean
+        default: false
+
+env:
+  # The epic to watch, and the label that also marks its tickets. Change both to watch another compliance epic.
+  EPIC_KEY: "DOC-3509"
+  EPIC_LABEL: "STIG"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
+
+jobs:
+  post-digest:
+    name: Post the STIG Digest
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      # The repository is large, so check out only the script.
+      - name: Check Out the Digest Script
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          sparse-checkout: scripts/jira-epic-digest.sh
+          sparse-checkout-cone-mode: false
+          persist-credentials: false
+
+      # A step timeout fails the step, so the notice below still runs. A job timeout would cancel the job instead.
+      - name: Post the Digest to Slack
+        id: digest
+        timeout-minutes: 8
+        env:
+          JIRA_EMAIL: ${{ secrets.JIRA_EMAIL }}
+          JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+          USE_TEST_WEBHOOK: ${{ inputs.use_test_webhook == true }}
+          TEAM_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
+          TEST_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_TEST_WEBHOOK }}
+        run: |
+          # A test run must never fall back to the team channel, so stop if the test secret is empty.
+          if [[ "$USE_TEST_WEBHOOK" == "true" ]]; then
+            if [[ -z "$TEST_WEBHOOK" ]]; then
+              echo "failure_hint=The SLACK_PRIVATE_TEAM_TEST_WEBHOOK secret is empty, so the test run did not post." >> "$GITHUB_OUTPUT"
+              exit 1
+            fi
+            export SLACK_WEBHOOK_URL="$TEST_WEBHOOK"
+          else
+            export SLACK_WEBHOOK_URL="$TEAM_WEBHOOK"
+          fi
+          bash scripts/jira-epic-digest.sh
+
+      # This notice holds no ticket data, so it can use the same action as the other workflows, and it can go to the team channel when the test secret is empty.
+      - name: Slack Notification on Failure
+        if: ${{ failure() || cancelled() }}
+        uses: rtCamp/action-slack-notify@06cc13f74fa8d4d2296c09455d91e9453e4025f4 # v2.4.1
+        env:
+          SLACK_WEBHOOK: ${{ inputs.use_test_webhook && secrets.SLACK_PRIVATE_TEAM_TEST_WEBHOOK || secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
+          SLACK_USERNAME: "spectromate"
+          SLACK_ICON_EMOJI: ":robot_panic:"
+          SLACK_COLOR: "danger"
+          SLACKIFY_MARKDOWN: true
+          ENABLE_ESCAPES: true
+          SLACK_MESSAGE: "The weekly ${{ env.EPIC_LABEL }} digest from `${{ github.workflow }}` in `${{ github.repository }}` did not post. ${{ steps.digest.outputs.failure_hint }} [View details](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})."
