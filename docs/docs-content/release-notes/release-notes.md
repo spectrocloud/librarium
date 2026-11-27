@@ -29,6 +29,50 @@ tags: ["release-notes"]
   the HTTP 401 status code but no longer includes the unknown key. Update any automation that checks for the
   `ResourceNotFound` error code or the `API Key '<key>' is not found` message.
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12254 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12771 -->
+
+- To improve security, the following Palette [API endpoints](/api/introduction) no longer connect to loopback,
+  link-local, multicast, or unspecified addresses, including the cloud metadata address `169.254.169.254`. They also
+  reject host names that do not resolve, unless Palette uses a proxy server. In Palette SaaS, they reject private and
+  Carrier-Grade NAT (CGNAT) addresses too. Self-hosted Palette and Palette VerteX continue to accept these addresses.
+  Palette checks the address before it connects, and rejected requests fail with the `InvalidEndpoint` error code.
+
+  | API                                                                    | Purpose                                                                  |
+  | ---------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+  | `PUT /v1/system/config/smtp/validate`                                  | Validate the system SMTP server.                                         |
+  | `POST /v1/system/config/ftp/validate`                                  | Validate the FTP backup server.                                          |
+  | `PUT /v1/system/config/scar` and `GET /v1/system/config/scar/validate` | Update and validate the Spectro Cloud Artifact Registry (SCAR) endpoint. |
+  | `POST /v1/clouds/vsphere/account/validate`                             | Validate a VMware vSphere account.                                       |
+  | `POST /v1/clouds/maas/account/validate`                                | Validate a MAAS account.                                                 |
+  | `POST /v1/clouds/apache-cloudstack/account/validate`                   | Validate an Apache CloudStack account.                                   |
+
+  Palette also checks saved addresses again when it uses them. If a saved FTP backup server or SCAR endpoint uses a
+  rejected address, Palette skips scheduled FTP backups and SCAR validation fails. Splunk
+  [audit trail](../audit-logs/audit-logs.md#push-audit-trails-to-amazon-cloudwatch-or-splunk) destinations follow the
+  same address rules, and a rejected Splunk HTTP Event Collector (HEC) URL fails with the `InvalidParam` error code.
+  Cloud accounts that you validate through a Private Cloud Gateway (PCG) are not affected.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12254 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12771 -->
+
+- To improve security, the following system API endpoints of self-hosted Palette and Palette VerteX now require a root
+  administrator or an operations administrator. Requests from an account administrator fail with the
+  `RestrictedToOperationAdmin` error code. If you manage these settings only in the system console, no action is
+  required. Update any automation that calls these endpoints as an account administrator to use an
+  [operations administrator](../enterprise-version/system-management/account-management/account-management.md#operations-administrator)
+  instead.
+
+  - `PUT /v1/system/config/smtp/validate`
+
+  - `POST /v1/system/config/ftp/validate`
+
+  - `POST /v1/system/config/s3/validate`
+
+  - `GET /v1/system/config/scar/validate`
+
+  - `GET /v1/system/config/registries/{registryName}`
+
 #### Upgrade Notes {#upgrade-notes-4.10.c}
 
 #### Features
@@ -76,6 +120,14 @@ tags: ["release-notes"]
   required. Update any scripts and integrations that call the v1 endpoints directly. Refer to
   [Migrate to the v2 Users and Teams Summary Endpoints](/api/introduction#migrate-to-the-v2-users-and-teams-summary-endpoints)
   for the steps, and to the [Deprecations](./announcements.md#deprecations) table for the removal timeline.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12254 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12771 -->
+
+- The `GET /v1/system/config/registries/{registryName}` system [API endpoint](/api/introduction) of self-hosted Palette
+  and Palette VerteX is now deprecated. The `PUT` and `DELETE` operations on the same path are not deprecated. Remove
+  any calls to the `GET` endpoint from your automation, scripts, and integrations. Refer to the
+  [Deprecations](./announcements.md#deprecations) table for the removal timeline.
 
 ### Edge
 
