@@ -29,6 +29,30 @@ tags: ["release-notes"]
   the HTTP 401 status code but no longer includes the unknown key. Update any automation that checks for the
   `ResourceNotFound` error code or the `API Key '<key>' is not found` message.
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12440 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12774 -->
+
+- To improve security, Palette now accepts only the external ID of your tenant for AWS Security Token Service (STS)
+  credentials. This is the external ID that Palette displays when you add an AWS resource that uses STS. Palette checks
+  the external ID when you create, update, or validate
+  [AWS accounts](../clusters/public-cloud/aws/add-aws-accounts.md#dynamic-access-credentials), registries in Amazon
+  Elastic Container Registry (ECR), Amazon S3 backup locations, and Amazon CloudWatch audit trail destinations, and each
+  time it assumes the IAM role. Requests without an external ID fail with the `AwsStsExternalIdMissing` error code, and
+  requests with a different external ID fail with `AwsStsExternalIdMismatch`. Palette does not change the external ID of
+  existing resources, so operations that use a resource with a different external ID fail. If you created a resource
+  through the API or Terraform with a different external ID, update the trust policy of its IAM role to use the external
+  ID of your tenant, and then update the resource in Palette. Use the `GET /v1/clouds/aws/account/sts`
+  [API endpoint](/api/introduction) to retrieve the external ID of your tenant. If you add these resources only through
+  the Palette UI, no action is required.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12440 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12774 -->
+
+- To improve security, the `GET /v1/cloudaccounts/aws/{uid}` Palette [API endpoint](/api/introduction) now ignores the
+  `assumeCredentials=true` query parameter and returns the stored credentials of the account. For STS cloud accounts,
+  `spec.accessKey` is now empty, and `spec.secretKey` remains masked. Update any automation that reads `spec.accessKey`
+  from this response.
+
 #### Upgrade Notes {#upgrade-notes-4.10.c}
 
 #### Features

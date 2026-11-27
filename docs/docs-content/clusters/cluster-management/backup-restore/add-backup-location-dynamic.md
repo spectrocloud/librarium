@@ -149,16 +149,16 @@ AWS account.
 7. Use the AWS console to create a new IAM role in your AWS account and attach the IAM policy that you created in the
    previous step. Use the following configuration while creating the IAM role.
 
-   | **AWS Console Field** | **Value**                                                            |
-   | --------------------- | -------------------------------------------------------------------- |
-   | Trusted entity type   | Select **AWS account**.                                              |
-   | AWS account           | Select the **Another AWS account** radio button.                     |
-   | AWS Account ID        | Use the one displayed in Palette, which is Palette's account ID.     |
-   | Options               | Select the **Require external ID** checkbox.                         |
-   | External ID           | Use the one displayed in Palette. Palette generates the external ID. |
-   | Permissions policies  | Attach the IAM policy you created in the previous step.              |
-   | Role name             | Provide a name of your choice.                                       |
-   | Role description      | Provide an optional description.                                     |
+   | **AWS Console Field** | **Value**                                                                                        |
+   | --------------------- | ------------------------------------------------------------------------------------------------ |
+   | Trusted entity type   | Select **AWS account**.                                                                          |
+   | AWS account           | Select the **Another AWS account** radio button.                                                 |
+   | AWS Account ID        | Use the one displayed in Palette, which is Palette's account ID.                                 |
+   | Options               | Select the **Require external ID** checkbox.                                                     |
+   | External ID           | Use the one displayed in Palette. Palette generates the external ID and rejects any other value. |
+   | Permissions policies  | Attach the IAM policy you created in the previous step.                                          |
+   | Role name             | Provide a name of your choice.                                                                   |
+   | Role description      | Provide an optional description.                                                                 |
 
    ![A view of the IAM Role creation screen](/clusters_cluster-management_backup_restore_add-backup-location-dynamic_aws_create_role.webp)
 
@@ -536,16 +536,16 @@ multiple cloud accounts.
    [Creating a role to delegate permissions to an IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html)
    guide to learn how to create an IAM role. Use the following configuration while creating the IAM role.
 
-   | **AWS Console Field** | **Value**                                                            |
-   | --------------------- | -------------------------------------------------------------------- |
-   | Trusted entity type   | Select the **AWS account** option.                                   |
-   | AWS account           | Select the **Another AWS account** radio button.                     |
-   | AWS Account ID        | Use the one displayed in Palette, which is Palette's account ID.     |
-   | Options               | Select the **Require external ID** checkbox.                         |
-   | External ID           | Use the one displayed in Palette. Palette generates the external ID. |
-   | Permissions policies  | Attach the IAM policy you created in the previous step.              |
-   | Role name             | Provide a name of your choice.                                       |
-   | Role description      | Provide an optional description.                                     |
+   | **AWS Console Field** | **Value**                                                                                        |
+   | --------------------- | ------------------------------------------------------------------------------------------------ |
+   | Trusted entity type   | Select the **AWS account** option.                                                               |
+   | AWS account           | Select the **Another AWS account** radio button.                                                 |
+   | AWS Account ID        | Use the one displayed in Palette, which is Palette's account ID.                                 |
+   | Options               | Select the **Require external ID** checkbox.                                                     |
+   | External ID           | Use the one displayed in Palette. Palette generates the external ID and rejects any other value. |
+   | Permissions policies  | Attach the IAM policy you created in the previous step.                                          |
+   | Role name             | Provide a name of your choice.                                                                   |
+   | Role description      | Provide an optional description.                                                                 |
 
    ![A view of the IAM Role creation screen](/clusters_cluster-management_backup_restore_add-backup-location-dynamic_aws_create_role.webp)
 
@@ -967,16 +967,16 @@ Use the following steps to add an S3 bucket as the backup location for a non-AWS
 7. In the bucket's AWS account, create a new IAM role and attach the IAM policy you created in the previous step. Use
    the following configuration while creating the IAM role.
 
-   | **AWS Console Field** | **Value**                                                            |
-   | --------------------- | -------------------------------------------------------------------- |
-   | Trusted entity type   | Select **AWS account**.                                              |
-   | AWS account           | Select the **Another AWS account** radio button.                     |
-   | AWS Account ID        | Use the one displayed in Palette, which is Palette's account ID.     |
-   | Options               | Select the **Require external ID** checkbox.                         |
-   | External ID           | Use the one displayed in Palette. Palette generates the external ID. |
-   | Permissions policies  | Attach the IAM policy you created in the previous step.              |
-   | Role name             | Provide a name of your choice.                                       |
-   | Role description      | Provide an optional description.                                     |
+   | **AWS Console Field** | **Value**                                                                                        |
+   | --------------------- | ------------------------------------------------------------------------------------------------ |
+   | Trusted entity type   | Select **AWS account**.                                                                          |
+   | AWS account           | Select the **Another AWS account** radio button.                                                 |
+   | AWS Account ID        | Use the one displayed in Palette, which is Palette's account ID.                                 |
+   | Options               | Select the **Require external ID** checkbox.                                                     |
+   | External ID           | Use the one displayed in Palette. Palette generates the external ID and rejects any other value. |
+   | Permissions policies  | Attach the IAM policy you created in the previous step.                                          |
+   | Role name             | Provide a name of your choice.                                                                   |
+   | Role description      | Provide an optional description.                                                                 |
 
 8. Open the newly created IAM role in the AWS console, and then click **Edit** on the Summary card.
 
