@@ -105,6 +105,54 @@ This release delivers version 4.10.TBD of the PaletteAI VM Launchpad appliance, 
   API keys without waiting for the user to sign in again. Refer to
   [Edit a Group](../vm-management/vm-launchpad/access-management/groups.md#edit-a-group).
 
+## November 26, 2026 - Release 4.10.48
+
+<!-- PATCH RELEASE TICKET: DOC-3512 -->
+<!-- PATCH RELEASE VERSION: 4.10.48 -->
+<!-- PATCH RELEASE CANDIDATES: PEM-12761 PEM-12813 PE-10295 PE-10267 PE-10239 PEM-12724 PEM-12730 PEM-12478 -->
+
+### Improvements
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12761 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12813 -->
+<!-- https://spectrocloud.atlassian.net/browse/PE-10295 -->
+
+- Applied security fixes to improve the platform's security posture.
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12724 -->
+
+- Reduced MongoDB memory usage during the scheduled cleanup of cluster metrics. Palette now runs each cleanup job on one
+  replica of its management services instead of on every replica.
+
+### Bug Fixes
+
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12730 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12478 -->
+
+- Fixed an issue that caused [Headlamp](../clusters/cluster-management/headlamp.md) to stay on its loading screen when
+  you opened it from a cluster's **Connect** link through Spectro Proxy. This occurred when Palette took longer than 15
+  seconds to respond, for example, over a slow network connection.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-10239 -->
+
+- Fixed an issue that caused Palette to report an [Edge](../clusters/edge/edge.md) host as upgraded when its operating
+  system and Kubernetes upgrade did not complete. For example, if the upgrade rolled back to the previous image, the
+  host stayed on the previous Kubernetes version, and Palette did not retry the upgrade.
+
+<!-- https://spectrocloud.atlassian.net/browse/PE-10267 -->
+
+- Fixed an issue that caused pods on airgapped Edge clusters to enter the `ImagePullBackOff` state during a cluster
+  profile upgrade. This occurred when a pod that used an image from the previous profile version restarted before its
+  add-on pack finished upgrading.
+
+### Edge
+
+:::info
+
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.10.48 Palette release is 4.10.17.
+
+:::
+
 ## November 23, 2026 - Release 4.10.47
 
 <!-- PATCH RELEASE TICKET: DOC-3490 -->
