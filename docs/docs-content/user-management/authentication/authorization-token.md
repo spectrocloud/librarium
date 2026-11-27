@@ -10,8 +10,8 @@ tags: ["user-management", "authentication"]
 
 Palette exposes an API endpoint to generate an authorization token for a user. The authorization token is valid for the
 tenant's [session timeout](../../tenant-settings/session-timeout.md), which is 240 minutes by default. Tenant
-administrators can set the session timeout from 15 to 1,440 minutes. You can refresh the token before it expires using
-the refresh API endpoint.
+administrators can set the session timeout from 15 to 1,440 minutes. Before the token expires, you can refresh it. Refer
+to [Refresh Authorization Token](#refresh-authorization-token).
 
 API requests using the authorization token must use the HTTP header `Authorization` with a token as the value.
 
@@ -25,12 +25,10 @@ curl --location --request GET 'https://api.spectrocloud.com/v1/projects/alerts' 
 --header "Content-Type: application/json"
 ```
 
-To refresh the authorization token, use the `v1/auth/refresh` endpoint with a GET request.
-
 ## Acquire Authorization Token
 
-To acquire an authorization token, use the `v1/auth/authenticate` endpoint with a POST request to generate the token.
-Provide the email ID, organization name, and password in the request body, as shown in the following example.
+To acquire an authorization token, use the `v1/auth/authenticate` endpoint with a POST request. Provide your email
+address, organization name, and password in the request body, as shown in the following example.
 
 ```bash
 curl --location 'https://api.spectrocloud.com/v1/auth/authenticate' \
@@ -53,13 +51,15 @@ Use the authorization token in the `Authorization` header to make API requests.
 
 ## Refresh Authorization Token
 
-To refresh the authorization token, use the `v1/auth/refresh` endpoint with a GET request. Replace `:token` in the URL
-with your current authorization token. Palette does not issue a separate refresh token.
+To refresh the authorization token, use the `v1/auth/refresh` endpoint with a GET request. Palette does not issue a
+separate refresh token.
 
 ```bash
-curl --location 'https://api.spectrocloud.com/v1/auth/refresh/:token' \
+curl --location 'https://api.spectrocloud.com/v1/auth/refresh/<authorization-token>' \
 --header 'Accept: application/json'
 ```
+
+Replace `<authorization-token>` with your current authorization token.
 
 The response contains a new authorization token, which is valid for the tenant's session timeout from the time of the
 refresh. Use the new authorization token in the `Authorization` header to make API requests.
@@ -67,7 +67,7 @@ refresh. Use the new authorization token in the `Authorization` header to make A
 You cannot refresh an expired token. If your token has expired, request a new one. Refer to
 [Acquire Authorization Token](#acquire-authorization-token).
 
-The following example shows how to refresh the authorization token. The token in the URL is abbreviated for brevity.
+The following example shows how to refresh the authorization token. The token in the URL is shortened.
 
 ```bash hideClipboard
 curl --location 'https://api.spectrocloud.com/v1/auth/refresh/eyJhbGc..........' \

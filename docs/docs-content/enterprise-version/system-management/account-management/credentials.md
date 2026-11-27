@@ -33,10 +33,11 @@ when setting or updating their passwords. The password blocklist is enforced whe
 
 All system administrators are allowed a maximum of five failed login attempts. After five failed login attempts, the
 user account will be placed in a temporary suspended state for a duration of 15 minutes. Upon expiration of the 15
-minutes, the user can try to log in again. System console sessions time out after four hours of inactivity. You cannot
-change this value.
+minutes, the user can try to log in again.
 
 ## Timeout and Session Management
+
+System console sessions time out after four hours of inactivity. You cannot change this value.
 
 The default timeout for tenant users is set to four hours. After four hours of inactivity, the user will be logged out
 of Palette. You can change the default session timeout value for tenant users by following the steps in the
