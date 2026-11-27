@@ -1,0 +1,201 @@
+# This workflow posts a PR to the #docs-pr-review Slack channel again when a team member comments /review-again on it.
+# Use it when a PR that was already posted is ready for another review, for example after it went back to Draft for
+# changes. The notify-slack label posts a PR only once (the <!-- slack-notified --> marker comment blocks a second
+# post), so this command is how an author asks the channel for another review.
+#
+# The repost starts with :repeat:, keeps the size and urgency emoji, and mentions the reviewers whose working hours
+# include the current UTC hour, using the same rules as GHA-ready-for-review.yaml. Change both files together.
+# It then adds a line to the marker comment and reacts to the command with +1. If the PR is closed, is a Draft, or
+# was never posted, nothing is posted: the workflow reacts with "confused" and replies with the reason.
+#
+# SECURITY: only comments from OWNER, MEMBER, or COLLABORATOR accounts run it, and it never checks out or runs PR
+# code. issue_comment workflows always run the default branch's copy of this file, so PRs into version-* and
+# docs-rel-* branches use it too, and it needs no backport.
+
+name: Review Again
+
+on:
+  issue_comment:
+    types: [created]
+
+permissions: {}
+
+concurrency:
+  group: review-again-${{ github.event.issue.number }}
+  cancel-in-progress: false
+
+jobs:
+  review-again:
+    name: Post the PR for another review
+    if: >
+      github.event.issue.pull_request &&
+      startsWith(github.event.comment.body, '/review-again') &&
+      !endsWith(github.actor, '[bot]') &&
+      contains(fromJSON('["OWNER","MEMBER","COLLABORATOR"]'), github.event.comment.author_association)
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write # react to the command comment and reply when nothing is posted
+      pull-requests: write # read the PR and update the marker comment on it
+
+    steps:
+      - name: Check the command and the PR
+        id: pr
+        env:
+          GH_TOKEN: ${{ github.token }}
+          COMMENT_BODY: ${{ github.event.comment.body }}
+          PR_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          # The first line must be the command on its own or followed by a space, so /review-againx does nothing.
+          FIRST_LINE=${COMMENT_BODY%%$'\n'*}
+          FIRST_LINE=$(printf '%s' "${FIRST_LINE%$'\r'}" | tr '[:upper:]' '[:lower:]')
+          if [[ ! "$FIRST_LINE" =~ ^/review-again([[:space:]]|$) ]]; then
+            echo "The comment is not a /review-again command."
+            echo "run=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          echo "run=true" >> "$GITHUB_OUTPUT"
+
+          PR=$(gh api "repos/$GITHUB_REPOSITORY/pulls/$PR_NUMBER")
+          STATE=$(jq -r '.state' <<< "$PR")
+          DRAFT=$(jq -r '.draft' <<< "$PR")
+          # Only a marker comment from this repository's workflows counts, not a comment that quotes the marker.
+          MARKER_ID=$(gh api --paginate "repos/$GITHUB_REPOSITORY/issues/$PR_NUMBER/comments" \
+            --jq '.[] | select(.user.login == "github-actions[bot]" and (.body | contains("<!-- slack-notified -->"))) | .id')
+          MARKER_ID=${MARKER_ID%%$'\n'*}
+
+          REASON=""
+          if [ "$STATE" != "open" ]; then
+            REASON="the PR is closed."
+          elif [ "$DRAFT" = "true" ]; then
+            REASON="the PR is a Draft. Mark it ready for review, and then comment \`/review-again\`."
+          elif [ -z "$MARKER_ID" ]; then
+            REASON="the PR has not been posted there yet. Add the \`notify-slack\` label instead."
+          fi
+
+          if [ -n "$REASON" ]; then
+            echo "Not posting: $REASON"
+            echo "post=false" >> "$GITHUB_OUTPUT"
+            echo "reason=$REASON" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          {
+            echo "post=true"
+            echo "marker_id=$MARKER_ID"
+            echo "title=$(jq -r '.title' <<< "$PR")"
+            echo "url=$(jq -r '.html_url' <<< "$PR")"
+            echo "labels=$(jq -r '[.labels[].name] | join(",")' <<< "$PR")"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Explain why nothing was posted
+        if: steps.pr.outputs.run == 'true' && steps.pr.outputs.post == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          COMMENT_ID: ${{ github.event.comment.id }}
+          PR_NUMBER: ${{ github.event.issue.number }}
+          REASON: ${{ steps.pr.outputs.reason }}
+        run: |
+          gh api -X POST "repos/$GITHUB_REPOSITORY/issues/comments/$COMMENT_ID/reactions" -f content=confused > /dev/null
+          gh api -X POST "repos/$GITHUB_REPOSITORY/issues/$PR_NUMBER/comments" \
+            -f body="⚠️ \`/review-again\` did not post this PR to #docs-pr-review: $REASON" > /dev/null
+
+      - name: Choose reviewers from the config
+        if: steps.pr.outputs.post == 'true'
+        id: pick
+        env:
+          REVIEWER_CONFIG_B64: ${{ secrets.REVIEWER_CONFIG_B64 }}
+        run: |
+          # Same rules as GHA-ready-for-review.yaml. The decoded config stays in memory, not in a file.
+          CONFIG=$(printf '%s' "$REVIEWER_CONFIG_B64" | base64 -d)
+          HOUR=$(date -u +'%H')
+          DAY=$(date -u +%a | tr '[:upper:]' '[:lower:]')
+          echo "UTC Hour: $HOUR | Day: $DAY"
+
+          REVIEWERS=""
+
+          for reviewer in $(jq -r 'keys[]' <<< "$CONFIG"); do
+            START=$(jq -r ".\"$reviewer\".start" <<< "$CONFIG")
+            END=$(jq -r ".\"$reviewer\".end" <<< "$CONFIG")
+            SLACK_ID=$(jq -r ".\"$reviewer\".slack_id" <<< "$CONFIG")
+
+            if jq -e ".\"$reviewer\".days" <<< "$CONFIG" > /dev/null; then
+              DAYS=$(jq -r ".\"$reviewer\".days[]" <<< "$CONFIG" | tr '\n' ' ')
+              [[ "$DAYS" != *"$DAY"* ]] && continue
+            fi
+
+            if [ "$HOUR" -ge "$START" ] && [ "$HOUR" -lt "$END" ]; then
+              REVIEWERS+="<@$SLACK_ID> "
+            fi
+          done
+
+          if [ -z "$REVIEWERS" ]; then
+            REVIEWERS="<!here> _(No reviewers available — notifying team)_"
+          fi
+
+          echo "reviewers=$REVIEWERS" >> "$GITHUB_OUTPUT"
+
+      - name: Check the review channel webhook
+        if: steps.pr.outputs.post == 'true'
+        env:
+          WEBHOOK: ${{ secrets.SLACK_PR_REVIEW_WEBHOOK }}
+        run: |
+          if [ -z "$WEBHOOK" ]; then
+            echo "::error::The SLACK_PR_REVIEW_WEBHOOK secret is not set, so the review request can't be posted to #docs-pr-review."
+            exit 1
+          fi
+
+      - name: Map size and urgency labels to emoji
+        if: steps.pr.outputs.post == 'true'
+        id: emoji
+        env:
+          LABELS: ${{ steps.pr.outputs.labels }}
+        run: |
+          # Same map as GHA-ready-for-review.yaml: size first, then urgency. Matching ignores case.
+          L=",$(printf '%s' "$LABELS" | tr '[:upper:]' '[:lower:]'),"
+          E=""
+          [[ "$L" == *",monster-pr,"* ]] && E+=":t-rex: "
+          [[ "$L" == *",small-pr,"* ]] && E+=":ant: "
+          [[ "$L" == *",urgent,"* ]] && E+=":rotating_light: "
+          [[ "$L" == *",not-urgent,"* ]] && E+=":turtle: "
+          echo "Label emoji: ${E:-none}"
+          echo "emoji=$E" >> "$GITHUB_OUTPUT"
+
+      - name: Notify Slack
+        if: steps.pr.outputs.post == 'true'
+        uses: rtCamp/action-slack-notify@06cc13f74fa8d4d2296c09455d91e9453e4025f4 # v2.4.1
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_PR_REVIEW_WEBHOOK }}
+          SLACK_USERNAME: "spectromate"
+          SLACK_ICON_EMOJI: ":robot_panic:"
+          SLACK_COLOR: "#A020F0"
+          SLACK_MESSAGE: |
+            :repeat: ${{ steps.emoji.outputs.emoji }}:review: *<${{ steps.pr.outputs.url }}|${{ steps.pr.outputs.title }}>* is ready for another review!
+            Pinging: ${{ steps.pick.outputs.reviewers }}
+
+      - name: Record the repost and acknowledge the command
+        if: steps.pr.outputs.post == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          COMMENT_ID: ${{ github.event.comment.id }}
+          MARKER_ID: ${{ steps.pr.outputs.marker_id }}
+        run: |
+          MARKER='<!-- slack-notified -->'
+          TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+          BODY=$(gh api "repos/$GITHUB_REPOSITORY/issues/comments/$MARKER_ID" --jq '.body')
+          # Move the marker to the end, after the new line. Command substitution drops the trailing newlines.
+          BODY=$(printf '%s' "${BODY//"$MARKER"/}")
+          # Markers from before November 17, 2026 end with a literal " \n " (a space on each side).
+          BODY=${BODY% }
+          BODY=${BODY%\\n}
+          BODY=${BODY% }
+          BODY=$(printf '%s\n🔁 Posted again for another review at %s\n%s' "$BODY" "$TIMESTAMP" "$MARKER")
+          gh api -X PATCH "repos/$GITHUB_REPOSITORY/issues/comments/$MARKER_ID" -f body="$BODY" > /dev/null
+          gh api -X POST "repos/$GITHUB_REPOSITORY/issues/comments/$COMMENT_ID/reactions" -f content=+1 > /dev/null
+
+      - name: React to a failed repost
+        if: failure() && steps.pr.outputs.post == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          COMMENT_ID: ${{ github.event.comment.id }}
+        run: |
+          gh api -X POST "repos/$GITHUB_REPOSITORY/issues/comments/$COMMENT_ID/reactions" -f content=confused > /dev/null
