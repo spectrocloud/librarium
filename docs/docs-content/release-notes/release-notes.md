@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## DATE PENDING - Release 4.10.48
+## November 26, 2026 - Release 4.10.48
 
 <!-- PATCH RELEASE TICKET: DOC-3512 -->
 <!-- PATCH RELEASE VERSION: 4.10.48 -->
