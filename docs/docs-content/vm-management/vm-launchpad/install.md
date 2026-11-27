@@ -630,4 +630,5 @@ sessions.
 ## Next Steps
 
 After you deploy your VMO cluster, [complete the initial configuration of VM Launchpad](./getting-started-wiz.md), and
-then [create your first VM](./quick-start.md).
+then [create your first VM](./quick-start.md). To upgrade VM Launchpad to a newer release later, refer to
+[Upgrade VM Launchpad](./upgrade.md).
