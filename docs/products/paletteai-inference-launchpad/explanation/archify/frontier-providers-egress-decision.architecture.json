@@ -1,0 +1,268 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "External Egress Decision",
+    "locale": "en",
+    "output": "frontier-providers-egress-decision.html",
+    "quality_profile": "showcase",
+    "legend": {
+      "mode": "auto",
+      "entries": {
+        "frontend": {
+          "label": "Request entry"
+        },
+        "database": {
+          "label": "Check"
+        },
+        "backend": {
+          "label": "Served locally"
+        },
+        "cloud": {
+          "label": "Served by an external endpoint"
+        },
+        "security": {
+          "label": "Refused"
+        }
+      }
+    },
+    "viewBox": [910, 880]
+  },
+  "components": [
+    {
+      "id": "ingress",
+      "type": "frontend",
+      "label": "Request enters gateway",
+      "pos": [318, 40],
+      "size": [250, 64],
+      "icon": "start"
+    },
+    {
+      "id": "sovereignty",
+      "type": "database",
+      "label": "Sovereignty armed?",
+      "pos": [318, 140],
+      "size": [250, 64],
+      "icon": "decision"
+    },
+    {
+      "id": "blocked_sovereignty",
+      "type": "security",
+      "label": "Blocked by sovereignty",
+      "sublabel": "appliance-wide egress override",
+      "pos": [8, 140],
+      "size": [250, 64],
+      "icon": "stop"
+    },
+    {
+      "id": "tier",
+      "type": "database",
+      "label": "Tier alias resolves to",
+      "sublabel": "external or local?",
+      "pos": [318, 240],
+      "size": [250, 64],
+      "icon": "decision"
+    },
+    {
+      "id": "served_local",
+      "type": "backend",
+      "label": "Served locally",
+      "sublabel": "no X-AIBox-Frontier",
+      "pos": [8, 240],
+      "size": [250, 64],
+      "icon": "success"
+    },
+    {
+      "id": "egress_cap",
+      "type": "database",
+      "label": "External inferencing",
+      "sublabel": "enabled for the client?",
+      "pos": [318, 340],
+      "size": [250, 64],
+      "icon": "decision"
+    },
+    {
+      "id": "key_present",
+      "type": "database",
+      "label": "Key available",
+      "sublabel": "for the endpoint?",
+      "pos": [318, 440],
+      "size": [250, 64],
+      "icon": "decision"
+    },
+    {
+      "id": "denied_no_key",
+      "type": "security",
+      "label": "HTTP 401 · OutcomeDenied",
+      "sublabel": "missing endpoint credential",
+      "pos": [8, 440],
+      "size": [250, 64],
+      "icon": "stop"
+    },
+    {
+      "id": "refused",
+      "type": "security",
+      "label": "HTTP 429",
+      "sublabel": "egress refused",
+      "pos": [628, 440],
+      "size": [250, 64],
+      "icon": "stop"
+    },
+    {
+      "id": "budget",
+      "type": "database",
+      "label": "Per-endpoint egress",
+      "sublabel": "budget remaining?",
+      "pos": [318, 540],
+      "size": [250, 64],
+      "icon": "decision"
+    },
+    {
+      "id": "on_exceed",
+      "type": "database",
+      "label": "on_exceed setting",
+      "pos": [628, 540],
+      "size": [250, 64],
+      "icon": "decision"
+    },
+    {
+      "id": "endpoint_ok",
+      "type": "database",
+      "label": "Endpoint answered",
+      "sublabel": "within timeout?",
+      "pos": [318, 640],
+      "size": [250, 64],
+      "icon": "decision"
+    },
+    {
+      "id": "endpoint_fell_back",
+      "type": "backend",
+      "label": "Served locally",
+      "sublabel": "X-AIBox-Frontier: fell-back",
+      "pos": [8, 640],
+      "size": [250, 64],
+      "icon": "success"
+    },
+    {
+      "id": "budget_fell_back",
+      "type": "backend",
+      "label": "Served locally",
+      "sublabel": "X-AIBox-Frontier: budget-exhausted",
+      "pos": [628, 640],
+      "size": [250, 64],
+      "icon": "success"
+    },
+    {
+      "id": "served_external",
+      "type": "cloud",
+      "label": "External response",
+      "sublabel": "X-AIBox-Frontier: anthropic | openai | gemini",
+      "pos": [273, 740],
+      "size": [340, 64],
+      "icon": "success"
+    }
+  ],
+  "connections": [
+    {
+      "from": "ingress",
+      "to": "sovereignty",
+      "variant": "emphasis"
+    },
+    {
+      "from": "sovereignty",
+      "to": "blocked_sovereignty",
+      "label": "yes",
+      "variant": "default"
+    },
+    {
+      "from": "sovereignty",
+      "to": "tier",
+      "label": "no",
+      "variant": "emphasis",
+      "labelAt": [443, 222]
+    },
+    {
+      "from": "tier",
+      "to": "served_local",
+      "label": "local",
+      "variant": "default"
+    },
+    {
+      "from": "tier",
+      "to": "egress_cap",
+      "label": "external",
+      "variant": "emphasis",
+      "labelAt": [443, 322]
+    },
+    {
+      "from": "egress_cap",
+      "to": "refused",
+      "label": "no",
+      "variant": "default",
+      "fromSide": "right",
+      "toSide": "top"
+    },
+    {
+      "from": "egress_cap",
+      "to": "key_present",
+      "label": "yes",
+      "variant": "emphasis",
+      "labelAt": [443, 422]
+    },
+    {
+      "from": "key_present",
+      "to": "denied_no_key",
+      "label": "no",
+      "variant": "default"
+    },
+    {
+      "from": "key_present",
+      "to": "budget",
+      "label": "yes",
+      "variant": "emphasis",
+      "labelAt": [443, 522]
+    },
+    {
+      "from": "budget",
+      "to": "endpoint_ok",
+      "label": "yes",
+      "variant": "emphasis",
+      "labelAt": [443, 622]
+    },
+    {
+      "from": "budget",
+      "to": "on_exceed",
+      "label": "no",
+      "variant": "default"
+    },
+    {
+      "from": "endpoint_ok",
+      "to": "served_external",
+      "label": "yes",
+      "variant": "emphasis",
+      "labelAt": [443, 722]
+    },
+    {
+      "from": "endpoint_ok",
+      "to": "endpoint_fell_back",
+      "label": "no",
+      "variant": "default"
+    },
+    {
+      "from": "on_exceed",
+      "to": "budget_fell_back",
+      "label": "local (default)",
+      "variant": "default",
+      "labelAt": [753, 622]
+    },
+    {
+      "from": "on_exceed",
+      "to": "refused",
+      "label": "refuse",
+      "variant": "default",
+      "fromSide": "top",
+      "toSide": "bottom",
+      "labelAt": [753, 530]
+    }
+  ]
+}
