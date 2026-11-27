@@ -125,8 +125,8 @@ tags: ["release-notes"]
 <!-- https://spectrocloud.atlassian.net/browse/PEM-12771 -->
 
 - The `GET /v1/system/config/registries/{registryName}` system [API endpoint](/api/introduction) of self-hosted Palette
-  and Palette VerteX is now deprecated. The `PUT` and `DELETE` operations on the same path are not deprecated. Remove
-  any calls to the `GET` endpoint from your automation, scripts, and integrations. Refer to the
+  and Palette VerteX is now deprecated and has no replacement. The `PUT` and `DELETE` operations on the same path are
+  not deprecated. Remove any calls to the `GET` endpoint from your automation, scripts, and integrations. Refer to the
   [Deprecations](./announcements.md#deprecations) table for the removal timeline.
 
 ### Edge
