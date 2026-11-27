@@ -10,8 +10,15 @@ tags: ["tenant-administration", "session-timeout"]
 
 Tenant administrators can set and update the session timeout for Palette users. The session timeout determines the
 maximum time of inactivity before a user is automatically logged out of Palette. The session timeout is set at the
-tenant level and applies to all users. The default session timeout is 240 minutes (four hours). If you want to change
-the default session timeout, follow the steps below.
+tenant level and applies to all users in the tenant. The default session timeout is 240 minutes (four hours), and you
+can set a value from 15 to 1,440 minutes. To change the default session timeout, follow the steps in
+[Update Session Timeout](#update-session-timeout).
+
+The session timeout also sets the lifetime of the
+[authorization tokens](../user-management/authentication/authorization-token.md) that Palette issues to tenant users,
+whether they sign in to the Palette UI or authenticate through the API. While a user is active in the Palette UI,
+Palette renews their token automatically. API clients must refresh their token before it expires. Refer to
+[Refresh Authorization Token](../user-management/authentication/authorization-token.md#refresh-authorization-token).
 
 ## Prerequisites
 

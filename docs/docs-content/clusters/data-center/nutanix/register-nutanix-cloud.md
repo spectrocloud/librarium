@@ -249,7 +249,7 @@ cloud to Palette. Alternatively, you can use an API platform such as [Postman](h
    }'
    ```
 
-   The output contains your authorization token. The token is valid for 15 minutes.
+   The output contains your authorization token. The token is valid for 240 minutes (four hours).
 
    ```bash hideClipBoard
    {
