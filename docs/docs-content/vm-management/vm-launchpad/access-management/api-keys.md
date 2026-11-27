@@ -28,8 +28,10 @@ platform resolves permissions live from the creator's identity record on every r
 - If the creator's VMO role or namespace scope changes, the effective permissions of every API key they own change after
   a short cache delay.
 
-- If the creator's identity provider group membership changes, the creator must sign in to the UI once for the new
-  groups to propagate to their API keys. API key traffic alone does not refresh the group set.
+- If the creator's group membership changes on the [Users](./users.md) or [Groups](./groups.md) page, their API keys use
+  the new groups without the creator signing in again. If it changes outside VM Launchpad, such as in an external
+  identity provider, the creator must sign in to the UI once for the new groups to propagate to their API keys. API key
+  traffic alone does not refresh the group set.
 
 - API keys cannot manage other API keys. Requests authenticated with an API key are rejected if they attempt to create
   or revoke keys through the API. Key lifecycle changes must originate from an interactive UI session.
@@ -155,13 +157,14 @@ or clear the **Enabled** checkbox on the [Users](./users.md) page, and revoke an
 
 ## Permission Staleness
 
-VM Launchpad refreshes an API key creator's identity record only when the creator signs in interactively or refreshes
-their UI session. API key traffic does not refresh it. This has two consequences when a highly privileged user issues
-API keys.
+VM Launchpad refreshes an API key creator's identity record when you change the creator's group membership on the
+[Users](./users.md) or [Groups](./groups.md) page. Otherwise, it refreshes the record only when the creator signs in
+interactively or refreshes their UI session. API key traffic does not refresh it. This has two consequences when a
+highly privileged user issues API keys.
 
-- If the creator's identity provider group membership changes but the creator never signs in to VM Launchpad again,
-  every API key they own keeps authenticating with the group set from their last interactive login. Revoke the key or
-  evict the creator's identity record to break this loop.
+- If the creator's group membership changes outside VM Launchpad, such as in an external identity provider, but the
+  creator never signs in to VM Launchpad again, every API key they own keeps authenticating with the groups that VM
+  Launchpad last recorded for them. Revoke the key or evict the creator's identity record to break this loop.
 
 - If the creator's VMO role or namespace scope changes on the [Users](./users.md) or [Groups](./groups.md) pages, their
   API keys observe the new permissions after a short cache delay, within about 90 seconds.
