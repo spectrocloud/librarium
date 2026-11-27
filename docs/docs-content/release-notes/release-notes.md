@@ -86,6 +86,10 @@ The following components have been updated for Palette version 4.10.13 - 4.10.48
 
 ## November 26, 2026 - Release 4.10.48
 
+The following component updates are applicable to this release:
+
+- [November 27, 2026 - Component Updates](#component-updates-2026-48) <!-- omit in toc -->
+
 <!-- PATCH RELEASE TICKET: DOC-3512 -->
 <!-- PATCH RELEASE VERSION: 4.10.48 -->
 <!-- PATCH RELEASE CANDIDATES: PEM-12761 PEM-12813 PE-10295 PE-10267 PE-10239 PEM-12724 PEM-12730 PEM-12478 -->
@@ -134,6 +138,10 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 ## November 23, 2026 - Release 4.10.47
 
+The following component updates are applicable to this release:
+
+- [November 27, 2026 - Component Updates](#component-updates-2026-48) <!-- omit in toc -->
+
 <!-- PATCH RELEASE TICKET: DOC-3490 -->
 <!-- PATCH RELEASE VERSION: 4.10.47 -->
 <!-- PATCH RELEASE CANDIDATES: PEM-12742 -->
@@ -168,6 +176,10 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 :::
 
 ## November 20, 2026 - Release 4.10.45
+
+The following component updates are applicable to this release:
+
+- [November 27, 2026 - Component Updates](#component-updates-2026-48) <!-- omit in toc -->
 
 <!-- PATCH RELEASE TICKET: DOC-3466 -->
 <!-- PATCH RELEASE VERSION: 4.10.45 -->
@@ -360,6 +372,11 @@ The following components have been updated for Palette version 4.10.13 - 4.10.44
 <!-- END PACKS LIST BODY: DOC-3450. DO NOT DELETE. -->
 
 ## November 15, 2026 - Release 4.10.44 {#release-notes-4.10.b}
+
+The following component updates are applicable to this release:
+
+- [November 20, 2026 - Component Updates](#component-updates-2026-47) <!-- omit in toc -->
+- [November 27, 2026 - Component Updates](#component-updates-2026-48) <!-- omit in toc -->
 
 ### Security Notices
 
@@ -995,6 +1012,11 @@ The following components have been updated for Palette version 4.10.44.
 
 ## November 15, 2026 - Release 4.10.34-rev.1
 
+The following component updates are applicable to this release:
+
+- [November 20, 2026 - Component Updates](#component-updates-2026-47) <!-- omit in toc -->
+- [November 27, 2026 - Component Updates](#component-updates-2026-48) <!-- omit in toc -->
+
 <!-- PATCH RELEASE TICKET: DOC-3446 -->
 <!-- PATCH RELEASE VERSION: 4.10.34-rev.1 -->
 <!-- PATCH RELEASE CANDIDATES: PE-10161 -->
@@ -1243,6 +1265,13 @@ This release delivers version 4.10.25 of the PaletteAI VM Launchpad appliance, w
 
 ## October 28, 2026 - Release 4.10.34
 
+The following component updates are applicable to this release:
+
+- [October 30, 2026 - Component Updates](#component-updates-2026-44) <!-- omit in toc -->
+- [November 6, 2026 - Component Updates](#component-updates-2026-45) <!-- omit in toc -->
+- [November 20, 2026 - Component Updates](#component-updates-2026-47) <!-- omit in toc -->
+- [November 27, 2026 - Component Updates](#component-updates-2026-48) <!-- omit in toc -->
+
 <!-- PATCH RELEASE TICKET: DOC-3363 -->
 <!-- PATCH RELEASE VERSION: 4.10.34 -->
 <!-- PATCH RELEASE CANDIDATES: PE-9913 PE-9875 PEM-12433 -->
@@ -1284,6 +1313,13 @@ The [Palette CLI](../automation/palette-cli/palette-cli.md) version correspondin
 :::
 
 ## October 24, 2026 - Release 4.10.33
+
+The following component updates are applicable to this release:
+
+- [October 30, 2026 - Component Updates](#component-updates-2026-44) <!-- omit in toc -->
+- [November 6, 2026 - Component Updates](#component-updates-2026-45) <!-- omit in toc -->
+- [November 20, 2026 - Component Updates](#component-updates-2026-47) <!-- omit in toc -->
+- [November 27, 2026 - Component Updates](#component-updates-2026-48) <!-- omit in toc -->
 
 <!-- PATCH RELEASE TICKET: DOC-3358 -->
 <!-- PATCH RELEASE VERSION: 4.10.33 -->
@@ -1406,6 +1442,14 @@ The following components have been updated for Palette version 4.10.13 - 4.10.32
 
 ## October 22, 2026 - Release 4.10.32
 
+The following component updates are applicable to this release:
+
+- [October 23, 2026 - Component Updates](#component-updates-2026-43) <!-- omit in toc -->
+- [October 30, 2026 - Component Updates](#component-updates-2026-44) <!-- omit in toc -->
+- [November 6, 2026 - Component Updates](#component-updates-2026-45) <!-- omit in toc -->
+- [November 20, 2026 - Component Updates](#component-updates-2026-47) <!-- omit in toc -->
+- [November 27, 2026 - Component Updates](#component-updates-2026-48) <!-- omit in toc -->
+
 <!-- PATCH RELEASE TICKET: DOC-3340 -->
 <!-- PATCH RELEASE VERSION: 4.10.32 -->
 <!-- PATCH RELEASE CANDIDATES: PEM-12317 PEM-12387 -->
@@ -1477,6 +1521,15 @@ The following components have been updated for Palette version 4.10.13 - 4.10.27
 <!-- END PACKS LIST BODY: DOC-3304. DO NOT DELETE. -->
 
 ## October 15, 2026 - Release 4.10.27
+
+The following component updates are applicable to this release:
+
+- [October 16, 2026 - Component Updates](#component-updates-2026-42) <!-- omit in toc -->
+- [October 23, 2026 - Component Updates](#component-updates-2026-43) <!-- omit in toc -->
+- [October 30, 2026 - Component Updates](#component-updates-2026-44) <!-- omit in toc -->
+- [November 6, 2026 - Component Updates](#component-updates-2026-45) <!-- omit in toc -->
+- [November 20, 2026 - Component Updates](#component-updates-2026-47) <!-- omit in toc -->
+- [November 27, 2026 - Component Updates](#component-updates-2026-48) <!-- omit in toc -->
 
 <!-- PATCH RELEASE TICKET: DOC-3303 -->
 <!-- PATCH RELEASE VERSION: 4.10.27 -->
@@ -1712,6 +1765,15 @@ This release delivers version 4.10.20 of the PaletteAI VM Launchpad appliance, w
   provisioned.
 
 ## October 9, 2026 - Release 4.10.25 {#release-notes-4.10.a}
+
+The following component updates are applicable to this release:
+
+- [October 16, 2026 - Component Updates](#component-updates-2026-42) <!-- omit in toc -->
+- [October 23, 2026 - Component Updates](#component-updates-2026-43) <!-- omit in toc -->
+- [October 30, 2026 - Component Updates](#component-updates-2026-44) <!-- omit in toc -->
+- [November 6, 2026 - Component Updates](#component-updates-2026-45) <!-- omit in toc -->
+- [November 20, 2026 - Component Updates](#component-updates-2026-47) <!-- omit in toc -->
+- [November 27, 2026 - Component Updates](#component-updates-2026-48) <!-- omit in toc -->
 
 ### Security Notices
 
@@ -2323,6 +2385,15 @@ The following components have been updated for Palette version 4.10.25.
 
 ## October 6, 2026 - Release 4.10.17-patch.5
 
+The following component updates are applicable to this release:
+
+- [October 16, 2026 - Component Updates](#component-updates-2026-42) <!-- omit in toc -->
+- [October 23, 2026 - Component Updates](#component-updates-2026-43) <!-- omit in toc -->
+- [October 30, 2026 - Component Updates](#component-updates-2026-44) <!-- omit in toc -->
+- [November 6, 2026 - Component Updates](#component-updates-2026-45) <!-- omit in toc -->
+- [November 20, 2026 - Component Updates](#component-updates-2026-47) <!-- omit in toc -->
+- [November 27, 2026 - Component Updates](#component-updates-2026-48) <!-- omit in toc -->
+
 <!-- PATCH RELEASE TICKET: DOC-3275 -->
 <!-- PATCH RELEASE VERSION: 4.10.17-patch.5 -->
 <!-- PATCH RELEASE CANDIDATES: PEM-12176 PEM-12175 PEM-12174 -->
@@ -2671,6 +2742,17 @@ The following components have been updated for Palette versions 4.10.16 - 4.10.1
 
 ## September 17, 2026 - Release 4.10.17
 
+The following component updates are applicable to this release:
+
+- [September 18, 2026 - Component Updates](#component-updates-2026-38) <!-- omit in toc -->
+- [September 24, 2026 - Component Updates](#component-updates-2026-39) <!-- omit in toc -->
+- [October 16, 2026 - Component Updates](#component-updates-2026-42) <!-- omit in toc -->
+- [October 23, 2026 - Component Updates](#component-updates-2026-43) <!-- omit in toc -->
+- [October 30, 2026 - Component Updates](#component-updates-2026-44) <!-- omit in toc -->
+- [November 6, 2026 - Component Updates](#component-updates-2026-45) <!-- omit in toc -->
+- [November 20, 2026 - Component Updates](#component-updates-2026-47) <!-- omit in toc -->
+- [November 27, 2026 - Component Updates](#component-updates-2026-48) <!-- omit in toc -->
+
 <!-- PATCH RELEASE TICKET: DOC-3224 -->
 <!-- PATCH RELEASE VERSION: 4.10.17 -->
 <!-- PATCH RELEASE CANDIDATES: OPS-11308 PCOM-1071 PLT-2408 PLT-2409 -->
@@ -2779,6 +2861,18 @@ The following components have been updated for Palette version 4.10.13 - 4.10.16
 
 ## September 10, 2026 - Release 4.10.16
 
+The following component updates are applicable to this release:
+
+- [September 11, 2026 - Component Updates](#component-updates-2026-37) <!-- omit in toc -->
+- [September 18, 2026 - Component Updates](#component-updates-2026-38) <!-- omit in toc -->
+- [September 24, 2026 - Component Updates](#component-updates-2026-39) <!-- omit in toc -->
+- [October 16, 2026 - Component Updates](#component-updates-2026-42) <!-- omit in toc -->
+- [October 23, 2026 - Component Updates](#component-updates-2026-43) <!-- omit in toc -->
+- [October 30, 2026 - Component Updates](#component-updates-2026-44) <!-- omit in toc -->
+- [November 6, 2026 - Component Updates](#component-updates-2026-45) <!-- omit in toc -->
+- [November 20, 2026 - Component Updates](#component-updates-2026-47) <!-- omit in toc -->
+- [November 27, 2026 - Component Updates](#component-updates-2026-48) <!-- omit in toc -->
+
 <!-- PATCH RELEASE TICKET: DOC-3205 -->
 <!-- PATCH RELEASE VERSION: 4.10.16 -->
 
@@ -2828,6 +2922,17 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 ## September 8, 2026 - Release 4.10.14
 
+The following component updates are applicable to this release:
+
+- [September 11, 2026 - Component Updates](#component-updates-2026-37) <!-- omit in toc -->
+- [September 18, 2026 - Component Updates](#component-updates-2026-38) <!-- omit in toc -->
+- [October 16, 2026 - Component Updates](#component-updates-2026-42) <!-- omit in toc -->
+- [October 23, 2026 - Component Updates](#component-updates-2026-43) <!-- omit in toc -->
+- [October 30, 2026 - Component Updates](#component-updates-2026-44) <!-- omit in toc -->
+- [November 6, 2026 - Component Updates](#component-updates-2026-45) <!-- omit in toc -->
+- [November 20, 2026 - Component Updates](#component-updates-2026-47) <!-- omit in toc -->
+- [November 27, 2026 - Component Updates](#component-updates-2026-48) <!-- omit in toc -->
+
 <!-- PATCH RELEASE TICKET: DOC-3193 -->
 <!-- PATCH RELEASE VERSION: 4.10.14 -->
 
@@ -2839,6 +2944,17 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   `kubectl oidc-login` authentication from headless hosts and access to the Virtual Machine Orchestrator (VMO) console.
 
 ## September 6, 2026 - Release 4.10.13 {#release-notes-4.10.0}
+
+The following component updates are applicable to this release:
+
+- [September 11, 2026 - Component Updates](#component-updates-2026-37) <!-- omit in toc -->
+- [September 18, 2026 - Component Updates](#component-updates-2026-38) <!-- omit in toc -->
+- [October 16, 2026 - Component Updates](#component-updates-2026-42) <!-- omit in toc -->
+- [October 23, 2026 - Component Updates](#component-updates-2026-43) <!-- omit in toc -->
+- [October 30, 2026 - Component Updates](#component-updates-2026-44) <!-- omit in toc -->
+- [November 6, 2026 - Component Updates](#component-updates-2026-45) <!-- omit in toc -->
+- [November 20, 2026 - Component Updates](#component-updates-2026-47) <!-- omit in toc -->
+- [November 27, 2026 - Component Updates](#component-updates-2026-48) <!-- omit in toc -->
 
 <!-- COMPONENT UPDATES TICKET: DOC-3171 -->
 <!-- RELEASE DATE: September 6, 2026 -->
