@@ -132,6 +132,14 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 #### Improvements
 
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12359 -->
+<!-- https://spectrocloud.atlassian.net/browse/PEM-12773 -->
+
+- Palette VerteX now supports AWS seventh-generation instance types, such as M7i, M7i-flex, C7i, and R7i, for AWS IaaS
+  and Amazon EKS clusters deployed to the AWS GovCloud `us-gov-west-1` and `us-gov-east-1` regions. Previously, these
+  instance types did not appear in the instance type list for these regions, and cluster create and update requests that
+  used them failed.
+
 #### Bug Fixes
 
 ### Virtual Machine Orchestrator (VMO)
