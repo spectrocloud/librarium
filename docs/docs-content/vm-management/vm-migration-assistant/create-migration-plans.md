@@ -675,6 +675,9 @@ Ensure that your terminal is configured to access your VMO cluster using
     [Verified Migrations](./vm-migration-assistant.md#verified-migrations) for a list of verified migration
     combinations.
 
+    If your source provider is Nutanix AHV, the wizard skips this step, because Nutanix AHV providers support only cold
+    migrations. Go to step 13.
+
     #### Migration Types
 
     | Type               | Description                                                                                                                                                                                                                                                                                                                       |
@@ -688,6 +691,11 @@ Ensure that your terminal is configured to access your VMO cluster using
 13. For the **Other settings (optional)** step, review and adjust the optional settings for your migration plan. The
     following table describes the available settings.
 
+    The **Use NBDE/Clevis**, **Disk decryption passphrases**, **Preserve static IPs**, and **Migrate shared disks**
+    settings appear only for VMware vSphere source providers. Plans with a Nutanix AHV source provider always try to
+    preserve static IPs, and you cannot turn this off. The migration preserves the static IPs only if Nutanix Guest
+    Tools reports them and **Convert disk** is turned on for the source provider.
+
     #### Other Settings (Optional)
 
     | Setting                         | Description                                                                                                                                                                                                                                                                      |
@@ -699,7 +707,8 @@ Ensure that your terminal is configured to access your VMO cluster using
     | **Root device**                 | Choose the root filesystem for the VM. By default, the first root device is chosen in multi-boot systems. You can specify a root device (for example, `/dev/sda1` for multi-boot systems), but if it is not detected as a root device, the migration will fail.                  |
     | **Migrate shared disks**        | Choose whether to migrate shared disks. If you enable this option, ensure that your VMO cluster has access to the shared storage from the storage maps configured for the migration.                                                                                             |
 
-14. Click **Next**.
+14. Select **Next** to configure the **Hooks (optional)** step, or select **Skip to review** to keep the default hook
+    settings and go to step 17.
 
 15. For the **Hooks (optional)** step, you can choose to enable pre-migration and post-migration hooks. Hooks are
     scripts that run at different stages of the migration process.

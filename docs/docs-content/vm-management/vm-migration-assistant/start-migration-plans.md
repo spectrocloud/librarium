@@ -28,10 +28,13 @@ for detailed instructions.
 - A cold migration plan created and ready to start. Refer to [Create Migration Plans](./create-migration-plans.md) for
   guidance.
 
-- One or more VMs hosted in VMware vSphere 7.0 or 8.0. The VM's OS must be present in the
+- One or more VMs hosted in VMware vSphere 7.0 or 8.0, or in Nutanix AHV. The VM's OS must be present in the
   [virt-v2v supported guest systems](https://libguestfs.org/virt-v2v-support.1.html) list.
 
   - VMs operating Windows must be shut down at the virtualized OS level.
+
+  - For Nutanix AHV, the migration shuts down running VMs with an ACPI shutdown request and does not force them off. If
+    a VM does not respond to ACPI shutdown requests, shut it down yourself before you start the migration.
 
 - In airgap environments, we recommend installing the `qemu-guest-agent` package on each Linux VM before you migrate it.
   Refer to [Install the QEMU Guest Agent in Airgap Environments](#install-the-qemu-guest-agent-in-airgap-environments)
@@ -92,6 +95,10 @@ for detailed instructions.
 11. For each migrated VM, click on the three-dot menu and select **Start**. Your VMs are now ready to use.
 
     ![Start migrated VM](/vm-migration-assistant/start-migration-plans_start-migrated-vm.webp)
+
+12. _(Nutanix AHV only)_ In the Prism image catalog, check for images whose names start with `forklift-migration-`. The
+    VM Migration Assistant creates these temporary images during the migration and deletes them afterward, but it does
+    not report a failed deletion. Delete any of these images that remain.
 
 ## Start Warm Migration Plans
 

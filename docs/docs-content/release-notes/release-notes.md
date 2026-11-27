@@ -53,8 +53,9 @@ This release delivers version 4.10.TBD of the PaletteAI VM Launchpad appliance, 
 
 - <TpBadge /> The VM Migration Assistant can now migrate VMs from Nutanix AHV, as a Tech Preview. When you create a
   source provider, select **Nutanix AHV** and connect to Prism Element or Prism Central. Nutanix migrations are cold
-  migrations only. **Fetch certificate from URL** does not work for Nutanix AHV providers, so upload the Prism CA
-  certificate to verify the Prism certificate.
+  migrations only. **Fetch certificate from URL** does not work in the VM Migration Assistant service console, so paste
+  or upload the Prism CA certificate bundle instead. Refer to [Create Source
+  Providers](../vm-management/vm-migration-assistant/create-source-providers.md).
 
 ### Improvements
 
