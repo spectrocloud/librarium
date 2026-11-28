@@ -3,6 +3,8 @@ partial_category: self-hosted
 partial_name: installation-steps-create-cluster
 ---
 
+{/* If installation options are added/changed, the static/assets/docs/csv/management-appliance-preinstall-worksheet.csv mentioned in Before You Begin section must also be updated. */}
+
 The management cluster runs the {props.version} core components and provisions the workload clusters that you deploy
 with {props.version}. You create the management cluster in Local UI on the leader host, using the linked hosts
 as its nodes.
@@ -99,7 +101,7 @@ as its nodes.
     | **Option**               | **Description**                                                                                                                                                                           | **Type**      | **Default**                                                                                      |
     | ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- | ------------------------------------------------------------------------------------------------ |
     | **Architecture**         | The CPU architecture of the nodes. This is used to ensure compatibility with the applications operating on the nodes.                                                                       | String (enum) | **`amd64`**                                                                                      |
-    | **Add Edge Hosts**       | Select **Add Item**, and then select the other hosts that you installed from the Appliance ISO. These hosts are added to the node pool. Each pool must contain at least one node. | N/A           | - **Control Plane Pool** = _Current host selected_ <br /> - **Worker Pool** = _No host selected_ |
+    | **Add Edge Hosts**       | Select **Add Item**, and then select the other hosts that you installed from the Appliance ISO. These hosts are added to the node pool. The node pool must contain at least one node. | N/A           | _Current host selected_                                                                          |
     | **NIC Name**             | The name of the network interface card (NIC) to use for the nodes. Leave on **Auto** to let the system choose the appropriate NIC, or select one manually from the drop-down menu.        | N/A           | **Auto**                                                                                         |
     | **Host Name (Optional)** | The hostname for the nodes. This is used to identify the nodes in the cluster. A generated hostname is provided automatically, which you can adjust to your requirements.                   | String        | **`edge-*`**                                                                                     |
 

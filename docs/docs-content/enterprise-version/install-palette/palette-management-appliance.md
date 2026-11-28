@@ -49,7 +49,18 @@ Follow the instructions to install Palette using the Palette Management Applianc
 
 - <PartialsComponent category="self-hosted" name="installation-steps-secure-boot" edition="Palette" />
 
+### Before You Begin
+
+<!-- prettier-ignore-start -->
+
+Use the following CSV worksheet to gather and record information that you need during installation. Fill in your value for each field.
+<a href="/assets/docs/csv/management-appliance-preinstall-worksheet.csv" download>Download appliance pre-installation worksheet</a>.
+
+<!-- prettier-ignore-end -->
+
 ### Install Palette {#install}
+
+<!-- If installation options are added/changed, the static/assets/docs/csv/management-appliance-preinstall-worksheet.csv mentioned in Before You Begin section must also be updated. -->
 
 Installing Palette consists of the following tasks.
 
